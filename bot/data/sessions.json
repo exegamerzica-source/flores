@@ -222,7 +222,7 @@
     ],
     "createdAt": "2026-06-13T10:23:55.379Z",
     "lastMessageAt": "2026-06-13T10:34:36.598Z",
-    "updatedAt": "2026-06-13T10:51:46.816Z"
+    "updatedAt": "2026-06-13T11:34:46.805Z"
   },
   "551199999995656": {
     "greeted": true,
@@ -408,5 +408,128 @@
     "createdAt": "2026-06-13T10:30:03.203Z",
     "lastMessageAt": "2026-06-13T10:32:39.909Z",
     "updatedAt": "2026-06-13T10:34:15.492Z"
+  },
+  "551199999999444": {
+    "greeted": true,
+    "profileName": "Cliente Teste",
+    "customerName": "Cliente Teste",
+    "lastSuggestions": [
+      "3965",
+      "4451",
+      "3147"
+    ],
+    "selectedProductId": "3147",
+    "awaitingDeliveryData": true,
+    "deliveryDetails": "",
+    "requiresPixIntervention": false,
+    "paymentRequested": false,
+    "orderClosed": false,
+    "automationPaused": false,
+    "unread": false,
+    "status": "novo",
+    "tags": [],
+    "notes": "",
+    "messages": [
+      {
+        "id": "1781349077364-fd038d4f6ba388",
+        "role": "customer",
+        "type": "text",
+        "text": "oii",
+        "status": "ok",
+        "createdAt": "2026-06-13T11:11:17.364Z",
+        "meta": {
+          "whatsappId": "local-1781349077363",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781349077365-04f3f1897c63c",
+        "role": "bot",
+        "type": "text",
+        "text": "Oi! Aqui é a Evelyn da Beija Flor Floricultura 🌷\nhttps://www.beijaflorfloricultura.com\nDá uma olhadinha no nosso catálogo! É só clicar em 💜 Gostei desse! no produto que quiser 😊\nMe passa o CEP ou endereço de entrega?",
+        "status": "test",
+        "createdAt": "2026-06-13T11:11:17.365Z",
+        "meta": {}
+      },
+      {
+        "id": "1781349082579-092951e1b2a3b8",
+        "role": "customer",
+        "type": "text",
+        "text": "vereda alfa 9 lajeado",
+        "status": "ok",
+        "createdAt": "2026-06-13T11:11:22.579Z",
+        "meta": {
+          "whatsappId": "local-1781349082579",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781349082583-b5148d719c57e8",
+        "role": "bot",
+        "type": "text",
+        "text": "1. Buquê 6 Rosas Colombianas Te Amo - R$ 129,90\n2. Buquê com 3 Colombianas - R$ 84,90\n3. Buquê de Rosas Vermelhas 6 Unidades - R$ 99,90",
+        "status": "test",
+        "createdAt": "2026-06-13T11:11:22.583Z",
+        "meta": {}
+      },
+      {
+        "id": "1781349084359-5bc8c1cfea86d8",
+        "role": "customer",
+        "type": "text",
+        "text": "3",
+        "status": "ok",
+        "createdAt": "2026-06-13T11:11:24.359Z",
+        "meta": {
+          "whatsappId": "local-1781349084359",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781349084361-8f4bbac32f0208",
+        "role": "bot",
+        "type": "text",
+        "text": "Perfeito, Buquê de Rosas Vermelhas 6 Unidades fica R$ 99,90. Tenho essa opção no catálogo 🌷",
+        "status": "test",
+        "createdAt": "2026-06-13T11:11:24.361Z",
+        "meta": {}
+      },
+      {
+        "id": "1781349084361-28febff8fb5d28",
+        "role": "bot",
+        "type": "text",
+        "text": "Perfeito! Me envia os dados assim:\n👤 Quem envia\n🎁 Quem recebe\n📍 Endereço\n🗓️ Data/horário\n💌 Cartão (opcional)",
+        "status": "test",
+        "createdAt": "2026-06-13T11:11:24.361Z",
+        "meta": {}
+      },
+      {
+        "id": "1781349090888-8c635457ac0578",
+        "role": "customer",
+        "type": "text",
+        "text": "quero uma foto antes por favor",
+        "status": "ok",
+        "createdAt": "2026-06-13T11:11:30.888Z",
+        "meta": {
+          "whatsappId": "local-1781349090888",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781349090891-47874fc635ec08",
+        "role": "bot",
+        "type": "text",
+        "text": "Perfeito, vou te mostrar: Buquê de Rosas Vermelhas 6 Unidades 🌷",
+        "status": "test",
+        "createdAt": "2026-06-13T11:11:30.891Z",
+        "meta": {}
+      }
+    ],
+    "createdAt": "2026-06-13T11:11:17.363Z",
+    "lastMessageAt": "2026-06-13T11:11:30.891Z",
+    "updatedAt": "2026-06-13T11:13:51.736Z"
   }
 }
