@@ -1,0 +1,1268 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+<head>
+<meta charset="utf-8">
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+<title>Coleção Chocolates</title>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1"> 
+<meta http-equiv="Content-Language" content="pt-BR"/>
+<meta name="format-detection" content="telephone=no"> 
+<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no">
+<link rel="stylesheet" href="../assets/bethyflores/js/styles.css">
+<style type="text/css">
+.styled-select {overflow: hidden; border: 1px solid #ccc;height: 25px;padding: 2px;-webkit-appearance: none; margin-right:5px}
+.styled-select select {background: transparent;border: none;font-size: 14px;height: 25px;padding: 5px;-webkit-appearance: none}
+.styled-select.slate select {font-size: 14px; width: 145px; color:#666}
+.styled-select.slate {background: url(../assets/bethyflores/images/select.png) no-repeat  right center; width: 120px; background-color:#FFF;-webkit-appearance: none}
+.fav{position:absolute;bottom:0px;right:0px;z-index:3; display:none}
+.favy{position:absolute;bottom:0px;right:0px;z-index:3}
+.box_desconto{display:inline-block;height:19px; width:120px; background:url(../assets/bethyflores/images/sprite_home.png) -149px -494px; padding-top:3px; color:#666; font-size:12px}
+
+.vitrine_parcelamento{color:#666;font-family:'Source Sans Pro',Arial;font-size:12px}
+.valor_produto{color:#000;font-size:18px}
+.box_price{min-height:65px}
+.desc_bot{text-align:center; margin-top:5px}
+.desc_div{border:solid 1px #323f2d; padding:5px; text-align:center; display: inline-block; color:#FFF; background-color:#4a5823; font-size:13px}
+.desc_div:hover{color:#FFF; background-color:#5C7B00}
+</style>
+</head>
+<body>
+<div id="nav" class="nav-collapse"><ul><li class="active"></li></ul></div>
+<script type="text/JavaScript" src="../assets/bethyflores/js/jquery.min.js"></script> 
+<!--[if lte IE 8]><script src="../assets/bethyflores/js/respond.js"></script><![endif]-->
+<script type="text/javascript" src="../assets/bethyflores/js/responsive-nav.js"></script>
+<script type="text/javascript" src="../assets/bethyflores/js/funcoes.js"></script>
+<script type="text/javascript" src="../assets/bethyflores/js/showPage.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var HeaderTop = $('.headerpop').offset().top+150;
+
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > HeaderTop) {
+                $('.headerxx').css({ position: 'fixed', top: '0px', display: 'block', right: '0px', left: '0px' });
+            }
+            else {
+                $('.headerxx').css({ position: 'static', display: 'none' });
+            }
+        });
+        
+
+    });
+
+    function show_fav(x, y) {
+        if (y == 1) { document.getElementById('fav_' + x).style.display = "block" }
+        if (y == 2) {
+            var str = document.getElementById('fav_img_' + x).src;
+            var n = str.indexOf("_24y");
+            if (n == -1) { document.getElementById('fav_' + x).style.display = "none" }
+        }
+    }
+
+    function go_favoritos(x) {
+        xxx = ''
+        tipo = 'y'
+
+        var str = document.getElementById('fav_img_' + x).src;
+        var n = str.indexOf("_24y");
+
+        if (n > 0) {
+            xxx = '1';
+            tipo = ''
+        }
+
+        url = '/favoritos_add/?zz=1&q=' + xxx + '&id=' + x;
+        document.getElementById('fav_img_' + x).src = '../assets/bethyflores/images/favorito_24' + tipo + '.png';
+
+        showPage(url, 'resultado_ajax', 0);
+    }
+
+
+    var br;
+    var preco_var;
+    var marca_var;
+    var produto_var;
+    var flores_var;
+    var ddpx = 1;
+    var ddnx = 0;
+
+    var checado = new Image();
+    var checado_no = new Image();
+
+    function limparPadrao() {
+        if (document.getElementById("newsletter_campo").value == document.getElementById("newsletter_campo").defaultValue) {
+            document.getElementById("newsletter_campo").value = "";
+        }
+    }
+
+    function escreverPadrao() {
+        if (document.getElementById("newsletter_campo").value == "") {
+            document.getElementById("newsletter_campo").value = document.getElementById("newsletter_campo").defaultValue;
+        }
+    }
+
+    function ordenacao(br) {
+        order = document.getElementById("ordenar").value;
+        window.location = "/chocolates/?tipo=15&todos=0&order=" + order;
+    }
+
+    function popup(link, largura, altura) {
+        window.open(link, "Flores", "status=no, width=" + largura + ", height=" + altura + ", toolbar=no, scroolbar=no, resizable=no")
+    }
+
+    
+</script>
+
+
+
+<div id=bannerxx></div>
+
+<div id=headerxx style="background-color:#000">
+<div id=header_bfb>
+    <div class=mobile style="float:right; padding:20px 10px 10px 10px"><a href="#" onclick="show_menu()"><img id=hamburger src="../assets/bethyflores/images/black.png" width=32 height=32 /></a></div>
+    <div class=mobile style="float:right; padding-top:10px"><A href="/carrinho"><img id=basket src="../assets/bethyflores/images/black.png" width=40 height=40 /></a></div>
+    <div class=mobile style="float:right; padding-top:10px"><a href="#" onclick="show_search()"><img id=res_search src="../assets/bethyflores/images/black.png" width=40 height=40 /></a></div>
+    <div class=mobile style="float:right; padding-top:10px"><a href="/minha_conta"><img id=account src="../assets/bethyflores/images/black.png" width=40 height=40 /></a></div>
+
+    <div class=desk style="float:left; width:26%;  margin-top:20px">
+        <div style="margin-left:40px;float:left"><a href="/central-de-atendimento" class=menu3>ATENDIMENTO</a></div>        
+        <div style="font-size:12px;float:left; padding:0px 10px"> | </div>
+        <div style="font-size:14px;float:left"> <a href="/favoritos" class="menu3">FAVORITOS</a></div>
+        <div style="clear:both"></div>
+<div style="margin-left:40px; font-size:15px;color:#FFF">Whatsapp: <a href="whatsapp://send?text=&phone=5511962158598" style=" font-size:15px;color:#FFF">(11) 96215-8598</a></div>
+    </div>
+    
+    <div id=logodesk><a href="/"><img id=logoB style="padding-bottom:0px" src="../assets/bethyflores/images/black.png" width=349 height=98 alt="Bethy Flores" title="Bethy Flores - 0" border=0></A></div>
+
+    <div style="float:right;margin-top:20px;margin-right:50px" class=desk>
+       <div style="margin-left:10px">
+           <div style="font-size:14px;float:left;display:block"> <a href="/login/?zz=1&og=1" class="menu3">LOGIN</a></div>
+           <div style="font-size:12px;float:left; padding:0px 10px;display:block"> | </div>
+           <div style="font-size:14px;float:left;display:none"> <a href="/minha_conta" class="menu3">MINHA CONTA</a></div>
+           <div style="font-size:12px;float:left;display:none; padding:0px 10px"> | </div>
+           <div style="font-size:14px;float:left"> <a href="/carrinho" class="menu3">MINHA COMPRA</a></div>
+           <div style="font-size:12px;float:left;display:none; padding:0px 10px"> | </div>
+           <div style="margin-left:5px; float:right;display:none"><img id=logouth src="../assets/bethyflores/images/black.png" width=18 height=18 alt="logout" /> <a href="/logout" class="menu3">SAIR</a></div>   
+           <div style="clear:both"></div>
+       </div>
+       <div style="margin-top:8px;display:none">
+            <div style="float:left; display:none" id="saudacaoxx" class=div_saudacao><span class=head_saudacao id="saudacao"></span></div>
+            <div class=clear></div>
+        </div>
+        <div style="margin-top:0px" class=desk>
+            <div style="float:right;margin-top:20px; margin-right:0px;"><div id="quantidade_carrinho" Style="font-size:12px; color:#555"> </div></div>
+            <div style="float:right"><a href="/minha_cesta"><img id=bagB src="../assets/bethyflores/images/black.png" width=40 height=40 alt="Sacola"></a></div>
+            <div style="float:right">
+                <div id=pesquisa2 style="border: solid 1px #999; margin-top:10px;  background-color:#FFF; border-radius:20px; padding:0 12px">
+                    <div style="float:left"><input id="texto_busca" style="background-color:Transparent" type="text" value="encontre seu produto" maxlength=30 onfocus="limpar_busca('texto_busca') " onblur="escrever_busca('texto_busca')" onkeypress="{if (event.keyCode==13) envia_busca('texto_busca')}" class=campo_busca /></div>
+                    <div style="float:left; margin-left:2px; margin-top:2px"><a href="javascript:envia_busca('texto_busca')"><img class=findh src="../assets/bethyflores/images/black.png" width=24 height=24 alt="" border=0></a></div>
+                    <div class=clear></div>
+                </div>  
+                
+                <div style=" margin-top:10px; margin-left:10px"><a href="/como-comprar" style="color:#FFF; font-size:13px">Como Comprar</a></div>
+            </div>        
+            <div class=clear></div>
+        </div>       
+    </div>
+    <div class=clear></div>
+
+    <div id=searchmob style="display:none; background-color:#C00; text-align:center; padding:10px">
+        <div style="background-color:#FFF; padding:5px; border-radius:15px">
+            <div style="float:left; width:calc(100% - 35px)"><input id="busca" name="busca" type="text" maxlength=35 placeholder="palavra / código" onkeypress="{if (event.keyCode==13) envia_busca('busca')}" enterkeyhint="go" style="padding:4px; border: solid 0px #FFF; background-color: #FFF; width:100%;outline: none; font-size:16px" /></div>
+            <div style="float:right; padding-right:5px; padding-top:8px; width:26px; height:20px; background-image:url(../assets/bethyflores/images/find.png);background-repeat:no-repeat; background-position:right center" onclick="envia_busca('busca')"></div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+
+</div>
+
+<div id=nacho style="height:1px; background-color:#000; margin-bottom:0px"></div>
+
+</div>
+
+<div id=sticky_puto>
+<div class="headerxx header_sticky"  style="background-color:#000">
+    <div  class=w980>
+        <div style="float:left;width:138px; padding:5px 10px 3px 15px"><A HREF="/"><img id=logosticky src="../assets/bethyflores/images/black.png" width=269 height=38 alt="Bethy Flores" /></A></div>
+
+        <div style="border: solid 1px #999; margin-top:10px; float:left; background-color:#FFF; border-radius:20px; padding:0 12px">
+            <div style="float:left"><input id="sticky_search" type="text" placeholder="encontre seu produto" maxlength=30 onkeypress="{if (event.keyCode==13) envia_busca('sticky_search')}" /></div>
+            <div style="float:left; margin-left:2px; margin-top:2px"><a href="javascript:envia_busca('sticky_search')"><img id=find_sticky src="../assets/bethyflores/images/black.png" width=24 height=24 alt="" border=0></a></div>
+            <div style="clear:both"></div>
+        </div>  
+        <div class=sticky_head_sep></div>
+        <div style="float:left; padding-top:5px">
+            <div style="float:left"><img id=profile_sticky src="../assets/bethyflores/images/black.png" width=18 height=18  /></div> 
+            <div style="float:left; margin-left:5px"><a href="/minha_conta" class="sticky_text under">Minha Conta</a></div>             
+            <div class=clear></div>
+            <div style="float:left"><img id=favoritos_sticky src="../assets/bethyflores/images/black.png" width=18 height=18  /></div> 
+            <div style="float:left; margin-left:5px"><a href="/favoritos" class="sticky_text under">Favoritos</a></div>             
+            <div class=clear></div>
+        </div>
+        <div class=sticky_head_sep></div>
+        <div style="float:left; padding-top:5px">
+<div style="float:left"><img id=messageh_sticky src="../assets/bethyflores/images/black.png" width=18 height=18  /></div> 
+            <div style="float:left; margin-left:5px"><a href="/central-de-atendimento" class="sticky_text under">Central de Atendimento</a></div>             
+            <div class=clear></div>
+        </div>
+        <div class=sticky_head_sep></div>
+    
+        <div style="float:left; padding-top: 6px; margin-right:5px"><a href="/minha_cesta"><img id=sticky_cart src="../assets/bethyflores/images/black.png" width=37 height=38 alt="Minha Cesta" onclick="javascript:mostra_carrinho_dinamico();" /></a></div>
+        <div style="float:left; margin-right:25px; margin-top:18px" class=head_cesta><div id="Div3" Style="font-size:12px; color:#333; font-weight:normal"></div></div>                
+        <div style="position:relative;">
+        <div id="qtde_carrinho" Style="position:absolute;top:10px;right:213px;z-index:100;" ><a href="/minha_cesta" style="color:#000;"></a></div>
+        </div>
+    </div>
+</div> 
+</div>
+
+
+<div class=headw>
+<div id=nachoxx3>
+<div style="position:relative;z-index:1">
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(1,1)" onmouseover="open_nacho(1,2)">
+        <div class=flol>OCASIÃO</div><div id=plusH1 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux1 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/amor'"><a href='#'>Amor</a></li><li onclick="window.location = '/colecao-disney'"><a href='#'>Coleção Disney </a></li><li onclick="window.location = '/aniversario'"><a href='#'>Aniversário </a></li><li onclick="window.location = '/agradecimento'"><a href='#'>Agradecimento</a></li><li onclick="window.location = '/amizade'"><a href='#'>Amizade</a></li><li onclick="window.location = '/maternidade'"><a href='#'>Maternidade</a></li><li onclick="window.location = '/enfim-noivos'"><a href='#'>Enfim Noivos </a></li><li onclick="window.location = '/coroa-de-flores'"><a href='#'>Coroa de Flores</a></li><li onclick="window.location = '/Para-Ele'"><a href='#'>Para Ele </a></li><li onclick="window.location = '/desculpas'"><a href='#'>Desculpas</a></li><li onclick="window.location = '/maes-e-pais'"><a href='#'>Mães e Pais</a></li><li onclick="window.location = '/Melhoras'"><a href='#'>Melhoras</a></li><li onclick="window.location = '/Boa-Sorte'"><a href='#'>Boa Sorte </a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(2,1)" onmouseover="open_nacho(2,2)">
+        <div class=flol>ARRANJOS</div><div id=plusH2 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux2 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/arranjos-florais'"><a href='#'>Arranjos Florais</a></li><li onclick="window.location = '/coracao-de-rosas'"><a href='#'>Coração de Rosas</a></li><li onclick="window.location = '/linha-especial-premium'"><a href='#'>Linha Especial Premium</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(3,1)" onmouseover="open_nacho(3,2)">
+        <div class=flol>BUQUÊS</div><div id=plusH3 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux3 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/buques-de-rosas-nacionais'"><a href='#'>Buquês de Rosas Nacionais</a></li><li onclick="window.location = '/buques-de-rosas-colombianas'"><a href='#'>Buquês de Rosas Colombianas</a></li><li onclick="window.location = '/buques-de-flores-do-campo'"><a href='#'>Buquês de Flores do Campo</a></li><li onclick="window.location = '/buques-de-chocolate'"><a href='#'>Buquês de Chocolate</a></li><li onclick="window.location = '/buques-gigantes-e-especiais'"><a href='#'>Buquês Gigantes e Especiais</a></li><li onclick="window.location = '/buque-de-noiva'"><a href='#'>Buquê de Noiva</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(4,1)" onmouseover="open_nacho(4,2)">
+        <div class=flol>CESTAS</div><div id=plusH4 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux4 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/cestas-de-cafe-e-delicias'"><a href='#'>Cestas de Café e Delícias</a></li><li onclick="window.location = '/cestas-de-chocolate-e-cia'"><a href='#'>Cestas de Chocolate e Cia </a></li><li onclick="window.location = '/Cesta-de-Queijos-e-Vinhos'"><a href='#'>Cesta de Queijos e Vinhos </a></li><li onclick="window.location = '/Cesta-Happy-Hour'"><a href='#'>Cesta Happy Hour</a></li><li onclick="window.location = '/cestas-com-flores'"><a href='#'>Cestas com Flores</a></li><li onclick="window.location = '/Cesta-Infantil'"><a href='#'>Cesta Infantil</a></li><li onclick="window.location = '/Cestas-de-Frutas-e-Cia'"><a href='#'>Cestas de Frutas e Cia</a></li><li onclick="window.location = '/cervejas-e-petiscos'"><a href='#'>Cervejas e Petiscos</a></li><li onclick="window.location = '/Vinhos-e-Espumantes'"><a href='#'>Vinhos e Espumantes</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(5,1)" onmouseover="open_nacho(5,2)">
+        <div class=flol>PRESENTES</div><div id=plusH5 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux5 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/flores-e-chocolates'"><a href='#'>Flores e Chocolates</a></li><li onclick="window.location = '/flores-e-pelucias'"><a href='#'>Flores e Pelúcias</a></li><li onclick="window.location = '/pelucias-e-chocolates'"><a href='#'>Pelúcias e Chocolates</a></li><li onclick="window.location = '/presentes-com-vinhos'"><a href='#'>Presentes com Vinhos</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(7,1)" onmouseover="open_nacho(7,2)">
+        <div class=flol>FLORES</div><div id=plusH7 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux7 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/astromelias'"><a href='#'>Astromélias</a></li><li onclick="window.location = '/orquideas'"><a href='#'>Orquídeas</a></li><li onclick="window.location = '/flores-azuis'"><a href='#'>Flores Azuis</a></li><li onclick="window.location = '/begonias'"><a href='#'>Begônias</a></li><li onclick="window.location = '/violetas-margaridas-kalanchoe'"><a href='#'>Violetas Margaridas Kalanchoe</a></li><li onclick="window.location = '/suculentas'"><a href='#'>Suculentas</a></li><li onclick="window.location = '/cravos'"><a href='#'>Cravos</a></li><li onclick="window.location = '/plantas'"><a href='#'>Plantas</a></li><li onclick="window.location = '/lirios'"><a href='#'>Lírios</a></li><li onclick="window.location = '/gerberas'"><a href='#'>Gérberas</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(8,1)" onmouseover="open_nacho(8,2)">
+        <div class=flol>DATAS ESPECIAIS</div><div id=plusH8 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux8 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/12-de-junho-namorados'"><a href='#'>12 de Junho - DIA DOS NAMORADOS</a></li><li onclick="window.location = '/opcoes.asp?tipo=362'"><a href='#'>Flores para Alphaville</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(9,1)" onmouseover="open_nacho(9,2)">
+        <div class=flol>COMPLEMENTOS</div><div id=plusH9 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux9 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/chocolates'"><a href='#'>Chocolates</a></li><li onclick="window.location = '/cartoes'"><a href='#'>Cartões</a></li><li onclick="window.location = '/pelucias'"><a href='#'>Pelúcias</a></li><li onclick="window.location = '/baloes-e-plaquinhas'"><a href='#'>Balões e Plaquinhas</a></li><li onclick="window.location = '/canecas'"><a href='#'>Canecas</a></li><li onclick="window.location = '/Garrafa-Squeeze'"><a href='#'>Garrafa e Squeeze</a></li><li onclick="window.location = '/vinhos-cervejas'"><a href='#'>Vinhos Cervejas</a></li><li onclick="window.location = '/almofadas'"><a href='#'>Almofadas</a></li><li onclick="window.location = '/velas'"><a href='#'>Velas</a></li><li onclick="window.location = '/petalas-e-botoes-de-rosa'"><a href='#'>Pétalas e Botões de Rosa</a></li><li onclick="window.location = '/embalagem'"><a href='#'>Embalagem</a></li><li onclick="window.location = '/decoracao'"><a href='#'>Decoração</a></li><li onclick="window.location = '/porta-retratos'"><a href='#'>Porta Retratos</a></li><li onclick="window.location = '/vaso-de-vidro'"><a href='#'>Vaso de Vidro</a></li><li onclick="window.location = '/artigos-religiosos'"><a href='#'>Artigos Religiosos</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(10,1)" onmouseover="open_nacho(10,2)">
+        <div class=flol>OFERTA 24h</div><div id=plusH10 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux10 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<div class=box_produto24 onclick="window.location = '/cesta-de-cafe-da-manha-bon-jour'"><img src="../assets/bethyflores/images/produto/230_3132.jpg" width=200 height=200 alt=''><br /><div style='margin-top:13px; font-size:14px'>Cesta de Café da Manhã Bon Jour</div><div style="font-size:15px;color: #666; text-decoration:line-through">de R$ 139,90</div><div class=vitrine_preco>R$ 99,90</div><a href='/cesta-de-cafe-da-manha-bon-jour' style='margin-top:10px; text-align:center'><img id=comprar2 src='../assets/bethyflores/images/black.png' width=180 height=45 /></A></div>
+        </ul>
+        </div>
+    </div>
+    <div class=clear></div>
+</div>
+</div>
+</div>
+
+<div id=header_sticky class="headerpop" style="background-color:#000"></div> 
+
+
+
+<div id=conteudo>
+<div style="margin-top:5px">
+<a href="/" class="bread left15">Home</a><div class=bread_item>></div><span class=bread>Vitrine</span><div class=bread_item>></div><span class=bread>chocolates</span>
+</div>
+
+<div id="banner_home123"><img src="../assets/bethyflores/images/black.png"  alt=''></div>
+
+<div class=titulo_colecao>Chocolates</div>
+
+<div style="color: #737171; font-size: 12px; margin-bottom:15px; margin-top:5px; margin-left:15px">
+    <div style="float:left">
+        <div class=paging>Exibindo 1 a 28 de 28</div>
+        <div class="paging wpag" style="text-align:center">&nbsp;</div>
+        <div class=clear></div>
+    </div>
+    
+    <div style="float:right">
+    <select id="ordenar" class="styled-select slate" onchange="javascript:ordenacao(1)">
+    <option>ordenar por</option>
+    <option value="2">Valor</option>
+    <option value="1">Mais vendidos</option>
+    </select>
+    </div>
+    
+    <div class=clear></div>
+</div>
+
+<div class=corpo>
+
+<div id="miolo_produtos">
+
+<div class=produtox alt="Bombom Ferrero Rocher 3 unidades" onmouseover="show_fav(3369,1)" onmouseout="show_fav(3369,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/bombom-ferrero-rocher-3-unidades'  alt="Bombom Ferrero Rocher 3 unidades"><img src="../assets/bethyflores/images/produto/230_3369.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Bombom Ferrero Rocher 3 unidades</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 20,90</div><div style='font-size:16px'>por R$ 18,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/bombom-ferrero-rocher-3-unidades'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">10% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3369><a href="javascript:go_favoritos(3369)"><img id=fav_img_3369 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Caixa de Ferrero Rocher 4 Unidades 50g" onmouseover="show_fav(4450,1)" onmouseout="show_fav(4450,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/caixa-de-ferrero-rocher-4-unidades-50g'  alt="Caixa de Ferrero Rocher 4 Unidades 50g"><img src="../assets/bethyflores/images/produto/230_4450.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Caixa de Ferrero Rocher 4 Unidades 50g</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 35,90</div><div style='font-size:16px'>por R$ 29,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/caixa-de-ferrero-rocher-4-unidades-50g'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4450><a href="javascript:go_favoritos(4450)"><img id=fav_img_4450 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Chocolate Ferrero Rocher 8 Unidades" onmouseover="show_fav(2682,1)" onmouseout="show_fav(2682,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/chocolate-ferrero-rocher-8-unidades'  alt="Chocolate Ferrero Rocher 8 Unidades"><img src="../assets/bethyflores/images/produto/230_2682.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Chocolate Ferrero Rocher 8 Unidades</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 69,90</div><div style='font-size:16px'>por R$ 59,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/chocolate-ferrero-rocher-8-unidades'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">14% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2682><a href="javascript:go_favoritos(2682)"><img id=fav_img_2682 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Chocolate Ferrero Rocher 12 Unidades" onmouseover="show_fav(2680,1)" onmouseout="show_fav(2680,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/chocolate-ferrero-rocher-12-unidades'  alt="Chocolate Ferrero Rocher 12 Unidades"><img src="../assets/bethyflores/images/produto/230_2680.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Chocolate Ferrero Rocher 12 Unidades</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 89,90</div><div style='font-size:16px'>por R$ 79,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/chocolate-ferrero-rocher-12-unidades'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">11% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2680><a href="javascript:go_favoritos(2680)"><img id=fav_img_2680 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Raffaello Ferrero 150g" onmouseover="show_fav(3384,1)" onmouseout="show_fav(3384,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/raffaello-ferrero-150g'  alt="Raffaello Ferrero 150g"><img src="../assets/bethyflores/images/produto/230_3384.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Raffaello Ferrero 150g</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 89,90</div><div style='font-size:16px'>por R$ 79,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/raffaello-ferrero-150g'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">11% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3384><a href="javascript:go_favoritos(3384)"><img id=fav_img_3384 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Chocolate Ferrero Collection" onmouseover="show_fav(4466,1)" onmouseout="show_fav(4466,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/chocolate-ferrero-collection'  alt="Chocolate Ferrero Collection"><img src="../assets/bethyflores/images/produto/230_4466.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Chocolate Ferrero Collection</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 79,90</div><div style='font-size:16px'>por R$ 65,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/chocolate-ferrero-collection'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">18% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4466><a href="javascript:go_favoritos(4466)"><img id=fav_img_4466 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Alpino 85g" onmouseover="show_fav(4213,1)" onmouseout="show_fav(4213,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/alpino-85g'  alt="Alpino 85g"><img src="../assets/bethyflores/images/produto/230_4213.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Alpino 85g</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 19,90</div><div style='font-size:16px'>por R$ 18,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/alpino-85g'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">5% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4213><a href="javascript:go_favoritos(4213)"><img id=fav_img_4213 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Chocolate Branco Lacta Laka 80gr" onmouseover="show_fav(4856,1)" onmouseout="show_fav(4856,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/chocolate-branco-lacta-laka-80gr'  alt="Chocolate Branco Lacta Laka 80gr"><img src="../assets/bethyflores/images/produto/230_4856.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Chocolate Branco Lacta Laka 80gr</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 19,90</div><div style='font-size:16px'>por R$ 18,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/chocolate-branco-lacta-laka-80gr'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">5% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4856><a href="javascript:go_favoritos(4856)"><img id=fav_img_4856 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Kit Três Barras de Chocolate 80gr " onmouseover="show_fav(4857,1)" onmouseout="show_fav(4857,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/kit-tres-barras-de-chocolate-80gr-'  alt="Kit Três Barras de Chocolate 80gr "><img src="../assets/bethyflores/images/produto/230_4857.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Kit Três Barras de Chocolate 80gr </div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 60,00</div><div style='font-size:16px'>por R$ 54,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/kit-tres-barras-de-chocolate-80gr-'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">8% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4857><a href="javascript:go_favoritos(4857)"><img id=fav_img_4857 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Kit Três Barras Chocolate Sabores Sortidos 80gr   " onmouseover="show_fav(4853,1)" onmouseout="show_fav(4853,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/kit-tres-barras-chocolate-sabores-sortidos-80gr---'  alt="Kit Três Barras Chocolate Sabores Sortidos 80gr   "><img src="../assets/bethyflores/images/produto/230_4853.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Kit Três Barras Chocolate Sabores Sortidos 80gr   </div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 60,00</div><div style='font-size:16px'>por R$ 54,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/kit-tres-barras-chocolate-sabores-sortidos-80gr---'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">8% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4853><a href="javascript:go_favoritos(4853)"><img id=fav_img_4853 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="kit kat 45gr Combo 3 unidades" onmouseover="show_fav(4210,1)" onmouseout="show_fav(4210,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/kit-kat-45gr-combo-3-unidades'  alt="kit kat 45gr Combo 3 unidades"><img src="../assets/bethyflores/images/produto/230_4210.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>kit kat 45gr Combo 3 unidades</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 35,90</div><div style='font-size:16px'>por R$ 29,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/kit-kat-45gr-combo-3-unidades'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4210><a href="javascript:go_favoritos(4210)"><img id=fav_img_4210 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Snickers 45gr Combo 3 Unidades " onmouseover="show_fav(4775,1)" onmouseout="show_fav(4775,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/snickers-45gr-combo-3-unidades-'  alt="Snickers 45gr Combo 3 Unidades "><img src="../assets/bethyflores/images/produto/230_4775.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Snickers 45gr Combo 3 Unidades </div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 29,90</div><div style='font-size:16px'>por R$ 26,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/snickers-45gr-combo-3-unidades-'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">10% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4775><a href="javascript:go_favoritos(4775)"><img id=fav_img_4775 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Kinder Bueno 43gr Combo 3 Unidades" onmouseover="show_fav(4212,1)" onmouseout="show_fav(4212,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/kinder-bueno-43gr-combo-3-unidades'  alt="Kinder Bueno 43gr Combo 3 Unidades"><img src="../assets/bethyflores/images/produto/230_4212.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Kinder Bueno 43gr Combo 3 Unidades</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 69,90</div><div style='font-size:16px'>por R$ 54,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/kinder-bueno-43gr-combo-3-unidades'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">21% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4212><a href="javascript:go_favoritos(4212)"><img id=fav_img_4212 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Caixa de Bombons Te Amo" onmouseover="show_fav(2744,1)" onmouseout="show_fav(2744,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/caixa-de-bombons-te-amo'  alt="Caixa de Bombons Te Amo"><img src="../assets/bethyflores/images/produto/230_2744.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Caixa de Bombons Te Amo</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 70,00</div><div style='font-size:16px'>por R$ 54,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/caixa-de-bombons-te-amo'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">22% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2744><a href="javascript:go_favoritos(2744)"><img id=fav_img_2744 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Caixa de Bombons Com Amor" onmouseover="show_fav(5034,1)" onmouseout="show_fav(5034,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/caixa-de-bombons-com-amor'  alt="Caixa de Bombons Com Amor"><img src="../assets/bethyflores/images/produto/230_5034.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Caixa de Bombons Com Amor</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 70,00</div><div style='font-size:16px'>por R$ 54,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/caixa-de-bombons-com-amor'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">22% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_5034><a href="javascript:go_favoritos(5034)"><img id=fav_img_5034 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Barra de Chocolate Com Amor em Madeira" onmouseover="show_fav(2747,1)" onmouseout="show_fav(2747,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/barra-de-chocolate-com-amor-em-madeira'  alt="Barra de Chocolate Com Amor em Madeira"><img src="../assets/bethyflores/images/produto/230_2747.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Barra de Chocolate Com Amor em Madeira</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 45,90</div><div style='font-size:16px'>por R$ 37,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/barra-de-chocolate-com-amor-em-madeira'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2747><a href="javascript:go_favoritos(2747)"><img id=fav_img_2747 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Barra de Chocolate Eu te Amo em Madeira" onmouseover="show_fav(2746,1)" onmouseout="show_fav(2746,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/barra-de-chocolate-eu-te-amo-em-madeira'  alt="Barra de Chocolate Eu te Amo em Madeira"><img src="../assets/bethyflores/images/produto/230_2746.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Barra de Chocolate Eu te Amo em Madeira</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 45,90</div><div style='font-size:16px'>por R$ 37,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/barra-de-chocolate-eu-te-amo-em-madeira'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2746><a href="javascript:go_favoritos(2746)"><img id=fav_img_2746 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Barra de Chocolate Com Carinho em Madeira" onmouseover="show_fav(2748,1)" onmouseout="show_fav(2748,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/barra-de-chocolate-com-carinho-em-madeira'  alt="Barra de Chocolate Com Carinho em Madeira"><img src="../assets/bethyflores/images/produto/230_2748.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Barra de Chocolate Com Carinho em Madeira</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 45,90</div><div style='font-size:16px'>por R$ 37,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/barra-de-chocolate-com-carinho-em-madeira'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2748><a href="javascript:go_favoritos(2748)"><img id=fav_img_2748 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Barra Chocolate Bombonatti Parabéns" onmouseover="show_fav(3564,1)" onmouseout="show_fav(3564,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/barra-chocolate-bombonatti-parabens'  alt="Barra Chocolate Bombonatti Parabéns"><img src="../assets/bethyflores/images/produto/230_3564.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Barra Chocolate Bombonatti Parabéns</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 45,90</div><div style='font-size:16px'>por R$ 37,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/barra-chocolate-bombonatti-parabens'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3564><a href="javascript:go_favoritos(3564)"><img id=fav_img_3564 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Coração com 06 Bombons" onmouseover="show_fav(5035,1)" onmouseout="show_fav(5035,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/coracao-com-06-bombons'  alt="Coração com 06 Bombons"><img src="../assets/bethyflores/images/produto/230_5035.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Coração com 06 Bombons</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 69,90</div><div style='font-size:16px'>por R$ 39,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/coracao-com-06-bombons'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">43% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_5035><a href="javascript:go_favoritos(5035)"><img id=fav_img_5035 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Coração de Chocolate 11 Unidades" onmouseover="show_fav(2533,1)" onmouseout="show_fav(2533,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/coracao-de-chocolate-11-unidades'  alt="Coração de Chocolate 11 Unidades"><img src="../assets/bethyflores/images/produto/230_2533.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Coração de Chocolate 11 Unidades</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 69,90</div><div style='font-size:16px'>por R$ 54,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/coracao-de-chocolate-11-unidades'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">21% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2533><a href="javascript:go_favoritos(2533)"><img id=fav_img_2533 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Coração de Chocolate Grande" onmouseover="show_fav(2535,1)" onmouseout="show_fav(2535,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/coracao-de-chocolate-grande'  alt="Coração de Chocolate Grande"><img src="../assets/bethyflores/images/produto/230_2535.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Coração de Chocolate Grande</div>
+
+<div class=box_price>
+<div class=valor_produto>R$ 89,90</div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/coracao-de-chocolate-grande'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+</div>
+<div class=fav id=fav_2535><a href="javascript:go_favoritos(2535)"><img id=fav_img_2535 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Coração de Chocolate Grande com Keep Cooler" onmouseover="show_fav(2532,1)" onmouseout="show_fav(2532,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/coracao-de-chocolate-grande-com-keep-cooler'  alt="Coração de Chocolate Grande com Keep Cooler"><img src="../assets/bethyflores/images/produto/230_2532.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Coração de Chocolate Grande com Keep Cooler</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 149,90</div><div style='font-size:16px'>por R$ 119,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/coracao-de-chocolate-grande-com-keep-cooler'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">20% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2532><a href="javascript:go_favoritos(2532)"><img id=fav_img_2532 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Caixa de Chocolate Nestle" onmouseover="show_fav(3967,1)" onmouseout="show_fav(3967,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/caixa-de-chocolate-nestle'  alt="Caixa de Chocolate Nestle"><img src="../assets/bethyflores/images/produto/230_3967.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Caixa de Chocolate Nestle</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 35,90</div><div style='font-size:16px'>por R$ 29,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/caixa-de-chocolate-nestle'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3967><a href="javascript:go_favoritos(3967)"><img id=fav_img_3967 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Nutella 140 gr" onmouseover="show_fav(4163,1)" onmouseout="show_fav(4163,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/nutella-140-gr'  alt="Nutella 140 gr"><img src="../assets/bethyflores/images/produto/230_4163.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Nutella 140 gr</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 39,90</div><div style='font-size:16px'>por R$ 28,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/nutella-140-gr'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">28% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4163><a href="javascript:go_favoritos(4163)"><img id=fav_img_4163 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Caixa de Chocolate Lacta" onmouseover="show_fav(3966,1)" onmouseout="show_fav(3966,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/caixa-de-chocolate-lacta'  alt="Caixa de Chocolate Lacta"><img src="../assets/bethyflores/images/produto/230_3966.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Caixa de Chocolate Lacta</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 35,90</div><div style='font-size:16px'>por R$ 29,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/caixa-de-chocolate-lacta'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3966><a href="javascript:go_favoritos(3966)"><img id=fav_img_3966 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Caixa de Chocolate Garoto" onmouseover="show_fav(3969,1)" onmouseout="show_fav(3969,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/caixa-de-chocolate-garoto'  alt="Caixa de Chocolate Garoto"><img src="../assets/bethyflores/images/produto/230_3969.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Caixa de Chocolate Garoto</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 35,90</div><div style='font-size:16px'>por R$ 29,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/caixa-de-chocolate-garoto'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3969><a href="javascript:go_favoritos(3969)"><img id=fav_img_3969 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Chocolate Lacta Bis Pacote 126g" onmouseover="show_fav(3970,1)" onmouseout="show_fav(3970,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/chocolate-lacta-bis-pacote-126g'  alt="Chocolate Lacta Bis Pacote 126g"><img src="../assets/bethyflores/images/produto/230_3970.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Chocolate Lacta Bis Pacote 126g</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 24,90</div><div style='font-size:16px'>por R$ 16,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/chocolate-lacta-bis-pacote-126g'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">32% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3970><a href="javascript:go_favoritos(3970)"><img id=fav_img_3970 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+</div>
+
+<div style="color: #737171; font-size: 12px; margin-bottom:15px; clear:both; margin-top:15px">
+    <div style="float:left">
+        <div class=paging>Exibindo 1 a 28 de 28</div>
+        <div class="paging wpag" style="text-align:center">&nbsp;</div>
+        <div class=clear></div>
+    </div>
+    <div class=clear></div>
+</div>
+</div>
+
+<div id=obsxx style="font-size:14px; background-color:#fbfbfb; border:solid 1px #769C00; padding:20px"><p class="" style="text-align: justify;" data-start="203" data-end="617">Sabor, afeto e sofistica&ccedil;&atilde;o em cada detalhe. Os chocolates da Bethy Flores s&atilde;o mais do que doces: s&atilde;o experi&ecirc;ncias &uacute;nicas pensadas para transformar momentos simples em mem&oacute;rias inesquec&iacute;veis. Com uma sele&ccedil;&atilde;o especial de bombons, trufas, tabletes e del&iacute;cias artesanais, oferecemos op&ccedil;&otilde;es que encantam todos os sentidos &mdash; seja pelo visual delicado, pelo aroma envolvente ou pelo sabor que derrete suavemente na boca.</p>
+<p class="" style="text-align: justify;" data-start="203" data-end="617">&nbsp;</p>
+<p class="" style="text-align: justify;" data-start="619" data-end="892">Cada unidade &eacute; cuidadosamente produzida com ingredientes selecionados e t&eacute;cnicas refinadas, garantindo qualidade e frescor em todas as etapas. Do cl&aacute;ssico ao criativo, nossos chocolates combinam harmoniosamente tradi&ccedil;&atilde;o e inova&ccedil;&atilde;o, criando verdadeiras joias de confeitaria.</p>
+<p class="" style="text-align: justify;" data-start="619" data-end="892">&nbsp;</p>
+<p class="" style="text-align: justify;" data-start="894" data-end="1185">Perfeitos para presentear em datas especiais ou para ado&ccedil;ar o dia de quem voc&ecirc; ama, os chocolates da <a href="https://www.bethyflores.com.br/">Bethy Flores</a> s&atilde;o uma demonstra&ccedil;&atilde;o de carinho em forma de sabor. Tamb&eacute;m s&atilde;o ideais para complementar cestas, kits personalizados ou surpreender em ocasi&otilde;es corporativas, casamentos e eventos.</p>
+<p class="" style="text-align: justify;" data-start="894" data-end="1185">&nbsp;</p>
+<p class="" style="text-align: justify;" data-start="1187" data-end="1362">Al&eacute;m da beleza e do sabor, nosso compromisso &eacute; com a excel&ecirc;ncia. Por isso, prezamos pela apresenta&ccedil;&atilde;o impec&aacute;vel, com embalagens elegantes que valorizam ainda mais o seu gesto.</p>
+<p class="" style="text-align: justify;" data-start="1187" data-end="1362">&nbsp;</p>
+<p class="" style="text-align: justify;" data-start="1364" data-end="1545">Encante com afeto, surpreenda com do&ccedil;ura e eternize momentos com os chocolates Bethy Flores. Escolha o que mais combina com a ocasi&atilde;o e deixe o amor falar atrav&eacute;s de cada pedacinho.</p></div>
+
+
+
+</div>
+
+<div style="background-color: #E5EDD5; margin:10px 0; border-top:solid 1px #769C00; border-bottom:solid 1px #769C00">
+<div class=w980 id=env_faixa>
+
+<div style="display:inline-block">
+<div id=receba>RECEBA NOSSAS PROMOÇÕES</div>
+<div id=newsletter_result>
+<div style="float:left; margin-top:10px; margin-left:15px"><input id="newsletter_campo" type="email" class=newsletter99 value="Insira seu email" onfocus="limpar_news()" onblur="escrever_news()" maxlength=80 onkeypress="{if (event.keyCode==13) envia_news()}"></div>
+<div style="float:left; background-color:#FFF" class="news 100" onclick="envia_news()">Enviar</div>
+<div class=clear></div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class=footer>
+<div id=footer1 class=footer_wrapper>
+    <div  class=footer_cont0>
+        <div class=footer2>Fique Conectado</div>
+        <div id=fique>
+        <a href="https://www.facebook.com/bethyfloresoficial/" class="footer_link" target=_blank><img id="facebook" src="../assets/bethyflores/images/black.png" width=40 height=40 alt='facebook' /></a>
+        <a href="https://www.instagram.com/bethyfloresoficial" class="footer_link" target=_blank><img id="instagram" src="../assets/bethyflores/images/black.png" width=40 height=40 alt='instagram'></a>
+        </div>
+        </div>
+    <div class=footer_cont>
+        <div class=footer2 onclick="open_foot(1)">
+        <div class=flol>WhatsApp</div><div id=plusx1 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=foot1 class=footer3>
+        <div style="margin-top:10px; color:#666">
+        (11) 96215-8598
+        </div>
+        </div>
+    </div>
+    
+    <div class=footer_cont>
+        <div class=footer2 onclick="open_foot(1)">
+        <div class=flol>Institucional</div><div id=plusx1 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=foot1 class=footer3>
+        <ul>
+        <li onclick="window.location = '/quem_somos'"><a href="javascript:void()">Quem Somos</a></li>
+        <li onclick="window.location = '/nossa-loja'"><a href="javascript:void()">Nossa Loja</a></li>
+        <li onclick="window.location = '/horarios-de-entrega'"><a href="javascript:void()">Horários de Entrega</a></li>
+        </ul>
+        </div>
+    </div>
+    
+    
+    <div class=footer_cont>
+        <div class="footer2" onclick="open_foot(2)">
+        <div class=flol>Ajuda</div><div id=plusx2 class="flor plus">+</div><div class=clear></div>
+        </div>
+
+        <div id=foot2 class="footer3">
+        <ul>
+        <li onclick="window.location = '/central_atendimento'"><a href="javascript:void()">Central de atendimento</a></li>
+        <li onclick="window.location = '/privacidade'"><a href="javascript:void()">Privacidade / Segurança</a></li>
+        <li onclick="window.location = '/mapa_site'"><a href="javascript:void()">Mapa do site</a></li>
+        <li onclick="window.location = '/como-comprar'"><a href="javascript:void()">Como Comprar</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=footer_cont>
+        <div class=footer2 onclick="open_foot(3)">
+        <div class=flol>Informações</div><div id=plusx3 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=foot3 class=footer3>
+        <ul>
+        <li onclick="window.location = '/dicas_conservacao.asp'"><a href="javascript:void()">Dicas de conservação</a></li>
+        <li onclick="window.location = '/escolha-do-buque-de-noiva.asp'"><a href="javascript:void()">Escolha do Buquê de Noiva</a></li>
+        <li onclick="window.location = '/entregas'"><a href="javascript:void()">Política de Entregas</a></li>
+        <li onclick="window.location = '/formas-de-pagamento'"><a href="javascript:void()">Formas de Pagamento</a></li>
+        <li onclick="window.open('../assets/bethyflores/images/Termo-e-condicoes-de-venda-de-produtos.pdf','_blank')"><a href="javascript:void()">Termo de Uso</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=clear></div>
+
+    <div style="background-color:#999; height:1px; margin:0 23px"></div>
+
+    <div id=central_atendimento>
+        <div style="float:left; font-size:14px; color:#000">
+            Formas de Pagamento
+            <div style="margin-top:10px; color:#1f7f39; font-size:22px; font-weight:700; letter-spacing:.5px">PIX</div>
+        </div>
+        <div class=footbot2>
+            Segurança
+            <div  style="padding-top:10px">
+            <img id=cloudflaressl src="../assets/bethyflores/images/black.png" width=90 height=50 border=0 alt='Cloudflare SSL' /></div>
+            </div>
+        </div>
+        
+        <div class=footbot>
+            Desenvolvimento:
+            <div><A href="https://solutions.flowermarket.com.br/" target=_blank><img id=flowermarket src="../assets/bethyflores/images/black.png" width=150 height=82 border=0 alt='Flower Market' /></A></div>
+        </div>
+        <div class=clear></div>
+    </div>
+
+    <div id=disclaimer>
+    <div id=disclaimer1>
+    Bethy Flores Ltda ME | CNPJ:  54.476.973/0001-20 | Pc. Dr. João Batista Vasques, nº1 - São Paulo - SP
+    <div id=disclaimer3><a href="mailto:contato@bethyflores.com.br">contato@bethyflores.com.br</a></div>
+    </div>
+    <div id=disclaimer2 style="display:none">Desenvolvimento: <A href="http://www.arquimidia.com/" target=_blank style="text-decoration:none; color:#444; font-size:11px" title="">Flower Market</A></div>
+    <div class=clear></div>
+    </div>
+     
+
+</div>
+
+<a target="_blank" href="https://api.whatsapp.com/send?phone=5511962158598" id="whatsapp-button" style="position: fixed; bottom: 10px; width: 170px; height=96px; left: 10px;"><img style="width:100%;" src="../assets/bethyflores/images/whatsapph.png"></a>
+
+
+
+<!-- Google Tag Manager -->
+<script type="text/javascript">    (function(w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({ 'gtm.start':
+new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W69KHJR');</script>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W69KHJR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!--Start of Zendesk Chat Script-->
+<script type="text/javascript">
+    window.$zopim || (function(d, s) {
+        var z = $zopim = function(c) { z._.push(c) }, $ = z.s =
+d.createElement(s), e = d.getElementsByTagName(s)[0]; z.set = function(o) {
+    z.set.
+_.push(o)
+}; z._ = []; z.set._ = []; $.async = !0; $.setAttribute("charset", "utf-8");
+        $.src = "https://v2.zopim.com/?5sfvQ9HSCzv0gcvTfHTC0o3zfWm87Bom"; z.t = +new Date; $.
+type = "text/javascript"; e.parentNode.insertBefore($, e)
+    })(document, "script");
+</script>
+<!--End of Zendesk Chat Script-->
+
+<!-- Start of  Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=df36266c-bf57-4e8f-8b1b-6cae110ece24" type="text/javascript"> </script>
+<!-- End of  Zendesk Widget script -->
+
+<!-- Facebook Pixel Code -->
+<script type="text/javascript">
+    !function(f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function() {
+            n.callMethod ?
+n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    } (window, document, 'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1787878781386472');
+    fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1787878781386472&ev=PageView&noscript=1" /></noscript>
+<!-- End Facebook Pixel Code -->
+ 
+
+<script type="text/javascript">
+(function(m, a, i, l, b, z, j, s) {
+        if (m[z]) return;
+        m[z] = {
+            id: b,
+            ready: 0
+        };
+        z = a.createElement(i);
+        j = a.getElementsByTagName(i)[0];
+        z.async = 1;
+        z.src = l;
+        j.parentNode.insertBefore(z, j);
+    })(window, document, 'script', 'https://d3eq1zq78ux3cv.cloudfront.net/static/scripts/integration.min.js', '6520037b7058d778ef896ac1', 'MailbizIntegration');
+</script>
+
+
+<div id=resultado_ajax style="display:none"></div>
+<script type="text/javascript">
+    var google_tag_params = { ecomm_pagetype: 'category' };
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"6e568c623c77498c98acfbfe45388a3c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script src="../assets/bethyflores/js/whatsapp-sales.js"></script>
+</body>
+</html>

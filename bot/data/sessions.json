@@ -1,0 +1,412 @@
+{
+  "5511999999999": {
+    "greeted": true,
+    "profileName": "Cliente Teste",
+    "customerName": "Cliente Teste",
+    "lastSuggestions": [
+      "3965",
+      "4995",
+      "4602"
+    ],
+    "selectedProductId": "4602",
+    "awaitingDeliveryData": true,
+    "deliveryDetails": "",
+    "requiresPixIntervention": false,
+    "paymentRequested": false,
+    "orderClosed": false,
+    "automationPaused": true,
+    "unread": false,
+    "status": "manual",
+    "tags": [],
+    "notes": "",
+    "messages": [
+      {
+        "id": "1781346235379-56ae2353182bc8",
+        "role": "customer",
+        "type": "text",
+        "text": "oii",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:23:55.379Z",
+        "meta": {
+          "whatsappId": "local-1781346235379",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346235381-3b87061d6a521",
+        "role": "bot",
+        "type": "text",
+        "text": "Oi! Aqui é a Evelyn da Beija Flor Floricultura 🌷\nhttps://www.beijaflorfloricultura.com\nDá uma olhadinha no nosso catálogo! É só clicar em 💜 Gostei desse! no produto que quiser 😊\nMe passa o CEP ou endereço de entrega?",
+        "status": "test",
+        "createdAt": "2026-06-13T10:23:55.381Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346260438-13637afc94d25",
+        "role": "customer",
+        "type": "text",
+        "text": "Rua 8, chacara 213, residencial elion, Vicente Pires",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:24:20.438Z",
+        "meta": {
+          "whatsappId": "local-1781346260438",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346260456-3f55622f62157",
+        "role": "bot",
+        "type": "text",
+        "text": "1. Buquê 6 Rosas Colombianas Te Amo - R$ 129,90\n2. Buquê com 3 Colombianas - R$ 84,90\n3. Buquê de Rosas Vermelhas 6 Unidades - R$ 99,90",
+        "status": "test",
+        "createdAt": "2026-06-13T10:24:20.456Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346267224-41b2b0db097c38",
+        "role": "customer",
+        "type": "text",
+        "text": "Rua 8, chacara 213, residencial elion, Vicente Pires",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:24:27.224Z",
+        "meta": {
+          "whatsappId": "local-1781346267224",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346267229-14a0ead48e0e8",
+        "role": "bot",
+        "type": "text",
+        "text": "1. Buquê 6 Rosas Colombianas Te Amo - R$ 129,90\n2. Buquê com 3 Colombianas - R$ 84,90\n3. Buquê de Rosas Vermelhas 6 Unidades - R$ 99,90",
+        "status": "test",
+        "createdAt": "2026-06-13T10:24:27.229Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346298310-64d974639609c",
+        "role": "customer",
+        "type": "text",
+        "text": "eu ja mandei meu endereço moça",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:24:58.310Z",
+        "meta": {
+          "whatsappId": "local-1781346298310",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346298314-f1232f02b5132",
+        "role": "bot",
+        "type": "text",
+        "text": "1. Cesta Romance Perfeito - R$ 159,90\n2. PROMOÇÂO Doce Combinação Violeta e Ferrero - R$ 89,90\n3. PROMOÇÃO Margarida Com Pelucia - R$ 109,90",
+        "status": "test",
+        "createdAt": "2026-06-13T10:24:58.314Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346366126-01a45128bc811",
+        "role": "customer",
+        "type": "text",
+        "text": "t",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:26:06.126Z",
+        "meta": {
+          "whatsappId": "local-1781346366126",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346366131-66c09f2c8f3288",
+        "role": "bot",
+        "type": "text",
+        "text": "1. Buquê 6 Rosas Colombianas Te Amo - R$ 129,90\n2. Buque com 12 rosas colombianas - R$ 239,90\n3. Cesta Rosas Colombianas e Ferrero - R$ 149,90",
+        "status": "test",
+        "createdAt": "2026-06-13T10:26:06.131Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346857296-bccb56ca412f8",
+        "role": "customer",
+        "type": "text",
+        "text": "me manda  a foto",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:34:17.296Z",
+        "meta": {
+          "whatsappId": "local-1781346857296",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346857300-531af71d6e17e",
+        "role": "bot",
+        "type": "text",
+        "text": "Qual produto você quer ver primeiro? 😊",
+        "status": "test",
+        "createdAt": "2026-06-13T10:34:17.300Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346860312-f2e25e3a67102",
+        "role": "customer",
+        "type": "text",
+        "text": "3",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:34:20.312Z",
+        "meta": {
+          "whatsappId": "local-1781346860312",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346860314-b8f8083201e3a8",
+        "role": "bot",
+        "type": "text",
+        "text": "Perfeito, Cesta Rosas Colombianas e Ferrero fica R$ 149,90. Tenho essa opção no catálogo 🌷",
+        "status": "test",
+        "createdAt": "2026-06-13T10:34:20.314Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346860314-d2f2c131d1643",
+        "role": "bot",
+        "type": "text",
+        "text": "Perfeito! Me envia os dados assim:\n👤 Quem envia\n🎁 Quem recebe\n📍 Endereço\n🗓️ Data/horário\n💌 Cartão (opcional)",
+        "status": "test",
+        "createdAt": "2026-06-13T10:34:20.314Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346869017-c5e56b5fdf2ed8",
+        "role": "customer",
+        "type": "text",
+        "text": "quero a foto por favor",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:34:29.017Z",
+        "meta": {
+          "whatsappId": "local-1781346869017",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346869021-67f85ce1dffa68",
+        "role": "bot",
+        "type": "text",
+        "text": "Perfeito, vou te mostrar: Cesta Rosas Colombianas e Ferrero 🌷",
+        "status": "test",
+        "createdAt": "2026-06-13T10:34:29.021Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346876598-3d4e2d3ea69728",
+        "role": "agent",
+        "type": "text",
+        "text": "http://localhost:3000/catalog-assets/assets/bethyflores/images/produto/600_4602.jpg",
+        "status": "skipped",
+        "createdAt": "2026-06-13T10:34:36.598Z",
+        "meta": {
+          "source": "admin",
+          "whatsapp": {
+            "skipped": true
+          }
+        }
+      }
+    ],
+    "createdAt": "2026-06-13T10:23:55.379Z",
+    "lastMessageAt": "2026-06-13T10:34:36.598Z",
+    "updatedAt": "2026-06-13T10:51:46.816Z"
+  },
+  "551199999995656": {
+    "greeted": true,
+    "profileName": "Cliente Teste",
+    "customerName": "Cliente Teste",
+    "lastSuggestions": [
+      "3965",
+      "4652",
+      "5155"
+    ],
+    "selectedProductId": "5155",
+    "awaitingDeliveryData": false,
+    "deliveryDetails": "Rua 8, chacara 213",
+    "requiresPixIntervention": false,
+    "paymentRequested": false,
+    "orderClosed": false,
+    "automationPaused": false,
+    "unread": false,
+    "status": "manual",
+    "tags": [],
+    "notes": "",
+    "messages": [
+      {
+        "id": "1781346603203-28cda95994894",
+        "role": "customer",
+        "type": "text",
+        "text": "oii",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:30:03.203Z",
+        "meta": {
+          "whatsappId": "local-1781346603203",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346603205-8083ade6ffcbc",
+        "role": "bot",
+        "type": "text",
+        "text": "Oi! Aqui é a Evelyn da Beija Flor Floricultura 🌷\nhttps://www.beijaflorfloricultura.com\nDá uma olhadinha no nosso catálogo! É só clicar em 💜 Gostei desse! no produto que quiser 😊\nMe passa o CEP ou endereço de entrega?",
+        "status": "test",
+        "createdAt": "2026-06-13T10:30:03.205Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346620282-87c12a5f1ef5c8",
+        "role": "agent",
+        "type": "text",
+        "text": "Rua 8, chacara 213",
+        "status": "skipped",
+        "createdAt": "2026-06-13T10:30:20.282Z",
+        "meta": {
+          "source": "admin",
+          "whatsapp": {
+            "skipped": true
+          }
+        }
+      },
+      {
+        "id": "1781346627582-16bbf023f2e83",
+        "role": "customer",
+        "type": "text",
+        "text": "Rua 8, chacara 213",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:30:27.582Z",
+        "meta": {
+          "whatsappId": "local-1781346627582",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346644180-0ede533f4983f",
+        "role": "customer",
+        "type": "text",
+        "text": "Rua 8, chacara 213",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:30:44.180Z",
+        "meta": {
+          "whatsappId": "local-1781346644180",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346644185-f6e05bdd0be9e",
+        "role": "bot",
+        "type": "text",
+        "text": "Recebi o endereço, obrigada 😊 Agora me fala a ocasião e o estilo que você procura para eu separar 3 opções.",
+        "status": "test",
+        "createdAt": "2026-06-13T10:30:44.185Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346660049-b8443a80f49c8",
+        "role": "customer",
+        "type": "text",
+        "text": "buque de rosas vermelhas",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:31:00.049Z",
+        "meta": {
+          "whatsappId": "local-1781346660049",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346660068-9792f3b26d6b2",
+        "role": "bot",
+        "type": "text",
+        "text": "1. Buquê 6 Rosas Colombianas Te Amo - R$ 129,90\n2. Buquê Rosa Esplendor Colombianas na Tela - R$ 249,90\n3. Cesta Amor Dourado Rosa Nacional - R$ 139,90",
+        "status": "test",
+        "createdAt": "2026-06-13T10:31:00.068Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346735624-0175c45d46354",
+        "role": "customer",
+        "type": "text",
+        "text": "manda foto do 3",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:32:15.624Z",
+        "meta": {
+          "whatsappId": "local-1781346735624",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346735626-9d210c178ce11",
+        "role": "bot",
+        "type": "text",
+        "text": "Perfeito, vou te mostrar: Cesta Amor Dourado Rosa Nacional 🌷",
+        "status": "test",
+        "createdAt": "2026-06-13T10:32:15.626Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346753572-93f25c1f4db4b",
+        "role": "customer",
+        "type": "text",
+        "text": "cade a foto",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:32:33.572Z",
+        "meta": {
+          "whatsappId": "local-1781346753572",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346753576-b6c4e7702f6068",
+        "role": "bot",
+        "type": "text",
+        "text": "Perfeito, vou te mostrar: Cesta Amor Dourado Rosa Nacional 🌷",
+        "status": "test",
+        "createdAt": "2026-06-13T10:32:33.576Z",
+        "meta": {}
+      },
+      {
+        "id": "1781346759905-b88d693b7781c",
+        "role": "customer",
+        "type": "text",
+        "text": "me manda a foto",
+        "status": "ok",
+        "createdAt": "2026-06-13T10:32:39.905Z",
+        "meta": {
+          "whatsappId": "local-1781346759905",
+          "media": null,
+          "paymentProofAnalysis": null
+        }
+      },
+      {
+        "id": "1781346759909-6166c4de5e9b38",
+        "role": "bot",
+        "type": "text",
+        "text": "Perfeito, vou te mostrar: Cesta Amor Dourado Rosa Nacional 🌷",
+        "status": "test",
+        "createdAt": "2026-06-13T10:32:39.909Z",
+        "meta": {}
+      }
+    ],
+    "createdAt": "2026-06-13T10:30:03.203Z",
+    "lastMessageAt": "2026-06-13T10:32:39.909Z",
+    "updatedAt": "2026-06-13T10:34:15.492Z"
+  }
+}

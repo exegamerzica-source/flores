@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evelyn Console | Beija Flor</title>
+    <link rel="stylesheet" href="/admin/app.css">
+  </head>
+  <body>
+    <div id="tokenOverlay" class="overlay hidden">
+      <form id="tokenForm" class="token-box">
+        <h1>Evelyn Console</h1>
+        <p>Informe o token administrativo configurado no servidor.</p>
+        <input id="tokenInput" type="password" autocomplete="current-password" placeholder="ADMIN_TOKEN">
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">BF</div>
+          <div>
+            <strong>Beija Flor</strong>
+            <span>Central da Evelyn</span>
+          </div>
+        </div>
+
+        <div class="summary-grid">
+          <div class="metric">
+            <span>Conversas</span>
+            <strong id="metricConversations">0</strong>
+          </div>
+          <div class="metric">
+            <span>Pix pendente</span>
+            <strong id="metricPixPending">0</strong>
+          </div>
+          <div class="metric">
+            <span>Manual</span>
+            <strong id="metricManual">0</strong>
+          </div>
+          <div class="metric">
+            <span>Produtos</span>
+            <strong id="metricProducts">0</strong>
+          </div>
+        </div>
+
+        <nav class="nav-tabs" aria-label="Áreas do painel">
+          <button class="nav-tab active" data-view="inbox">Conversas</button>
+          <button class="nav-tab" data-view="knowledge">Inteligência</button>
+          <button class="nav-tab" data-view="products">Catálogo</button>
+          <button class="nav-tab" data-view="settings">Configuração</button>
+        </nav>
+
+        <div class="simulator">
+          <h2>Teste local</h2>
+          <input id="simPhone" value="5511999999999" aria-label="Telefone do teste">
+          <textarea id="simText" rows="3" placeholder="Digite como se fosse o cliente"></textarea>
+          <button id="simSend" type="button">Simular mensagem</button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section id="viewInbox" class="view active">
+          <div class="workbench">
+            <section class="conversation-list-panel">
+              <div class="panel-heading">
+                <h1>Conversas</h1>
+                <button id="refreshConversations" class="icon-button" type="button" title="Atualizar">↻</button>
+              </div>
+              <input id="conversationSearch" class="search" placeholder="Buscar nome, telefone ou mensagem">
+              <div id="conversationList" class="conversation-list"></div>
+            </section>
+
+            <section class="chat-panel">
+              <header class="chat-header">
+                <div>
+                  <h2 id="chatName">Selecione uma conversa</h2>
+                  <p id="chatMeta">Acompanhe e intervenha quando precisar.</p>
+                </div>
+                <div class="chat-actions">
+                  <button id="draftReply" type="button">Sugerir resposta</button>
+                  <button id="toggleAutomation" type="button">Pausar automação</button>
+                </div>
+              </header>
+
+              <div id="messageList" class="messages empty-state">
+                Selecione uma conversa para ver o histórico.
+              </div>
+
+              <footer class="composer">
+                <textarea id="manualText" rows="3" placeholder="Responder manualmente pelo WhatsApp"></textarea>
+                <div class="composer-actions">
+                  <label class="checkbox">
+                    <input id="pauseAfterSend" type="checkbox" checked>
+                    manter automação pausada
+                  </label>
+                  <label id="markPixSentWrap" class="checkbox hidden">
+                    <input id="markPixSent" type="checkbox">
+                    esta mensagem é o Pix
+                  </label>
+                  <button id="sendManual" type="button">Enviar</button>
+                </div>
+              </footer>
+            </section>
+
+            <aside class="details-panel">
+              <div class="panel-heading">
+                <h2>Atendimento</h2>
+              </div>
+              <div id="conversationDetails" class="details-empty">
+                Nenhuma conversa selecionada.
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="viewKnowledge" class="view">
+          <div class="two-column">
+            <section class="surface">
+              <div class="panel-heading">
+                <h1>Inteligência da Evelyn</h1>
+                <button id="newKnowledge" type="button">Novo roteiro</button>
+              </div>
+              <p class="muted">Cadastre respostas, políticas e gatilhos. A Evelyn consulta isso antes de sugerir produtos.</p>
+              <div id="knowledgeList" class="knowledge-list"></div>
+            </section>
+
+            <section class="surface">
+              <h2 id="knowledgeFormTitle">Novo roteiro</h2>
+              <form id="knowledgeForm" class="stack-form">
+                <input type="hidden" id="knowledgeId">
+                <label>
+                  Título
+                  <input id="knowledgeTitle" required placeholder="Ex: Entrega expressa">
+                </label>
+                <label>
+                  Gatilhos
+                  <input id="knowledgeTriggers" placeholder="entrega, prazo, frete">
+                </label>
+                <label>
+                  Resposta da Evelyn
+                  <textarea id="knowledgeAnswer" rows="7" required placeholder="Mensagem curta, sem links"></textarea>
+                </label>
+                <label class="checkbox">
+                  <input id="knowledgeEnabled" type="checkbox" checked>
+                  ativo
+                </label>
+                <div class="form-actions">
+                  <button type="submit">Salvar roteiro</button>
+                  <button id="deleteKnowledge" class="secondary danger hidden" type="button">Excluir</button>
+                </div>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <section id="viewProducts" class="view">
+          <section class="surface">
+            <div class="panel-heading">
+              <div>
+                <h1>Catálogo</h1>
+                <p class="muted">Produtos reais extraídos dos HTMLs locais.</p>
+              </div>
+              <button id="rebuildCatalog" type="button">Regerar catálogo</button>
+            </div>
+            <input id="productSearch" class="search" placeholder="Buscar por rosa, cesta, orquídea, orçamento...">
+            <div id="productGrid" class="product-grid"></div>
+          </section>
+        </section>
+
+        <section id="viewSettings" class="view">
+          <div class="two-column">
+            <section class="surface">
+              <h1>Configuração</h1>
+              <div id="healthBox" class="health-box">Carregando status...</div>
+              <div class="config-list">
+                <div>
+                  <strong>Webhook WhatsApp</strong>
+                  <span id="webhookUrl">/webhook</span>
+                </div>
+                <div>
+                  <strong>Painel</strong>
+                  <span>/admin/</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="surface">
+              <h2>Instruções gerais</h2>
+              <form id="settingsForm" class="stack-form">
+                <label>
+                  Diretriz interna
+                  <textarea id="customInstructions" rows="8"></textarea>
+                </label>
+                <button type="submit">Salvar diretriz</button>
+              </form>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="/admin/app.js"></script>
+  </body>
+</html>

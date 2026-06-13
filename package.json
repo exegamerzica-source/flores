@@ -1,0 +1,15 @@
+{
+  "name": "beija-flor-whatsapp-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "Bot de atendimento WhatsApp para floricultura usando o catalogo local.",
+  "scripts": {
+    "build:catalog": "node bot/src/build-catalog.js",
+    "start": "node bot/src/server.js",
+    "test:evelyn": "node bot/src/test-evelyn.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

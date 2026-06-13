@@ -1,0 +1,1366 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+<head>
+<meta charset="utf-8">
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+<title>Coleção Buquês de Rosas Colombianas</title>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1"> 
+<meta http-equiv="Content-Language" content="pt-BR"/>
+<meta name="format-detection" content="telephone=no"> 
+<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no">
+<link rel="stylesheet" href="../assets/bethyflores/js/styles.css">
+<style type="text/css">
+.styled-select {overflow: hidden; border: 1px solid #ccc;height: 25px;padding: 2px;-webkit-appearance: none; margin-right:5px}
+.styled-select select {background: transparent;border: none;font-size: 14px;height: 25px;padding: 5px;-webkit-appearance: none}
+.styled-select.slate select {font-size: 14px; width: 145px; color:#666}
+.styled-select.slate {background: url(../assets/bethyflores/images/select.png) no-repeat  right center; width: 120px; background-color:#FFF;-webkit-appearance: none}
+.fav{position:absolute;bottom:0px;right:0px;z-index:3; display:none}
+.favy{position:absolute;bottom:0px;right:0px;z-index:3}
+.box_desconto{display:inline-block;height:19px; width:120px; background:url(../assets/bethyflores/images/sprite_home.png) -149px -494px; padding-top:3px; color:#666; font-size:12px}
+
+.vitrine_parcelamento{color:#666;font-family:'Source Sans Pro',Arial;font-size:12px}
+.valor_produto{color:#000;font-size:18px}
+.box_price{min-height:65px}
+.desc_bot{text-align:center; margin-top:5px}
+.desc_div{border:solid 1px #323f2d; padding:5px; text-align:center; display: inline-block; color:#FFF; background-color:#4a5823; font-size:13px}
+.desc_div:hover{color:#FFF; background-color:#5C7B00}
+</style>
+</head>
+<body>
+<div id="nav" class="nav-collapse"><ul><li class="active"></li></ul></div>
+<script type="text/JavaScript" src="../assets/bethyflores/js/jquery.min.js"></script> 
+<!--[if lte IE 8]><script src="../assets/bethyflores/js/respond.js"></script><![endif]-->
+<script type="text/javascript" src="../assets/bethyflores/js/responsive-nav.js"></script>
+<script type="text/javascript" src="../assets/bethyflores/js/funcoes.js"></script>
+<script type="text/javascript" src="../assets/bethyflores/js/showPage.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var HeaderTop = $('.headerpop').offset().top+150;
+
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > HeaderTop) {
+                $('.headerxx').css({ position: 'fixed', top: '0px', display: 'block', right: '0px', left: '0px' });
+            }
+            else {
+                $('.headerxx').css({ position: 'static', display: 'none' });
+            }
+        });
+        
+
+    });
+
+    function show_fav(x, y) {
+        if (y == 1) { document.getElementById('fav_' + x).style.display = "block" }
+        if (y == 2) {
+            var str = document.getElementById('fav_img_' + x).src;
+            var n = str.indexOf("_24y");
+            if (n == -1) { document.getElementById('fav_' + x).style.display = "none" }
+        }
+    }
+
+    function go_favoritos(x) {
+        xxx = ''
+        tipo = 'y'
+
+        var str = document.getElementById('fav_img_' + x).src;
+        var n = str.indexOf("_24y");
+
+        if (n > 0) {
+            xxx = '1';
+            tipo = ''
+        }
+
+        url = '/favoritos_add/?zz=1&q=' + xxx + '&id=' + x;
+        document.getElementById('fav_img_' + x).src = '../assets/bethyflores/images/favorito_24' + tipo + '.png';
+
+        showPage(url, 'resultado_ajax', 0);
+    }
+
+
+    var br;
+    var preco_var;
+    var marca_var;
+    var produto_var;
+    var flores_var;
+    var ddpx = 1;
+    var ddnx = 0;
+
+    var checado = new Image();
+    var checado_no = new Image();
+
+    function limparPadrao() {
+        if (document.getElementById("newsletter_campo").value == document.getElementById("newsletter_campo").defaultValue) {
+            document.getElementById("newsletter_campo").value = "";
+        }
+    }
+
+    function escreverPadrao() {
+        if (document.getElementById("newsletter_campo").value == "") {
+            document.getElementById("newsletter_campo").value = document.getElementById("newsletter_campo").defaultValue;
+        }
+    }
+
+    function ordenacao(br) {
+        order = document.getElementById("ordenar").value;
+        window.location = "/buques-de-rosas-colombianas?order=1&pagina=1&tipo=44/?tipo=44&todos=0&order=" + order;
+    }
+
+    function popup(link, largura, altura) {
+        window.open(link, "Flores", "status=no, width=" + largura + ", height=" + altura + ", toolbar=no, scroolbar=no, resizable=no")
+    }
+
+    
+</script>
+
+
+
+<div id=bannerxx></div>
+
+<div id=headerxx style="background-color:#000">
+<div id=header_bfb>
+    <div class=mobile style="float:right; padding:20px 10px 10px 10px"><a href="#" onclick="show_menu()"><img id=hamburger src="../assets/bethyflores/images/black.png" width=32 height=32 /></a></div>
+    <div class=mobile style="float:right; padding-top:10px"><A href="/carrinho"><img id=basket src="../assets/bethyflores/images/black.png" width=40 height=40 /></a></div>
+    <div class=mobile style="float:right; padding-top:10px"><a href="#" onclick="show_search()"><img id=res_search src="../assets/bethyflores/images/black.png" width=40 height=40 /></a></div>
+    <div class=mobile style="float:right; padding-top:10px"><a href="/minha_conta"><img id=account src="../assets/bethyflores/images/black.png" width=40 height=40 /></a></div>
+
+    <div class=desk style="float:left; width:26%;  margin-top:20px">
+        <div style="margin-left:40px;float:left"><a href="/central-de-atendimento" class=menu3>ATENDIMENTO</a></div>        
+        <div style="font-size:12px;float:left; padding:0px 10px"> | </div>
+        <div style="font-size:14px;float:left"> <a href="/favoritos" class="menu3">FAVORITOS</a></div>
+        <div style="clear:both"></div>
+<div style="margin-left:40px; font-size:15px;color:#FFF">Whatsapp: <a href="whatsapp://send?text=&phone=5511962158598" style=" font-size:15px;color:#FFF">(11) 96215-8598</a></div>
+    </div>
+    
+    <div id=logodesk><a href="/"><img id=logoB style="padding-bottom:0px" src="../assets/bethyflores/images/black.png" width=349 height=98 alt="Bethy Flores" title="Bethy Flores - 0" border=0></A></div>
+
+    <div style="float:right;margin-top:20px;margin-right:50px" class=desk>
+       <div style="margin-left:10px">
+           <div style="font-size:14px;float:left;display:block"> <a href="/login/?zz=1&og=1" class="menu3">LOGIN</a></div>
+           <div style="font-size:12px;float:left; padding:0px 10px;display:block"> | </div>
+           <div style="font-size:14px;float:left;display:none"> <a href="/minha_conta" class="menu3">MINHA CONTA</a></div>
+           <div style="font-size:12px;float:left;display:none; padding:0px 10px"> | </div>
+           <div style="font-size:14px;float:left"> <a href="/carrinho" class="menu3">MINHA COMPRA</a></div>
+           <div style="font-size:12px;float:left;display:none; padding:0px 10px"> | </div>
+           <div style="margin-left:5px; float:right;display:none"><img id=logouth src="../assets/bethyflores/images/black.png" width=18 height=18 alt="logout" /> <a href="/logout" class="menu3">SAIR</a></div>   
+           <div style="clear:both"></div>
+       </div>
+       <div style="margin-top:8px;display:none">
+            <div style="float:left; display:none" id="saudacaoxx" class=div_saudacao><span class=head_saudacao id="saudacao"></span></div>
+            <div class=clear></div>
+        </div>
+        <div style="margin-top:0px" class=desk>
+            <div style="float:right;margin-top:20px; margin-right:0px;"><div id="quantidade_carrinho" Style="font-size:12px; color:#555"> </div></div>
+            <div style="float:right"><a href="/minha_cesta"><img id=bagB src="../assets/bethyflores/images/black.png" width=40 height=40 alt="Sacola"></a></div>
+            <div style="float:right">
+                <div id=pesquisa2 style="border: solid 1px #999; margin-top:10px;  background-color:#FFF; border-radius:20px; padding:0 12px">
+                    <div style="float:left"><input id="texto_busca" style="background-color:Transparent" type="text" value="encontre seu produto" maxlength=30 onfocus="limpar_busca('texto_busca') " onblur="escrever_busca('texto_busca')" onkeypress="{if (event.keyCode==13) envia_busca('texto_busca')}" class=campo_busca /></div>
+                    <div style="float:left; margin-left:2px; margin-top:2px"><a href="javascript:envia_busca('texto_busca')"><img class=findh src="../assets/bethyflores/images/black.png" width=24 height=24 alt="" border=0></a></div>
+                    <div class=clear></div>
+                </div>  
+                
+                <div style=" margin-top:10px; margin-left:10px"><a href="/como-comprar" style="color:#FFF; font-size:13px">Como Comprar</a></div>
+            </div>        
+            <div class=clear></div>
+        </div>       
+    </div>
+    <div class=clear></div>
+
+    <div id=searchmob style="display:none; background-color:#C00; text-align:center; padding:10px">
+        <div style="background-color:#FFF; padding:5px; border-radius:15px">
+            <div style="float:left; width:calc(100% - 35px)"><input id="busca" name="busca" type="text" maxlength=35 placeholder="palavra / código" onkeypress="{if (event.keyCode==13) envia_busca('busca')}" enterkeyhint="go" style="padding:4px; border: solid 0px #FFF; background-color: #FFF; width:100%;outline: none; font-size:16px" /></div>
+            <div style="float:right; padding-right:5px; padding-top:8px; width:26px; height:20px; background-image:url(../assets/bethyflores/images/find.png);background-repeat:no-repeat; background-position:right center" onclick="envia_busca('busca')"></div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+
+</div>
+
+<div id=nacho style="height:1px; background-color:#000; margin-bottom:0px"></div>
+
+</div>
+
+<div id=sticky_puto>
+<div class="headerxx header_sticky"  style="background-color:#000">
+    <div  class=w980>
+        <div style="float:left;width:138px; padding:5px 10px 3px 15px"><A HREF="/"><img id=logosticky src="../assets/bethyflores/images/black.png" width=269 height=38 alt="Bethy Flores" /></A></div>
+
+        <div style="border: solid 1px #999; margin-top:10px; float:left; background-color:#FFF; border-radius:20px; padding:0 12px">
+            <div style="float:left"><input id="sticky_search" type="text" placeholder="encontre seu produto" maxlength=30 onkeypress="{if (event.keyCode==13) envia_busca('sticky_search')}" /></div>
+            <div style="float:left; margin-left:2px; margin-top:2px"><a href="javascript:envia_busca('sticky_search')"><img id=find_sticky src="../assets/bethyflores/images/black.png" width=24 height=24 alt="" border=0></a></div>
+            <div style="clear:both"></div>
+        </div>  
+        <div class=sticky_head_sep></div>
+        <div style="float:left; padding-top:5px">
+            <div style="float:left"><img id=profile_sticky src="../assets/bethyflores/images/black.png" width=18 height=18  /></div> 
+            <div style="float:left; margin-left:5px"><a href="/minha_conta" class="sticky_text under">Minha Conta</a></div>             
+            <div class=clear></div>
+            <div style="float:left"><img id=favoritos_sticky src="../assets/bethyflores/images/black.png" width=18 height=18  /></div> 
+            <div style="float:left; margin-left:5px"><a href="/favoritos" class="sticky_text under">Favoritos</a></div>             
+            <div class=clear></div>
+        </div>
+        <div class=sticky_head_sep></div>
+        <div style="float:left; padding-top:5px">
+<div style="float:left"><img id=messageh_sticky src="../assets/bethyflores/images/black.png" width=18 height=18  /></div> 
+            <div style="float:left; margin-left:5px"><a href="/central-de-atendimento" class="sticky_text under">Central de Atendimento</a></div>             
+            <div class=clear></div>
+        </div>
+        <div class=sticky_head_sep></div>
+    
+        <div style="float:left; padding-top: 6px; margin-right:5px"><a href="/minha_cesta"><img id=sticky_cart src="../assets/bethyflores/images/black.png" width=37 height=38 alt="Minha Cesta" onclick="javascript:mostra_carrinho_dinamico();" /></a></div>
+        <div style="float:left; margin-right:25px; margin-top:18px" class=head_cesta><div id="Div3" Style="font-size:12px; color:#333; font-weight:normal"></div></div>                
+        <div style="position:relative;">
+        <div id="qtde_carrinho" Style="position:absolute;top:10px;right:213px;z-index:100;" ><a href="/minha_cesta" style="color:#000;"></a></div>
+        </div>
+    </div>
+</div> 
+</div>
+
+
+<div class=headw>
+<div id=nachoxx3>
+<div style="position:relative;z-index:1">
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(1,1)" onmouseover="open_nacho(1,2)">
+        <div class=flol>OCASIÃO</div><div id=plusH1 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux1 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/amor'"><a href='#'>Amor</a></li><li onclick="window.location = '/colecao-disney'"><a href='#'>Coleção Disney </a></li><li onclick="window.location = '/aniversario'"><a href='#'>Aniversário </a></li><li onclick="window.location = '/agradecimento'"><a href='#'>Agradecimento</a></li><li onclick="window.location = '/amizade'"><a href='#'>Amizade</a></li><li onclick="window.location = '/maternidade'"><a href='#'>Maternidade</a></li><li onclick="window.location = '/enfim-noivos'"><a href='#'>Enfim Noivos </a></li><li onclick="window.location = '/coroa-de-flores'"><a href='#'>Coroa de Flores</a></li><li onclick="window.location = '/Para-Ele'"><a href='#'>Para Ele </a></li><li onclick="window.location = '/desculpas'"><a href='#'>Desculpas</a></li><li onclick="window.location = '/maes-e-pais'"><a href='#'>Mães e Pais</a></li><li onclick="window.location = '/Melhoras'"><a href='#'>Melhoras</a></li><li onclick="window.location = '/Boa-Sorte'"><a href='#'>Boa Sorte </a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(2,1)" onmouseover="open_nacho(2,2)">
+        <div class=flol>ARRANJOS</div><div id=plusH2 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux2 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/arranjos-florais'"><a href='#'>Arranjos Florais</a></li><li onclick="window.location = '/coracao-de-rosas'"><a href='#'>Coração de Rosas</a></li><li onclick="window.location = '/linha-especial-premium'"><a href='#'>Linha Especial Premium</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(3,1)" onmouseover="open_nacho(3,2)">
+        <div class=flol>BUQUÊS</div><div id=plusH3 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux3 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/buques-de-rosas-nacionais'"><a href='#'>Buquês de Rosas Nacionais</a></li><li onclick="window.location = '/buques-de-rosas-colombianas'"><a href='#'>Buquês de Rosas Colombianas</a></li><li onclick="window.location = '/buques-de-flores-do-campo'"><a href='#'>Buquês de Flores do Campo</a></li><li onclick="window.location = '/buques-de-chocolate'"><a href='#'>Buquês de Chocolate</a></li><li onclick="window.location = '/buques-gigantes-e-especiais'"><a href='#'>Buquês Gigantes e Especiais</a></li><li onclick="window.location = '/buque-de-noiva'"><a href='#'>Buquê de Noiva</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(4,1)" onmouseover="open_nacho(4,2)">
+        <div class=flol>CESTAS</div><div id=plusH4 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux4 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/cestas-de-cafe-e-delicias'"><a href='#'>Cestas de Café e Delícias</a></li><li onclick="window.location = '/cestas-de-chocolate-e-cia'"><a href='#'>Cestas de Chocolate e Cia </a></li><li onclick="window.location = '/Cesta-de-Queijos-e-Vinhos'"><a href='#'>Cesta de Queijos e Vinhos </a></li><li onclick="window.location = '/Cesta-Happy-Hour'"><a href='#'>Cesta Happy Hour</a></li><li onclick="window.location = '/cestas-com-flores'"><a href='#'>Cestas com Flores</a></li><li onclick="window.location = '/Cesta-Infantil'"><a href='#'>Cesta Infantil</a></li><li onclick="window.location = '/Cestas-de-Frutas-e-Cia'"><a href='#'>Cestas de Frutas e Cia</a></li><li onclick="window.location = '/cervejas-e-petiscos'"><a href='#'>Cervejas e Petiscos</a></li><li onclick="window.location = '/Vinhos-e-Espumantes'"><a href='#'>Vinhos e Espumantes</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(5,1)" onmouseover="open_nacho(5,2)">
+        <div class=flol>PRESENTES</div><div id=plusH5 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux5 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/flores-e-chocolates'"><a href='#'>Flores e Chocolates</a></li><li onclick="window.location = '/flores-e-pelucias'"><a href='#'>Flores e Pelúcias</a></li><li onclick="window.location = '/pelucias-e-chocolates'"><a href='#'>Pelúcias e Chocolates</a></li><li onclick="window.location = '/presentes-com-vinhos'"><a href='#'>Presentes com Vinhos</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(7,1)" onmouseover="open_nacho(7,2)">
+        <div class=flol>FLORES</div><div id=plusH7 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux7 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/astromelias'"><a href='#'>Astromélias</a></li><li onclick="window.location = '/orquideas'"><a href='#'>Orquídeas</a></li><li onclick="window.location = '/flores-azuis'"><a href='#'>Flores Azuis</a></li><li onclick="window.location = '/begonias'"><a href='#'>Begônias</a></li><li onclick="window.location = '/violetas-margaridas-kalanchoe'"><a href='#'>Violetas Margaridas Kalanchoe</a></li><li onclick="window.location = '/suculentas'"><a href='#'>Suculentas</a></li><li onclick="window.location = '/cravos'"><a href='#'>Cravos</a></li><li onclick="window.location = '/plantas'"><a href='#'>Plantas</a></li><li onclick="window.location = '/lirios'"><a href='#'>Lírios</a></li><li onclick="window.location = '/gerberas'"><a href='#'>Gérberas</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(8,1)" onmouseover="open_nacho(8,2)">
+        <div class=flol>DATAS ESPECIAIS</div><div id=plusH8 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux8 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/12-de-junho-namorados'"><a href='#'>12 de Junho - DIA DOS NAMORADOS</a></li><li onclick="window.location = '/opcoes.asp?tipo=362'"><a href='#'>Flores para Alphaville</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(9,1)" onmouseover="open_nacho(9,2)">
+        <div class=flol>COMPLEMENTOS</div><div id=plusH9 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux9 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<li onclick="window.location = '/chocolates'"><a href='#'>Chocolates</a></li><li onclick="window.location = '/cartoes'"><a href='#'>Cartões</a></li><li onclick="window.location = '/pelucias'"><a href='#'>Pelúcias</a></li><li onclick="window.location = '/baloes-e-plaquinhas'"><a href='#'>Balões e Plaquinhas</a></li><li onclick="window.location = '/canecas'"><a href='#'>Canecas</a></li><li onclick="window.location = '/Garrafa-Squeeze'"><a href='#'>Garrafa e Squeeze</a></li><li onclick="window.location = '/vinhos-cervejas'"><a href='#'>Vinhos Cervejas</a></li><li onclick="window.location = '/almofadas'"><a href='#'>Almofadas</a></li><li onclick="window.location = '/velas'"><a href='#'>Velas</a></li><li onclick="window.location = '/petalas-e-botoes-de-rosa'"><a href='#'>Pétalas e Botões de Rosa</a></li><li onclick="window.location = '/embalagem'"><a href='#'>Embalagem</a></li><li onclick="window.location = '/decoracao'"><a href='#'>Decoração</a></li><li onclick="window.location = '/porta-retratos'"><a href='#'>Porta Retratos</a></li><li onclick="window.location = '/vaso-de-vidro'"><a href='#'>Vaso de Vidro</a></li><li onclick="window.location = '/artigos-religiosos'"><a href='#'>Artigos Religiosos</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=nacho_cont>
+        <div class=nacho2 onclick="open_nacho(10,1)" onmouseover="open_nacho(10,2)">
+        <div class=flol>OFERTA 24h</div><div id=plusH10 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=menux10 class=nacho3 onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+        <ul>
+<div class=box_produto24 onclick="window.location = '/cesta-de-cafe-da-manha-bon-jour'"><img src="../assets/bethyflores/images/produto/230_3132.jpg" width=200 height=200 alt=''><br /><div style='margin-top:13px; font-size:14px'>Cesta de Café da Manhã Bon Jour</div><div style="font-size:15px;color: #666; text-decoration:line-through">de R$ 139,90</div><div class=vitrine_preco>R$ 99,90</div><a href='/cesta-de-cafe-da-manha-bon-jour' style='margin-top:10px; text-align:center'><img id=comprar2 src='../assets/bethyflores/images/black.png' width=180 height=45 /></A></div>
+        </ul>
+        </div>
+    </div>
+    <div class=clear></div>
+</div>
+</div>
+</div>
+
+<div id=header_sticky class="headerpop" style="background-color:#000"></div> 
+
+
+
+<div id=conteudo>
+<div style="margin-top:5px">
+<a href="/" class="bread left15">Home</a><div class=bread_item>></div><span class=bread>Vitrine</span><div class=bread_item>></div><span class=bread>buquês de rosas colombianas</span>
+</div>
+
+<div id="banner_home123" style='margin-top:10px'><img src="../assets/bethyflores/images/banner_colecao/banner_ocasiao_44.jpg" alt='' class=banner_colecao border=0></div>
+
+<div class=titulo_colecao>Buquês de Rosas Colombianas</div>
+
+<div style="color: #737171; font-size: 12px; margin-bottom:15px; margin-top:5px; margin-left:15px">
+    <div style="float:left">
+        <div class=paging>Exibindo 1 a 32 de 43</div>
+        <div class="paging wpag" style="text-align:center">&nbsp;<a href='/buques-de-rosas-colombianas?order=1&pagina=1&tipo=44/?order=1&pagina=1&tipo=44' style="color: #666; text-decoration: underline;"  class=track_link title='paginacao'>1</a> | <a href='/buques-de-rosas-colombianas?order=1&pagina=1&tipo=44/?order=1&pagina=2&tipo=44' style="color: #666"  class=track_link title='paginacao'>2</a></div>
+        <div class=clear></div>
+    </div>
+    
+    <div style="float:right">
+    <select id="ordenar" class="styled-select slate" onchange="javascript:ordenacao(1)">
+    <option>ordenar por</option>
+    <option value="2">Valor</option>
+    <option value="1">Mais vendidos</option>
+    </select>
+    </div>
+    
+    <div class=clear></div>
+</div>
+
+<div class=corpo>
+
+<div id="miolo_produtos">
+
+<div class=produtox alt="Buquê com 3 Colombianas" onmouseover="show_fav(4451,1)" onmouseout="show_fav(4451,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-com-3-colombianas'  alt="Buquê com 3 Colombianas"><img src="../assets/bethyflores/images/produto/230_4451.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê com 3 Colombianas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 110,00</div><div style='font-size:16px'>por R$ 84,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-com-3-colombianas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">23% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4451><a href="javascript:go_favoritos(4451)"><img id=fav_img_4451 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê 6 Rosas Colombianas Te Amo" onmouseover="show_fav(3965,1)" onmouseout="show_fav(3965,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-6-rosas-colombianas-te-amo'  alt="Buquê 6 Rosas Colombianas Te Amo"><img src="../assets/bethyflores/images/produto/230_3965.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê 6 Rosas Colombianas Te Amo</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 200,00</div><div style='font-size:16px'>por R$ 129,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-6-rosas-colombianas-te-amo'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">35% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3965><a href="javascript:go_favoritos(3965)"><img id=fav_img_3965 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Rosa Colombiana com Ferrero 4 Unidades" onmouseover="show_fav(4720,1)" onmouseout="show_fav(4720,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/rosa-colombiana-com-ferrero-4-unidades'  alt="Rosa Colombiana com Ferrero 4 Unidades"><img src="../assets/bethyflores/images/produto/230_4720.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Rosa Colombiana com Ferrero 4 Unidades</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 129,90</div><div style='font-size:16px'>por R$ 89,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/rosa-colombiana-com-ferrero-4-unidades'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">31% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4720><a href="javascript:go_favoritos(4720)"><img id=fav_img_4720 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê com 12 Rosas Colombianas no Crepon" onmouseover="show_fav(2776,1)" onmouseout="show_fav(2776,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-com-12-rosas-colombianas-no-crepon'  alt="Buquê com 12 Rosas Colombianas no Crepon"><img src="../assets/bethyflores/images/produto/230_2776.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê com 12 Rosas Colombianas no Crepon</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 280,00</div><div style='font-size:16px'>por R$ 249,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-com-12-rosas-colombianas-no-crepon'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">11% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2776><a href="javascript:go_favoritos(2776)"><img id=fav_img_2776 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Buquê 7 Colombianas Premium" onmouseover="show_fav(3308,1)" onmouseout="show_fav(3308,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-7-colombianas-premium'  alt="Buquê 7 Colombianas Premium"><img src="../assets/bethyflores/images/produto/230_3308.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê 7 Colombianas Premium</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 300,00</div><div style='font-size:16px'>por R$ 199,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-7-colombianas-premium'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">33% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3308><a href="javascript:go_favoritos(3308)"><img id=fav_img_3308 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê Diferenciado com 6 Rosas Importadas" onmouseover="show_fav(2909,1)" onmouseout="show_fav(2909,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-diferenciado-com-6-rosas-importadas'  alt="Buquê Diferenciado com 6 Rosas Importadas"><img src="../assets/bethyflores/images/produto/230_2909.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê Diferenciado com 6 Rosas Importadas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 159,90</div><div style='font-size:16px'>por R$ 129,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-diferenciado-com-6-rosas-importadas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">19% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2909><a href="javascript:go_favoritos(2909)"><img id=fav_img_2909 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Buquê de Rosas Colombianas Abertas e Folhagens" onmouseover="show_fav(4276,1)" onmouseout="show_fav(4276,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-de-rosas-colombianas-abertas-e-folhagens'  alt="Buquê de Rosas Colombianas Abertas e Folhagens"><img src="../assets/bethyflores/images/produto/230_4276.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê de Rosas Colombianas Abertas e Folhagens</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 200,00</div><div style='font-size:16px'>por R$ 134,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-de-rosas-colombianas-abertas-e-folhagens'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">33% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4276><a href="javascript:go_favoritos(4276)"><img id=fav_img_4276 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê com 8 Rosas Colombianas" onmouseover="show_fav(3471,1)" onmouseout="show_fav(3471,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-com-8-rosas-colombianas'  alt="Buquê com 8 Rosas Colombianas"><img src="../assets/bethyflores/images/produto/230_3471.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê com 8 Rosas Colombianas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 199,90</div><div style='font-size:16px'>por R$ 189,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-com-8-rosas-colombianas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">5% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3471><a href="javascript:go_favoritos(3471)"><img id=fav_img_3471 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Buquê com 24 Colombianas" onmouseover="show_fav(3219,1)" onmouseout="show_fav(3219,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-com-24-colombianas'  alt="Buquê com 24 Colombianas"><img src="../assets/bethyflores/images/produto/230_3219.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê com 24 Colombianas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 529,90</div><div style='font-size:16px'>por R$ 479,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-com-24-colombianas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">9% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3219><a href="javascript:go_favoritos(3219)"><img id=fav_img_3219 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê 20 Rosas Colombianas Esplendor" onmouseover="show_fav(2637,1)" onmouseout="show_fav(2637,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-20-rosas-colombianas-esplendor'  alt="Buquê 20 Rosas Colombianas Esplendor"><img src="../assets/bethyflores/images/produto/230_2637.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê 20 Rosas Colombianas Esplendor</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 600,00</div><div style='font-size:16px'>por R$ 400,00</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-20-rosas-colombianas-esplendor'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">33% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2637><a href="javascript:go_favoritos(2637)"><img id=fav_img_2637 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Requinte de Rosas Colombianas" onmouseover="show_fav(2772,1)" onmouseout="show_fav(2772,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/requinte-de-rosas-colombianas'  alt="Requinte de Rosas Colombianas"><img src="../assets/bethyflores/images/produto/230_2772.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Requinte de Rosas Colombianas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 299,00</div><div style='font-size:16px'>por R$ 189,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/requinte-de-rosas-colombianas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">36% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2772><a href="javascript:go_favoritos(2772)"><img id=fav_img_2772 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buque de Rosas Importadas Fechadas Colombianas com 6 Unidades" onmouseover="show_fav(4654,1)" onmouseout="show_fav(4654,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-de-rosas-importadas-fechadas-colombianas-com-6-unidades'  alt="Buque de Rosas Importadas Fechadas Colombianas com 6 Unidades"><img src="../assets/bethyflores/images/produto/230_4654.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buque de Rosas Importadas Fechadas Colombianas com 6 Unidades</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 199,90</div><div style='font-size:16px'>por R$ 139,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-de-rosas-importadas-fechadas-colombianas-com-6-unidades'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">30% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4654><a href="javascript:go_favoritos(4654)"><img id=fav_img_4654 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Trio de Colombiana Juta Rústica" onmouseover="show_fav(5022,1)" onmouseout="show_fav(5022,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/trio-de-colombiana-juta-rustica'  alt="Trio de Colombiana Juta Rústica"><img src="../assets/bethyflores/images/produto/230_5022.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Trio de Colombiana Juta Rústica</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 139,90</div><div style='font-size:16px'>por R$ 99,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/trio-de-colombiana-juta-rustica'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">29% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_5022><a href="javascript:go_favoritos(5022)"><img id=fav_img_5022 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê 6 Colombianas e Pelúcia Super Fofinha" onmouseover="show_fav(5023,1)" onmouseout="show_fav(5023,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-6-colombianas-e-pelucia-super-fofinha'  alt="Buquê 6 Colombianas e Pelúcia Super Fofinha"><img src="../assets/bethyflores/images/produto/230_5023.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê 6 Colombianas e Pelúcia Super Fofinha</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 300,00</div><div style='font-size:16px'>por R$ 195,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-6-colombianas-e-pelucia-super-fofinha'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">35% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_5023><a href="javascript:go_favoritos(5023)"><img id=fav_img_5023 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Buquê 12 Colombianas Esplendor" onmouseover="show_fav(2810,1)" onmouseout="show_fav(2810,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-12-colombianas-esplendor'  alt="Buquê 12 Colombianas Esplendor"><img src="../assets/bethyflores/images/produto/230_2810.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê 12 Colombianas Esplendor</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 250,00</div><div style='font-size:16px'>por R$ 229,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-12-colombianas-esplendor'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">8% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_2810><a href="javascript:go_favoritos(2810)"><img id=fav_img_2810 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê Fascínio 12 Rosas Colombianas Vermelhas" onmouseover="show_fav(3756,1)" onmouseout="show_fav(3756,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-fascinio-12-rosas-colombianas-vermelhas'  alt="Buquê Fascínio 12 Rosas Colombianas Vermelhas"><img src="../assets/bethyflores/images/produto/230_3756.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê Fascínio 12 Rosas Colombianas Vermelhas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 300,00</div><div style='font-size:16px'>por R$ 249,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-fascinio-12-rosas-colombianas-vermelhas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3756><a href="javascript:go_favoritos(3756)"><img id=fav_img_3756 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Buquê Master com 12 Rosas Colombianas" onmouseover="show_fav(3302,1)" onmouseout="show_fav(3302,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-master-com-12-rosas-colombianas'  alt="Buquê Master com 12 Rosas Colombianas"><img src="../assets/bethyflores/images/produto/230_3302.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê Master com 12 Rosas Colombianas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 299,90</div><div style='font-size:16px'>por R$ 259,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-master-com-12-rosas-colombianas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">13% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3302><a href="javascript:go_favoritos(3302)"><img id=fav_img_3302 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê 18 Colombianas Fascínio em Tela" onmouseover="show_fav(3240,1)" onmouseout="show_fav(3240,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-18-colombianas-fascinio-em-tela'  alt="Buquê 18 Colombianas Fascínio em Tela"><img src="../assets/bethyflores/images/produto/230_3240.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê 18 Colombianas Fascínio em Tela</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 500,00</div><div style='font-size:16px'>por R$ 389,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-18-colombianas-fascinio-em-tela'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">22% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3240><a href="javascript:go_favoritos(3240)"><img id=fav_img_3240 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Buquê com 12 Colombianas na Tela Aramada" onmouseover="show_fav(3469,1)" onmouseout="show_fav(3469,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-com-12-colombianas-na-tela-aramada'  alt="Buquê com 12 Colombianas na Tela Aramada"><img src="../assets/bethyflores/images/produto/230_3469.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê com 12 Colombianas na Tela Aramada</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 350,00</div><div style='font-size:16px'>por R$ 289,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-com-12-colombianas-na-tela-aramada'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">17% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3469><a href="javascript:go_favoritos(3469)"><img id=fav_img_3469 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê Rosa Esplendor Colombianas na Tela" onmouseover="show_fav(4652,1)" onmouseout="show_fav(4652,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-rosa-esplendor-colombianas-na-tela'  alt="Buquê Rosa Esplendor Colombianas na Tela"><img src="../assets/bethyflores/images/produto/230_4652.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê Rosa Esplendor Colombianas na Tela</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 350,00</div><div style='font-size:16px'>por R$ 249,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-rosa-esplendor-colombianas-na-tela'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">29% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4652><a href="javascript:go_favoritos(4652)"><img id=fav_img_4652 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Buquê Amor Paixão com 12 Colombianas" onmouseover="show_fav(3080,1)" onmouseout="show_fav(3080,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-amor-paixao-com-12-colombianas'  alt="Buquê Amor Paixão com 12 Colombianas"><img src="../assets/bethyflores/images/produto/230_3080.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê Amor Paixão com 12 Colombianas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 280,00</div><div style='font-size:16px'>por R$ 249,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-amor-paixao-com-12-colombianas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">11% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3080><a href="javascript:go_favoritos(3080)"><img id=fav_img_3080 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê com 12 Colombianas e Ferrero Rocher" onmouseover="show_fav(4358,1)" onmouseout="show_fav(4358,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-com-12-colombianas-e-ferrero-rocher'  alt="Buquê com 12 Colombianas e Ferrero Rocher"><img src="../assets/bethyflores/images/produto/230_4358.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê com 12 Colombianas e Ferrero Rocher</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 399,90</div><div style='font-size:16px'>por R$ 329,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-com-12-colombianas-e-ferrero-rocher'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">18% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4358><a href="javascript:go_favoritos(4358)"><img id=fav_img_4358 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Buquê 30 Rosas Colombianas" onmouseover="show_fav(5086,1)" onmouseout="show_fav(5086,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-30-rosas-colombianas'  alt="Buquê 30 Rosas Colombianas"><img src="../assets/bethyflores/images/produto/230_5086.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê 30 Rosas Colombianas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 1.000,00</div><div style='font-size:16px'>por R$ 599,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-30-rosas-colombianas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">40% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_5086><a href="javascript:go_favoritos(5086)"><img id=fav_img_5086 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê 50 Rosas Colombianas" onmouseover="show_fav(4656,1)" onmouseout="show_fav(4656,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-50-rosas-colombianas'  alt="Buquê 50 Rosas Colombianas"><img src="../assets/bethyflores/images/produto/230_4656.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê 50 Rosas Colombianas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 1.500,00</div><div style='font-size:16px'>por R$ 989,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-50-rosas-colombianas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">34% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4656><a href="javascript:go_favoritos(4656)"><img id=fav_img_4656 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Buquê com 40 Rosas Colombianas" onmouseover="show_fav(3464,1)" onmouseout="show_fav(3464,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-com-40-rosas-colombianas'  alt="Buquê com 40 Rosas Colombianas"><img src="../assets/bethyflores/images/produto/230_3464.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê com 40 Rosas Colombianas</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 1.500,00</div><div style='font-size:16px'>por R$ 859,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-com-40-rosas-colombianas'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">43% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3464><a href="javascript:go_favoritos(3464)"><img id=fav_img_3464 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê 4 Rosas Colombianas no Kraft" onmouseover="show_fav(3058,1)" onmouseout="show_fav(3058,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-4-rosas-colombianas-no-kraft'  alt="Buquê 4 Rosas Colombianas no Kraft"><img src="../assets/bethyflores/images/produto/230_3058.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê 4 Rosas Colombianas no Kraft</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 150,00</div><div style='font-size:16px'>por R$ 129,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-4-rosas-colombianas-no-kraft'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">13% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3058><a href="javascript:go_favoritos(3058)"><img id=fav_img_3058 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Buquê 36 Colombianas Especial" onmouseover="show_fav(3283,1)" onmouseout="show_fav(3283,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-36-colombianas-especial'  alt="Buquê 36 Colombianas Especial"><img src="../assets/bethyflores/images/produto/230_3283.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê 36 Colombianas Especial</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 2.000,00</div><div style='font-size:16px'>por R$ 749,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-36-colombianas-especial'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">63% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3283><a href="javascript:go_favoritos(3283)"><img id=fav_img_3283 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê de Colombianas com 2 Unidades e Cartão" onmouseover="show_fav(3319,1)" onmouseout="show_fav(3319,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-de-colombianas-com-2-unidades-e-cartao'  alt="Buquê de Colombianas com 2 Unidades e Cartão"><img src="../assets/bethyflores/images/produto/230_3319.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê de Colombianas com 2 Unidades e Cartão</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 65,90</div><div style='font-size:16px'>por R$ 49,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-de-colombianas-com-2-unidades-e-cartao'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">24% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3319><a href="javascript:go_favoritos(3319)"><img id=fav_img_3319 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+<div class=produtox alt="Buquê Kraft Rosa Colombiana e Ferrero Rocher" onmouseover="show_fav(4658,1)" onmouseout="show_fav(4658,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-kraft-rosa-colombiana-e-ferrero-rocher'  alt="Buquê Kraft Rosa Colombiana e Ferrero Rocher"><img src="../assets/bethyflores/images/produto/230_4658.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê Kraft Rosa Colombiana e Ferrero Rocher</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 200,00</div><div style='font-size:16px'>por R$ 129,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-kraft-rosa-colombiana-e-ferrero-rocher'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">35% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_4658><a href="javascript:go_favoritos(4658)"><img id=fav_img_4658 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Buquê com 4 Rosas Colombianas e Cartão Felicidades" onmouseover="show_fav(3227,1)" onmouseout="show_fav(3227,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/buque-com-4-rosas-colombianas-e-cartao-felicidades'  alt="Buquê com 4 Rosas Colombianas e Cartão Felicidades"><img src="../assets/bethyflores/images/produto/230_3227.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Buquê com 4 Rosas Colombianas e Cartão Felicidades</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 109,90</div><div style='font-size:16px'>por R$ 99,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-com-4-rosas-colombianas-e-cartao-felicidades'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">9% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3227><a href="javascript:go_favoritos(3227)"><img id=fav_img_3227 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpax></div>
+<div class=produtox alt="Para lembrar que TE AMO" onmouseover="show_fav(3314,1)" onmouseout="show_fav(3314,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/para-lembrar-que-te-amo'  alt="Para lembrar que TE AMO"><img src="../assets/bethyflores/images/produto/230_3314.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Para lembrar que TE AMO</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 149,90</div><div style='font-size:16px'>por R$ 89,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/para-lembrar-que-te-amo'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">40% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3314><a href="javascript:go_favoritos(3314)"><img id=fav_img_3314 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+
+<div class=produtox alt="Dueto de Colombiana com Chandon" onmouseover="show_fav(3221,1)" onmouseout="show_fav(3221,2)">
+<div Style="position:relative;top:0px;left:0px"> 
+<a href='/dueto-de-colombiana-com-chandon'  alt="Dueto de Colombiana com Chandon"><img src="../assets/bethyflores/images/produto/230_3221.jpg"  class=produto_img alt=""></a><br />
+
+<div class=nome_produto>Dueto de Colombiana com Chandon</div>
+
+<div class=box_price>
+<div class=valor_produto><div style='color:#555; text-decoration: line-through; font-size:14px'>de R$ 174,90</div><div style='font-size:16px'>por R$ 124,90</div></div>
+<div class=vitrine_parcelamento>Pagamento via PIX</div>
+</div>
+
+<div style="color:Gray; font-size:10px"></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/dueto-de-colombiana-com-chandon'">Comprar</div></div>
+
+
+<div style="margin-top:5px;height:22px">
+
+<div class=desc_bot><div class="desc_div 100">29% de desconto</div></div>
+
+</div>
+<div class=fav id=fav_3221><a href="javascript:go_favoritos(3221)"><img id=fav_img_3221 src="../assets/bethyflores/images/favorito_24.png" height=24 width=24 title="Favoritos" /></a></div>
+</div>
+
+</div>
+<div class=limpa></div>
+</div>
+
+<div style="color: #737171; font-size: 12px; margin-bottom:15px; clear:both; margin-top:15px">
+    <div style="float:left">
+        <div class=paging>Exibindo 1 a 32 de 43</div>
+        <div class="paging wpag" style="text-align:center">&nbsp;<a href='/buques-de-rosas-colombianas?order=1&pagina=1&tipo=44/?order=1&pagina=1&tipo=44' style="color: #666; text-decoration: underline;"  class=track_link title='paginacao'>1</a> | <a href='/buques-de-rosas-colombianas?order=1&pagina=1&tipo=44/?order=1&pagina=2&tipo=44' style="color: #666"  class=track_link title='paginacao'>2</a></div>
+        <div class=clear></div>
+    </div>
+    <div class=clear></div>
+</div>
+</div>
+
+<div id=obsxx style="font-size:14px; background-color:#fbfbfb; border:solid 1px #769C00; padding:20px"><p style="text-align: justify;">Os buqu&ecirc;s de rosas colombianas da Bethy Flores representam o que h&aacute; de mais sofisticado no mundo floral. Conhecidas por sua qualidade superior, tamanho imponente e cores vibrantes, as rosas colombianas s&atilde;o cultivadas nas altitudes da Col&ocirc;mbia, onde o clima ideal e o solo f&eacute;rtil proporcionam flores de beleza inigual&aacute;vel. Essas caracter&iacute;sticas tornam os buqu&ecirc;s dessa categoria perfeitos para momentos que exigem um toque de luxo e eleg&acirc;ncia.<br /><br /></p>
+<p style="text-align: justify;">As rosas colombianas s&atilde;o not&aacute;veis por suas p&eacute;talas volumosas, textura aveludada e hastes longas, que conferem aos arranjos um impacto visual impressionante. Dispon&iacute;veis em uma rica paleta de cores &mdash; do vermelho profundo ao branco puro, passando pelos tons delicados de rosa e os vibrantes amarelos e laranjas &mdash;, essas flores atendem a diferentes estilos e mensagens. Um buqu&ecirc; de rosas vermelhas, por exemplo, &eacute; ideal para expressar paix&atilde;o, enquanto as rosas brancas refletem pureza e serenidade.<br /><br /></p>
+<p style="text-align: justify;">Essa categoria &eacute; perfeita para ocasi&otilde;es especiais, como casamentos, anivers&aacute;rios, pedidos de casamento ou at&eacute; mesmo para surpreender em um gesto rom&acirc;ntico inesperado. Na Bethy Flores, cada buqu&ecirc; &eacute; montado com extremo cuidado, garantindo a harmonia das flores e a preserva&ccedil;&atilde;o de sua frescura e beleza por mais tempo.<br /><br /></p>
+<p style="text-align: justify;">Al&eacute;m de sua qualidade excepcional, as rosas colombianas s&atilde;o s&iacute;mbolos de exclusividade, pois sua produ&ccedil;&atilde;o &eacute; cuidadosamente monitorada para manter os altos padr&otilde;es. Cada buqu&ecirc; &eacute; pensado para oferecer uma experi&ecirc;ncia &uacute;nica, onde o luxo e a emo&ccedil;&atilde;o se encontram em um presente inesquec&iacute;vel.<br /><br /></p>
+<p style="text-align: justify;">Se voc&ecirc; procura surpreender com eleg&acirc;ncia e bom gosto, os buqu&ecirc;s de rosas colombianas s&atilde;o a escolha ideal. Descubra na Bethy Flores como transformar um momento especial em uma mem&oacute;ria eterna, com a sofistica&ccedil;&atilde;o que s&oacute; essas flores extraordin&aacute;rias podem oferecer.</p></div>
+
+
+
+</div>
+
+<div style="background-color: #E5EDD5; margin:10px 0; border-top:solid 1px #769C00; border-bottom:solid 1px #769C00">
+<div class=w980 id=env_faixa>
+
+<div style="display:inline-block">
+<div id=receba>RECEBA NOSSAS PROMOÇÕES</div>
+<div id=newsletter_result>
+<div style="float:left; margin-top:10px; margin-left:15px"><input id="newsletter_campo" type="email" class=newsletter99 value="Insira seu email" onfocus="limpar_news()" onblur="escrever_news()" maxlength=80 onkeypress="{if (event.keyCode==13) envia_news()}"></div>
+<div style="float:left; background-color:#FFF" class="news 100" onclick="envia_news()">Enviar</div>
+<div class=clear></div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<div class=footer>
+<div id=footer1 class=footer_wrapper>
+    <div  class=footer_cont0>
+        <div class=footer2>Fique Conectado</div>
+        <div id=fique>
+        <a href="https://www.facebook.com/bethyfloresoficial/" class="footer_link" target=_blank><img id="facebook" src="../assets/bethyflores/images/black.png" width=40 height=40 alt='facebook' /></a>
+        <a href="https://www.instagram.com/bethyfloresoficial" class="footer_link" target=_blank><img id="instagram" src="../assets/bethyflores/images/black.png" width=40 height=40 alt='instagram'></a>
+        </div>
+        </div>
+    <div class=footer_cont>
+        <div class=footer2 onclick="open_foot(1)">
+        <div class=flol>WhatsApp</div><div id=plusx1 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=foot1 class=footer3>
+        <div style="margin-top:10px; color:#666">
+        (11) 96215-8598
+        </div>
+        </div>
+    </div>
+    
+    <div class=footer_cont>
+        <div class=footer2 onclick="open_foot(1)">
+        <div class=flol>Institucional</div><div id=plusx1 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=foot1 class=footer3>
+        <ul>
+        <li onclick="window.location = '/quem_somos'"><a href="javascript:void()">Quem Somos</a></li>
+        <li onclick="window.location = '/nossa-loja'"><a href="javascript:void()">Nossa Loja</a></li>
+        <li onclick="window.location = '/horarios-de-entrega'"><a href="javascript:void()">Horários de Entrega</a></li>
+        </ul>
+        </div>
+    </div>
+    
+    
+    <div class=footer_cont>
+        <div class="footer2" onclick="open_foot(2)">
+        <div class=flol>Ajuda</div><div id=plusx2 class="flor plus">+</div><div class=clear></div>
+        </div>
+
+        <div id=foot2 class="footer3">
+        <ul>
+        <li onclick="window.location = '/central_atendimento'"><a href="javascript:void()">Central de atendimento</a></li>
+        <li onclick="window.location = '/privacidade'"><a href="javascript:void()">Privacidade / Segurança</a></li>
+        <li onclick="window.location = '/mapa_site'"><a href="javascript:void()">Mapa do site</a></li>
+        <li onclick="window.location = '/como-comprar'"><a href="javascript:void()">Como Comprar</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=footer_cont>
+        <div class=footer2 onclick="open_foot(3)">
+        <div class=flol>Informações</div><div id=plusx3 class="flor plus">+</div><div class=clear></div>
+        </div>
+        <div id=foot3 class=footer3>
+        <ul>
+        <li onclick="window.location = '/dicas_conservacao.asp'"><a href="javascript:void()">Dicas de conservação</a></li>
+        <li onclick="window.location = '/escolha-do-buque-de-noiva.asp'"><a href="javascript:void()">Escolha do Buquê de Noiva</a></li>
+        <li onclick="window.location = '/entregas'"><a href="javascript:void()">Política de Entregas</a></li>
+        <li onclick="window.location = '/formas-de-pagamento'"><a href="javascript:void()">Formas de Pagamento</a></li>
+        <li onclick="window.open('../assets/bethyflores/images/Termo-e-condicoes-de-venda-de-produtos.pdf','_blank')"><a href="javascript:void()">Termo de Uso</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class=clear></div>
+
+    <div style="background-color:#999; height:1px; margin:0 23px"></div>
+
+    <div id=central_atendimento>
+        <div style="float:left; font-size:14px; color:#000">
+            Formas de Pagamento
+            <div style="margin-top:10px; color:#1f7f39; font-size:22px; font-weight:700; letter-spacing:.5px">PIX</div>
+        </div>
+        <div class=footbot2>
+            Segurança
+            <div  style="padding-top:10px">
+            <img id=cloudflaressl src="../assets/bethyflores/images/black.png" width=90 height=50 border=0 alt='Cloudflare SSL' /></div>
+            </div>
+        </div>
+        
+        <div class=footbot>
+            Desenvolvimento:
+            <div><A href="https://solutions.flowermarket.com.br/" target=_blank><img id=flowermarket src="../assets/bethyflores/images/black.png" width=150 height=82 border=0 alt='Flower Market' /></A></div>
+        </div>
+        <div class=clear></div>
+    </div>
+
+    <div id=disclaimer>
+    <div id=disclaimer1>
+    Bethy Flores Ltda ME | CNPJ:  54.476.973/0001-20 | Pc. Dr. João Batista Vasques, nº1 - São Paulo - SP
+    <div id=disclaimer3><a href="mailto:contato@bethyflores.com.br">contato@bethyflores.com.br</a></div>
+    </div>
+    <div id=disclaimer2 style="display:none">Desenvolvimento: <A href="http://www.arquimidia.com/" target=_blank style="text-decoration:none; color:#444; font-size:11px" title="">Flower Market</A></div>
+    <div class=clear></div>
+    </div>
+     
+
+</div>
+
+<a target="_blank" href="https://api.whatsapp.com/send?phone=5511962158598" id="whatsapp-button" style="position: fixed; bottom: 10px; width: 170px; height=96px; left: 10px;"><img style="width:100%;" src="../assets/bethyflores/images/whatsapph.png"></a>
+
+
+
+<!-- Google Tag Manager -->
+<script type="text/javascript">    (function(w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({ 'gtm.start':
+new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W69KHJR');</script>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W69KHJR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!--Start of Zendesk Chat Script-->
+<script type="text/javascript">
+    window.$zopim || (function(d, s) {
+        var z = $zopim = function(c) { z._.push(c) }, $ = z.s =
+d.createElement(s), e = d.getElementsByTagName(s)[0]; z.set = function(o) {
+    z.set.
+_.push(o)
+}; z._ = []; z.set._ = []; $.async = !0; $.setAttribute("charset", "utf-8");
+        $.src = "https://v2.zopim.com/?5sfvQ9HSCzv0gcvTfHTC0o3zfWm87Bom"; z.t = +new Date; $.
+type = "text/javascript"; e.parentNode.insertBefore($, e)
+    })(document, "script");
+</script>
+<!--End of Zendesk Chat Script-->
+
+<!-- Start of  Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=df36266c-bf57-4e8f-8b1b-6cae110ece24" type="text/javascript"> </script>
+<!-- End of  Zendesk Widget script -->
+
+<!-- Facebook Pixel Code -->
+<script type="text/javascript">
+    !function(f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function() {
+            n.callMethod ?
+n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    } (window, document, 'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1787878781386472');
+    fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1787878781386472&ev=PageView&noscript=1" /></noscript>
+<!-- End Facebook Pixel Code -->
+ 
+
+<script type="text/javascript">
+(function(m, a, i, l, b, z, j, s) {
+        if (m[z]) return;
+        m[z] = {
+            id: b,
+            ready: 0
+        };
+        z = a.createElement(i);
+        j = a.getElementsByTagName(i)[0];
+        z.async = 1;
+        z.src = l;
+        j.parentNode.insertBefore(z, j);
+    })(window, document, 'script', 'https://d3eq1zq78ux3cv.cloudfront.net/static/scripts/integration.min.js', '6520037b7058d778ef896ac1', 'MailbizIntegration');
+</script>
+
+
+<div id=resultado_ajax style="display:none"></div>
+<script type="text/javascript">
+    var google_tag_params = { ecomm_pagetype: 'category' };
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"6e568c623c77498c98acfbfe45388a3c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script src="../assets/bethyflores/js/whatsapp-sales.js"></script>
+</body>
+</html>

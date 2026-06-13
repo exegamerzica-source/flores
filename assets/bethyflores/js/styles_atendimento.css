@@ -1,0 +1,28 @@
+.campox{border:1px solid #CCC;font-size:12px;color:#666;height:22px;padding: 3px;font-family:'Arial';-webkit-appearance:none;-webkit-border-radius:0;outline:none;}
+.esq{float:left; padding-top:3px}
+.esq2{float:none; clear:both; padding-top:3px}
+.div100{width:150px}
+.div70{width:100px}
+.w_end{width: 98%}
+.wcamp1{width:98%}
+.w_complemento{width: 98%; max-width:110px}
+#bloco_left{float:none}
+#bloco_right{float:none; text-align:center}
+#div_bot{margin:13px 0; text-align:center}
+
+
+@media screen and (min-width:440px){
+}
+
+@media screen and (min-width:580px){
+.wcamp1{width:285px}
+.esq2{float:left; padding-right:0px; clear:none}
+#bloco_left{float:left}
+#bloco_right{float:left; margin-left:80px}
+#div_bot{text-align:right}
+
+}
+
+@media screen and (min-width:980px){
+}
+

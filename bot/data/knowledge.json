@@ -1,0 +1,104 @@
+{
+  "customInstructions": "Atendimento curto, consultivo e vendedor. Priorize produtos do catalogo e nunca envie links fora da saudacao. Use estes roteiros como base de tom. Pix nunca deve ser enviado automaticamente: quando chegar na etapa de pagamento, pause para intervencao manual no painel.",
+  "entries": [
+    {
+      "id": "entrega",
+      "title": "Entrega e frete",
+      "triggers": "entrega, frete, prazo, demora, chega, cep, regiao, região",
+      "answer": "Entregamos na região sim. O frete é gratuito e o prazo é de 30 a 60 minutinhos após a confirmação do pagamento 😊",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:00:46.719Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    },
+    {
+      "id": "pagamento",
+      "title": "Forma de pagamento",
+      "triggers": "pagamento, pix, cartao, boleto, dinheiro, chave pix",
+      "answer": "O pagamento é realizado via Pix antecipado, para garantir a reserva dos itens. Assim que finalizar, me envie o comprovante para anexar no sistema 🌷",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:00:46.720Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    },
+    {
+      "id": "pedido_dados_entrega",
+      "title": "Pedir dados do pedido",
+      "triggers": "dados, fechar pedido, prosseguir pedido, endereço completo, cartao, cartão, quem envia, quem recebe, entrega",
+      "answer": "Vou preparar tudo com muito carinho 🌷\n\nPara dar sequência, me informe:\n\n👤 Nome de quem envia\n🎁 Nome de quem vai receber\n📍 Endereço completo de entrega\n🗓️ Data e horário desejados\n💌 Mensagem para o cartão, se quiser",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:35:00.000Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    },
+    {
+      "id": "cep_disponibilidade",
+      "title": "Pedir CEP ou endereço",
+      "triggers": "cep, endereço aproximado, disponibilidade, bairro, cidade, entrega na minha região, entrega na minha regiao",
+      "answer": "Pode me informar seu CEP ou endereço aproximado, por favor? Assim verifico a disponibilidade na sua região 🌷",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:35:00.000Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    },
+    {
+      "id": "ddd_sao_paulo",
+      "title": "Explicar DDD de São Paulo",
+      "triggers": "ddd, sao paulo, são paulo, numero de sp, número de sp, telefone, de onde é, de onde e",
+      "answer": "Nosso atendimento é centralizado em São Paulo, por isso o número pode aparecer com DDD da capital 📞\n\nPode ficar tranquilo(a): entregamos na sua região com todo cuidado.",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:35:00.000Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    },
+    {
+      "id": "pix_manual",
+      "title": "Preparar Pix manual",
+      "triggers": "chave pix, qr code, copia e cola, pix copia e cola, pode mandar o pix, manda o pix",
+      "answer": "Posso te enviar o Pix copia e cola assim que fecharmos o produto e os dados da entrega 😊\n\nDepois do pagamento, é só me mandar o comprovante para confirmar.",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:35:00.000Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    },
+    {
+      "id": "comprovante",
+      "title": "Pedir comprovante",
+      "triggers": "comprovante, paguei, pagamento feito, pix feito, transferi, anexar comprovante",
+      "answer": "Perfeito 😊 Assim que finalizar o pagamento, pode me enviar o comprovante para eu anexar no sistema, por gentileza.",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:35:00.000Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    },
+    {
+      "id": "seguranca_confianca",
+      "title": "Segurança e confiança",
+      "triggers": "confiavel, confiança, confio, seguro, golpe, medo, rastreio, acompanhar pedido, garantia",
+      "answer": "Entendo sua preocupação! Nosso compromisso é entregar tudo com carinho e pontualidade. Após a confirmação, te atualizo por aqui sobre o andamento do pedido 😊",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:35:00.000Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    },
+    {
+      "id": "valor_total_frete",
+      "title": "Valor total com frete",
+      "triggers": "valor total, total fica, quanto fica, frete gratis, frete gratuito, com frete",
+      "answer": "O valor total fica o mesmo valor do produto escolhido, com frete gratuito. Após o pagamento, o prazo médio é de 30 a 60 minutinhos 😊",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:35:00.000Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    },
+    {
+      "id": "confirmacao_montagem",
+      "title": "Montagem após pagamento",
+      "triggers": "montagem, agendamento, reserva, reservar, separar produto, preparar pedido",
+      "answer": "Após a confirmação do pagamento, seguimos com a montagem e o agendamento da entrega com todo cuidado 🌷",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:35:00.000Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    },
+    {
+      "id": "saudacao_curta",
+      "title": "Saudação curta depois da primeira mensagem",
+      "triggers": "oi, oii, ola, olá, bom dia, boa tarde, boa noite",
+      "answer": "Oii, tudo bem? Como posso ajudar? 😊",
+      "enabled": true,
+      "createdAt": "2026-06-13T10:35:00.000Z",
+      "updatedAt": "2026-06-13T10:35:00.000Z"
+    }
+  ]
+}

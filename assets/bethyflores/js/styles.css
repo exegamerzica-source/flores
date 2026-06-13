@@ -1,0 +1,471 @@
+.nav-collapse ul{margin:0;padding:0;width:100%;display:block;list-style:none}.nav-collapse li{width:100%;display:block}
+.js .nav-collapse{clip:rect(0 0 0 0);max-height:0;position:absolute;display:block;overflow:hidden;zoom:1}
+.nav-collapse.opened{max-height:9999px}
+@media screen and (min-width:580px){
+    .js .nav-collapse{position:relative;max-height:none}
+    .nav-toggle{display:none}
+    .mobile{display:none}
+}
+
+body,div,h1,h2,h3,p,ol,ul,li,hr,form,label,th,td,article,img{margin:0;padding:0;border:0}
+@-webkit-viewport{width:device-width}
+@-moz-viewport{width:device-width}
+@-ms-viewport{width:device-width}
+@-o-viewport{width:device-width}
+@viewport{width:device-width}
+
+body{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%;color:#37302a;background:#fff;font:400 100%/1.4 'Source Sans Pro',sans-serif}
+a{text-decoration:none}
+.nav-collapse,.nav-collapse *{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+.nav-collapse,.nav-collapse ul{list-style:none;width:100%;float:left}
+.nav-collapse li{float:left;width:100%}
+.nav-collapse li a:hover{background:#0C0}
+.logoimg{ height:50px}
+.banner_home{width: 100%;height: auto}
+.produto_img{width: 100%;height: auto}
+.produto_img300{width: 100%;height: auto}
+.limpa{ clear:both}
+.limpax{ clear:both}
+.produtox{float:left; width:50%;box-sizing:border-box; text-align:center;  padding: 15px 3px}
+.produtox300{float:left; width:50%;box-sizing:border-box; text-align:center;  padding: 15px 3px}
+.box_texto_produto{height:30px}
+.nome_produto { font-size:12px;height:19px;overflow:hidden; text-overflow: ellipsis}
+.vitrine_preco{color:#326E85;font-family:'Source Sans Pro',Arial;font-size:16px; min-height:40px}
+
+.selo{position:absolute;top:0px;left:0px;z-index:3}
+.similar_preco{color:darkgreen;font-size:18px}
+.banner_ocasiao{background-size: cover; height:90px;  background-position: center; margin-top:92px}
+
+#blog{width:40px;height:40px;background:url(../images/sprite_home.png) -4px -271px}
+#instagram{width:40px;height:40px;background:url(../images/sprite_home.png) -45px -271px}
+#facebook{width:40px;height:40px;background:url(../images/sprite_home.png) -85px -271px}
+#twitter{width:40px;height:40px;background:url(../images/sprite_home.png) -125px -271px}
+#youtube{width:40px;height:40px;background:url(../images/sprite_home.png) -165px -271px}
+#logoB{width:213px;height:47px;background:url(../images/sprite_home.png) -0px -0px}
+#pagamentos{width:257px;height:65px;background:url(../images/sprite_home.png) -3px -396px}
+#hamburger{width:32;height:32;background:url(../images/sprite_home.png) -6px -471px}
+#basket{width:40;height:40;background:url(../images/sprite_home.png) -39px -463px}
+#res_search{width:40;height:40;background:url(../images/sprite_home.png) -77px -463px}
+#account{width:40;height:40;background:url(../images/sprite_home.png) -108px -463px}
+#comprar2{width:180;height:45;background:url(../images/sprite_home.png) -281px -7px}
+#cloudflaressl{width:127px;height:50px;background:url(../images/sprite_home.png) -382px -323px}
+
+#bagB{width:40px;height:40px;background:url(../images/sprite_home.png) -39px -463px}
+.wedo{float:left; width:280px; margin-right:2px; border:solid 0px #666; padding:20px}
+.saiba{border:solid 1px #000; padding:8px; text-align:center;cursor: pointer;display: inline-block}
+.saiba .100{ width:100px}
+.saiba .250{ width:250px}
+.saiba:hover{color:#FFF; background-color:#444}
+.saiba_pre{text-align:center; margin-top:25px}
+.comprar_bot{text-align:center; margin-top:5px}
+.comprar_div{border:solid 1px #5C7B00; padding:5px 15px; text-align:center;cursor: pointer;display: inline-block; background-color:#769C00; color:#FFF}
+.comprar_div:hover{color:#FFF; background-color:#5C7B00}
+
+.news{border:solid 1px #999; padding:2px 7px; text-align:center;cursor: pointer;display: inline-block; margin-left:3px; color:#555; margin-top:9px}
+.news .100{ width:100px}
+.news:hover{color:#FFF; background-color:#555}
+
+
+#quote_left{width:15px;height:15px;background:url(../images/sprite_home.png) -74px -104px}
+#quote_right{width:15px;height:15px;background:url(../images/sprite_home.png) -94px -104px}
+#profile{width:18px;height:18px;background:url(../images/sprite_home.png) -23px -140px}
+#headphone{width:18px;height:18px;background:url(../images/sprite_home.png) -2px -140px}
+#favoritos{width:18px;height:18px;background:url(../images/sprite_home.png) -43px -139px}
+#favoritosy{width:18px;height:18px;background:url(../images/sprite_home.png) -137px -141px}
+#messageh{width:18px;height:18px;background:url(../images/sprite_home.png) -65px -140px}
+#helph{width:18px;height:18px;background:url(../images/sprite_home.png) -84px -140px}
+#logouth{width:18px;height:18px;background:url(../images/sprite_home.png) -116px -140px}
+#formas1{width:212px;height:28px;background:url(../images/sprite_home.png) -3px -197px}
+#formas2{width:97px;height:31px;background:url(../images/sprite_home.png) -3px -164px}
+#rapidssl{width:90px;height:50px;background:url(../images/sprite_home.png) -163px -139px}
+.findh{width:24px;height:24px;background:url(../images/sprite_home.png) -226px -199px}
+#lock{width:18px;height:18px;background:url(../images/sprite_home.png) -99px -140px}
+#logosticky{width:139px;height:40px;background:url(../images/sprite_home.png) 0px -230px}
+#find_sticky{width:24px;height:24px;background:url(../images/sprite_home.png) -226px -199px}
+#sticky_cart{width:37px;height:38px;background:url(../images/sprite_home.png) -137px -229px}
+#favoritos_sticky{width:18px;height:18px;background:url(../images/sprite_home.png) -43px -139px}
+#favoritos_stickyy{width:18px;height:18px;background:url(../images/sprite_home.png) -137px -141px}
+#messageh_sticky{width:18px;height:18px;background:url(../images/sprite_home.png) -65px -140px}
+#headphone_sticky{width:18px;height:18px;background:url(../images/sprite_home.png) -2px -140px}
+#profile_sticky {width:18px;height:18px;background: url(../images/sprite_home.png) -23px -140px}
+#botao_verde{width:46px;height:34px;background:url(../images/sprite_home.png) -111px -94px}
+#envelopew{width:46px;height:34px;background:url(../images/sprite_home.png) -186px -234px}
+#flowermarket{width:147px;height:80px;background:url(../images/sprite_home.png) -316px -380px}
+
+.sticky_text{font-size:12px;color:#FFF;font-family:'Source Sans Pro',Arial}
+.sticky_text:hover{color:#ED1C40}
+.under{text-decoration:underline}
+#sticky_search{ text-align:center; border:0px solid #B17FB8;color:#999; font-size:12px; font-family: 'Source Sans Pro'; padding:5px; width:124px; height:20px;    -webkit-appearance: none;    outline: none; -webkit-border-radius: 0}
+#texto_buscaxx{ text-align:center; border:0px solid #B17FB8;color:#999; font-size:12px;}
+.campo_busca{color:#333;font-size:12px;font-family:Arial;padding:5px;width:154px;-webkit-appearance:none;outline:none;border:solid 0px #FFF}
+.campo_busca:hover{background-color:#F6F9F2}
+.campo_busca:focus{background-color:#F6F9F2;border-color:#C00}
+
+.styled-select {overflow: hidden; border: 0px solid #ccc}
+.styled-select select {background: transparent;border: none;font-size: 14px;height: 25px;padding: 3px;-webkit-appearance: none}
+.styled-select.slate select {font-size: 14px; width: 165px; color:#666}
+.styled-select.slate {background: url(../images/sprite_home.png) no-repeat -344px -229px; width: 140px; background-color:#FFF}
+.styled-select.slate2 {background: url(../images/sprite_home.png) no-repeat -30px -620px; width: 320px; background-color:#FFF}
+.styled-select.slate3 {background: url(../images/sprite_home.png) no-repeat -185px -616px; width: 130px; background-color:#FFF}
+.link_faixa{color:#777;font-size:16px}
+.link_faixa:hover{text-decoration:underline}
+.faixa{font-size:24px}
+.ose{ font-size:10px; color:#999; text-decoration:none}
+.fav{position:absolute;bottom:0px;right:0px;z-index:3; display:none}
+.favy{position:absolute;bottom:0px;right:0px;z-index:3}
+
+.div_bannerzinho{float:none}
+
+
+
+.desconto { font-size:14px; color:Fuchsia; font-weight:normal;text-decoration: line-through}
+.footer_cont{width:100%;float:none}
+.footer_cont0{width:100%; margin-bottom:5px; float:none}
+.nacho_cont{width:100%;float:none; margin-bottom:1px}
+.clear{ clear:both}
+.footer_wrapper{clear:both;padding:0px;  margin-top:10px} 
+.footer2{padding: 10px 20px; background-color: #769C00;box-sizing:border-box; margin-bottom:1px; color: #FFF; cursor: pointer; font-size:14px; font-family:'Source Sans Pro'; text-transform:uppercase}
+.footer2:hover{background-color:#769C00}
+.footer3{background-color: #DEDEDE;   display:none;box-sizing:border-box; font-family: 'Source Sans Pro',Arial; font-size:14px; cursor: pointer}
+.footer3 a{color:#777; text-decoration:none}
+.footer3  ul{list-style:none;width:100%}
+.footer3  li{width:100%; border-bottom:solid 1px #FFF; padding:10px 20px;box-sizing:border-box}
+.footer3  li:hover {background-color: #BBB}
+.footer_cont0 .footer2{background-color: #769C00}
+.footer{padding:10px 0px 60px 0}
+
+#produto_wrapper{padding:10px}
+
+.corpo{padding:40px 3px 10px 3px; color:#555;font-family: 'Source Sans Pro',Arial; font-size:12pt}
+.titulo{color:#000;font-family: 'Source Sans Pro',Arial; font-size:20pt; text-align:center; margin-bottom:15px}
+.titulo_linha{background-color:#8EBE22; height:1px; margin:0 15px; display:none}
+
+#nachoxx3{display:none; margin-top:64px}
+.nacho3{background-color: #F7F9F2; display:none;box-sizing:border-box; font-family: 'Source Sans Pro',sans-serif; font-size:16px}
+.nacho3 a{color:#000; text-decoration:none}
+.nacho3  ul{list-style:none;width:100%}
+.nacho3  li{width:100%; border-bottom:solid 1px #FFF; padding:10px 20px;box-sizing:border-box; cursor: pointer}
+.nacho3  li:hover {background-color: #CCC}
+
+.nacho2{padding: 10px 20px; background-color: #769C00;box-sizing:border-box; color: #FFF; cursor: pointer}
+.nacho2:hover{background-color:#CCC}
+.headw{background-color: #769C00}
+
+#disclaimer{ padding:5px; margin:10px 0}
+#disclaimer1{ font-family:'Source Sans Pro',sans-serif; font-size:11px; float:none; color:#666; text-align:center}
+#disclaimer2{ font-family:'Source Sans Pro',sans-serif; font-size:11px; float:right; padding-top:15px; color:#666}
+#disclaimer3{ display:none}
+.flol{float:left}
+.flor{float:right}
+#conteudo {min-height:250px; padding-bottom:20px}
+.banner_touch{width:320px;height: auto}
+
+.box_vistos{border:solid 1px #FFF;width:106px;margin:8px 0px;padding:5px;float:left;cursor:pointer; text-align:center}
+.box_vistos:hover{border-color:#8EBE22}
+.similar_nome{font-family:'Source Sans Pro',Arial;font-size:11px;text-align:center; height:32px; overflow:hidden}
+.similares{cursor:pointer;width:100px;height:100px;}
+.colecao_home{margin-right:25px;padding-top:9px}
+.link_colecao{margin-left:20px;color:#000;font-size:20px; text-transform:uppercase}
+.link_colecao:hover{color:#999}
+
+.link_todos{font-size:12px;color:#555}
+.link_todos:hover{text-decoration:underline}
+
+.prettyPopin{display:none;overflow:hidden;position:absolute;z-index:11000;top:50%;left:50%;background:url(../images/black.gif) bottom left no-repeat;}
+.prettyPopin a#b_close{display:none;position:absolute;z-index:2;top:10px;right:10px;width:47px;height:43px;text-indent:-10000px;background:url(../images/fechar_pop.gif) bottom left no-repeat;}
+.prettyPopin a#iggy_close{display:none;position:absolute;z-index:2;bottom:10px;right:10px;width:47px;height:43px;background:url(../images/fechar_pop.gif) bottom left no-repeat;}
+.prettyPopin .prettyContent{position:relative;width:100%;height:100%;font-size:1.2em;background:url(../images/black.gif) bottom right no-repeat;}
+.prettyPopin .prettyContent .prettyContent-container{display:none;padding:0px 0px 0px 0px;}
+.prettyPopin .prettyContent .loader{position:absolute;top:50%;left:50%;margin:0px 0px 0px 0px;}
+#overlay{background:#000;position:absolute;top:0;left:0;z-index:10000;width:100%;}
+
+#headerxx{background-color:#000;z-index:10; position:fixed; top:0px; display:block;left:0px; right:0px}
+#bannerxx{margin-top:53px}
+.header_sticky{display:none}
+#header_sticky{display:none}
+#sticky_puto{display:none}
+
+.pop_close{position:absolute;top:5px;right:5px}
+.desk{display:none}
+#faixa_tele{display:none}
+#faixa_home {background-color:#769C00;color:#FFF; font-size:14px; padding: 10px 10px; margin-top:64px}
+
+#newsletter{background:#FFFFFF;padding:4px 0 0 0;border:solid 1px #CCC;}
+.newsletter99{padding:0 5px 0 5px;border:solid 1px #999;width:180px;height:25px;FONT-FAMILY:'Source Sans Pro',Arial;FONT-SIZE:14px;color:#999;-webkit-appearance:none;outline:none;-webkit-border-radius:0;}
+#newsletter_result{color: #FFF; font-size: 14px; display:inline-block}
+
+#env_social{float: none; clear:both; width:200px; left:50%; margin-left:-100px;position: relative}
+#env_cad{width:300px; left:50%; margin-left:-150px;position: relative}
+#right_hold{display:none}
+#left_hold{display:none}
+
+#env_text{margin-left:10px; color:#FFF; font-size:14px; font-weight:600}
+#env_socialxx{ clear:both}
+#env_faixa{background-color:#E5EDD5; padding: 3px 3px; height:66px; text-align:center }
+
+.titulo_colecao{font-family:'Source Sans Pro',Arial;color:#555; text-align:center; margin-top:15px}
+.ver_todos{color:#666}
+.ver_todos:hover{color:#3AA935}
+.left15{margin-left:25px}
+.banner_colecao{width:100%; height:auto}
+#banner_home123{display:none}
+#obs{padding-left:15px; padding-right:20px;  margin-bottom:20px; font-size:13px; color:#666; display:none}
+.paging{float:none}
+#cont_pedido{margin: 0px; font-family: 'Source Pro Sans',Arial; font-size: 14px; color: #666}
+
+
+#cont_comentario{width:150px;float:left}
+#block_comentarios{display: inline-block}
+#central_atendimento{padding-top:26px; padding-left:10px}
+.footbot{clear:both ; margin-left:10px; font-size:14px; color:#000; margin-top:10px}
+.footbot2{float:left;text-align:center; margin-left:25px; font-size:14px; color:#000}
+#fique{margin-top:10px; text-align:center}
+#receba{float:none; padding-top:0px; text-align:center; color:#000; font-size:14px}
+#receba2{float:none; margin-left:15px; padding-top:10px; text-align:center}
+.bannerzinho{margin-left:2px;width:320px;height:182px;border:0px;display:none; float:none}
+#logodesk{float:left; padding:0 5px; margin-right:2px}
+#faixa_preco{float:none;  border-left: solid 1px #FFF; background-color:#F4F8EF}
+.bread{color:#326E85;font-size:12px;font-family:'Source Sans Pro',Arial}
+.left15{margin-left:25px}
+.bread_item{display:inline;margin:0 7px;font-size:14px;color:#8EBE22}
+#menux999{ background-color:#FFF; border-bottom:solid 1px #6E9910; padding-bottom:10px; text-align:center}
+.menu3{font-size:12px;color:#FFF;font-family:'Source Sans Pro',Arial}
+.menu3:hover{ text-decoration:underline}
+.link_in{font-size:12px;color:#000;font-family:'Source Sans Pro',Arial}
+.link_in:hover{ text-decoration:underline}
+#info_produto{ margin-top:15px}
+#escolha{font-size:20px; padding:5px 30px; color:#444; float:none}
+#escolha_pre{margin-top:10px; padding:5px}
+.escolha_preco{float:left; cursor: pointer; width:175px}
+#encontre_texto{font-size:20px; padding:10px 10px 10px 30px; color:#444; float:left}
+#encontre_combos{float:left}
+#encontre_cep{float:left;padding:15px 10px 15px 10px; color:#507400; background:url(../images/sprite_home.png) -297px -262px}
+
+
+@media screen and (min-width:480px){
+#faixa_tele{display: inline}
+.footbot{float:left; clear:none; margin-top:0px}
+}
+
+@media screen and (min-width:580px){
+    .nav-collapse li{width:20%;*width:19.9%;_width:19%}
+    
+    }
+.nav-collapse a{color:#fff;text-decoration:none;width:100%;background:#f4421a;border-bottom:1px solid white;padding:.7em 1em;float:left}
+@media screen and (min-width:580px){.nav-collapse a{margin:0;padding:1em;float:left;text-align:center;border-bottom:0;border-right:1px solid white}}
+.nav-collapse ul ul a{background:#ca3716;padding-left:2em}
+
+
+
+@media screen and (min-width:510px){
+.nav-collapse ul ul a{display:none}
+#info_produto{ margin-top:0px}
+.link_faixa{font-size:12px}
+.faixa{font-size:16px}
+.escolha_preco{width:175px;}
+#escolha{font-size:20px; padding:10px 10px 10px 30px}
+
+#headerxx{position:absolute; position:inherit}
+#bannerxx{margin-top:0px}
+.header_sticky{display:none;height:55px;background-color:#FFF;z-index:1000;border-bottom:solid 1px #000}
+#sticky_puto{display:block}            
+.sticky_head_sep{float:left;width:1px;height:37px;background-color:#999;margin:5px 15px}
+.sticky_head_vendas{font-size:12px}
+.sticky_head_tel{font-size:28px;margin:-10px 0px;font-weight:700;color:#ED1C40}
+.search{color:#888; font-size:11px; padding:4px; border: solid 1px #FFF; width:184px}
+#env_faixa{height:50px}
+
+.logoimg{ height:90px}
+.banner_home{width: 100%;height: auto}
+
+.produtox{border: solid 1px #FFF; width:25%}
+.produtox:hover{border: solid 1px #769C00}
+.produtox300{border: solid 1px #FFF; width:25%; cursor:pointer}
+.produtox300:hover{border: solid 1px #769C00}
+.banner_ocasiao{background-size: cover; height:250px; background-position: center; margin-top:15px}
+
+.limpa{clear:both}
+#nacho{display:none}
+.footer_cont{float:left; width:30%; padding-left:10px; border-left:0px; margin-bottom:15px }
+.footer_cont0{float: none; width:100%; padding-bottom:20px}
+.footer_wrapper{clear:both;padding:10px 10px  20px 25px;  margin-top:25px} 
+.footer2{padding: 0px; background-color: Transparent; color: #000; text-transform:none; font-size:18px}
+.footer2:hover{background-color: Transparent}
+.footer_cont0 .footer2{background-color: Transparent}
+
+.footer3{background-color: Transparent; display:block;box-sizing:border-box; font-size:14px}
+.footer3  li{width:100%; padding:0px; border-bottom:solid 0px #FFF}
+.footer3  li:hover {background-color:  Transparent; text-decoration:underline}
+
+.footerblue{ background-color:#DDEBF2; padding:1px 0px}
+.footer{ background-color:#F5F3F5; padding:10px 0px}
+
+#nachoxx3{clear:both;background-color:#769C00; display:block} 
+.nacho_cont{float:left; padding-left:3px; border-left:0px; width:auto; font-size:11px; background-color:#769C00}
+.nacho2{padding: 10px 5px; box-sizing:border-box; color: #FFF; border-right: solid 1px transparent; border-left: solid 1px transparent; background-color:#769C00}
+.nacho2:hover{background-color: #5C7B00; border-right: solid 1px #FFF; border-left: solid 1px #FFF}
+
+.nacho3{position:absolute;top:40px;background-color:#F7F9F2; display:block;box-sizing:border-box; font-family: sans-serif; font-size:14px; padding:8px; display:none; padding-right:50px; border:solid 1px #769C00}
+.nacho3 li{width:100%; padding-bottom:5px;}
+.nacho3 li:hover {text-decoration:underline;background-color: transparent; color:#000}
+.limpax{ clear:none}
+
+.plus{display:none}
+#conteudo {min-height:300px}
+
+#disclaimer3{ display:block}
+
+.hmenu li a:hover{background-color:#000}
+#pop33{ display:none}
+#menu8{display:none}
+
+.desk{display:block}
+.div_saudacao{margin-bottom:7px}
+.saudacao{font-size:16px;color:#ED1C40}
+.head_pedidos{font-size:14px;text-decoration:underline;color:#ED1C40}
+.head_cesta{color:#ED1C40;font-weight:600;font-size:12px; display:none}
+.head_saudacao{font-size:16px;color:#326E85}
+.televenda{float:left;  font-family:'Source Sans Pro'; color:#555; font-size:13px; padding-top:20px}
+.head_sep{float:left;width:1px;height:77px;background-color:#999;margin:0 10px}
+.head_tel{font-size:36px;margin:-10px 2px;font-weight:700;color:#ED1C40}
+.head_vendas{font-size:12px}
+#televendas{display:none}
+#sep1{display:none}
+#faixa_home { display:none}
+#env_social{float:right;margin-right:10px; clear:none; position:inherit}
+#right_hold{display:block}
+#left_hold{display:block}
+#env_text{float:left; margin-left:10px; color:#FFF; font-size:14px; font-weight:600; padding-top:10px; width:150px}
+#env_socialxx{ clear:none}
+#env_cad{width: auto; left: auto; margin-left:10px;position:  inherit}
+#newsletter_result{width:auto}
+.link_colecao{font-size:20pt}
+.colecao_home{padding-top:17px}
+
+#banner_home123{display:block}
+#obs{display:block}
+.titulo_colecao{border-bottom:solid 1px #666;font-size:20px;font-family:'Source Sans Pro',Arial;color:#555;margin-left:15px; text-align:left}
+.paging{float:left}
+.wpag{width:280px}
+.titulo_linha{display:block}
+#cont_pedido{margin: 26px}
+#logoB{width:250px;height:67px;background:url(../images/sprite_home.png) -282px -353px}
+
+#header{padding:10px 0}
+#header_bfb{padding:10px 0; background:#000}
+#cont_comentario{width:400px}
+#central_atendimento{padding-left:40px}
+.footbot{margin-left:120px}
+.footbot2{float:left;margin-left:120px; clear:none}
+#fique{text-align:left}
+#receba{float:left;margin-left:40px; padding-top:15px}
+#receba2{float:left}
+.bannerzinho{width:33%;height:auto;float:left; display:block}
+.div_bannerzinho{float:left}
+#resp_head333{clear:both}
+.hfale{display:none}
+#faixa_preco{float:left}
+#menux999{margin-left:-123px;width:220px}
+#menux10{margin-left:-152px;width:250px; text-align:center}
+
+.nav-toggle{
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    width:70px;
+    height:55px;float:right;
+    text-indent:-9999px;
+    overflow:hidden;
+}
+}
+@media screen and (-webkit-min-device-pixel-ratio:1.3),screen and (min--moz-device-pixel-ratio:1.3),screen and (-o-min-device-pixel-ratio:2 / 1),screen and (min-device-pixel-ratio:1.3),screen and (min-resolution:192dpi),screen and (min-resolution:2dppx){
+    .nav-toggle{
+    -webkit-background-size:100px 100px;
+    -moz-background-size:100px 100px;
+    -o-background-size:100px 100px;
+    background-size:100px 100px;
+     display:none
+    }
+}
+.nav-collapse.disable-pointer-events {  pointer-events: none !important;}
+
+.logoimg{ height:90px}
+.limpa{ clear:both}
+
+@media screen and (min-width:768px){
+    #televendas{display:block}
+    #sep1{display:block}
+    #escolha{font-size:30px}
+    #encontre_texto{font-size:30px}
+    #encontre_cep{padding:15px 15px 15px 13px}
+    #escolha_pre{margin-top:20px; padding:5px; border:solid 1px #EEE}
+    #logoB{width:349px;height:98px;background:url(../images/sprite_home.png) -5px -510px}
+}
+
+@media screen and (min-width:980px){
+    #escolha_pre2{margin:0px auto;width: 980px}
+    #header{ margin:  0px auto;	width: 980px}
+    #header_bfb{ margin:  0px auto;	width: 980px}
+    #footer1{ margin:  0px auto; width: 980px}
+    #bannerxxxx{ margin:  0px auto; width: 980px}
+    .w980{ margin:  0px auto; width: 980px}
+    #produto_wrapper{ margin:  0px auto; width: 960px; padding:10px}
+    .hmenu li a:hover{background-color:#B4153B}
+    #pop33{ display:block}
+    #menu8{width:84px; display:block}
+    .footer2:hover{background-color: Transparent}
+    
+    #nachoxx3{ margin:0px auto; width: 980px;clear:both; background-color:#769C00; display:block; padding-left:40px} 
+    .nacho_cont{width:auto; background-color:#769C00}
+    .nacho2{height:40px; padding:10px 12px; background-color: Transparent; font-size:14px; border-right: solid 1px transparent; border-left: solid 1px transparent;font-family: 'Source Sans Pro',Arial}
+    .nacho2:hover{background-color: #5C7B00; border-right: solid 1px #FFF; border-left: solid 1px #FFF}
+    .nacho3{position:absolute; display:none; min-width:160px}
+    .footer_wrapper{clear:both;padding:0px;  margin-top:10px} 
+    .footer_cont0{float: left; width:130px; margin-right:30px}
+    .footer_cont{float:left; width: auto; padding:0px 30px; border-left: solid 1px #C4C4C4; margin-bottom:15px; min-height:130px }
+    .nacho_cont0{float: left}
+    .footer{padding:30px 0px}
+    
+    #conteudo {	margin:  0px auto;	width: 980px; min-height:350px}
+    .corpo{padding:25px 6px; color:#555;font-family: 'Source Sans Pro',Arial; font-size:14px}
+    .tituloxxx{color:#C66;font-family: 'Source Sans Pro',Arial; font-size:20pt; margin-left:23px; margin-top:10px}
+    .titulo{font-size:30px; margin-top:20px}
+    .produtox{padding:15px 5px}
+    .produtox300{width:320px; float:left}
+    
+.televenda{font-size:16px; padding-top:0px}
+.head_sep{margin:0 20px}
+.head_tel{font-size:46px}
+.head_vendas{font-size:15px}
+.head_cesta{color:#ED1C40;font-weight:600;font-size:14px; display: block}
+.search{width:224px}
+
+#env_social{margin-right:50px}
+#env_cad{margin-left:50px}
+
+#newsletter{width:280px}
+.newsletter99{width:220px}
+#env_text{width:220px}
+
+.produto_img{width: 230px;height: 230px}
+.produto_img300{width: 300px;height: 300px}
+.banner_colecao{width:980px; height:auto}
+
+#bannerzinho{margin-bottom:10px;padding-left:2px}
+.bannerzinho{margin-left:2px;margin-top:13px;margin-right:0;width:320px;height:182px;border:0px;}
+#resp_head{float:left;clear:none}
+#central_atendimento{padding-left:110px}
+.hfale{display:block}
+#logodesk{margin-right:20px}
+#encontre_texto{display:block}
+.sticky_head_sep{margin:5px 40px}
+#escolha{float:left}
+
+
+
+
+}
+
+ 
