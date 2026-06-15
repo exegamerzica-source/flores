@@ -32,7 +32,7 @@
     "cnpj": "54.476.973/0001-20",
     "address": "Pc. Dr. João Batista Vasques, nº1 - São Paulo - SP",
     "deliveryEstimate": "30-60 minutos",
-    "sameDayCutoff": "18:00",
+    "sameDayCutoff": "00:00",
     "deliveryAreas": "São Paulo e região",
     "substitutionPolicy": "Na falta de alguma flor ou embalagem, substituímos por item equivalente ou de maior valor."
   },
