@@ -104,4 +104,5 @@ a.feed {display:block;width: 46px;height: 34px;background: url("assets/bethyflor
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"6e568c623c77498c98acfbfe45388a3c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 
+<script src="./assets/bethyflores/js/site-customizer.js"></script>
 <script src="assets/bethyflores/js/whatsapp-sales.js"></script>

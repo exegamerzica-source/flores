@@ -5,6 +5,17 @@
     return (value || '').replace(/\s+/g, ' ').trim();
   }
 
+  function siteConfig() {
+    return window.BETHY_SITE_CONFIG || {};
+  }
+
+  function configuredPhone() {
+    var config = siteConfig();
+    var phone = config.contact && config.contact.whatsappPhone;
+    phone = String(phone || WHATSAPP_PHONE).replace(/\D/g, '');
+    return phone.length === 11 ? '55' + phone : phone;
+  }
+
   function nodeText(node) {
     if (!node) {
       return '';
@@ -38,11 +49,12 @@
   }
 
   function selectedQuantity() {
+    var config = siteConfig();
     var quantityNode = document.querySelector(
       'input[name="quantidade"], input[name="qtd"], #quantidade, #qtd, .quantidade input'
     );
     var value = quantityNode && cleanText(quantityNode.value);
-    return value && /^\d+$/.test(value) ? value : '1';
+    return value && /^\d+$/.test(value) ? value : String(config.sales && config.sales.quantityDefault || '1');
   }
 
   function cardInfo(trigger) {
@@ -93,16 +105,17 @@
   }
 
   function whatsappUrl(info) {
+    var config = siteConfig();
     var message = [
       'Ola! Quero comprar pelo WhatsApp:',
       'Produto: ' + info.title,
       'Quantidade: ' + (info.quantity || '1'),
       'Valor: ' + (info.price || 'consultar'),
-      'Entrega desejada: ainda vou escolher',
+      'Entrega desejada: ' + (config.sales && config.sales.deliveryText || 'ainda vou escolher'),
       'Link: ' + info.url
     ].join('\n');
 
-    return 'https://api.whatsapp.com/send?phone=' + WHATSAPP_PHONE + '&text=' + encodeURIComponent(message);
+    return 'https://api.whatsapp.com/send?phone=' + configuredPhone() + '&text=' + encodeURIComponent(message);
   }
 
   function injectStyles() {
@@ -208,10 +221,26 @@
     link.id = 'bethy_whatsapp_buy';
     link.href = whatsappUrl(productInfo(link));
     link.setAttribute('data-whatsapp-buy', '1');
-    link.textContent = 'Comprar pelo WhatsApp';
+    link.textContent =
+      siteConfig().sales && siteConfig().sales.whatsappButtonLabel
+        ? siteConfig().sales.whatsappButtonLabel
+        : 'Comprar pelo WhatsApp';
 
     deliveryButton.parentNode.insertBefore(link, deliveryButton);
   }
+
+  document.addEventListener('bethy:config-ready', function () {
+    var link = document.getElementById('bethy_whatsapp_buy');
+    if (!link) {
+      return;
+    }
+
+    link.href = whatsappUrl(productInfo(link));
+    link.textContent =
+      siteConfig().sales && siteConfig().sales.whatsappButtonLabel
+        ? siteConfig().sales.whatsappButtonLabel
+        : 'Comprar pelo WhatsApp';
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectStyles);

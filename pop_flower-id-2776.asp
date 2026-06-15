@@ -14,4 +14,5 @@
 
 
 
+<script src="./assets/bethyflores/js/site-customizer.js"></script>
 <script src="assets/bethyflores/js/whatsapp-sales.js"></script>

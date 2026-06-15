@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel Admin | Floricultura</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <span class="eyebrow">Painel Admin</span>
+        <h1>Personalização da Floricultura</h1>
+        <p>Atualize marca, WhatsApp, pixels, aviso promocional e dados úteis sem mexer nas páginas do site.</p>
+      </div>
+      <div class="status" id="status">Carregando...</div>
+    </header>
+
+    <section class="panel auth-panel">
+      <div>
+        <h2>Acesso</h2>
+        <p>Use o token definido em <code>ADMIN_TOKEN</code> no Vercel para salvar online.</p>
+      </div>
+      <label>
+        Token admin
+        <input id="adminToken" type="password" autocomplete="current-password" placeholder="Cole o token de admin">
+      </label>
+    </section>
+
+    <form id="configForm" class="grid">
+      <section class="panel">
+        <h2>Marca</h2>
+        <label>Nome do site <input name="branding.siteName" placeholder="Nome da loja"></label>
+        <label>Complemento do título <input name="branding.titleSuffix" placeholder="Floricultura Online"></label>
+        <label>Descrição SEO <textarea name="branding.description" rows="3"></textarea></label>
+        <label>URL da logo <input name="branding.logoUrl" placeholder="https://.../logo.png"></label>
+        <label>Enviar logo pequena <input id="logoFile" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"></label>
+        <label>URL do favicon <input name="branding.faviconUrl" placeholder="https://.../favicon.png"></label>
+        <label>Cor principal <input name="branding.primaryColor" type="color"></label>
+      </section>
+
+      <section class="panel">
+        <h2>WhatsApp e Venda</h2>
+        <label>Telefone WhatsApp <input name="contact.whatsappPhone" placeholder="11999999999"></label>
+        <label>Telefone exibido <input name="contact.whatsappDisplay" placeholder="(11) 99999-9999"></label>
+        <label>Texto do botão <input name="sales.whatsappButtonLabel" placeholder="Comprar pelo WhatsApp"></label>
+        <label>Texto de pagamento <input name="sales.paymentLabel" placeholder="Pagamento via PIX"></label>
+        <label>Entrega na mensagem <input name="sales.deliveryText" placeholder="ainda vou escolher"></label>
+        <label>Quantidade padrão <input name="sales.quantityDefault" type="number" min="1" step="1"></label>
+        <label class="check"><input name="sales.showFloatingWhatsapp" type="checkbox"> Mostrar botão flutuante do WhatsApp</label>
+      </section>
+
+      <section class="panel">
+        <h2>Pixels e Anúncios</h2>
+        <label>Facebook Pixel ID <input name="tracking.facebookPixelId" placeholder="123456789"></label>
+        <label>Google Tag Manager <input name="tracking.googleTagManagerId" placeholder="GTM-XXXXXXX"></label>
+        <label>Google Analytics GA4 <input name="tracking.googleAnalyticsId" placeholder="G-XXXXXXXXXX"></label>
+        <label>Google Ads ID <input name="tracking.googleAdsId" placeholder="AW-XXXXXXXXX"></label>
+      </section>
+
+      <section class="panel">
+        <h2>Dados da Loja</h2>
+        <label>Razão social <input name="store.legalName"></label>
+        <label>CNPJ <input name="store.cnpj"></label>
+        <label>Endereço <textarea name="store.address" rows="2"></textarea></label>
+        <label>Email <input name="contact.email" type="email"></label>
+        <label>Instagram <input name="contact.instagramUrl" placeholder="https://instagram.com/..."></label>
+        <label>Facebook <input name="contact.facebookUrl" placeholder="https://facebook.com/..."></label>
+      </section>
+
+      <section class="panel">
+        <h2>Floricultura</h2>
+        <label>Prazo exibido de entrega <input name="store.deliveryEstimate" placeholder="30-60 minutos"></label>
+        <label>Horário limite mesmo dia <input name="store.sameDayCutoff" placeholder="18:00"></label>
+        <label>Áreas atendidas <textarea name="store.deliveryAreas" rows="2"></textarea></label>
+        <label>Política de substituição <textarea name="store.substitutionPolicy" rows="3"></textarea></label>
+      </section>
+
+      <section class="panel">
+        <h2>Aviso no topo</h2>
+        <label class="check"><input name="announcement.enabled" type="checkbox"> Mostrar aviso promocional</label>
+        <label>Texto do aviso <input name="announcement.text" placeholder="Entregas rápidas hoje"></label>
+        <label>Link do aviso <input name="announcement.link" placeholder="/promocao"></label>
+        <div class="preview" id="previewBox"></div>
+      </section>
+    </form>
+
+    <section class="actions">
+      <button id="saveBtn" type="button">Salvar configurações</button>
+      <button id="reloadBtn" type="button" class="secondary">Recarregar</button>
+      <button id="exportBtn" type="button" class="secondary">Baixar JSON</button>
+      <a href="/" class="secondary link">Ver site</a>
+    </section>
+  </main>
+
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

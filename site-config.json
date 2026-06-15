@@ -1,0 +1,44 @@
+{
+  "branding": {
+    "siteName": "Bethy Flores",
+    "titleSuffix": "Floricultura Online de São Paulo",
+    "description": "Compre flores, buquês, arranjos, kits e muito mais. Pagamento via Pix e atendimento pelo WhatsApp.",
+    "logoUrl": "",
+    "faviconUrl": "",
+    "primaryColor": "#88a800"
+  },
+  "contact": {
+    "whatsappPhone": "5511962158598",
+    "whatsappDisplay": "(11) 96215-8598",
+    "email": "contato@bethyflores.com.br",
+    "instagramUrl": "https://www.instagram.com/bethyfloresoficial",
+    "facebookUrl": "https://www.facebook.com/bethyfloresoficial/"
+  },
+  "sales": {
+    "whatsappButtonLabel": "Comprar pelo WhatsApp",
+    "paymentLabel": "Pagamento via PIX",
+    "deliveryText": "ainda vou escolher",
+    "quantityDefault": 1,
+    "showFloatingWhatsapp": true
+  },
+  "tracking": {
+    "facebookPixelId": "1787878781386472",
+    "googleTagManagerId": "",
+    "googleAnalyticsId": "",
+    "googleAdsId": ""
+  },
+  "store": {
+    "legalName": "Bethy Flores Ltda ME",
+    "cnpj": "54.476.973/0001-20",
+    "address": "Pc. Dr. João Batista Vasques, nº1 - São Paulo - SP",
+    "deliveryEstimate": "30-60 minutos",
+    "sameDayCutoff": "18:00",
+    "deliveryAreas": "São Paulo e região",
+    "substitutionPolicy": "Na falta de alguma flor ou embalagem, substituímos por item equivalente ou de maior valor."
+  },
+  "announcement": {
+    "enabled": false,
+    "text": "Entregas rápidas para flores e presentes.",
+    "link": ""
+  }
+}
