@@ -17,7 +17,7 @@
   "sales": {
     "whatsappButtonLabel": "Comprar pelo WhatsApp",
     "paymentLabel": "Pagamento via PIX",
-    "deliveryText": "ainda vou escolher",
+    "deliveryText": "",
     "quantityDefault": 1,
     "showFloatingWhatsapp": true
   },
