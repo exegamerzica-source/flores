@@ -1,23 +1,24 @@
 {
   "branding": {
-    "siteName": "Praça Das FLores",
+    "siteName": "Praça Das Flores",
     "titleSuffix": "Floricultura Online",
-    "description": "Compre flores, buquês, arranjos, kits e muito mais. Pagamento via Pix e atendimento pelo WhatsApp.",
-    "logoUrl": "",
+    "description": "Compre flores, buquês, arranjos, kits e presentes especiais. Pagamento via Pix e atendimento pelo WhatsApp.",
+    "logoUrl": "/assets/bethyflores/images/praca-das-flores-logo.png",
     "faviconUrl": "",
-    "primaryColor": "#88a800"
+    "primaryColor": "#9b1f3a",
+    "bannerUrl": "/assets/bethyflores/images/praca-das-flores-banner.png"
   },
   "contact": {
-    "whatsappPhone": "1635130795",
-    "whatsappDisplay": "(16) 3513 - 0795",
-    "email": "",
-    "instagramUrl": "instagram.com",
-    "facebookUrl": "instagram.com"
+    "whatsappPhone": "5511962158598",
+    "whatsappDisplay": "(11) 96215-8598",
+    "email": "contato@pracadasflores.com.br",
+    "instagramUrl": "",
+    "facebookUrl": ""
   },
   "sales": {
     "whatsappButtonLabel": "Comprar pelo WhatsApp",
     "paymentLabel": "Pagamento via PIX",
-    "deliveryText": "",
+    "deliveryText": "ainda vou escolher",
     "quantityDefault": 1,
     "showFloatingWhatsapp": true
   },
@@ -28,7 +29,7 @@
     "googleAdsId": ""
   },
   "store": {
-    "legalName": "Bethy Flores Ltda ME",
+    "legalName": "Praça Das Flores",
     "cnpj": "54.476.973/0001-20",
     "address": "Pc. Dr. João Batista Vasques, nº1 - São Paulo - SP",
     "deliveryEstimate": "30-60 minutos",
@@ -38,7 +39,7 @@
   },
   "announcement": {
     "enabled": false,
-    "text": "Entregas rápidas para flores e presentes.",
+    "text": "Flores frescas e presentes especiais com entrega rápida.",
     "link": ""
   }
 }

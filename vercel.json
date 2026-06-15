@@ -19,5 +19,47 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/Queridinhos-da-Bethy",
+      "destination": "/queridinhos-praca-das-flores",
+      "permanent": true
+    },
+    {
+      "source": "/Queridinhos-da-Bethy-order-1-pagina-1-tipo-52",
+      "destination": "/queridinhos-praca-das-flores-order-1-pagina-1-tipo-52",
+      "permanent": true
+    },
+    {
+      "source": "/Queridinhos-da-Bethy-order-1-pagina-2-tipo-52",
+      "destination": "/queridinhos-praca-das-flores-order-1-pagina-2-tipo-52",
+      "permanent": true
+    },
+    {
+      "source": "/Queridinhos-da-Bethy-tipo-52-todos-0-order",
+      "destination": "/queridinhos-praca-das-flores-tipo-52-todos-0-order",
+      "permanent": true
+    },
+    {
+      "source": "/sugestoes-bethy-flores",
+      "destination": "/sugestoes-praca-das-flores",
+      "permanent": true
+    },
+    {
+      "source": "/sugestoes-bethy-flores-order-1-pagina-1-tipo-68",
+      "destination": "/sugestoes-praca-das-flores-order-1-pagina-1-tipo-68",
+      "permanent": true
+    },
+    {
+      "source": "/sugestoes-bethy-flores-order-1-pagina-2-tipo-68",
+      "destination": "/sugestoes-praca-das-flores-order-1-pagina-2-tipo-68",
+      "permanent": true
+    },
+    {
+      "source": "/sugestoes-bethy-flores-tipo-68-todos-0-order",
+      "destination": "/sugestoes-praca-das-flores-tipo-68-todos-0-order",
+      "permanent": true
+    }
   ]
 }

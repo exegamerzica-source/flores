@@ -65,7 +65,7 @@
 <div style="margin-left:40px; font-size:15px;color:#FFF">Whatsapp: <a href="whatsapp://send?text=&phone=5511962158598" style=" font-size:15px;color:#FFF">(11) 96215-8598</a></div>
     </div>
     
-    <div id=logodesk><a href="/"><img id=logoB style="padding-bottom:0px" src="assets/bethyflores/images/black.png" width=349 height=98 alt="Bethy Flores" title="Bethy Flores - 0" border=0></A></div>
+    <div id=logodesk><a href="/"><img id=logoB style="padding-bottom:0px" src="assets/bethyflores/images/praca-das-flores-logo.png" width=349 height=98 alt="Praça Das Flores" title="Praça Das Flores - 0" border=0></A></div>
 
     <div style="float:right;margin-top:20px;margin-right:50px" class=desk>
        <div style="margin-left:10px">
@@ -116,7 +116,7 @@
 <div id=sticky_puto>
 <div class="headerxx header_sticky"  style="background-color:#000">
     <div  class=w980>
-        <div style="float:left;width:138px; padding:5px 10px 3px 15px"><A HREF="/"><img id=logosticky src="assets/bethyflores/images/black.png" width=269 height=38 alt="Bethy Flores" /></A></div>
+        <div style="float:left;width:138px; padding:5px 10px 3px 15px"><A HREF="/"><img id=logosticky src="assets/bethyflores/images/praca-das-flores-logo.png" width=269 height=38 alt="Praça Das Flores" /></A></div>
 
         <div style="border: solid 1px #999; margin-top:10px; float:left; background-color:#FFF; border-radius:20px; padding:0 12px">
             <div style="float:left"><input id="sticky_search" type="text" placeholder="encontre seu produto" maxlength=30 onkeypress="{if (event.keyCode==13) envia_busca('sticky_search')}" /></div>
@@ -289,13 +289,6 @@
 
 <div class=footer>
 <div id=footer1 class=footer_wrapper>
-    <div  class=footer_cont0>
-        <div class=footer2>Fique Conectado</div>
-        <div id=fique>
-        <a href="https://www.facebook.com/bethyfloresoficial/" class="footer_link" target=_blank><img id="facebook" src="assets/bethyflores/images/black.png" width=40 height=40 alt='facebook' /></a>
-        <a href="https://www.instagram.com/bethyfloresoficial" class="footer_link" target=_blank><img id="instagram" src="assets/bethyflores/images/black.png" width=40 height=40 alt='instagram'></a>
-        </div>
-        </div>
     <div class=footer_cont>
         <div class=footer2 onclick="open_foot(1)">
         <div class=flol>WhatsApp</div><div id=plusx1 class="flor plus">+</div><div class=clear></div>
@@ -374,8 +367,8 @@
 
     <div id=disclaimer>
     <div id=disclaimer1>
-    Bethy Flores Ltda ME | CNPJ:  54.476.973/0001-20 | Pc. Dr. João Batista Vasques, nº1 - São Paulo - SP
-    <div id=disclaimer3><a href="mailto:contato@bethyflores.com.br">contato@bethyflores.com.br</a></div>
+    Praça Das Flores Ltda ME | CNPJ:  54.476.973/0001-20 | Pc. Dr. João Batista Vasques, nº1 - São Paulo - SP
+    <div id=disclaimer3><a href="mailto:contato@pracadasflores.com.br">contato@pracadasflores.com.br</a></div>
     </div>
     <div id=disclaimer2 style="display:none">Desenvolvimento: <A href="http://www.arquimidia.com/" target=_blank style="text-decoration:none; color:#444; font-size:11px" title="">Flower Market</A></div>
     <div class=clear></div>

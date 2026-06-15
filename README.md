@@ -1,6 +1,6 @@
-# Bethy Flores
+# Praça Das Flores
 
-Copia estática do site público da Bethy Flores, preservando visual, imagens, fontes, banners, produtos e links públicos do site original.
+Copia estática do site público da Praça Das Flores, preservando visual, imagens, fontes, banners, produtos e links públicos do site original.
 
 ## WhatsApp
 
@@ -41,7 +41,7 @@ Ele permite personalizar:
 
 - nome do site, descricao, cor principal, favicon e logo;
 - WhatsApp, texto do botao, texto de pagamento e mensagem de entrega;
-- Facebook Pixel, Google Tag Manager, Google Analytics e Google Ads;
+- Meta Pixel, Google Tag Manager, Google Analytics e Google Ads;
 - dados da loja, CNPJ, endereco, email, redes sociais e informacoes de entrega;
 - aviso promocional no topo do site.
 

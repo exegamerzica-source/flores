@@ -1,19 +1,20 @@
 (function () {
   var DEFAULT_CONFIG = {
     branding: {
-      siteName: 'Bethy Flores',
-      titleSuffix: 'Floricultura Online de São Paulo',
-      description: 'Compre flores, buquês, arranjos, kits e muito mais. Pagamento via Pix e atendimento pelo WhatsApp.',
-      logoUrl: '',
+      siteName: 'Praça Das Flores',
+      titleSuffix: 'Floricultura Online',
+      description: 'Compre flores, buquês, arranjos, kits e presentes especiais. Pagamento via Pix e atendimento pelo WhatsApp.',
+      logoUrl: '/assets/bethyflores/images/praca-das-flores-logo.png',
+      bannerUrl: '/assets/bethyflores/images/praca-das-flores-banner.png',
       faviconUrl: '',
-      primaryColor: '#88a800'
+      primaryColor: '#9b1f3a'
     },
     contact: {
       whatsappPhone: '5511962158598',
       whatsappDisplay: '(11) 96215-8598',
-      email: 'contato@bethyflores.com.br',
-      instagramUrl: 'https://www.instagram.com/bethyfloresoficial',
-      facebookUrl: 'https://www.facebook.com/bethyfloresoficial/'
+      email: 'contato@pracadasflores.com.br',
+      instagramUrl: '',
+      facebookUrl: ''
     },
     sales: {
       whatsappButtonLabel: 'Comprar pelo WhatsApp',
@@ -29,7 +30,7 @@
       googleAdsId: ''
     },
     store: {
-      legalName: 'Bethy Flores Ltda ME',
+      legalName: 'Praça Das Flores',
       cnpj: '54.476.973/0001-20',
       address: 'Pc. Dr. João Batista Vasques, nº1 - São Paulo - SP',
       deliveryEstimate: '30-60 minutos',
@@ -39,7 +40,7 @@
     },
     announcement: {
       enabled: false,
-      text: 'Entregas rápidas para flores e presentes.',
+      text: 'Flores frescas e presentes especiais com entrega rápida.',
       link: ''
     }
   };
@@ -152,6 +153,106 @@
       logo.style.background = 'none';
       logo.style.objectFit = 'contain';
       logo.style.maxWidth = '100%';
+    });
+  }
+
+  function updateBanners(config) {
+    var bannerUrl = config.branding && config.branding.bannerUrl;
+    if (!bannerUrl) {
+      return;
+    }
+
+    var bannerSelectors = [
+      '#banner img',
+      '#banner_home123 img',
+      '.banner_home',
+      '.banner_colecao',
+      '.bannerzinho',
+      '.banner_touch',
+      'img.swipe'
+    ].join(',');
+
+    Array.prototype.forEach.call(document.querySelectorAll(bannerSelectors), function (image) {
+      image.src = bannerUrl;
+      image.alt = config.branding.siteName || DEFAULT_CONFIG.branding.siteName;
+      image.title = config.branding.siteName || DEFAULT_CONFIG.branding.siteName;
+      image.style.display = 'block';
+      image.style.width = '100%';
+      image.style.height = 'auto';
+      image.style.objectFit = 'cover';
+      image.style.maxWidth = '100%';
+      if (image.parentNode && image.parentNode.tagName === 'A') {
+        image.parentNode.href = '/';
+      }
+      reserveBannerSpace(image);
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('#banner .slider1 li'), function (slide, index) {
+      if (index > 0) {
+        slide.parentNode.removeChild(slide);
+      }
+    });
+  }
+
+  function reserveBannerSpace(image) {
+    function applyHeight() {
+      var ratio = image.naturalWidth && image.naturalHeight ? image.naturalHeight / image.naturalWidth : 724 / 2172;
+      var baseWidth = image.clientWidth || (image.parentNode && image.parentNode.clientWidth) || 980;
+      var height = Math.max(120, Math.round(baseWidth * ratio));
+      var banner = image.closest && image.closest('#banner, #banner_home123');
+      var wrapper = image.closest && image.closest('.bx-wrapper');
+      var viewport = image.closest && image.closest('.bx-viewport');
+      var slider = image.closest && image.closest('.slider1');
+      var slide = image.closest && image.closest('li');
+
+      [banner, wrapper, viewport, slider, slide].forEach(function (node) {
+        if (node) {
+          node.style.height = height + 'px';
+          node.style.minHeight = height + 'px';
+        }
+      });
+    }
+
+    if (image.complete) {
+      applyHeight();
+    } else {
+      image.addEventListener('load', applyHeight, { once: true });
+    }
+    setTimeout(applyHeight, 300);
+  }
+
+  function removeSocialLinks() {
+    Array.prototype.forEach.call(document.querySelectorAll('a[href*="facebook.com"], a[href*="instagram.com"]'), function (link) {
+      link.parentNode.removeChild(link);
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('#facebook, #instagram'), function (node) {
+      var wrapper = node.closest ? node.closest('a') : null;
+      (wrapper || node).parentNode.removeChild(wrapper || node);
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('#fique'), function (node) {
+      var section = node.parentNode;
+      if (section && section.parentNode) {
+        section.parentNode.removeChild(section);
+      }
+    });
+  }
+
+  function replaceBrandText(config) {
+    var siteName = config.branding.siteName || DEFAULT_CONFIG.branding.siteName;
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+    var nodes = [];
+    var node;
+
+    while ((node = walker.nextNode())) {
+      nodes.push(node);
+    }
+
+    nodes.forEach(function (textNode) {
+      textNode.nodeValue = textNode.nodeValue
+        .replace(/Bethy Flores/gi, siteName)
+        .replace(/\bBethy\b/gi, siteName);
     });
   }
 
@@ -304,8 +405,11 @@
     ready(function () {
       injectResponsiveGuard();
       updateLogos(window.BETHY_SITE_CONFIG);
+      updateBanners(window.BETHY_SITE_CONFIG);
       updateWhatsappLinks(window.BETHY_SITE_CONFIG);
       updateTexts(window.BETHY_SITE_CONFIG);
+      removeSocialLinks();
+      replaceBrandText(window.BETHY_SITE_CONFIG);
       addAnnouncement(window.BETHY_SITE_CONFIG);
     });
 

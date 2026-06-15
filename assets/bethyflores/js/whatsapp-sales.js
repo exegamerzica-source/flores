@@ -34,7 +34,9 @@
 
   function pageTitle() {
     var title = cleanText(document.title);
-    return title.replace(/\s*\|\s*Bethy Flores.*$/i, '').replace(/\s*-\s*Bethy Flores.*$/i, '');
+    return title
+      .replace(/\s*\|\s*(Bethy Flores|Praça Das Flores).*$/i, '')
+      .replace(/\s*-\s*(Bethy Flores|Praça Das Flores).*$/i, '');
   }
 
   function priceFromText(value) {
