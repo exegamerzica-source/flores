@@ -227,8 +227,8 @@ function normalizeHtml(html, outputFile) {
   }
 
   normalized = stripCloudflareRuntime(normalized)
-    .replace(/5511983702213/g, '5511962158598')
-    .replace(/\(11\)\s*98370-2213/g, '(11) 96215-8598');
+    .replace(/5511983702213/g, '551635130795')
+    .replace(/\(11\)\s*98370-2213/g, '(16) 3513 - 0795');
 
   normalized = normalized.replace(
     /<a href="\/cdn-cgi\/l\/email-protection" class="__cf_email__" data-cfemail="([^"]+)">\[email&#160;protected\]<\/a>/g,

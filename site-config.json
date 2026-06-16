@@ -3,13 +3,14 @@
     "siteName": "Praça Das Flores",
     "titleSuffix": "Floricultura Online",
     "description": "Compre flores, buquês, arranjos, kits e presentes especiais. Pagamento via Pix e atendimento pelo WhatsApp.",
-    "logoUrl": "/assets/bethyflores/images/praca-das-flores-logo.png",
+    "logoUrl": "/assets/bethyflores/images/praca-das-flores-logo-header.png",
+    "headerLogoUrl": "/assets/bethyflores/images/praca-das-flores-logo-header.png",
     "faviconUrl": "",
     "primaryColor": "#9b1f3a",
     "bannerUrl": "/assets/bethyflores/images/praca-das-flores-banner.png"
   },
   "contact": {
-    "whatsappPhone": "1635130795",
+    "whatsappPhone": "551635130795",
     "whatsappDisplay": "(16) 3513 - 0795",
     "email": "contato@pracadasflores.com.br",
     "instagramUrl": "",

@@ -40,7 +40,7 @@ function sanitizeConfig(config) {
   output.store = output.store || {};
   output.announcement = output.announcement || {};
 
-  output.contact.whatsappPhone = normalizePhone(output.contact.whatsappPhone || '5511962158598');
+  output.contact.whatsappPhone = normalizePhone(output.contact.whatsappPhone || '551635130795');
   output.sales.quantityDefault = Number(output.sales.quantityDefault || 1);
   output.sales.showFloatingWhatsapp = output.sales.showFloatingWhatsapp !== false;
   output.announcement.enabled = output.announcement.enabled === true;

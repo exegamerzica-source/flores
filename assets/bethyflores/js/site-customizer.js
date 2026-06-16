@@ -4,14 +4,15 @@
       siteName: 'Praça Das Flores',
       titleSuffix: 'Floricultura Online',
       description: 'Compre flores, buquês, arranjos, kits e presentes especiais. Pagamento via Pix e atendimento pelo WhatsApp.',
-      logoUrl: '/assets/bethyflores/images/praca-das-flores-logo.png',
+      logoUrl: '/assets/bethyflores/images/praca-das-flores-logo-header.png',
+      headerLogoUrl: '/assets/bethyflores/images/praca-das-flores-logo-header.png',
       bannerUrl: '/assets/bethyflores/images/praca-das-flores-banner.png',
       faviconUrl: '',
       primaryColor: '#9b1f3a'
     },
     contact: {
-      whatsappPhone: '5511962158598',
-      whatsappDisplay: '(11) 96215-8598',
+      whatsappPhone: '551635130795',
+      whatsappDisplay: '(16) 3513 - 0795',
       email: 'contato@pracadasflores.com.br',
       instagramUrl: '',
       facebookUrl: ''
@@ -71,7 +72,7 @@
 
   function whatsappPhone(config) {
     var phone = digits(config.contact && config.contact.whatsappPhone);
-    if (phone.length === 11) {
+    if (phone.length === 10 || phone.length === 11) {
       return '55' + phone;
     }
     return phone || DEFAULT_CONFIG.contact.whatsappPhone;
@@ -83,6 +84,9 @@
     }
 
     var phone = whatsappPhone(config).replace(/^55/, '');
+    if (phone.length === 10) {
+      return '(' + phone.slice(0, 2) + ') ' + phone.slice(2, 6) + ' - ' + phone.slice(6);
+    }
     if (phone.length === 11) {
       return '(' + phone.slice(0, 2) + ') ' + phone.slice(2, 7) + '-' + phone.slice(7);
     }
@@ -131,17 +135,44 @@
     var style = document.createElement('style');
     style.id = 'bethy_responsive_guard';
     style.textContent = [
+      '#headerxx { background:#000; }',
+      '#logoB, #logosticky { background:none !important; object-fit:contain !important; display:block !important; }',
+      '#logoB { width:230px !important; height:108px !important; }',
+      '#logosticky { width:150px !important; height:58px !important; }',
+      '#logodesk { box-sizing:border-box !important; display:flex !important; align-items:center !important; justify-content:center !important; }',
+      '#banner, #banner_home123 { display:block !important; overflow:hidden !important; }',
+      '#banner .bx-wrapper, #banner .bx-viewport, #banner .slider1, #banner .slider1 li { left:0 !important; transform:none !important; width:100% !important; }',
+      '#banner img, #banner_home123 img, img.swipe { display:block !important; width:100% !important; max-width:100% !important; height:auto !important; object-fit:cover !important; }',
+      '@media (min-width: 580px) {',
+      '#header_bfb { min-height:132px; }',
+      '#logodesk { width:34% !important; min-height:122px !important; float:left !important; padding:0 5px !important; margin:0 !important; }',
+      '#logoB { width:260px !important; height:122px !important; margin:0 auto !important; }',
+      '#banner { margin-top:2px !important; }',
+      '}',
+      '@media (min-width: 980px) {',
+      '#logoB { width:286px !important; height:134px !important; }',
+      '#logodesk { min-height:136px !important; }',
+      '}',
       '@media (max-width: 768px) {',
       'html, body { max-width: 100%; overflow-x: hidden; }',
       'img, iframe, video { max-width: 100%; }',
       '#bethy_whatsapp_buy { box-sizing: border-box; max-width: 100%; }',
+      '}',
+      '@media (max-width: 579px) {',
+      '#headerxx { min-height:150px !important; }',
+      '#header_bfb { min-height:150px !important; position:relative; box-sizing:border-box; }',
+      '#bannerxx { margin-top:150px !important; }',
+      '#logodesk { position:absolute; left:50%; top:52px; transform:translateX(-50%); float:none !important; clear:none !important; width:210px !important; height:96px !important; margin:0 !important; padding:0 !important; z-index:1; }',
+      '#logoB { width:210px !important; height:96px !important; margin:0 auto !important; }',
+      '#banner { width:100% !important; margin-top:0 !important; }',
+      '#banner .bx-wrapper, #banner .bx-viewport, #banner .slider1, #banner .slider1 li { min-height:120px !important; }',
       '}'
     ].join('');
     document.head.appendChild(style);
   }
 
   function updateLogos(config) {
-    var logoUrl = config.branding && config.branding.logoUrl;
+    var logoUrl = config.branding && (config.branding.headerLogoUrl || config.branding.logoUrl);
     if (!logoUrl) {
       return;
     }
@@ -153,6 +184,8 @@
       logo.style.background = 'none';
       logo.style.objectFit = 'contain';
       logo.style.maxWidth = '100%';
+      logo.removeAttribute('width');
+      logo.removeAttribute('height');
     });
   }
 
@@ -173,6 +206,9 @@
     ].join(',');
 
     Array.prototype.forEach.call(document.querySelectorAll(bannerSelectors), function (image) {
+      if (image.className && String(image.className).indexOf('bx-clone') !== -1) {
+        return;
+      }
       image.src = bannerUrl;
       image.alt = config.branding.siteName || DEFAULT_CONFIG.branding.siteName;
       image.title = config.branding.siteName || DEFAULT_CONFIG.branding.siteName;
@@ -187,10 +223,23 @@
       reserveBannerSpace(image);
     });
 
+    Array.prototype.forEach.call(document.querySelectorAll('#banner .bx-clone'), function (clone) {
+      if (clone.parentNode) {
+        clone.parentNode.removeChild(clone);
+      }
+    });
+
     Array.prototype.forEach.call(document.querySelectorAll('#banner .slider1 li'), function (slide, index) {
       if (index > 0) {
         slide.parentNode.removeChild(slide);
       }
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('#banner .slider1, #banner .bx-viewport, #banner .bx-wrapper'), function (node) {
+      node.style.left = '0';
+      node.style.transform = 'none';
+      node.style.width = '100%';
+      node.style.maxWidth = '100%';
     });
   }
 

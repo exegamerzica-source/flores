@@ -4,7 +4,7 @@ Copia estática do site público da Praça Das Flores, preservando visual, image
 
 ## WhatsApp
 
-Os links de WhatsApp da página foram atualizados para `5511962158598`, exibindo `(11) 96215-8598`.
+Os links de WhatsApp da página foram atualizados para `551635130795`, exibindo `(16) 3513 - 0795`.
 
 O fluxo de venda também foi direcionado para WhatsApp:
 

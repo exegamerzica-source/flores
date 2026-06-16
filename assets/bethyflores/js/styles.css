@@ -393,7 +393,7 @@ a{text-decoration:none}
 .limpa{ clear:both}
 
 @media screen and (min-width:768px){
-    #televendas{display:block}
+    #televendas{display:none}
     #sep1{display:block}
     #escolha{font-size:30px}
     #encontre_texto{font-size:30px}

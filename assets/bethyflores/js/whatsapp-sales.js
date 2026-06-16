@@ -1,5 +1,5 @@
 (function () {
-  var WHATSAPP_PHONE = '5511962158598';
+  var WHATSAPP_PHONE = '551635130795';
 
   function cleanText(value) {
     return (value || '').replace(/\s+/g, ' ').trim();
@@ -13,7 +13,7 @@
     var config = siteConfig();
     var phone = config.contact && config.contact.whatsappPhone;
     phone = String(phone || WHATSAPP_PHONE).replace(/\D/g, '');
-    return phone.length === 11 ? '55' + phone : phone;
+    return phone.length === 10 || phone.length === 11 ? '55' + phone : phone;
   }
 
   function nodeText(node) {
