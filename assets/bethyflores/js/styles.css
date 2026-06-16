@@ -177,7 +177,7 @@ a{text-decoration:none}
 .prettyPopin .prettyContent .loader{position:absolute;top:50%;left:50%;margin:0px 0px 0px 0px;}
 #overlay{background:#000;position:absolute;top:0;left:0;z-index:10000;width:100%;}
 
-#headerxx{background-color:#000;z-index:10; position:fixed; top:0px; display:block;left:0px; right:0px}
+#headerxx{background-color:#3b0f1f;z-index:10; position:fixed; top:0px; display:block;left:0px; right:0px}
 #bannerxx{margin-top:53px}
 .header_sticky{display:none}
 #header_sticky{display:none}
@@ -313,7 +313,7 @@ a{text-decoration:none}
 
 #disclaimer3{ display:block}
 
-.hmenu li a:hover{background-color:#000}
+.hmenu li a:hover{background-color:#3b0f1f}
 #pop33{ display:none}
 #menu8{display:none}
 
@@ -350,7 +350,7 @@ a{text-decoration:none}
 #logoB{width:250px;height:67px;background:url(../images/sprite_home.png) -282px -353px}
 
 #header{padding:10px 0}
-#header_bfb{padding:10px 0; background:#000}
+#header_bfb{padding:10px 0; background:#3b0f1f}
 #cont_comentario{width:400px}
 #central_atendimento{padding-left:40px}
 .footbot{margin-left:120px}
