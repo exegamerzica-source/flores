@@ -27,7 +27,9 @@
     "facebookPixelId": "1787878781386472",
     "googleTagManagerId": "",
     "googleAnalyticsId": "",
-    "googleAdsId": "AW-18243160605"
+    "googleAdsId": "AW-18243160605",
+    "googleAdsPageViewSendTo": "",
+    "googleAdsPageViewConversionLabel": ""
   },
   "store": {
     "legalName": "Praça Das Flores",

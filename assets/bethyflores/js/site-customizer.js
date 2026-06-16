@@ -32,7 +32,9 @@
       facebookPixelId: '1787878781386472',
       googleTagManagerId: '',
       googleAnalyticsId: '',
-      googleAdsId: ''
+      googleAdsId: 'AW-18243160605',
+      googleAdsPageViewSendTo: '',
+      googleAdsPageViewConversionLabel: ''
     },
     store: {
       legalName: 'Praça Das Flores',
@@ -479,8 +481,97 @@
     document.head.appendChild(script);
   }
 
-  function injectGtag(ids) {
-    var cleanIds = (ids || []).filter(Boolean);
+  function trackingValue(value) {
+    return String(value || '').trim();
+  }
+
+  function extractGoogleAdsSendTo(value) {
+    var text = trackingValue(value);
+    if (!text) {
+      return '';
+    }
+
+    var match = text.match(/AW-[0-9]+\/[A-Za-z0-9_-]+/);
+    return match ? match[0] : text;
+  }
+
+  function extractGoogleAdsId(value) {
+    var match = trackingValue(value).match(/AW-[0-9]+/);
+    return match ? match[0] : trackingValue(value);
+  }
+
+  function normalizeGtagId(value) {
+    var text = trackingValue(value);
+    if (text.indexOf('AW-') !== -1) {
+      return extractGoogleAdsId(text);
+    }
+    return text;
+  }
+
+  function googleAdsPageViewSendTo(config) {
+    var tracking = config.tracking || {};
+    var explicitSendTo = extractGoogleAdsSendTo(tracking.googleAdsPageViewSendTo);
+    if (explicitSendTo) {
+      return explicitSendTo;
+    }
+
+    var adsId = extractGoogleAdsId(tracking.googleAdsId);
+    var label = trackingValue(tracking.googleAdsPageViewConversionLabel).replace(/^\/+/, '');
+    if (adsId && label) {
+      return adsId + '/' + label;
+    }
+
+    return '';
+  }
+
+  function googleAdsPageViewTarget(config) {
+    var sendTo = googleAdsPageViewSendTo(config);
+    if (sendTo) {
+      return {
+        eventName: 'conversion',
+        sendTo: sendTo
+      };
+    }
+
+    var tracking = (config && config.tracking) || {};
+    var adsId = extractGoogleAdsId(tracking.googleAdsId);
+    if (!adsId) {
+      return null;
+    }
+
+    return {
+      eventName: 'page_view',
+      sendTo: adsId
+    };
+  }
+
+  function trackGoogleAdsPageView(config) {
+    var target = googleAdsPageViewTarget(config);
+    if (!target || !target.sendTo || !window.gtag) {
+      return;
+    }
+
+    window.__bethyGoogleAdsPageViewSent = window.__bethyGoogleAdsPageViewSent || {};
+    var cacheKey = target.eventName + ':' + target.sendTo;
+    if (window.__bethyGoogleAdsPageViewSent[cacheKey]) {
+      return;
+    }
+
+    window.__bethyGoogleAdsPageViewSent[cacheKey] = true;
+    window.gtag('event', target.eventName, {
+      send_to: target.sendTo,
+      page_path: window.location.pathname,
+      page_title: document.title
+    });
+  }
+
+  function injectGtag(ids, config) {
+    var conversionSendTo = googleAdsPageViewSendTo(config || {});
+    var cleanIds = (ids || []).map(normalizeGtagId).filter(Boolean);
+    var conversionAdsId = extractGoogleAdsId(conversionSendTo);
+    if (conversionAdsId && cleanIds.indexOf(conversionAdsId) === -1) {
+      cleanIds.push(conversionAdsId);
+    }
     if (!cleanIds.length) {
       return;
     }
@@ -501,6 +592,8 @@
         window.gtag('config', id);
       }
     });
+
+    trackGoogleAdsPageView(config || {});
   }
 
   function applyConfig(config) {
@@ -523,7 +616,7 @@
     injectGtag([
       window.BETHY_SITE_CONFIG.tracking.googleAnalyticsId,
       window.BETHY_SITE_CONFIG.tracking.googleAdsId
-    ]);
+    ], window.BETHY_SITE_CONFIG);
     document.dispatchEvent(new CustomEvent('bethy:config-ready', { detail: window.BETHY_SITE_CONFIG }));
   }
 
