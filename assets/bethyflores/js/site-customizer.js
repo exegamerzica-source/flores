@@ -178,6 +178,9 @@
       '#header_bfb { min-height:92px !important; height:92px !important; position:relative; box-sizing:border-box; }',
       '#bannerxx { margin-top:94px !important; }',
       '#conteudo { margin-top:94px !important; }',
+      'body.bethy-home #conteudo { margin-top:0 !important; }',
+      'body.bethy-home #produto_wrapper { padding-top:10px !important; }',
+      'body.bethy-home .link_colecao { font-size:18px !important; line-height:25px !important; white-space:nowrap !important; }',
       '#logodesk { position:absolute; left:14px; top:10px; transform:none; float:none !important; clear:none !important; width:156px !important; height:72px !important; margin:0 !important; padding:0 !important; z-index:1; }',
       '#logoB { width:156px !important; height:72px !important; margin:0 !important; }',
       '#banner { width:100% !important; height:180px !important; margin-top:0 !important; }',
@@ -187,6 +190,11 @@
       '}'
     ].join('');
     document.head.appendChild(style);
+  }
+
+  function markPageType() {
+    var isHome = !!(document.getElementById('banner') && document.getElementById('escolha_pre'));
+    document.body.classList.toggle('bethy-home', isHome);
   }
 
   function updateLogos(config) {
@@ -367,6 +375,15 @@
     }
   }
 
+  function tuneCollectionHeadings() {
+    Array.prototype.forEach.call(document.querySelectorAll('.link_colecao'), function (link) {
+      var text = (link.textContent || '').replace(/\s+/g, ' ').trim();
+      if (/^Queridinhos da Pra(?:ç|Ã§)a Das Flores$/i.test(text)) {
+        link.textContent = 'Queridinhos da Praça';
+      }
+    });
+  }
+
   function updateTexts(config) {
     var brand = config.branding || {};
     var siteName = brand.siteName || DEFAULT_CONFIG.branding.siteName;
@@ -489,6 +506,7 @@
   function applyConfig(config) {
     window.BETHY_SITE_CONFIG = merge(DEFAULT_CONFIG, config || {});
     ready(function () {
+      markPageType();
       injectResponsiveGuard();
       updateLogos(window.BETHY_SITE_CONFIG);
       updateBanners(window.BETHY_SITE_CONFIG);
@@ -496,6 +514,7 @@
       updateTexts(window.BETHY_SITE_CONFIG);
       removeSocialLinks();
       replaceBrandText(window.BETHY_SITE_CONFIG);
+      tuneCollectionHeadings();
       addAnnouncement(window.BETHY_SITE_CONFIG);
     });
 
