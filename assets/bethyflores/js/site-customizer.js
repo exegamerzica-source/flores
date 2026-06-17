@@ -350,6 +350,7 @@
   function updateWhatsappLinks(config) {
     var phone = whatsappPhone(config);
     var display = whatsappDisplay(config);
+    var floatingMessage = 'Ola! Vim pelo site e quero atendimento pelo WhatsApp.';
 
     Array.prototype.forEach.call(document.querySelectorAll('a[href*="whatsapp"], a[href*="api.whatsapp.com"]'), function (link) {
       var message = '';
@@ -368,7 +369,7 @@
     var floating = document.getElementById('whatsapp-button');
     if (floating) {
       floating.style.display = config.sales && config.sales.showFloatingWhatsapp === false ? 'none' : '';
-      floating.href = 'https://api.whatsapp.com/send?phone=' + phone;
+      floating.href = 'https://api.whatsapp.com/send?phone=' + phone + '&text=' + encodeURIComponent(floatingMessage);
       var icon = floating.querySelector('img');
       if (icon) {
         icon.src = FLOATING_WHATSAPP_ICON;
