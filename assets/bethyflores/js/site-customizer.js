@@ -33,8 +33,8 @@
       googleTagManagerId: '',
       googleAnalyticsId: '',
       googleAdsId: 'AW-18243160605',
-      googleAdsPageViewSendTo: '',
-      googleAdsPageViewConversionLabel: ''
+      googleAdsPageViewSendTo: 'AW-18243160605/NdoqCIL53cAcEJ2UgvtD',
+      googleAdsPageViewConversionLabel: 'NdoqCIL53cAcEJ2UgvtD'
     },
     store: {
       legalName: 'Praça Das Flores',
@@ -526,22 +526,13 @@
 
   function googleAdsPageViewTarget(config) {
     var sendTo = googleAdsPageViewSendTo(config);
-    if (sendTo) {
-      return {
-        eventName: 'conversion',
-        sendTo: sendTo
-      };
-    }
-
-    var tracking = (config && config.tracking) || {};
-    var adsId = extractGoogleAdsId(tracking.googleAdsId);
-    if (!adsId) {
+    if (!sendTo) {
       return null;
     }
 
     return {
-      eventName: 'page_view',
-      sendTo: adsId
+      eventName: 'conversion',
+      sendTo: sendTo
     };
   }
 
@@ -560,6 +551,8 @@
     window.__bethyGoogleAdsPageViewSent[cacheKey] = true;
     window.gtag('event', target.eventName, {
       send_to: target.sendTo,
+      value: 1.0,
+      currency: 'BRL',
       page_path: window.location.pathname,
       page_title: document.title
     });
