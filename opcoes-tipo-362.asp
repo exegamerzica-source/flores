@@ -352,7 +352,7 @@
 
 <div class=produtox alt="Coração de Rosas Colombianas " onmouseover="show_fav(5402,1)" onmouseout="show_fav(5402,2)">
 <div Style="position:relative;top:0px;left:0px"> 
-<a href='/coracao-de-rosas-colombianas-'  alt="Coração de Rosas Colombianas "><img src="assets/bethyflores/images/produto/230_5402.jpg"  class=produto_img alt=""></a><br />
+<a href='/coracao-de-rosas-colombianas'  alt="Coração de Rosas Colombianas "><img src="assets/bethyflores/images/produto/230_5402.jpg"  class=produto_img alt=""></a><br />
 
 <div class=nome_produto>Coração de Rosas Colombianas </div>
 
@@ -362,7 +362,7 @@
 </div>
 
 <div style="color:Gray; font-size:10px"></div>
-<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/coracao-de-rosas-colombianas-'">Comprar</div></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/coracao-de-rosas-colombianas'">Comprar</div></div>
 
 
 <div style="margin-top:5px;height:22px">
@@ -377,7 +377,7 @@
 
 <div class=produtox alt="Luxo em Rosas com Chocolate " onmouseover="show_fav(5404,1)" onmouseout="show_fav(5404,2)">
 <div Style="position:relative;top:0px;left:0px"> 
-<a href='/luxo-em-rosas-com-chocolate-'  alt="Luxo em Rosas com Chocolate "><img src="assets/bethyflores/images/produto/230_5404.jpg"  class=produto_img alt=""></a><br />
+<a href='/luxo-em-rosas-com-chocolate'  alt="Luxo em Rosas com Chocolate "><img src="assets/bethyflores/images/produto/230_5404.jpg"  class=produto_img alt=""></a><br />
 
 <div class=nome_produto>Luxo em Rosas com Chocolate </div>
 
@@ -387,7 +387,7 @@
 </div>
 
 <div style="color:Gray; font-size:10px"></div>
-<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/luxo-em-rosas-com-chocolate-'">Comprar</div></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/luxo-em-rosas-com-chocolate'">Comprar</div></div>
 
 
 <div style="margin-top:5px;height:22px">
@@ -477,7 +477,7 @@
 
 <div class=produtox alt="Buquê Especial 100 Rosas Colombianas " onmouseover="show_fav(4997,1)" onmouseout="show_fav(4997,2)">
 <div Style="position:relative;top:0px;left:0px"> 
-<a href='/buque-especial-100-rosas-colombianas-'  alt="Buquê Especial 100 Rosas Colombianas "><img src="assets/bethyflores/images/produto/230_4997.jpg"  class=produto_img alt=""></a><br />
+<a href='/buque-especial-100-rosas-colombianas'  alt="Buquê Especial 100 Rosas Colombianas "><img src="assets/bethyflores/images/produto/230_4997.jpg"  class=produto_img alt=""></a><br />
 
 <div class=nome_produto>Buquê Especial 100 Rosas Colombianas </div>
 
@@ -487,7 +487,7 @@
 </div>
 
 <div style="color:Gray; font-size:10px"></div>
-<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-especial-100-rosas-colombianas-'">Comprar</div></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/buque-especial-100-rosas-colombianas'">Comprar</div></div>
 
 
 <div style="margin-top:5px;height:22px">
@@ -502,7 +502,7 @@
 <div class=limpax></div>
 <div class=produtox alt="Urso Betão Vasquez " onmouseover="show_fav(5401,1)" onmouseout="show_fav(5401,2)">
 <div Style="position:relative;top:0px;left:0px"> 
-<a href='/urso-betao-vasquez-'  alt="Urso Betão Vasquez "><img src="assets/bethyflores/images/produto/230_5401.jpg"  class=produto_img alt=""></a><br />
+<a href='/urso-betao-vasquez'  alt="Urso Betão Vasquez "><img src="assets/bethyflores/images/produto/230_5401.jpg"  class=produto_img alt=""></a><br />
 
 <div class=nome_produto>Urso Betão Vasquez </div>
 
@@ -512,7 +512,7 @@
 </div>
 
 <div style="color:Gray; font-size:10px"></div>
-<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/urso-betao-vasquez-'">Comprar</div></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/urso-betao-vasquez'">Comprar</div></div>
 
 
 <div style="margin-top:5px;height:22px">
@@ -552,7 +552,7 @@
 <div class=limpa></div>
 <div class=produtox alt="Cesta Luxo Chandon Flores e Chocolate " onmouseover="show_fav(4914,1)" onmouseout="show_fav(4914,2)">
 <div Style="position:relative;top:0px;left:0px"> 
-<a href='/cesta-luxo-chandon-flores-e-chocolate-'  alt="Cesta Luxo Chandon Flores e Chocolate "><img src="assets/bethyflores/images/produto/230_4914.jpg"  class=produto_img alt=""></a><br />
+<a href='/cesta-luxo-chandon-flores-e-chocolate'  alt="Cesta Luxo Chandon Flores e Chocolate "><img src="assets/bethyflores/images/produto/230_4914.jpg"  class=produto_img alt=""></a><br />
 
 <div class=nome_produto>Cesta Luxo Chandon Flores e Chocolate </div>
 
@@ -562,7 +562,7 @@
 </div>
 
 <div style="color:Gray; font-size:10px"></div>
-<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/cesta-luxo-chandon-flores-e-chocolate-'">Comprar</div></div>
+<div class=comprar_bot><div class="comprar_div 100" onclick="location.href='/cesta-luxo-chandon-flores-e-chocolate'">Comprar</div></div>
 
 
 <div style="margin-top:5px;height:22px">

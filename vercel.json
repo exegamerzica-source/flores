@@ -60,6 +60,326 @@
       "source": "/sugestoes-bethy-flores-tipo-68-todos-0-order",
       "destination": "/sugestoes-praca-das-flores-tipo-68-todos-0-order",
       "permanent": true
+    },
+    {
+      "source": "/buque-com-12-rosas-colombianasno-crepon",
+      "destination": "/buque-com-12-rosas-colombianas-no-crepon",
+      "permanent": true
+    },
+    {
+      "source": "/buque-com-12-rosas-colombianasmae-",
+      "destination": "/buque-com-12-rosas-colombianas-mae",
+      "permanent": true
+    },
+    {
+      "source": "/caneca-parabenspelo-seu-dia-",
+      "destination": "/caneca-parabens-pelo-seu-dia",
+      "permanent": true
+    },
+    {
+      "source": "/caneca-te-amohoje-e-sempre-",
+      "destination": "/caneca-te-amo-hoje-e-sempre",
+      "permanent": true
+    },
+    {
+      "source": "/caneca-te-amovermelha-",
+      "destination": "/caneca-te-amo-vermelha",
+      "permanent": true
+    },
+    {
+      "source": "/vaso-linha-elegancia-e-sofisticacaotransparente-",
+      "destination": "/vaso-linha-elegancia-e-sofisticacao-transparente",
+      "permanent": true
+    },
+    {
+      "source": "/amor-em-dobro-duas-rosas-colombianas---",
+      "destination": "/amor-em-dobro-duas-rosas-colombianas",
+      "permanent": true
+    },
+    {
+      "source": "/carrinho",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/minha_cesta",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/favoritos",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/login",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/login/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/logout",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/minha_conta",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/baloes",
+      "destination": "/baloes-e-plaquinhas",
+      "permanent": true
+    },
+    {
+      "source": "/baloes-e-paquinhas",
+      "destination": "/baloes-e-plaquinhas",
+      "permanent": true
+    },
+    {
+      "source": "/condolencias",
+      "destination": "/coroa-de-flores",
+      "permanent": true
+    },
+    {
+      "source": "/vinhos",
+      "destination": "/vinhos-cervejas",
+      "permanent": true
+    },
+    {
+      "source": "/flores-boa-sorte",
+      "destination": "/Boa-Sorte",
+      "permanent": true
+    },
+    {
+      "source": "/Colecao-Desculpas",
+      "destination": "/desculpas",
+      "permanent": true
+    },
+    {
+      "source": "/mini-orquideas",
+      "destination": "/orquideas",
+      "permanent": true
+    },
+    {
+      "source": "/faixas-de-precos",
+      "destination": "/faixas-de-precos/ate-99",
+      "permanent": true
+    },
+    {
+      "source": "/faixas-de-precos/",
+      "destination": "/faixas-de-precos/ate-99",
+      "permanent": true
+    },
+    {
+      "source": "/Masculina",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/Romantica",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/almofada-pelucia-abobora-encantada-hallowen-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/boneco-de-pelucia-macaco-marrom-com-laco-sentado-70cm",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/caneca-corinthians-oficial",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/capivara-filo-30cm-a",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/coelho-dalila-de-pelucia",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/colecao-arranjos-de-flores",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/colecao-arranjos-de-flores-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/elefante-de-pelucia-cinza",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/flores-e-mensagem",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/gato-realistico-fran",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/girafa-de-pelucia",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/girafa-mi-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/jeca-tatu",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/kit-2-canecas-disney-mickey-e-minnie",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/kits-de-Vinhos",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/leo-o-leao",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/orquidea-glamour-grande",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/panda-miguel-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/panda-vermelho-de-pelucia",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/pelucia-esqueleto-encantado-halloween-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/porco-espinho",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/raposa-alice-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/tatu-fofinho",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/ursa-nathalia-30-cm-sentada",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/ursinha-charmosinha",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/ursinha-flor-de-cerejeira",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/ursinha-jardim-encantado",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/ursinho-carinho-com-blusa-de-coracao",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-de-pelucia-com-coracao-amor",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-de-pelucia-com-gravata-de-bolinhas",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-de-pelucia-coracao-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-de-pelucia-dri",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-de-pelucia-eu-amo-voce-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-de-pelucia-marrom-sentado-coracao-te-amo-marrom",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-fofinho-60cm-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-fofo-amo-voce-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-marrom-escuro-com-cachecol-42cm-",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-marrom-sentado-laco",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/urso-pote-de-mel-preto",
+      "destination": "/",
+      "permanent": false
     }
   ]
 }

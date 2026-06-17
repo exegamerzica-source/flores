@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Busca | Praca Das Flores</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; color: #1f1f1f; background: #fff; }
+    header { background: #3b0f1f; color: #fff; padding: 18px 16px; text-align: center; }
+    header img { display: block; width: 210px; max-width: 72vw; height: auto; margin: 0 auto 10px; }
+    main { width: min(1100px, calc(100% - 28px)); margin: 24px auto 44px; }
+    form { display: flex; gap: 8px; margin: 0 auto 24px; max-width: 620px; }
+    input { flex: 1; border: 1px solid #ddd; border-radius: 8px; padding: 13px 14px; font-size: 16px; }
+    button { border: 0; border-radius: 8px; background: #7aa000; color: #fff; padding: 0 18px; font-size: 16px; font-weight: 700; cursor: pointer; }
+    h1 { font-size: 24px; font-weight: 600; margin: 0 0 18px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 22px; }
+    .card { color: inherit; text-decoration: none; text-align: center; min-width: 0; }
+    .card img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; display: block; }
+    .name { min-height: 40px; font-size: 14px; line-height: 1.3; margin-top: 8px; }
+    .price { color: #111; font-weight: 700; font-size: 18px; margin-top: 4px; }
+    .empty { padding: 28px; background: #fff7f8; border-radius: 8px; text-align: center; }
+    .back { color: #7aa000; display: inline-block; margin-top: 18px; }
+    @media (max-width: 520px) {
+      main { width: min(100% - 22px, 420px); margin-top: 18px; }
+      form { gap: 6px; }
+      button { padding: 0 12px; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/"><img src="/assets/bethyflores/images/praca-das-flores-logo-header-v2.png" alt="Praca Das Flores"></a>
+    <div>Encontre seu produto</div>
+  </header>
+  <main>
+    <form id="search-form">
+      <input id="q" name="busca" type="search" placeholder="Digite o produto" autocomplete="off">
+      <button type="submit">Buscar</button>
+    </form>
+    <h1 id="title">Busca</h1>
+    <div id="results" class="grid"></div>
+  </main>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var query = (params.get('busca') || params.get('q') || '').trim();
+      var input = document.getElementById('q');
+      var title = document.getElementById('title');
+      var results = document.getElementById('results');
+      input.value = query;
+
+      document.getElementById('search-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        var value = input.value.trim();
+        if (!value) return;
+        window.location.href = '/busca/?pp=3&busca=' + encodeURIComponent(value);
+      });
+
+      function normalize(text) {
+        return String(text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      }
+
+      function escapeHtml(text) {
+        return String(text || '').replace(/[&<>"']/g, function (char) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char];
+        });
+      }
+
+      function render(items) {
+        title.textContent = query ? 'Resultado para "' + query + '"' : 'Produtos';
+        if (!items.length) {
+          results.className = 'empty';
+          results.innerHTML = 'Nenhum produto encontrado para essa busca.<br><a class="back" href="/">Voltar para a loja</a>';
+          return;
+        }
+        results.className = 'grid';
+        results.innerHTML = items.slice(0, 80).map(function (item) {
+          return '<a class="card" href="' + encodeURI(item.url) + '">' +
+            '<img src="' + encodeURI(item.image || '/assets/bethyflores/images/praca-das-flores-logo-header-v2.png') + '" alt="">' +
+            '<div class="name">' + escapeHtml(item.title) + '</div>' +
+            '<div class="price">' + escapeHtml(item.price || 'Consultar') + '</div>' +
+            '</a>';
+        }).join('');
+      }
+
+      fetch('/search-catalog.json', { cache: 'no-store' })
+        .then(function (response) { return response.json(); })
+        .then(function (catalog) {
+          var needle = normalize(query);
+          var items = needle
+            ? catalog.filter(function (item) { return normalize(item.title).indexOf(needle) !== -1; })
+            : catalog.slice(0, 40);
+          render(items);
+        })
+        .catch(function () {
+          results.className = 'empty';
+          results.innerHTML = 'Nao foi possivel carregar a busca agora.<br><a class="back" href="/">Voltar para a loja</a>';
+        });
+    })();
+  </script>
+</body>
+</html>

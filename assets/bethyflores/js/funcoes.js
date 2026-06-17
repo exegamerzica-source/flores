@@ -244,7 +244,7 @@
             return;
         }
 
-        window.location = "/busca/?pp=3&busca=" + buscaxx
+        window.location = "/busca/?pp=3&busca=" + encodeURIComponent(buscaxx)
     }
 
     function limpar_busca(id) { document.getElementById(id).value = '' }
