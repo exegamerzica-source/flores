@@ -350,7 +350,6 @@
   function updateWhatsappLinks(config) {
     var phone = whatsappPhone(config);
     var display = whatsappDisplay(config);
-    var floatingMessage = 'Ola! Vim pelo site e quero atendimento pelo WhatsApp.';
 
     Array.prototype.forEach.call(document.querySelectorAll('a[href*="whatsapp"], a[href*="api.whatsapp.com"]'), function (link) {
       var message = '';
@@ -366,15 +365,51 @@
       }
     });
 
+    updateFloatingWhatsapp(config);
+  }
+
+  function updateFloatingWhatsapp(config) {
+    var phone = whatsappPhone(config);
+    var floatingMessage = 'Ola! Vim pelo site e quero atendimento pelo WhatsApp.';
+    var href = 'https://api.whatsapp.com/send?phone=' + phone + '&text=' + encodeURIComponent(floatingMessage);
     var floating = document.getElementById('whatsapp-button');
     if (floating) {
       floating.style.display = config.sales && config.sales.showFloatingWhatsapp === false ? 'none' : '';
-      floating.href = 'https://api.whatsapp.com/send?phone=' + phone + '&text=' + encodeURIComponent(floatingMessage);
+      if (floating.href !== href) {
+        floating.href = href;
+      }
       var icon = floating.querySelector('img');
       if (icon) {
         icon.src = FLOATING_WHATSAPP_ICON;
         icon.alt = 'WhatsApp';
       }
+    }
+  }
+
+  function watchFloatingWhatsapp(config) {
+    if (window.__bethyFloatingWhatsappWatcher) {
+      return;
+    }
+    window.__bethyFloatingWhatsappWatcher = true;
+
+    var attempts = 0;
+    var timer = setInterval(function () {
+      attempts += 1;
+      updateFloatingWhatsapp(window.BETHY_SITE_CONFIG || config);
+      if (attempts >= 20) {
+        clearInterval(timer);
+      }
+    }, 250);
+
+    if (window.MutationObserver && document.body) {
+      new MutationObserver(function () {
+        updateFloatingWhatsapp(window.BETHY_SITE_CONFIG || config);
+      }).observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['href', 'style', 'src']
+      });
     }
   }
 
@@ -598,6 +633,7 @@
       updateLogos(window.BETHY_SITE_CONFIG);
       updateBanners(window.BETHY_SITE_CONFIG);
       updateWhatsappLinks(window.BETHY_SITE_CONFIG);
+      watchFloatingWhatsapp(window.BETHY_SITE_CONFIG);
       updateTexts(window.BETHY_SITE_CONFIG);
       removeSocialLinks();
       replaceBrandText(window.BETHY_SITE_CONFIG);
