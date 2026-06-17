@@ -102,7 +102,7 @@ a.ok_cep:hover {background-position: -320px -320px}
 <div style="margin-left:40px; font-size:15px;color:#FFF">Whatsapp: <a href="whatsapp://send?text=&phone=551635130795" style=" font-size:15px;color:#FFF">(16) 3513 - 0795</a></div>
     </div>
     
-    <div id=logodesk><a href="/"><img id=logoB style="padding-bottom:0px" src="assets/bethyflores/images/praca-das-flores-logo-header.png" width=349 height=98 alt="Praça Das Flores" title="Praça Das Flores - 0" border=0></A></div>
+    <div id=logodesk><a href="/"><img id=logoB style="padding-bottom:0px" src="assets/bethyflores/images/praca-das-flores-logo-header-v2.png" width=349 height=98 alt="Praça Das Flores" title="Praça Das Flores - 0" border=0></A></div>
 
     <div style="float:right;margin-top:20px;margin-right:50px" class=desk>
        <div style="margin-left:10px">
@@ -153,7 +153,7 @@ a.ok_cep:hover {background-position: -320px -320px}
 <div id=sticky_puto>
 <div class="headerxx header_sticky"  style="background-color:#3b0f1f">
     <div  class=w980>
-        <div style="float:left;width:138px; padding:5px 10px 3px 15px"><A HREF="/"><img id=logosticky src="assets/bethyflores/images/praca-das-flores-logo-header.png" width=269 height=38 alt="Praça Das Flores" /></A></div>
+        <div style="float:left;width:138px; padding:5px 10px 3px 15px"><A HREF="/"><img id=logosticky src="assets/bethyflores/images/praca-das-flores-logo-header-v2.png" width=269 height=38 alt="Praça Das Flores" /></A></div>
 
         <div style="border: solid 1px #999; margin-top:10px; float:left; background-color:#FFF; border-radius:20px; padding:0 12px">
             <div style="float:left"><input id="sticky_search" type="text" placeholder="encontre seu produto" maxlength=30 onkeypress="{if (event.keyCode==13) envia_busca('sticky_search')}" /></div>
@@ -291,10 +291,10 @@ a.ok_cep:hover {background-position: -320px -320px}
 </div>    
 <div id=banner style="margin-top:2px" class=w980>
 <div class="slider1">
-<li><a href='/12-de-junho-namorados'><img src='./assets/bethyflores/images/praca-das-flores-banner.png' class=swipe /></a></li>
-<li><a href='/12-de-junho-namorados'><img src='./assets/bethyflores/images/praca-das-flores-banner.png' class=swipe /></a></li>
-<li><a href='/buques-de-rosas-nacionais'><img src='./assets/bethyflores/images/praca-das-flores-banner.png' class=swipe /></a></li>
-<li><a href='/'><img src='./assets/bethyflores/images/praca-das-flores-banner.png' class=swipe /></a></li>
+<li><a href='/12-de-junho-namorados'><img src='./assets/bethyflores/images/praca-das-flores-banner-optimized.jpg' class=swipe /></a></li>
+<li><a href='/12-de-junho-namorados'><img src='./assets/bethyflores/images/praca-das-flores-banner-optimized.jpg' class=swipe /></a></li>
+<li><a href='/buques-de-rosas-nacionais'><img src='./assets/bethyflores/images/praca-das-flores-banner-optimized.jpg' class=swipe /></a></li>
+<li><a href='/'><img src='./assets/bethyflores/images/praca-das-flores-banner-optimized.jpg' class=swipe /></a></li>
 
 </div>
 </div> 

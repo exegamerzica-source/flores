@@ -2,15 +2,16 @@
   var BRAND_HEADER_COLOR = '#3b0f1f';
   var BRAND_HEADER_SHADOW = '0 2px 0 rgba(155,31,58,.45)';
   var FLOATING_WHATSAPP_ICON = '/assets/bethyflores/images/whatsapp-floating.png';
+  var HEADER_LOGO_URL = '/assets/bethyflores/images/praca-das-flores-logo-header-v2.png';
 
   var DEFAULT_CONFIG = {
     branding: {
       siteName: 'Praça Das Flores',
       titleSuffix: 'Floricultura Online',
       description: 'Compre flores, buquês, arranjos, kits e presentes especiais. Pagamento via Pix e atendimento pelo WhatsApp.',
-      logoUrl: '/assets/bethyflores/images/praca-das-flores-logo-header.png',
-      headerLogoUrl: '/assets/bethyflores/images/praca-das-flores-logo-header.png',
-      bannerUrl: '/assets/bethyflores/images/praca-das-flores-banner.png',
+      logoUrl: HEADER_LOGO_URL,
+      headerLogoUrl: HEADER_LOGO_URL,
+      bannerUrl: '/assets/bethyflores/images/praca-das-flores-banner-optimized.jpg',
       faviconUrl: '',
       primaryColor: BRAND_HEADER_COLOR
     },
@@ -144,29 +145,29 @@
       '#headerxx, .headerxx, #header_bfb, #header_sticky, #nacho { background:' + BRAND_HEADER_COLOR + ' !important; }',
       '#headerxx { box-shadow:' + BRAND_HEADER_SHADOW + '; }',
       '#nacho { height:2px !important; }',
-      '#logoB, #logosticky { background:none !important; object-fit:contain !important; display:block !important; }',
-      '#logoB { width:210px !important; height:98px !important; }',
-      '#logosticky { width:142px !important; height:54px !important; }',
-      '#logodesk { box-sizing:border-box !important; display:flex !important; align-items:center !important; justify-content:center !important; }',
+      '#logoB, #logosticky { background:none !important; object-fit:contain !important; display:block !important; max-width:100% !important; }',
+      '#logoB { width:230px !important; height:72px !important; }',
+      '#logosticky { width:150px !important; height:44px !important; }',
+      '#logodesk { box-sizing:border-box !important; display:flex !important; align-items:center !important; justify-content:center !important; overflow:hidden !important; }',
       '#banner, #banner_home123 { display:block !important; overflow:hidden !important; background:#fff4f6 !important; }',
       '#banner { border-radius:0 0 8px 8px; box-shadow:0 8px 24px rgba(59,15,31,.10); }',
       '#banner .bx-wrapper, #banner .bx-viewport, #banner .slider1, #banner .slider1 li { left:0 !important; transform:none !important; width:100% !important; }',
       '#banner img, #banner_home123 img, img.swipe { display:block !important; width:100% !important; max-width:100% !important; object-fit:cover !important; object-position:center center !important; }',
       '#banner img, #banner img.swipe { height:100% !important; }',
-      '#whatsapp-button { position:fixed !important; left:18px !important; bottom:18px !important; width:66px !important; height:66px !important; overflow:visible !important; border-radius:999px !important; background:#25D366 !important; box-shadow:0 8px 22px rgba(0,0,0,.25) !important; z-index:99999 !important; display:flex !important; align-items:center !important; justify-content:center !important; border:2px solid rgba(255,255,255,.9) !important; transition:transform .16s ease, box-shadow .16s ease; }',
+      '#whatsapp-button { position:fixed !important; left:18px !important; bottom:18px !important; width:58px !important; min-width:58px !important; max-width:58px !important; height:58px !important; min-height:58px !important; max-height:58px !important; padding:0 !important; overflow:hidden !important; border-radius:999px !important; background:#25D366 !important; box-shadow:0 8px 22px rgba(0,0,0,.25) !important; z-index:99999 !important; display:flex !important; align-items:center !important; justify-content:center !important; border:2px solid rgba(255,255,255,.9) !important; transition:transform .16s ease, box-shadow .16s ease; }',
       '#whatsapp-button:hover { transform:translateY(-2px); box-shadow:0 11px 26px rgba(0,0,0,.28) !important; }',
-      '#whatsapp-button img { display:block !important; width:64px !important; height:64px !important; max-width:none !important; object-fit:contain !important; margin:0 !important; border:0 !important; }',
+      '#whatsapp-button img { display:block !important; width:54px !important; min-width:54px !important; max-width:54px !important; height:54px !important; min-height:54px !important; max-height:54px !important; object-fit:contain !important; margin:0 !important; border:0 !important; }',
       '@media (min-width: 580px) {',
       '#header_bfb { min-height:112px; padding:5px 0 !important; }',
       '#logodesk { width:32% !important; min-height:102px !important; float:left !important; padding:0 5px !important; margin:0 !important; }',
-      '#logoB { width:218px !important; height:102px !important; margin:0 auto !important; }',
+      '#logoB { width:230px !important; height:72px !important; margin:0 auto !important; }',
       '#banner { margin-top:0 !important; }',
       '#banner { height:280px !important; }',
       '#banner .bx-wrapper, #banner .bx-viewport, #banner .slider1, #banner .slider1 li { height:280px !important; min-height:280px !important; }',
       '}',
       '@media (min-width: 980px) {',
-      '#logoB { width:224px !important; height:104px !important; }',
-      '#logodesk { min-height:104px !important; }',
+      '#logoB { width:240px !important; height:76px !important; }',
+      '#logodesk { min-height:82px !important; }',
       '#banner { height:300px !important; }',
       '#banner .bx-wrapper, #banner .bx-viewport, #banner .slider1, #banner .slider1 li { height:300px !important; min-height:300px !important; }',
       '}',
@@ -183,12 +184,12 @@
       'body.bethy-home #conteudo { margin-top:0 !important; }',
       'body.bethy-home #produto_wrapper { padding-top:10px !important; }',
       'body.bethy-home .link_colecao { font-size:18px !important; line-height:25px !important; white-space:nowrap !important; }',
-      '#logodesk { position:absolute; left:14px; top:10px; transform:none; float:none !important; clear:none !important; width:156px !important; height:72px !important; margin:0 !important; padding:0 !important; z-index:1; }',
-      '#logoB { width:156px !important; height:72px !important; margin:0 !important; }',
+      '#logodesk { position:absolute; left:14px; top:12px; transform:none; float:none !important; clear:none !important; width:150px !important; height:62px !important; margin:0 !important; padding:0 !important; z-index:1; }',
+      '#logoB { width:150px !important; height:62px !important; margin:0 !important; }',
       '#banner { width:100% !important; height:180px !important; margin-top:0 !important; }',
       '#banner .bx-wrapper, #banner .bx-viewport, #banner .slider1, #banner .slider1 li { height:180px !important; min-height:180px !important; }',
-      '#whatsapp-button { width:60px !important; height:60px !important; left:12px !important; bottom:12px !important; }',
-      '#whatsapp-button img { width:58px !important; height:58px !important; }',
+      '#whatsapp-button { width:54px !important; min-width:54px !important; max-width:54px !important; height:54px !important; min-height:54px !important; max-height:54px !important; left:12px !important; bottom:12px !important; overflow:hidden !important; }',
+      '#whatsapp-button img { width:50px !important; min-width:50px !important; max-width:50px !important; height:50px !important; min-height:50px !important; max-height:50px !important; }',
       '}'
     ].join('');
     document.head.appendChild(style);
@@ -212,6 +213,7 @@
       logo.style.background = 'none';
       logo.style.objectFit = 'contain';
       logo.style.maxWidth = '100%';
+      logo.style.maxHeight = '100%';
       logo.removeAttribute('width');
       logo.removeAttribute('height');
     });
@@ -380,8 +382,12 @@
       }
       var icon = floating.querySelector('img');
       if (icon) {
-        icon.src = FLOATING_WHATSAPP_ICON;
+        if (icon.getAttribute('src') !== FLOATING_WHATSAPP_ICON) {
+          icon.src = FLOATING_WHATSAPP_ICON;
+        }
         icon.alt = 'WhatsApp';
+        icon.removeAttribute('width');
+        icon.removeAttribute('height');
       }
     }
   }
@@ -406,9 +412,7 @@
         updateFloatingWhatsapp(window.BETHY_SITE_CONFIG || config);
       }).observe(document.body, {
         childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['href', 'style', 'src']
+        subtree: true
       });
     }
   }
