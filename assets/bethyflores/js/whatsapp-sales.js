@@ -289,6 +289,12 @@
       event.stopImmediatePropagation();
     }
 
-    window.location.href = whatsappUrl(productInfo(trigger));
+    var url = whatsappUrl(productInfo(trigger));
+    if (typeof window.gtag_report_conversion === 'function') {
+      window.gtag_report_conversion(url);
+      return;
+    }
+
+    window.location.href = url;
   }, true);
 })();

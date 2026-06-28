@@ -28,8 +28,10 @@
     "googleTagManagerId": "",
     "googleAnalyticsId": "",
     "googleAdsId": "AW-18279001756",
-    "googleAdsPageViewSendTo": "",
-    "googleAdsPageViewConversionLabel": "NdoqCIL53cAcEJ2UgvtD"
+    "googleAdsPageViewSendTo": "AW-18279001756/VzsVCJvyncccEJzdjYxE",
+    "googleAdsPageViewConversionLabel": "VzsVCJvyncccEJzdjYxE",
+    "googleAdsPurchaseSendTo": "AW-18279001756/-fNfCPXppsccEJzdjYxE",
+    "googleAdsPurchaseConversionLabel": "-fNfCPXppsccEJzdjYxE"
   },
   "store": {
     "legalName": "Praça Das Flores",

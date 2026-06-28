@@ -35,7 +35,9 @@
       googleAnalyticsId: '',
       googleAdsId: 'AW-18279001756',
       googleAdsPageViewSendTo: 'AW-18279001756/VzsVCJvyncccEJzdjYxE',
-      googleAdsPageViewConversionLabel: 'NdoqCIL53cAcEJ2UgvtD'
+      googleAdsPageViewConversionLabel: 'VzsVCJvyncccEJzdjYxE',
+      googleAdsPurchaseSendTo: 'AW-18279001756/-fNfCPXppsccEJzdjYxE',
+      googleAdsPurchaseConversionLabel: '-fNfCPXppsccEJzdjYxE'
     },
     store: {
       legalName: 'PraÃ§a Das Flores',
@@ -564,6 +566,22 @@
     return '';
   }
 
+  function googleAdsPurchaseSendTo(config) {
+    var tracking = config.tracking || {};
+    var explicitSendTo = extractGoogleAdsSendTo(tracking.googleAdsPurchaseSendTo);
+    if (explicitSendTo) {
+      return explicitSendTo;
+    }
+
+    var adsId = extractGoogleAdsId(tracking.googleAdsId);
+    var label = trackingValue(tracking.googleAdsPurchaseConversionLabel).replace(/^\/+/, '');
+    if (adsId && label) {
+      return adsId + '/' + label;
+    }
+
+    return '';
+  }
+
   function googleAdsPageViewTarget(config) {
     var sendTo = googleAdsPageViewSendTo(config);
     if (!sendTo) {
@@ -598,12 +616,48 @@
     });
   }
 
+  function installGoogleAdsPurchaseReporter(config) {
+    window.gtag_report_conversion = function (url) {
+      var redirected = false;
+      var targetUrl = typeof url !== 'undefined' ? url : '';
+      var sendTo = googleAdsPurchaseSendTo(config || window.BETHY_SITE_CONFIG || DEFAULT_CONFIG);
+
+      function redirect() {
+        if (redirected || !targetUrl) {
+          return;
+        }
+        redirected = true;
+        window.location = targetUrl;
+      }
+
+      if (!sendTo || !window.gtag) {
+        redirect();
+        return false;
+      }
+
+      window.setTimeout(redirect, 900);
+      window.gtag('event', 'conversion', {
+        send_to: sendTo,
+        value: 1.0,
+        currency: 'BRL',
+        transaction_id: '',
+        event_callback: redirect
+      });
+
+      return false;
+    };
+  }
+
   function injectGtag(ids, config) {
     var conversionSendTo = googleAdsPageViewSendTo(config || {});
     var cleanIds = (ids || []).map(normalizeGtagId).filter(Boolean);
     var conversionAdsId = extractGoogleAdsId(conversionSendTo);
     if (conversionAdsId && cleanIds.indexOf(conversionAdsId) === -1) {
       cleanIds.push(conversionAdsId);
+    }
+    var purchaseAdsId = extractGoogleAdsId(googleAdsPurchaseSendTo(config || {}));
+    if (purchaseAdsId && cleanIds.indexOf(purchaseAdsId) === -1) {
+      cleanIds.push(purchaseAdsId);
     }
     if (!cleanIds.length) {
       return;
@@ -631,6 +685,7 @@
 
   function applyConfig(config) {
     window.BETHY_SITE_CONFIG = merge(DEFAULT_CONFIG, config || {});
+    installGoogleAdsPurchaseReporter(window.BETHY_SITE_CONFIG);
     ready(function () {
       markPageType();
       injectResponsiveGuard();
@@ -665,6 +720,7 @@
 
   window.BETHY_SITE_DEFAULT_CONFIG = DEFAULT_CONFIG;
   window.BETHY_SITE_CONFIG = DEFAULT_CONFIG;
+  installGoogleAdsPurchaseReporter(DEFAULT_CONFIG);
 
   fetchJson('/api/admin-config')
     .catch(function () {
