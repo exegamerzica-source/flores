@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   var BRAND_HEADER_COLOR = '#3b0f1f';
   var BRAND_HEADER_SHADOW = '0 2px 0 rgba(155,31,58,.45)';
   var FLOATING_WHATSAPP_ICON = '/assets/bethyflores/images/whatsapp-floating.png';
@@ -6,9 +6,9 @@
 
   var DEFAULT_CONFIG = {
     branding: {
-      siteName: 'Praça Das Flores',
+      siteName: 'PraÃ§a Das Flores',
       titleSuffix: 'Floricultura Online',
-      description: 'Compre flores, buquês, arranjos, kits e presentes especiais. Pagamento via Pix e atendimento pelo WhatsApp.',
+      description: 'Compre flores, buquÃªs, arranjos, kits e presentes especiais. Pagamento via Pix e atendimento pelo WhatsApp.',
       logoUrl: HEADER_LOGO_URL,
       headerLogoUrl: HEADER_LOGO_URL,
       bannerUrl: '/assets/bethyflores/images/praca-das-flores-banner-optimized.jpg',
@@ -33,22 +33,22 @@
       facebookPixelId: '1787878781386472',
       googleTagManagerId: '',
       googleAnalyticsId: '',
-      googleAdsId: 'AW-18243160605',
-      googleAdsPageViewSendTo: 'AW-18243160605/NdoqCIL53cAcEJ2UgvtD',
+      googleAdsId: 'AW-18279001756',
+      googleAdsPageViewSendTo: 'AW-18279001756/VzsVCJvyncccEJzdjYxE',
       googleAdsPageViewConversionLabel: 'NdoqCIL53cAcEJ2UgvtD'
     },
     store: {
-      legalName: 'Praça Das Flores',
+      legalName: 'PraÃ§a Das Flores',
       cnpj: '54.476.973/0001-20',
-      address: 'Pc. Dr. João Batista Vasques, nº1 - São Paulo - SP',
+      address: 'Pc. Dr. JoÃ£o Batista Vasques, nÂº1 - SÃ£o Paulo - SP',
       deliveryEstimate: '30-60 minutos',
       sameDayCutoff: '18:00',
-      deliveryAreas: 'São Paulo e região',
-      substitutionPolicy: 'Na falta de alguma flor ou embalagem, substituímos por item equivalente ou de maior valor.'
+      deliveryAreas: 'SÃ£o Paulo e regiÃ£o',
+      substitutionPolicy: 'Na falta de alguma flor ou embalagem, substituÃ­mos por item equivalente ou de maior valor.'
     },
     announcement: {
       enabled: false,
-      text: 'Flores frescas e presentes especiais com entrega rápida.',
+      text: 'Flores frescas e presentes especiais com entrega rÃ¡pida.',
       link: ''
     }
   };
@@ -420,8 +420,8 @@
   function tuneCollectionHeadings() {
     Array.prototype.forEach.call(document.querySelectorAll('.link_colecao'), function (link) {
       var text = (link.textContent || '').replace(/\s+/g, ' ').trim();
-      if (/^Queridinhos da Pra(?:ç|Ã§)a Das Flores$/i.test(text)) {
-        link.textContent = 'Queridinhos da Praça';
+      if (/^Queridinhos da Pra(?:Ã§|ÃƒÂ§)a Das Flores$/i.test(text)) {
+        link.textContent = 'Queridinhos da PraÃ§a';
       }
     });
   }
@@ -675,3 +675,4 @@
       applyConfig(DEFAULT_CONFIG);
     });
 })();
+
