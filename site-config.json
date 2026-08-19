@@ -1,4 +1,4 @@
-{
+﻿{
   "branding": {
     "siteName": "Praça Das Flores",
     "titleSuffix": "Floricultura Online",
@@ -10,8 +10,8 @@
     "bannerUrl": "/assets/bethyflores/images/praca-das-flores-banner-optimized.jpg"
   },
   "contact": {
-    "whatsappPhone": "551635130795",
-    "whatsappDisplay": "(16) 3513 - 0795",
+    "whatsappPhone": "5547999835305",
+    "whatsappDisplay": "(47) 99983-5305",
     "email": "contato@pracadasflores.com.br",
     "instagramUrl": "",
     "facebookUrl": ""
@@ -48,3 +48,4 @@
     "link": ""
   }
 }
+

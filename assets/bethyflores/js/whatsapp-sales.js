@@ -1,5 +1,5 @@
-(function () {
-  var WHATSAPP_PHONE = '551635130795';
+﻿(function () {
+  var WHATSAPP_PHONE = '5547999835305';
 
   function cleanText(value) {
     return (value || '').replace(/\s+/g, ' ').trim();
@@ -298,3 +298,4 @@
     window.location.href = url;
   }, true);
 })();
+

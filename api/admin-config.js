@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 const CONFIG_FILE = 'site-config.json';
@@ -40,7 +40,7 @@ function sanitizeConfig(config) {
   output.store = output.store || {};
   output.announcement = output.announcement || {};
 
-  output.contact.whatsappPhone = normalizePhone(output.contact.whatsappPhone || '551635130795');
+  output.contact.whatsappPhone = normalizePhone(output.contact.whatsappPhone || '5547999835305');
   output.sales.quantityDefault = Number(output.sales.quantityDefault || 1);
   output.sales.showFloatingWhatsapp = output.sales.showFloatingWhatsapp !== false;
   output.announcement.enabled = output.announcement.enabled === true;
@@ -169,3 +169,4 @@ module.exports = async function handler(req, res) {
     sendJson(res, 500, { success: false, message: error.message || 'Erro interno.' });
   }
 };
+

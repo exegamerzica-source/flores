@@ -16,8 +16,8 @@
       primaryColor: BRAND_HEADER_COLOR
     },
     contact: {
-      whatsappPhone: '551635130795',
-      whatsappDisplay: '(16) 3513 - 0795',
+      whatsappPhone: '5547999835305',
+      whatsappDisplay: '(47) 99983-5305',
       email: 'contato@pracadasflores.com.br',
       instagramUrl: '',
       facebookUrl: ''
@@ -731,4 +731,5 @@
       applyConfig(DEFAULT_CONFIG);
     });
 })();
+
 
