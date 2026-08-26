@@ -106,6 +106,17 @@
         </div>
     </section>
 
+    
+    <!-- Monte seu Bouquet CTA -->
+    <section class="bg-rose-50 border-y border-rose-100 py-6">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-rose-700 font-semibold text-lg mb-3">🌸 Não sabe qual escolher? Monte um buquê exclusivo!</p>
+            <a href="/monte-seu-bouquet" class="inline-flex items-center gap-2 bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
+                ✨ Montar Meu Buquê Personalizado
+            </a>
+        </div>
+    </section>
+    
     <div id="products-container"></div>
 
     <footer class="bg-gray-50 border-t border-gray-100 py-12 px-4 text-center">
@@ -192,9 +203,7 @@
                             <h4 class="prod-title">${item.title}</h4>
                             <p class="prod-price mb-4">R$ ${item.price}</p>
                             <div class="prod-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592"/></svg>
-                                Pedir Esse
-                            </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592"/></svg>Garantir no WhatsApp</div>
                         </div>
                     </a>`;
                     globalIndex++;
@@ -237,12 +246,51 @@
     </div>
 
 
+    
+
+
+    <div id="exit-popup" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:16px;">
+        <div style="background:white;border-radius:20px;max-width:420px;width:100%;padding:32px;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);font-family:'Poppins',sans-serif;">
+            <button onclick="closeExit()" style="position:absolute;top:12px;right:16px;font-size:22px;color:#9ca3af;cursor:pointer;background:none;border:none;line-height:1;">✕</button>
+            <div style="font-size:48px;margin-bottom:12px;">🌹</div>
+            <h2 style="font-size:22px;font-weight:700;color:#1f2937;margin-bottom:8px;">Espera! Não vai embora assim...</h2>
+            <p style="color:#6b7280;margin-bottom:6px;font-size:15px;">Temos um <strong style="color:#e11d48;">buquê surpresa por apenas R$ 79</strong> esperando por você.</p>
+            <p style="color:#6b7280;font-size:14px;margin-bottom:24px;">Fala com a gente no WhatsApp antes de sair e garanta o seu! 💐</p>
+            <a href="https://api.whatsapp.com/send?phone=+5515981806586&text=Oi!%20Vi%20que%20voc%C3%AAs%20t%C3%AAm%20um%20buqu%C3%AA%20surpresa%20por%20R%24%2079.%20Quero%20saber%20mais!" target="_blank"
+               onclick="closeExit()"
+               style="display:inline-flex;align-items:center;gap:10px;background:#22c55e;color:white;font-weight:700;padding:14px 28px;border-radius:99px;text-decoration:none;font-size:16px;box-shadow:0 4px 15px rgba(34,197,94,0.4);transition:all 0.2s;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326z"/></svg>
+                Quero meu Buquê Surpresa!
+            </a>
+            <div style="margin-top:14px;">
+                <button onclick="closeExit()" style="font-size:12px;color:#9ca3af;cursor:pointer;background:none;border:none;text-decoration:underline;">Não, obrigado, vou sair mesmo</button>
+            </div>
+        </div>
+    </div>
     <script>
+    (function() {
+        if (sessionStorage.getItem('exitShown')) return;
+        let shown = false;
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY <= 0 && !shown) {
+                shown = true;
+                sessionStorage.setItem('exitShown', '1');
+                const popup = document.getElementById('exit-popup');
+                popup.style.display = 'flex';
+            }
+        });
+    })();
+    function closeExit() {
+        document.getElementById('exit-popup').style.display = 'none';
+    }
+    </script>
+
+    <script id="social-proof-script">
     // ===== SOCIAL PROOF NOTIFICATIONS =====
     (function() {
-        const nomes = ['João', 'Maria', 'Carlos', 'Ana', 'Pedro', 'Juliana', 'Rafael', 'Fernanda', 'Lucas', 'Camila', 'Bruno', 'Larissa', 'Marcos', 'Beatriz', 'Thiago', 'Letícia', 'Gabriel', 'Amanda', 'Felipe', 'Bruna', 'Rodrigo', 'Patrícia', 'Eduardo', 'Vanessa'];
-        const cidades = ['São Paulo', 'Campinas', 'Santo André', 'Guarulhos', 'Osasco', 'São Bernardo', 'Mauá', 'Ribeirão Preto', 'Sorocaba', 'Jundiaí', 'Bauru', 'São José dos Campos'];
-        const produtos = ['Buquê de Rosas Vermelhas', 'Buquê de Rosas Colombianas', 'Buquê Misto Premium', 'Cesta com Chocolates', 'Arranjo Especial de Girassóis', 'Buquê de Flores do Campo', 'Cesta Romântica', 'Buquê de Lírios', 'Arranjo Tropical', 'Buquê de Tulipas', 'Cesta de Café da Manhã com Flores', 'Buquê de Rosas Cor de Rosa', 'Arranjo em Vaso', 'Buquê Surpresa Premium'];
+        const nomes = ["Joao", "Maria", "Carlos", "Ana", "Pedro", "Juliana", "Rafael", "Fernanda", "Lucas", "Camila", "Bruno", "Larissa", "Marcos", "Beatriz", "Thiago", "Leticia", "Gabriel", "Amanda", "Felipe", "Bruna", "Rodrigo", "Patricia", "Eduardo", "Vanessa", "Diego", "Aline", "Leandro", "Tatiane", "Gustavo", "Priscila", "Renato", "Sabrina", "Alexandre", "Debora", "Matheus", "Natalia", "Vinicius", "Luana", "Leonardo", "Bianca", "Andre", "Carolina", "Ricardo", "Simone", "Fabio", "Elaine", "Marcelo", "Adriana", "Paulo", "Cristina", "Jorge", "Monica", "Roberto", "Claudia", "Sergio", "Denise", "Daniel", "Viviane", "Henrique", "Flavia", "Antonio", "Mariana"];
+        const cidades = ["Sao Paulo", "Campinas", "Guarulhos", "Santos", "Sao Bernardo do Campo", "Santo Andre", "Osasco", "Sorocaba", "Ribeirao Preto", "Sao Jose dos Campos", "Mogi das Cruzes", "Maua", "Diadema", "Jundiai", "Piracicaba", "Bauru", "Taubate", "Limeira", "Franca", "Americana", "Marilia", "Araçatuba", "Presidente Prudente", "Araraquara", "Sao Carlos", "Indaiatuba", "Sumare", "Barueri", "Sao Jose do Rio Preto", "Praia Grande", "Suzano", "Guaruja", "Cotia", "Jacareí", "Itapecerica da Serra", "Rio Claro", "Catanduva", "Botucatu", "Braganca Paulista", "Itu", "Lins", "Pindamonhangaba", "Sao Caetano do Sul", "Cubatao", "Itatiba", "Mogi Guacu", "Birigui", "Sertaozinho", "Vinhedo", "Valinhos", "Atibaia", "Rio de Janeiro", "Niteroi", "Duque de Caxias", "Nova Iguacu", "Sao Goncalo", "Campos dos Goytacazes", "Petropolis", "Volta Redonda", "Macae", "Barra Mansa", "Angra dos Reis", "Cabo Frio", "Resende", "Teresopolis", "Nova Friburgo", "Barra do Pirai", "Itaborai", "Mesquita", "Nilópolis", "Belford Roxo", "Belo Horizonte", "Uberlandia", "Contagem", "Juiz de Fora", "Betim", "Montes Claros", "Ribeiro das Neves", "Uberaba", "Governador Valadares", "Ipatinga", "Sete Lagoas", "Divinopolis", "Santa Luzia", "Ibirité", "Pocos de Caldas", "Patos de Minas", "Pouso Alegre", "Teofilo Otoni", "Varginha", "Barbacena", "Conselheiro Lafaiete", "Itabira", "Araxa", "Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravatai", "Viamao", "Novo Hamburgo", "Sao Leopoldo", "Rio Grande", "Alvorada", "Passo Fundo", "Sapucaia do Sul", "Uruguaiana", "Santa Cruz do Sul", "Cachoeirinha", "Bagé", "Bento Goncalves", "Erechim", "Guaiba", "Curitiba", "Londrina", "Maringa", "Ponta Grossa", "Cascavel", "Sao Jose dos Pinhais", "Foz do Iguacu", "Colombo", "Guarapuava", "Paranagua", "Araucaria", "Toledo", "Apucarana", "Pinhais", "Campo Largo", "Arapongas", "Almirante Tamandare", "Umuarama", "Piraquara", "Francisco Beltrao", "Salvador", "Feira de Santana", "Vitoria da Conquista", "Camacari", "Juazeiro", "Ilheus", "Itabuna", "Lauro de Freitas", "Jequie", "Teixeira de Freitas", "Alagoinhas", "Barreiras", "Porto Seguro", "Simoes Filho", "Paulo Afonso", "Eunapolis", "Santo Antonio de Jesus", "Valenca", "Luis Eduardo Magalhaes", "Florianopolis", "Joinville", "Blumenau", "Sao Jose", "Chapeco", "Criciuma", "Itajai", "Jaraguá do Sul", "Lages", "Palhoca", "Baln. Camboriu", "Biguacu", "Sao Bento do Sul", "Gaspar", "Cacador", "Recife", "Caruaru", "Olinda", "Petrolina", "Paulista", "Jaboatao dos Guararapes", "Camaragibe", "Garanhuns", "Vitoria de Santo Antao", "Cabo de Santo Agostinho", "Abreu e Lima", "Igarassu", "Santa Cruz do Capibaribe", "Fortaleza", "Caucaia", "Juazeiro do Norte", "Maracanau", "Sobral", "Crato", "Itapipoca", "Maranguape", "Iguatu", "Quixada", "Pacatuba", "Horizonte", "Russas", "Aquiraz", "Trairi", "Goiania", "Aparecida de Goiania", "Anapolis", "Rio Verde", "Luziania", "Aguas Lindas de Goias", "Valparaiso de Goias", "Trindade", "Formosa", "Novo Gama", "Itumbiara", "Senador Canedo", "Goianesia", "Jatai", "Manaus", "Parintins", "Itacoatiara", "Manacapuru", "Coari", "Tefé", "Tabatinga", "Manicore", "São Gabriel da Cachoeira", "Belem", "Ananindeua", "Santarem", "Castanhal", "Maraba", "Parauapebas", "Cameta", "Abaetetuba", "Braganca", "Barcarena", "Sao Luis", "Imperatriz", "Timon", "Caxias", "Codó", "Paço do Lumiar", "Açailandia", "Balsas", "Santa Ines", "Bacabal", "Vitoria", "Serra", "Vila Velha", "Cariacica", "Cachoeiro de Itapemirim", "Linhares", "Sao Mateus", "Colatina", "Guarapari", "Aracruz", "Brasilia", "Taguatinga", "Ceilandia", "Aguas Claras", "Plano Piloto", "Gama", "Nucleo Bandeirante", "Sobradinho", "Samambaia", "Planaltina", "Cuiaba", "Varzea Grande", "Rondonopolis", "Sinop", "Tangara da Serra", "Cáceres", "Alta Floresta", "Barra do Garças", "Lucas do Rio Verde", "Campo Grande", "Dourados", "Tres Lagoas", "Corumba", "Ponta Pora", "Naviraí", "Nova Andradina", "Aquidauana", "Sidrolandia", "Natal", "Mossoró", "Parnamirim", "Sao Goncalo do Amarante", "Macaiba", "Ceará-Mirim", "Caicó", "Assú", "Currais Novos", "Maceio", "Arapiraca", "Palmeira dos Indios", "Uniao dos Palmares", "Penedo", "Rio Largo", "Santana do Ipanema", "Joao Pessoa", "Campina Grande", "Santa Rita", "Patos", "Bayeux", "Sousa", "Cajazeiras", "Teresina", "Parnaiba", "Picos", "Piripiri", "Floriano", "Barras", "Campo Maior", "Aracaju", "Nossa Senhora do Socorro", "Lagarto", "Itabaiana", "Sao Cristovao", "Estancia", "Porto Velho", "Ji-Parana", "Ariquemes", "Cacoal", "Vilhena", "Palmas", "Araguaina", "Gurupi", "Porto Nacional", "Rio Branco", "Cruzeiro do Sul", "Sena Madureira", "Macapa", "Santana", "Boa Vista", "Rorainopolis"];
+        const produtos = ["Buque de Rosas Vermelhas", "Buque de Rosas Colombianas", "Buque Misto Premium", "Cesta com Chocolates Especiais", "Arranjo de Girassois", "Buque de Flores do Campo", "Cesta Romantica", "Buque de Lirios Brancos", "Arranjo Tropical", "Buque de Tulipas", "Cesta Cafe da Manha com Flores", "Buque de Rosas Rosa", "Arranjo em Vaso Luxo", "Buque Surpresa Premium", "Buque de Orquideas", "Arranjo de Rosas Coloridas", "Buque de Rosas Bicolores", "Cesta de Chocolates Belga", "Buque de Aniversario", "Arranjo Classico de Rosas", "Buque de Flores Silvestres", "Cesta Gourmet com Flores"];
 
         function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
         function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
@@ -251,7 +299,7 @@
             const nome = rand(nomes);
             const cidade = rand(cidades);
             const produto = rand(produtos);
-            const minutos = randInt(2, 18);
+            const minutos = randInt(1, 29);
 
             const notif = document.createElement('div');
             notif.innerHTML = `
@@ -262,37 +310,26 @@
                     <div>
                         <div style="font-weight:700;font-size:13px;color:#1f2937;">${nome} de ${cidade}</div>
                         <div style="font-size:12px;color:#6b7280;">pediu <b>${produto}</b></div>
-                        <div style="font-size:11px;color:#9ca3af;">há ${minutos} minutos</div>
+                        <div style="font-size:11px;color:#9ca3af;">ha ${minutos} ${minutos === 1 ? 'minuto' : 'minutos'}</div>
                     </div>
                 </div>
             `;
             notif.style.cssText = `
                 position:fixed; bottom:100px; left:16px; z-index:9999;
                 background:white; border-radius:12px; padding:12px 14px;
-                box-shadow:0 8px 32px rgba(0,0,0,0.15); max-width:260px;
-                border-left:4px solid #22c55e;
-                font-family:'Poppins',sans-serif;
+                box-shadow:0 8px 32px rgba(0,0,0,0.15); max-width:270px;
+                border-left:4px solid #22c55e; font-family:'Poppins',sans-serif;
                 transform:translateX(-120%); transition:transform 0.5s cubic-bezier(.17,.67,.35,1.2);
+                cursor:pointer;
             `;
+            notif.onclick = () => { notif.style.transform = 'translateX(-120%)'; setTimeout(() => notif.remove(), 600); };
             document.body.appendChild(notif);
-
-            // Animate in
             setTimeout(() => { notif.style.transform = 'translateX(0)'; }, 100);
-            // Animate out
-            setTimeout(() => {
-                notif.style.transform = 'translateX(-120%)';
-                setTimeout(() => notif.remove(), 600);
-            }, 5000);
+            setTimeout(() => { notif.style.transform = 'translateX(-120%)'; setTimeout(() => notif.remove(), 600); }, 5500);
         }
 
-        // First notification after 8 seconds
-        setTimeout(() => {
-            showNotification();
-            // Then every 20-35 seconds
-            setInterval(() => showNotification(), randInt(20000, 35000));
-        }, 8000);
+        setTimeout(() => { showNotification(); setInterval(() => showNotification(), randInt(18000, 32000)); }, 7000);
     })();
     </script>
-
 </body>
 </html>
