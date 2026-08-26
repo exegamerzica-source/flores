@@ -32,7 +32,27 @@
         .prod-btn:hover { background-color: #16a34a; }
         .prod-price { color: #e11d48; font-weight: 700; font-size: 1.125rem; }
         .prod-title { font-size: 0.9rem; font-weight: 600; color: #1f2937; height: 40px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin-bottom: 8px; }
-    </style>
+    
+        .online-badge {
+            position:fixed; bottom:90px; right:16px; z-index:9998;
+            background:white; border-radius:20px; padding:5px 10px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.15);
+            display:flex; align-items:center; gap:6px;
+            font-family:'Poppins',sans-serif; font-size:11px;
+            font-weight:600; color:#16a34a;
+            pointer-events:none;
+        }
+        .online-dot {
+            width:8px; height:8px; border-radius:50%; background:#22c55e;
+            animation: blink-dot 1.5s infinite;
+            flex-shrink:0;
+        }
+        @keyframes blink-dot {
+            0%, 100% { opacity:1; transform:scale(1); }
+            50% { opacity:0.5; transform:scale(0.7); }
+        }
+
+        </style>
 </head>
 <body class="text-gray-800 antialiased bg-gray-50">
     <div id="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-white">
@@ -210,5 +230,69 @@
 
         window.onload = fetchProducts;
     </script>
+
+    <div class="online-badge">
+        <div class="online-dot"></div>
+        Atendente online agora
+    </div>
+
+
+    <script>
+    // ===== SOCIAL PROOF NOTIFICATIONS =====
+    (function() {
+        const nomes = ['João', 'Maria', 'Carlos', 'Ana', 'Pedro', 'Juliana', 'Rafael', 'Fernanda', 'Lucas', 'Camila', 'Bruno', 'Larissa', 'Marcos', 'Beatriz', 'Thiago', 'Letícia', 'Gabriel', 'Amanda', 'Felipe', 'Bruna', 'Rodrigo', 'Patrícia', 'Eduardo', 'Vanessa'];
+        const cidades = ['São Paulo', 'Campinas', 'Santo André', 'Guarulhos', 'Osasco', 'São Bernardo', 'Mauá', 'Ribeirão Preto', 'Sorocaba', 'Jundiaí', 'Bauru', 'São José dos Campos'];
+        const produtos = ['Buquê de Rosas Vermelhas', 'Buquê de Rosas Colombianas', 'Buquê Misto Premium', 'Cesta com Chocolates', 'Arranjo Especial de Girassóis', 'Buquê de Flores do Campo', 'Cesta Romântica', 'Buquê de Lírios', 'Arranjo Tropical', 'Buquê de Tulipas', 'Cesta de Café da Manhã com Flores', 'Buquê de Rosas Cor de Rosa', 'Arranjo em Vaso', 'Buquê Surpresa Premium'];
+
+        function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+        function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+        function showNotification() {
+            const nome = rand(nomes);
+            const cidade = rand(cidades);
+            const produto = rand(produtos);
+            const minutos = randInt(2, 18);
+
+            const notif = document.createElement('div');
+            notif.innerHTML = `
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <div style="background:#22c55e;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                        <svg width="20" height="20" fill="white" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326z"/></svg>
+                    </div>
+                    <div>
+                        <div style="font-weight:700;font-size:13px;color:#1f2937;">${nome} de ${cidade}</div>
+                        <div style="font-size:12px;color:#6b7280;">pediu <b>${produto}</b></div>
+                        <div style="font-size:11px;color:#9ca3af;">há ${minutos} minutos</div>
+                    </div>
+                </div>
+            `;
+            notif.style.cssText = `
+                position:fixed; bottom:100px; left:16px; z-index:9999;
+                background:white; border-radius:12px; padding:12px 14px;
+                box-shadow:0 8px 32px rgba(0,0,0,0.15); max-width:260px;
+                border-left:4px solid #22c55e;
+                font-family:'Poppins',sans-serif;
+                transform:translateX(-120%); transition:transform 0.5s cubic-bezier(.17,.67,.35,1.2);
+            `;
+            document.body.appendChild(notif);
+
+            // Animate in
+            setTimeout(() => { notif.style.transform = 'translateX(0)'; }, 100);
+            // Animate out
+            setTimeout(() => {
+                notif.style.transform = 'translateX(-120%)';
+                setTimeout(() => notif.remove(), 600);
+            }, 5000);
+        }
+
+        // First notification after 8 seconds
+        setTimeout(() => {
+            showNotification();
+            // Then every 20-35 seconds
+            setInterval(() => showNotification(), randInt(20000, 35000));
+        }, 8000);
+    })();
+    </script>
+
 </body>
 </html>
