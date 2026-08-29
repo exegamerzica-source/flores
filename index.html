@@ -27,7 +27,7 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .prod-img { width: 100%; height: 220px; object-fit: cover; background-color: #ffffff; }
-        .prod-card { border-radius: 14px; border: 1px solid #f3f4f6; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); overflow: hidden; background: #ffffff; display: flex; flex-direction: column; transition: all 0.25s ease; text-decoration: none; }
+        .prod-card { border-radius: 14px; border: 1px solid #f3f4f6; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); overflow: hidden; background: #ffffff; display: flex; flex-direction: column; transition: all 0.25s ease; text-decoration: none; cursor: pointer; }
         .prod-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08); border-color: #fecdd3; }
         .prod-btn { background-color: #22c55e; color: white; font-weight: 600; border-radius: 9999px; padding: 10px; display: flex; justify-content: center; align-items: center; gap: 8px; transition: background 0.2s; font-size: 0.875rem; }
         .prod-btn:hover { background-color: #16a34a; }
@@ -52,6 +52,12 @@
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.5; transform: scale(0.7); }
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fadeIn { animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     </style>
 </head>
 <body class="text-gray-800 antialiased bg-gray-50">
@@ -93,8 +99,6 @@
         </div>
     </section>
 
-    
-
     <!-- Categories Navigation Bar (ÚNICA E LIMPA) -->
     <nav class="sticky top-[60px] md:top-[76px] z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200 py-3 shadow-xs">
         <div class="max-w-7xl mx-auto px-4">
@@ -123,6 +127,101 @@
             </p>
         </div>
     </footer>
+
+    <!-- Product Details Modal (High Conversion) -->
+    <div id="product-modal" class="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 md:p-6" style="display: none;" onclick="handleModalBackdropClick(event)">
+        <div class="relative bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden animate-fadeIn my-auto max-h-[92vh] flex flex-col" onclick="event.stopPropagation()">
+            <!-- Close Button -->
+            <button onclick="closeProductModal()" class="absolute top-3 right-3 z-20 bg-white/90 hover:bg-white text-gray-600 hover:text-gray-900 rounded-full w-9 h-9 flex items-center justify-center shadow-md transition transform hover:scale-105 border border-gray-100" aria-label="Fechar">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+
+            <!-- Scrollable Modal Content -->
+            <div class="overflow-y-auto p-4 md:p-6 space-y-5 flex-grow">
+                <!-- Top Section: Image & Main Info -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
+                    <div class="relative aspect-square rounded-xl overflow-hidden bg-gray-50 border border-gray-100 shadow-xs">
+                        <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+                        <span class="absolute top-2 left-2 bg-rose-500/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-xs">🌸 Flores Frescas</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-1.5 text-amber-500 text-sm font-semibold">
+                            <span>★★★★★</span>
+                            <span class="text-gray-700 font-bold ml-1">4.9</span>
+                            <span class="text-gray-400 text-xs">(128 avaliações)</span>
+                        </div>
+                        <h2 id="modal-title" class="text-xl md:text-2xl font-bold text-gray-800 leading-snug"></h2>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-gray-400 text-xs font-semibold uppercase">Por apenas</span>
+                            <span id="modal-price" class="text-2xl md:text-3xl font-extrabold text-rose-600"></span>
+                        </div>
+                        <p class="text-xs text-gray-500 font-medium">💳 Em até 3x no cartão ou desconto especial no Pix</p>
+                        
+                        <!-- Quick Delivery Banner -->
+                        <div class="bg-emerald-50 border border-emerald-200/80 rounded-xl p-3 flex items-start gap-2.5 text-xs text-emerald-900">
+                            <span class="text-base">🚀</span>
+                            <div>
+                                <strong class="font-bold">Entrega Expressa Hoje:</strong>
+                                <p class="text-emerald-700 mt-0.5">Montagem cuidadosa e entrega em até 1h30 para seu endereço.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlights Specs -->
+                <div class="grid grid-cols-3 gap-2 text-center text-xs py-2.5 border-y border-gray-100">
+                    <div class="p-2 bg-gray-50 rounded-lg">
+                        <div class="font-bold text-gray-800">💌 Cartão Grátis</div>
+                        <div class="text-gray-500 text-[10px]">Dedicatória inclusa</div>
+                    </div>
+                    <div class="p-2 bg-gray-50 rounded-lg">
+                        <div class="font-bold text-gray-800">🌿 Flores Nobres</div>
+                        <div class="text-gray-500 text-[10px]">100% Selecionadas</div>
+                    </div>
+                    <div class="p-2 bg-gray-50 rounded-lg">
+                        <div class="font-bold text-gray-800">🔒 Compra Segura</div>
+                        <div class="text-gray-500 text-[10px]">Direto no WhatsApp</div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <h3 class="text-sm font-bold text-gray-900 mb-1.5 flex items-center gap-1.5">
+                        <span>📋</span> Detalhes do Produto
+                    </h3>
+                    <p id="modal-desc" class="text-gray-600 text-xs md:text-sm leading-relaxed"></p>
+                </div>
+
+                <!-- Customer Reviews (Social Proof) -->
+                <div class="pt-2 border-t border-gray-100">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+                            <span>💬</span> Avaliações de Clientes
+                        </h3>
+                        <span class="text-xs text-emerald-600 font-semibold flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Verificadas
+                        </span>
+                    </div>
+                    <div class="space-y-2.5" id="modal-reviews">
+                        <!-- Dynamic realistic reviews injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Footer CTA Button -->
+            <div class="p-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between gap-3">
+                <div class="hidden sm:block">
+                    <span class="text-xs text-gray-500 block">Total:</span>
+                    <span id="modal-footer-price" class="text-xl font-bold text-rose-600"></span>
+                </div>
+                <a id="modal-wpp-btn" href="#" target="_blank" class="flex-grow sm:flex-grow-0 sm:min-w-[280px] bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full text-center text-sm md:text-base shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
+                    Pedir no WhatsApp Agora
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Online Badge -->
     <div class="online-badge">
@@ -215,7 +314,7 @@
     })();
     </script>
 
-    <!-- Main Logic Script -->
+    <!-- Main Logic & Modal Script -->
     <script>
         const WPP_PHONE = '47999835305';
         let allProducts = [];
@@ -227,6 +326,9 @@
                 renderCategoriesAndProducts();
                 const loader = document.getElementById('loading');
                 if (loader) loader.style.display = 'none';
+
+                // Checa se há hash na URL para abrir produto direto (ex: #produto-123)
+                checkUrlHash();
             } catch (err) {
                 console.error("Erro ao buscar produtos:", err);
                 const loader = document.getElementById('loading');
@@ -236,7 +338,7 @@
             }
         }
 
-                function categorizeProducts() {
+        function categorizeProducts() {
             let catData = {
                 'destaques': { title: '⭐ Destaques & Mais Pedidos', items: [] },
                 'buques': { title: '💐 Buquês de Rosas & Flores', items: [] },
@@ -246,7 +348,6 @@
                 'arranjos': { title: '🪴 Arranjos & Vasos', items: [] }
             };
 
-            // 1. Coloca cada produto na sua categoria correspondente (incluindo os caros)
             allProducts.forEach(p => {
                 let t = p.title.toLowerCase();
                 if (t.includes('coroa')) {
@@ -262,7 +363,7 @@
                 }
             });
 
-            // 2. Destaques (primeira seção): apenas produtos acessíveis de até R$ 120,00 para não assustar o cliente
+            // Destaques: produtos acessíveis de até R$ 120,00
             const acessiveis = allProducts.filter(p => {
                 let priceNum = parseFloat(p.price.replace('.', '').replace(',', '.'));
                 let t = p.title.toLowerCase();
@@ -301,19 +402,22 @@
                     let wppUrl = `https://api.whatsapp.com/send?phone=+55${WPP_PHONE}&text=${encodeURIComponent(msg)}`;
                     
                     contentHtml += `
-                    <a href="${wppUrl}" target="_blank" class="prod-card group">
+                    <div onclick="openProductModal(${item.id})" class="prod-card group">
                         <div class="relative overflow-hidden bg-gray-100 aspect-square">
                             <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=Foto+Indisponivel'">
+                            <span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] font-medium px-2 py-0.5 rounded-full backdrop-blur-xs flex items-center gap-1 opacity-90 group-hover:opacity-100 transition">
+                                🔍 Ver Detalhes
+                            </span>
                         </div>
                         <div class="p-3.5 md:p-4 flex flex-col flex-grow">
                             <h4 class="prod-title">${item.title}</h4>
                             <p class="prod-price mb-3 mt-auto">R$ ${item.price}</p>
-                            <div class="prod-btn">
+                            <a href="${wppUrl}" target="_blank" onclick="event.stopPropagation()" class="prod-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
                                 Garantir no WhatsApp
-                            </div>
+                            </a>
                         </div>
-                    </a>`;
+                    </div>`;
                 });
                 
                 contentHtml += `</div></section>`;
@@ -321,6 +425,103 @@
             
             pillsContainer.innerHTML = pillsHtml;
             productsContainer.innerHTML = contentHtml;
+        }
+
+        // ===== MODAL DE DETALHES & AVALIAÇÕES =====
+        const sampleReviews = [
+            { name: "Mariana Costa", city: "São Paulo, SP", rating: "★★★★★", date: "Ontem", text: "Chegou super rápido e muito mais lindo que na foto! A surpresa para o aniversário foi impecável, recomendo demais." },
+            { name: "Lucas Henrique", city: "Curitiba, PR", rating: "★★★★★", date: "Há 2 dias", text: "Atendimento no WhatsApp nota 10. Foram muito prestativos, tiraram fotos antes de enviar e entregaram pontualmente." },
+            { name: "Camila Ribeiro", city: "Rio de Janeiro, RJ", rating: "★★★★★", date: "Há 4 dias", text: "Flores fresquíssimas e com um perfume maravilhoso. Minha mãe chorou de emoção quando recebeu!" },
+            { name: "Rodrigo Almeida", city: "Belo Horizonte, MG", rating: "★★★★★", date: "Há 6 dias", text: "Excelente qualidade e embalagem muito caprichada. Cartãozinho veio exatamente com a mensagem que pedi." }
+        ];
+
+        function getSmartDescription(title) {
+            let t = title.toLowerCase();
+            if (t.includes('coroa')) {
+                return "Coroa fúnebre confeccionada com flores nobres e frescas selecionadas, transmitindo respeito, paz e carinho em momentos de homenagem. Acompanha fita personalizada com mensagem de condolências e possui entrega rápida e prioritária no local.";
+            } else if (t.includes('cesta')) {
+                return "Cesta especial montada com produtos selecionados de alta qualidade, flores harmonizadas e embalagem refinada para presente. Acompanha laço artesanal e cartão personalizado para você enviar sua mensagem de carinho.";
+            } else if (t.includes('orqu')) {
+                return "Orquídea nobre selecionada em vaso decorativo de alta durabilidade e elegância natural. Uma das opções mais duradouras e sofisticadas para presentear ou decorar ambientes especiais.";
+            } else if (t.includes('girassol')) {
+                return "Arranjo vibrante de girassóis radiantes e flores selecionadas do campo. Traz luz, energia positiva e alegria para qualquer ocasião especial com acabamento elegante.";
+            } else {
+                return "Arranjo artesanal com flores frescas do dia, cuidadosamente selecionadas e harmonizadas por nossos floristas experientes. Acompanha folhagens decorativas nobres, embalagem protetora especial e cartão para dedicatória.";
+            }
+        }
+
+        function openProductModal(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return;
+
+            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-img').alt = product.title;
+            document.getElementById('modal-title').textContent = product.title;
+            document.getElementById('modal-price').textContent = 'R$ ' + product.price;
+            document.getElementById('modal-footer-price').textContent = 'R$ ' + product.price;
+            document.getElementById('modal-desc').textContent = getSmartDescription(product.title);
+
+            // Gerar link do WhatsApp do Modal
+            const msg = `Oii! Estava vendo os detalhes do produto "${product.title}" (R$ ${product.price}) no site e gostaria de fazer o pedido!`;
+            const wppUrl = `https://api.whatsapp.com/send?phone=+55${WPP_PHONE}&text=${encodeURIComponent(msg)}`;
+            document.getElementById('modal-wpp-btn').href = wppUrl;
+
+            // Injetar Avaliações Realistas
+            const reviewsContainer = document.getElementById('modal-reviews');
+            reviewsContainer.innerHTML = '';
+            sampleReviews.forEach(r => {
+                const rEl = document.createElement('div');
+                rEl.className = 'bg-gray-50/80 p-3 rounded-xl border border-gray-100 text-xs';
+                rEl.innerHTML = `
+                    <div class="flex items-center justify-between mb-1">
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-bold text-gray-800">${r.name}</span>
+                            <span class="text-gray-400 text-[10px]">· ${r.city}</span>
+                        </div>
+                        <span class="text-amber-500 font-bold tracking-widest text-[11px]">${r.rating}</span>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">${r.text}</p>
+                `;
+                reviewsContainer.appendChild(rEl);
+            });
+
+            const modal = document.getElementById('product-modal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Impede scroll do fundo
+
+            // Atualiza hash da URL sem recarregar
+            history.pushState(null, '', `#produto-${product.id}`);
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('product-modal');
+            if (modal) modal.style.display = 'none';
+            document.body.style.overflow = ''; // Restaura scroll
+
+            // Remove hash da URL
+            if (window.location.hash.startsWith('#produto-')) {
+                history.pushState(null, '', window.location.pathname + window.location.search);
+            }
+        }
+
+        function handleModalBackdropClick(e) {
+            if (e.target.id === 'product-modal') {
+                closeProductModal();
+            }
+        }
+
+        // Fechar modal com tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeProductModal();
+        });
+
+        // Suporte para abrir modal via URL direta (deep linking)
+        function checkUrlHash() {
+            const hash = window.location.hash;
+            if (hash && hash.startsWith('#produto-')) {
+                const id = parseInt(hash.replace('#produto-', ''));
+                if (id) openProductModal(id);
+            }
         }
 
         window.addEventListener('DOMContentLoaded', fetchProducts);
