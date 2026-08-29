@@ -124,54 +124,41 @@
 
     <!-- FILTROS DE CATEGORIA -->
     <section class="bg-white border-b border-gray-100 sticky top-[60px] z-30 py-3 px-4">
-        <div class="max-w-5xl mx-auto flex gap-2 overflow-x-auto pb-1 scrollbar-hide" id="category-filters">
-            <button onclick="filterCategory('todos')" class="filter-btn active flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border-2 border-rose-500 bg-rose-500 text-white transition">
-                🌸 Todos
-            </button>
-            <button onclick="filterCategory('buque')" class="filter-btn flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border-2 border-gray-200 bg-white text-gray-600 hover:border-rose-400 hover:text-rose-500 transition">
-                💐 Buquês
-            </button>
-            <button onclick="filterCategory('cesta')" class="filter-btn flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border-2 border-gray-200 bg-white text-gray-600 hover:border-rose-400 hover:text-rose-500 transition">
-                🧺 Cestas
-            </button>
-            <button onclick="filterCategory('coroa')" class="filter-btn flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border-2 border-purple-500 bg-purple-50 text-purple-700 hover:bg-purple-100 transition">
-                ⚘ Coroa de Flores
-            </button>
-            <button onclick="filterCategory('kit')" class="filter-btn flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border-2 border-gray-200 bg-white text-gray-600 hover:border-rose-400 hover:text-rose-500 transition">
-                🎁 Kits
-            </button>
-            <button onclick="filterCategory('orquidea')" class="filter-btn flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border-2 border-gray-200 bg-white text-gray-600 hover:border-rose-400 hover:text-rose-500 transition">
-                🌺 Orquídeas
-            </button>
-            <button onclick="filterCategory('arranjo')" class="filter-btn flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border-2 border-gray-200 bg-white text-gray-600 hover:border-rose-400 hover:text-rose-500 transition">
-                🪴 Arranjos
-            </button>
-        </div>
-    </section>
+        
     
     <script>
-    // Link Updater - Roda na inicialização para colocar o WhatsApp correto
-    document.addEventListener('DOMContentLoaded', () => {
+    // Link Updater - Correção para links do WhatsApp e Filtros
+    function initializeLinks() {
+        const phone = '11945986072'; 
         const cards = document.querySelectorAll('.prod-card');
         cards.forEach(card => {
             const title = card.getAttribute('data-title');
             const price = card.getAttribute('data-price');
             const wppMsg = encodeURIComponent('Oi! Gostaria de garantir no WhatsApp: ' + title + ' por R$ ' + price);
-            card.href = 'https://api.whatsapp.com/send?phone=' + WPP_PHONE + '&text=' + wppMsg;
+            card.href = 'https://api.whatsapp.com/send?phone=+55' + phone + '&text=' + wppMsg;
         });
-        document.getElementById('product-count').textContent = cards.length + ' produtos';
-    });
+        
+        const countEl = document.getElementById('product-count');
+        if(countEl) { countEl.textContent = cards.length + ' produtos'; }
+    }
 
-    // Filtro super rápido (CSS)
-    let currentFilter = 'todos';
-    function filterCategory(cat) {
-        currentFilter = cat;
-        // Botões
+    // Executa a inicialização de forma segura
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeLinks);
+    } else {
+        initializeLinks();
+    }
+
+    // Torna a função acessível globalmente (resolve o onclick)
+    window.filterCategory = function(cat) {
+        // Limpar estilos de todos os botões
         document.querySelectorAll('.filter-btn').forEach(b => {
             b.classList.remove('active', 'bg-rose-500', 'text-white', 'border-rose-500', 'bg-purple-500', 'bg-purple-50', 'text-purple-700', 'border-purple-500');
             b.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
         });
-        const active = document.querySelector(`.filter-btn[onclick="filterCategory('${cat}')"]`);
+        
+        // Ativar o botão clicado
+        const active = document.querySelector(".filter-btn[onclick=\"filterCategory('" + cat + "')\"]");
         if (active) {
             active.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
             if (cat === 'coroa') {
@@ -182,20 +169,22 @@
             active.classList.add('active');
         }
 
-        // Exibir/Esconder via CSS
+        // Mostrar/Esconder os produtos
         let count = 0;
         const cards = document.querySelectorAll('.prod-card');
         cards.forEach(card => {
             const cats = card.getAttribute('data-categories');
-            if (cats.includes(cat)) {
+            if (cats && cats.includes(cat)) {
                 card.style.display = 'block';
                 count++;
             } else {
                 card.style.display = 'none';
             }
         });
-        document.getElementById('product-count').textContent = count + ' produtos encontrados';
-    }
+        
+        const countEl = document.getElementById('product-count');
+        if(countEl) { countEl.textContent = count + ' produtos encontrados'; }
+    };
     </script>
     
 
