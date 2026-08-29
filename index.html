@@ -10877,26 +10877,6 @@
             } catch (err) {
                 console.error("Erro ao buscar produtos:", err);
                 document.getElementById('loading').innerHTML = '<p class="text-red-500 p-10 font-bold">Erro ao carregar o catálogo. Tente atualizar a página.</p>';
-            }
-        }
-
-        function categorizeProducts() {
-            let catData = {
-                'buques_vermelhos': { title: 'Buquês de Rosas Vermelhas', items: [] },
-                'buques_diversos': { title: 'Buquês (Outras Cores)', items: [] },
-                'cestas': { title: 'Cestas (Café, Chocolate, Bebidas)', items: [] },
-                'arranjos': { title: 'Arranjos e Vasos', items: [] }
-            };
-
-            allProducts.forEach(p => {
-                let t = p.title.toLowerCase();
-                if (t.includes('cesta')) catData['cestas'].items.push(p);
-                else if (t.includes('buqu')) {
-                    if (t.includes('vermelh')) catData['buques_vermelhos'].items.push(p);
-                    else catData['buques_diversos'].items.push(p);
-                } else {
-                    catData['arranjos'].items.push(p);
-                }
             });
             return catData;
         }
