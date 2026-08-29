@@ -244,7 +244,7 @@
             }
         }
 
-        function categorizeProducts() {
+                function categorizeProducts() {
             let catData = {
                 'destaques': { title: '⭐ Destaques & Mais Pedidos', items: [] },
                 'buques': { title: '💐 Buquês de Rosas & Flores', items: [] },
@@ -254,11 +254,10 @@
                 'arranjos': { title: '🪴 Arranjos & Vasos', items: [] }
             };
 
+            // 1. Coloca cada produto na sua categoria correspondente (incluindo os caros)
             allProducts.forEach(p => {
                 let t = p.title.toLowerCase();
-                if (t.includes('500 rosas') || (t.includes('50 rosas') && t.includes('espl')) || t.includes('100 rosas')) {
-                    catData['destaques'].items.push(p);
-                } else if (t.includes('coroa')) {
+                if (t.includes('coroa')) {
                     catData['coroas'].items.push(p);
                 } else if (t.includes('cesta')) {
                     catData['cestas'].items.push(p);
@@ -270,6 +269,15 @@
                     catData['arranjos'].items.push(p);
                 }
             });
+
+            // 2. Destaques (primeira seção): apenas produtos acessíveis de até R$ 120,00 para não assustar o cliente
+            const acessiveis = allProducts.filter(p => {
+                let priceNum = parseFloat(p.price.replace('.', '').replace(',', '.'));
+                let t = p.title.toLowerCase();
+                return priceNum > 0 && priceNum <= 120 && !t.includes('coroa');
+            });
+
+            catData['destaques'].items = acessiveis.slice(0, 12);
 
             return catData;
         }
