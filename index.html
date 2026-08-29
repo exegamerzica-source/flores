@@ -146,9 +146,9 @@
                     </div>
                     <div class="space-y-3">
                         <div class="flex items-center gap-1.5 text-amber-500 text-sm font-semibold">
-                            <span>★★★★★</span>
-                            <span class="text-gray-700 font-bold ml-1">4.9</span>
-                            <span class="text-gray-400 text-xs">(128 avaliações)</span>
+                            <span id="modal-stars">★★★★★</span>
+                            <span id="modal-rating-score" class="text-gray-700 font-bold ml-1">4.9</span>
+                            <span id="modal-rating-count" class="text-gray-400 text-xs">(128 avaliações)</span>
                         </div>
                         <h2 id="modal-title" class="text-xl md:text-2xl font-bold text-gray-800 leading-snug"></h2>
                         <div class="flex items-baseline gap-2">
@@ -427,13 +427,50 @@
             productsContainer.innerHTML = contentHtml;
         }
 
-        // ===== MODAL DE DETALHES & AVALIAÇÕES =====
-        const sampleReviews = [
-            { name: "Mariana Costa", city: "São Paulo, SP", rating: "★★★★★", date: "Ontem", text: "Chegou super rápido e muito mais lindo que na foto! A surpresa para o aniversário foi impecável, recomendo demais." },
-            { name: "Lucas Henrique", city: "Curitiba, PR", rating: "★★★★★", date: "Há 2 dias", text: "Atendimento no WhatsApp nota 10. Foram muito prestativos, tiraram fotos antes de enviar e entregaram pontualmente." },
-            { name: "Camila Ribeiro", city: "Rio de Janeiro, RJ", rating: "★★★★★", date: "Há 4 dias", text: "Flores fresquíssimas e com um perfume maravilhoso. Minha mãe chorou de emoção quando recebeu!" },
-            { name: "Rodrigo Almeida", city: "Belo Horizonte, MG", rating: "★★★★★", date: "Há 6 dias", text: "Excelente qualidade e embalagem muito caprichada. Cartãozinho veio exatamente com a mensagem que pedi." }
+                // ===== MODAL DE DETALHES & AVALIAÇÕES DINÂMICAS ALEATÓRIAS =====
+        const reviewDatabase = [
+            { name: "Mariana Costa", city: "São Paulo, SP", rating: "★★★★★", text: "Chegou super rápido e muito mais lindo que na foto! A surpresa para o aniversário foi impecável, recomendo demais." },
+            { name: "Lucas Henrique", city: "Curitiba, PR", rating: "★★★★★", text: "Atendimento no WhatsApp nota 10. Foram muito prestativos, tiraram fotos antes de enviar e entregaram pontualmente." },
+            { name: "Camila Ribeiro", city: "Rio de Janeiro, RJ", rating: "★★★★★", text: "Flores fresquíssimas e com um perfume maravilhoso. Minha mãe chorou de emoção quando recebeu!" },
+            { name: "Rodrigo Almeida", city: "Belo Horizonte, MG", rating: "★★★★★", text: "Excelente qualidade e embalagem muito caprichada. Cartãozinho veio exatamente com a mensagem que pedi." },
+            { name: "Juliana Mendes", city: "Campinas, SP", rating: "★★★★★", text: "Comprei de última hora para entrega expressa e chegou em menos de 1h20! Salvaram meu dia dos namorados." },
+            { name: "Fernanda Lima", city: "Porto Alegre, RS", rating: "★★★★★", text: "As rosas duraram mais de uma semana perfeitas no vaso. Dá pra ver que são de altíssima qualidade." },
+            { name: "Gabriel Sampaio", city: "Salvador, BA", rating: "★★★★★", text: "Pedido super fácil pelo WhatsApp, vendedora super atenciosa. Minha noiva amou a surpresa!" },
+            { name: "Beatriz Nogueira", city: "Florianópolis, SC", rating: "★★★★★", text: "Moro em outro estado e mandei entregar de surpresa. O processo todo foi muito transparente e confiável." },
+            { name: "Thiago Moreira", city: "Goiânia, GO", rating: "★★★★★", text: "Arranjo impecável! Veio muito bem embalado e protegido no transporte. Voltarei a comprar sempre." },
+            { name: "Aline Fonseca", city: "Santos, SP", rating: "★★★★★", text: "Produto maravilhoso e atendimento rápido e gentil. Superou minhas expectativas em todos os detalhes." },
+            { name: "Matheus Duarte", city: "Recife, PE", rating: "★★★★★", text: "Preço super justo pela qualidade das flores e do laço. Entrega no horário combinado certinho." },
+            { name: "Larissa Silveira", city: "Brasília, DF", rating: "★★★★★", text: "Fiz o pedido às 14h e às 15h15 já estava entregue. Incrível a agilidade e o capricho da floricultura!" },
+            { name: "Pedro Vasconcelos", city: "Ribeirão Preto, SP", rating: "★★★★★", text: "Flores selecionadas com muito carinho. O cartão com dedicatória ficou lindo com a caligrafia." },
+            { name: "Carolina Pires", city: "Fortaleza, CE", rating: "★★★★★", text: "Cesta super recheada e flores muito vivas. A pessoa presenteada ficou maravilhada." },
+            { name: "Bruno Martins", city: "Joinville, SC", rating: "★★★★★", text: "Muito satisfeito! Segunda vez que compro e a experiência continua impecável. Nota mil!" }
         ];
+
+        const recentDates = ["Hoje", "Ontem", "Há 2 dias", "Há 3 dias", "Há 4 dias", "Há 5 dias", "Há 1 semana"];
+
+        function getRandomScore(id) {
+            // Nota aleatória com mínimo de 4.8 (4.8, 4.9 ou 5.0)
+            const scores = ["4.8", "4.9", "4.9", "5.0", "4.8", "4.9", "5.0"];
+            // Sorteio aleatório misturado com ID
+            const idx = (id * 7 + Math.floor(Math.random() * scores.length)) % scores.length;
+            return scores[idx];
+        }
+
+        function getRandomReviewCount(id) {
+            // Quantidade aleatória e realista (entre 42 e 218 avaliações)
+            const base = 40 + ((id * 17) % 160);
+            return base + Math.floor(Math.random() * 15);
+        }
+
+        function getRandomReviews() {
+            // Embaralha e pega 3 a 4 avaliações aleatórias únicas
+            const shuffled = [...reviewDatabase].sort(() => 0.5 - Math.random());
+            const count = Math.random() > 0.4 ? 4 : 3;
+            return shuffled.slice(0, count).map((r, i) => ({
+                ...r,
+                date: recentDates[(i + Math.floor(Math.random() * 2)) % recentDates.length]
+            }));
+        }
 
         function getSmartDescription(title) {
             let t = title.toLowerCase();
@@ -461,15 +498,22 @@
             document.getElementById('modal-footer-price').textContent = 'R$ ' + product.price;
             document.getElementById('modal-desc').textContent = getSmartDescription(product.title);
 
+            // Aleatoriedade de Notas e Contagem de Avaliações (mínimo 4.8)
+            const score = getRandomScore(product.id);
+            const count = getRandomReviewCount(product.id);
+            document.getElementById('modal-rating-score').textContent = score;
+            document.getElementById('modal-rating-count').textContent = `(${count} avaliações)`;
+
             // Gerar link do WhatsApp do Modal
             const msg = `Oii! Estava vendo os detalhes do produto "${product.title}" (R$ ${product.price}) no site e gostaria de fazer o pedido!`;
             const wppUrl = `https://api.whatsapp.com/send?phone=+55${WPP_PHONE}&text=${encodeURIComponent(msg)}`;
             document.getElementById('modal-wpp-btn').href = wppUrl;
 
-            // Injetar Avaliações Realistas
+            // Injetar Avaliações Aleatórias Únicas
             const reviewsContainer = document.getElementById('modal-reviews');
             reviewsContainer.innerHTML = '';
-            sampleReviews.forEach(r => {
+            const randomReviews = getRandomReviews();
+            randomReviews.forEach(r => {
                 const rEl = document.createElement('div');
                 rEl.className = 'bg-gray-50/80 p-3 rounded-xl border border-gray-100 text-xs';
                 rEl.innerHTML = `
@@ -481,6 +525,7 @@
                         <span class="text-amber-500 font-bold tracking-widest text-[11px]">${r.rating}</span>
                     </div>
                     <p class="text-gray-600 leading-relaxed">${r.text}</p>
+                    <span class="text-[10px] text-gray-400 mt-1 block">${r.date}</span>
                 `;
                 reviewsContainer.appendChild(rEl);
             });
