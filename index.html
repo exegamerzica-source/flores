@@ -325,25 +325,25 @@
     </footer>
 
 
-    <!-- Delivery App Instant CEP & Motoboy Modal -->
+    <!-- Delivery App Instant CEP & Motoboy Modal (Floricultura Luxury Theme & Randomized Couriers) -->
     <div id="delivery-app-modal" class="fixed inset-0 z-[999999] overflow-y-auto bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4" style="display: none;" onclick="handleDeliveryModalBackdrop(event)">
         <div class="relative bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden animate-fadeIn my-auto flex flex-col border border-gray-100" onclick="event.stopPropagation()">
             
-            <!-- Header Bar -->
-            <div class="bg-gradient-to-r from-emerald-800 via-teal-900 to-emerald-950 text-white px-5 py-4 flex items-center justify-between">
+            <!-- Header Bar (Floral Rose Luxury) -->
+            <div class="bg-gradient-to-r from-rose-900 via-rose-800 to-pink-950 text-white px-5 py-4 flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-base border border-emerald-500/40">
+                    <div class="w-8 h-8 rounded-full bg-white/15 text-rose-200 flex items-center justify-center text-base border border-white/20 shadow-inner">
                         🛵
                     </div>
                     <div>
                         <h3 class="font-bold text-sm text-white flex items-center gap-1.5">
                             Praça das Flowers Express
-                            <span class="bg-emerald-500 text-emerald-950 text-[9px] font-black px-1.5 py-0.2 rounded-full uppercase">Ao Vivo</span>
+                            <span class="bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full uppercase tracking-wider">Ao Vivo</span>
                         </h3>
-                        <p class="text-emerald-200/80 text-[10px]">Consulta de Ateliê & Entregador Local</p>
+                        <p class="text-rose-100/80 text-[10px]">Consulta de Ateliê & Entregador na Sua Região</p>
                     </div>
                 </div>
-                <button onclick="closeDeliveryModal()" class="text-emerald-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition" aria-label="Fechar">
+                <button onclick="closeDeliveryModal()" class="text-rose-200 hover:text-white p-1 rounded-full hover:bg-white/10 transition" aria-label="Fechar">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </div>
@@ -357,7 +357,7 @@
                         <div class="w-14 h-14 mx-auto bg-rose-50 text-rose-600 rounded-full flex items-center justify-center text-2xl mb-2 shadow-2xs border border-rose-100">
                             📍
                         </div>
-                        <h4 class="text-base font-bold text-gray-900">Onde você deseja receber?</h4>
+                        <h4 class="text-base font-bold text-gray-900">Onde você deseja receber suas flores?</h4>
                         <p class="text-xs text-gray-500 mt-1">
                             Informe seu CEP ou Bairro para localizarmos o ateliê credenciado e o entregador mais próximo:
                         </p>
@@ -365,20 +365,20 @@
 
                     <form onsubmit="searchDeliveryCep(event)" class="space-y-3">
                         <div class="relative">
-                            <input type="text" id="delivery-cep-input" placeholder="Digite seu CEP ou Cidade" class="w-full text-center sm:text-left text-sm font-semibold p-3.5 pl-4 pr-12 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition uppercase" maxlength="25" required>
-                            <button type="submit" class="absolute right-2 top-2 bottom-2 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 rounded-lg text-xs font-bold transition flex items-center justify-center shadow-xs">
+                            <input type="text" id="delivery-cep-input" placeholder="Digite seu CEP ou Cidade" class="w-full text-center sm:text-left text-sm font-semibold p-3.5 pl-4 pr-12 rounded-xl border-2 border-gray-200 focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition uppercase" maxlength="25" required>
+                            <button type="submit" class="absolute right-2 top-2 bottom-2 bg-rose-600 hover:bg-rose-700 text-white px-3.5 rounded-lg text-xs font-bold transition flex items-center justify-center shadow-xs">
                                 ➔
                             </button>
                         </div>
 
-                        <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold py-3.5 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer">
+                        <button type="submit" class="w-full bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 hover:from-rose-700 hover:to-pink-700 text-white font-bold py-3.5 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer">
                             <span>🔍 Localizar Entregador & Ateliê</span>
                         </button>
                     </form>
 
                     <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400">
                         <span class="flex items-center gap-1">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
                             <span>Entrega expressa 35-45 min</span>
                         </span>
                         <button type="button" onclick="skipCepAndBrowse()" class="text-gray-500 hover:text-gray-700 underline font-medium cursor-pointer">
@@ -390,8 +390,8 @@
                 <!-- STEP 2: Loading / Radar Scanning Animation -->
                 <div id="cep-step-loading" style="display: none;" class="py-6 text-center space-y-4">
                     <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
-                        <div class="w-20 h-20 rounded-full border-4 border-emerald-500/30 animate-ping absolute"></div>
-                        <div class="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center text-3xl shadow-inner border border-emerald-200">
+                        <div class="w-20 h-20 rounded-full border-4 border-rose-500/30 animate-ping absolute"></div>
+                        <div class="w-16 h-16 rounded-full bg-rose-50 flex items-center justify-center text-3xl shadow-inner border border-rose-200 text-rose-600">
                             🛵
                         </div>
                     </div>
@@ -399,7 +399,7 @@
                         <h4 id="loading-status-text" class="font-bold text-gray-800 text-sm">
                             Rastreando ateliê parceiro mais próximo...
                         </h4>
-                        <p class="text-xs text-gray-400 mt-1">Conectando com a frota de entregadores locais</p>
+                        <p class="text-xs text-gray-400 mt-1">Conectando com a frota de entregadores de flores locais</p>
                     </div>
                 </div>
 
@@ -407,34 +407,34 @@
                 <div id="cep-step-success" style="display: none;" class="space-y-4 animate-fadeIn">
                     
                     <!-- Status Header -->
-                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3 flex items-center gap-2.5 text-xs text-emerald-950">
-                        <div class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+                    <div class="bg-rose-50/90 border border-rose-200/80 rounded-xl p-3 flex items-center gap-2.5 text-xs text-rose-950">
+                        <div class="w-7 h-7 rounded-full bg-rose-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
                             ✓
                         </div>
                         <div class="leading-tight">
-                            <strong class="font-bold text-emerald-900 block text-xs">Entregador & Ateliê Local Confirmados!</strong>
-                            <span id="found-address-text" class="text-emerald-700 text-[11px]">Região atendida com entrega prioritária</span>
+                            <strong class="font-bold text-rose-900 block text-xs">Entregador & Ateliê Local Confirmados!</strong>
+                            <span id="found-address-text" class="text-rose-700 text-[11px]">Região atendida com saída prioritária</span>
                         </div>
                     </div>
 
-                    <!-- Real Motoboy Profile Card -->
+                    <!-- Real Motoboy Profile Card (Randomized & Dynamic) -->
                     <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-3.5 space-y-3">
                         <div class="flex items-center gap-3.5">
                             <!-- Real Motoboy Photo -->
-                            <div class="relative w-16 h-16 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 border-2 border-emerald-500 shadow-xs">
-                                <img src="img/motoboy.webp" alt="Rodrigo - Entregador Parceiro" class="w-full h-full object-cover">
+                            <div class="relative w-16 h-16 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 border-2 border-rose-500 shadow-xs">
+                                <img id="motoboy-img" src="img/motoboy_1.webp" alt="Entregador Parceiro" class="w-full h-full object-cover">
                                 <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full" title="Online Agora"></span>
                             </div>
                             <!-- Motoboy Details -->
                             <div class="leading-tight flex-1">
                                 <div class="flex items-center justify-between">
-                                    <h5 class="font-bold text-gray-900 text-sm">Rodrigo Santos</h5>
-                                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                                    <h5 id="motoboy-name" class="font-bold text-gray-900 text-sm">Rodrigo Santos</h5>
+                                    <span id="motoboy-rating" class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
                                         ★ 4.98 (840+ entregas)
                                     </span>
                                 </div>
-                                <p class="text-[11px] text-gray-500 mt-0.5">🏍️ Honda CG Fan Vermelha (Baú Térmico)</p>
-                                <span class="inline-block mt-1 text-[10px] text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100">
+                                <p id="motoboy-vehicle" class="text-[11px] text-gray-500 mt-0.5">🏍️ Honda CG Fan Vermelha (Baú Térmico)</p>
+                                <span id="motoboy-status" class="inline-block mt-1 text-[10px] text-rose-700 font-semibold bg-rose-50 px-1.5 py-0.5 rounded border border-rose-100">
                                     🟢 Disponível no seu bairro agora
                                 </span>
                             </div>
@@ -454,7 +454,7 @@
                     </div>
 
                     <!-- Buy CTA Button -->
-                    <button onclick="confirmAndShopNow()" class="w-full bg-gradient-to-b from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3.5 px-6 rounded-xl text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer">
+                    <button onclick="confirmAndShopNow()" class="w-full bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 hover:from-rose-700 hover:to-pink-700 text-white font-bold py-3.5 px-6 rounded-xl text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer">
                         <span>Avançar e Escolher Flores 🌸</span>
                     </button>
 
@@ -2387,10 +2387,93 @@
         }
 
 
-        // ===== POPUP DE ENTREGA & MOTOBOY INSTANTÂNEO =====
+        // ===== POPUP DE ENTREGA & MOTOBOY INSTANTÂNEO (RANDOMIZADOR DE NOMES E FOTOS) =====
+        const MOTOBOY_POOL = [
+            {
+                name: "Rodrigo Santos",
+                rating: "4.98",
+                deliveries: "840+ entregas",
+                vehicle: "🏍️ Honda CG Fan Vermelha (Baú Térmico)",
+                photo: "img/motoboy_1.webp"
+            },
+            {
+                name: "Marcos Oliveira",
+                rating: "4.99",
+                deliveries: "920+ entregas",
+                vehicle: "🏍️ Yamaha Crux / Factor Azul (Baú Especial de Flores)",
+                photo: "img/motoboy_2.webp"
+            },
+            {
+                name: "Lucas Ferreira",
+                rating: "4.97",
+                deliveries: "670+ entregas",
+                vehicle: "🏍️ Honda CG 160 Preta (Suporte Anti-Impacto)",
+                photo: "img/motoboy_3.webp"
+            },
+            {
+                name: "Anderson Silva",
+                rating: "4.98",
+                deliveries: "1.100+ entregas",
+                vehicle: "🏍️ Honda CG Start 160 (Bag Térmica Floral)",
+                photo: "img/motoboy_4.webp"
+            },
+            {
+                name: "Gabriel Martins",
+                rating: "4.99",
+                deliveries: "780+ entregas",
+                vehicle: "🏍️ Honda CB Twister 250 (Baú Rápido Climatizado)",
+                photo: "img/motoboy_5.webp"
+            },
+            {
+                name: "Bruno Henrique",
+                rating: "4.98",
+                deliveries: "890+ entregas",
+                vehicle: "🏍️ Yamaha YBR 125 (Carretinha & Baú Térmico)",
+                photo: "img/motoboy_6.webp"
+            },
+            {
+                name: "Rafael Costa",
+                rating: "4.98",
+                deliveries: "610+ entregas",
+                vehicle: "🏍️ Honda Fan 160 (Mochila Térmica Vermelha)",
+                photo: "img/motoboy_7.webp"
+            },
+            {
+                name: "Matheus Ramos",
+                rating: "4.99",
+                deliveries: "1.050+ entregas",
+                vehicle: "🏍️ Yamaha Fazer 250 Azul (Mochila Térmica Floral)",
+                photo: "img/motoboy_8.webp"
+            }
+        ];
+
+        function getRandomMotoboy() {
+            const idx = Math.floor(Math.random() * MOTOBOY_POOL.length);
+            return MOTOBOY_POOL[idx];
+        }
+
+        function applyMotoboyProfile(driver) {
+            if (!driver) driver = getRandomMotoboy();
+            const elImg = document.getElementById('motoboy-img');
+            const elName = document.getElementById('motoboy-name');
+            const elRating = document.getElementById('motoboy-rating');
+            const elVehicle = document.getElementById('motoboy-vehicle');
+            const elStatus = document.getElementById('motoboy-status');
+
+            if (elImg) {
+                elImg.src = driver.photo;
+                elImg.alt = driver.name + " - Entregador Parceiro";
+            }
+            if (elName) elName.textContent = driver.name;
+            if (elRating) elRating.textContent = `★ ${driver.rating} (${driver.deliveries})`;
+            if (elVehicle) elVehicle.textContent = driver.vehicle;
+            if (elStatus) elStatus.innerHTML = `🟢 Disponível no seu bairro agora`;
+        }
+
         function openDeliveryModal() {
             const modal = document.getElementById('delivery-app-modal');
             if (modal) {
+                applyMotoboyProfile(); // Seleciona um entregador aleatório a cada abertura
                 modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             }
@@ -2436,6 +2519,9 @@
             step2.style.display = 'block';
             step3.style.display = 'none';
 
+            // Escolhe um entregador aleatório para esta busca
+            applyMotoboyProfile(getRandomMotoboy());
+
             // Simula rastreamento em etapas realistas
             statusText.textContent = "🔍 Localizando ateliê parceiro mais próximo...";
 
@@ -2477,7 +2563,7 @@
             }
         }
 
-        // ===== 1. SELETOR / DETECTOR DE CIDADE =====
+        // ===== 1. SELETOR / DETECTOR DE CIDADE ===== 
         let currentCityName = "sua cidade e região";
 
         function setCity(city) {
