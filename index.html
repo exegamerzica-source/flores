@@ -160,11 +160,11 @@
         </div>
     </section>
 
-    <!-- Categories Navigation Bar (ÚNICA E LIMPA) -->
-    <nav class="sticky top-[60px] md:top-[76px] z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200 py-3 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex overflow-x-auto no-scrollbar gap-2 justify-start md:justify-center py-1" id="category-pills">
-                <!-- Pills criadas dinamicamente via JS -->
+    <!-- Categories Navigation Bar (FOTOS REDONDAS / STORIES STYLE) -->
+    <nav class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-100 py-2.5 shadow-xs">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4">
+            <div class="flex overflow-x-auto no-scrollbar gap-3 sm:gap-5 md:gap-8 justify-start md:justify-center py-1 items-center" id="category-pills">
+                <!-- Circular Category Avatars criadas dinamicamente via JS -->
             </div>
         </div>
     </nav>
@@ -401,12 +401,12 @@
 
         function categorizeProducts() {
             let catData = {
-                'destaques': { title: '⭐ Destaques & Mais Pedidos', items: [] },
-                'buques': { title: '💐 Buquês de Rosas & Flores', items: [] },
-                'cestas': { title: '🧺 Cestas Especiais', items: [] },
-                'coroas': { title: '🕊️ Coroas de Flores', items: [] },
-                'orquideas': { title: '🌺 Orquídeas & Plantas', items: [] },
-                'arranjos': { title: '🪴 Arranjos & Vasos', items: [] }
+                'destaques': { title: '⭐ Destaques & Mais Pedidos', shortTitle: 'Destaques', image: 'img/b26.jpg', items: [] },
+                'buques': { title: '💐 Buquês de Rosas & Flores', shortTitle: 'Buquês', image: 'img/b17.jpg', items: [] },
+                'cestas': { title: '🧺 Cestas Especiais', shortTitle: 'Cestas', image: 'img/b66.jpg', items: [] },
+                'coroas': { title: '🕊️ Coroas de Flores', shortTitle: 'Coroas', image: 'img/b112.jpg', items: [] },
+                'orquideas': { title: '🌺 Orquídeas & Plantas', shortTitle: 'Orquídeas', image: 'img/p82.jpg', items: [] },
+                'arranjos': { title: '🪴 Arranjos & Vasos', shortTitle: 'Arranjos', image: 'img/p26.jpg', items: [] }
             };
 
             allProducts.forEach(p => {
@@ -447,7 +447,17 @@
             for (const [key, data] of Object.entries(categories)) {
                 if (!data.items || data.items.length === 0) continue;
                 
-                pillsHtml += `<a href="#${key}" class="whitespace-nowrap px-4 py-2 bg-rose-50 text-rose-700 hover:bg-rose-500 hover:text-white rounded-full font-medium text-xs md:text-sm transition shadow-xs border border-rose-200">${data.title}</a>`;
+                const thumbImage = data.image || (data.items[0] ? data.items[0].image : 'img/p1.jpg');
+
+                pillsHtml += `
+                <a href="#${key}" class="flex flex-col items-center flex-shrink-0 group focus:outline-none text-center min-w-[62px] sm:min-w-[76px] transition transform hover:-translate-y-0.5">
+                    <div class="w-13 h-13 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full p-[2px] bg-gradient-to-tr from-rose-500 via-pink-400 to-amber-300 shadow-xs group-hover:shadow-md transition">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-white border-2 border-white">
+                            <img src="${thumbImage}" alt="${data.shortTitle}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300" loading="lazy">
+                        </div>
+                    </div>
+                    <span class="mt-1 text-[11px] sm:text-xs font-bold text-gray-800 group-hover:text-rose-600 transition tracking-tight whitespace-nowrap">${data.shortTitle}</span>
+                </a>`;
                 
                 contentHtml += `
                 <section id="${key}" class="mb-14 scroll-mt-28">
