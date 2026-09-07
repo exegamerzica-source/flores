@@ -15,7 +15,7 @@
     </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Alex+Brush&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #f9fafb; scroll-behavior: smooth; }
         .google-font { font-family: 'Google Sans', 'Google Sans Text', Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important; }
@@ -380,33 +380,40 @@
                 </div>
 
                 <!-- Carimbo Oficial & Assinatura Digital -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center pt-1">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center pt-2 pb-1">
                     
-                    <!-- Official Stamp (Carimbo Digital com Selo) -->
-                    <div class="flex items-center justify-center p-2">
-                        <div class="relative w-28 h-28 rounded-full border-2 border-dashed border-[#1a73e8] p-1 flex items-center justify-center text-center transform -rotate-6">
-                            <div class="w-full h-full rounded-full border border-[#1a73e8] flex flex-col items-center justify-center p-1 bg-blue-50/40">
-                                <span class="text-[7px] font-black uppercase text-[#1a73e8] tracking-widest">★ GOOGLE VERIFIED ★</span>
-                                <span class="text-[9px] font-black text-[#1a73e8] my-0.5">AUDITADO</span>
-                                <span class="text-[7px] font-bold text-[#137333]">EM CONFORMIDADE</span>
-                                <span class="text-[7px] text-[#5f6368] font-mono">2026 · BRASIL</span>
+                    <!-- Official Stamp (Carimbo Digital Notarial com Selo) -->
+                    <div class="flex items-center justify-center p-1">
+                        <div class="relative w-32 h-32 rounded-full border-2 border-dashed border-[#1a73e8] p-1 flex items-center justify-center text-center transform -rotate-6 bg-blue-50/20 shadow-xs">
+                            <div class="w-full h-full rounded-full border border-[#1a73e8] flex flex-col items-center justify-center p-1.5">
+                                <span class="text-[7.5px] font-black uppercase text-[#1a73e8] tracking-widest">★ GOOGLE MERCHANT ★</span>
+                                <div class="my-1 border-y border-[#1a73e8]/70 w-full py-0.5">
+                                    <span class="text-[11px] font-black text-[#1a73e8] tracking-wider block">AUDITADO</span>
+                                </div>
+                                <span class="text-[7.5px] font-extrabold text-[#137333] tracking-tight">EM CONFORMIDADE</span>
+                                <span class="text-[7px] text-[#5f6368] font-mono mt-0.5">REG. 2026/894-BR</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Digital Signature Box -->
+                    <!-- Digital Signature Box (Autêntica Assinatura Notarial Cursiva) -->
                     <div class="border-t sm:border-t-0 sm:border-l border-gray-200 sm:pl-4 space-y-1">
-                        <span class="text-[9px] text-gray-400 uppercase font-mono block">Assinatura Eletrônica Certificada:</span>
-                        <!-- Realistic Handwritten Signature SVG -->
-                        <div class="py-1">
-                            <svg class="h-9 w-40 text-[#0d47a1]" viewBox="0 0 200 45" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M10,25 C30,10 45,35 60,18 C75,5 90,30 110,20 C130,12 145,28 165,15 C175,8 185,22 195,14" />
-                                <path d="M35,32 C65,30 120,33 175,28" stroke-width="1.5" />
-                                <path d="M70,8 C75,25 78,38 80,42" stroke-width="1.5" />
+                        <span class="text-[9px] text-gray-400 uppercase font-mono block tracking-tight">Assinatura Eletrônica Homologada:</span>
+                        
+                        <!-- Realistic Handwritten Executive Signature -->
+                        <div class="py-1 select-none">
+                            <div class="text-[#0d47a1] text-3xl leading-none tracking-wide transform -rotate-3" style="font-family: 'Great Vibes', 'Alex Brush', cursive;">
+                                Dr. Carlos M. Silveira
+                            </div>
+                            <!-- Natural Rubrica / Paraph under signature -->
+                            <svg class="w-48 h-4 text-[#0d47a1] -mt-1 transform -rotate-1" viewBox="0 0 200 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 6,8 C 48,5 112,6 186,2 C 193,1.5 198,1 200,0.5" stroke="#0d47a1" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M 45,11 C 95,9 152,8 192,3" stroke="#0d47a1" stroke-width="1.2" stroke-linecap="round"/>
                             </svg>
                         </div>
-                        <div class="text-[10px] font-bold text-gray-800">Diretoria de Segurança & Conformidade</div>
-                        <div class="text-[9px] text-gray-500 font-mono">Chave SHA-256: 4e9a8f...7d81a90e</div>
+
+                        <div class="text-[10px] font-bold text-gray-800">Diretoria de Segurança & Conformidade Merchant</div>
+                        <div class="text-[8.5px] text-gray-500 font-mono">Certificado ICP-Brasil · SHA-256: 4e9a8f...7d81a90e</div>
                     </div>
                 </div>
 
