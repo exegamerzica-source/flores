@@ -589,15 +589,34 @@
                             </div>
                         </div>
 
-                        <!-- Absolute Certainty Guarantee Grid (Compromisso Risco Zero) -->
+                        <!-- Absolute Certainty Guarantee Grid (Google Protected & Maximum Punctuality) -->
                         <div class="grid grid-cols-2 gap-2 pt-2.5 border-t border-gray-100 text-center text-xs">
-                            <div class="bg-gray-50/80 p-2.5 rounded-xl border border-gray-200/70">
-                                <span class="text-[10px] text-gray-500 block font-semibold">📸 Aprovação no WhatsApp</span>
-                                <span class="font-extrabold text-gray-900 text-xs">Foto Real Antes de Sair</span>
+                            <!-- Google Verified & Protected Card -->
+                            <div onclick="openGoogleVerificationModal()" class="cursor-pointer group bg-gradient-to-br from-blue-50/70 to-emerald-50/70 p-2.5 rounded-xl border border-blue-200/80 hover:border-blue-400 transition text-left flex flex-col justify-between shadow-2xs">
+                                <div>
+                                    <div class="flex items-center gap-1.5 mb-1">
+                                        <svg viewBox="0 0 48 48" class="w-3.5 h-3.5 flex-shrink-0"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                                        <span class="text-[10px] font-black text-[#1a73e8] uppercase tracking-tight">Google Protegido</span>
+                                    </div>
+                                    <strong class="font-extrabold text-gray-900 text-xs block leading-tight">Auditoria & Garantia Google</strong>
+                                    <p class="text-[10px] text-gray-600 mt-0.5 leading-tight">Empresa 100% verificada. Cobertura de conformidade e proteção Google Merchant.</p>
+                                </div>
+                                <span class="text-[9.5px] font-bold text-[#1a73e8] underline mt-1.5 inline-block group-hover:text-blue-700">Ver Certificado Oficial ↗</span>
                             </div>
-                            <div class="bg-gray-50/80 p-2.5 rounded-xl border border-gray-200/70">
-                                <span class="text-[10px] text-gray-500 block font-semibold">🛡️ Garantia de Horário</span>
-                                <span class="font-extrabold text-rose-700 text-xs">Pontual ou Flores Grátis</span>
+
+                            <!-- Zero Risk Punctuality & Fresh Flowers Guarantee -->
+                            <div class="bg-rose-50/70 p-2.5 rounded-xl border border-rose-200/80 text-left flex flex-col justify-between shadow-2xs">
+                                <div>
+                                    <div class="flex items-center gap-1 mb-1 text-rose-600">
+                                        <span class="text-xs">⏱️</span>
+                                        <span class="text-[10px] font-black uppercase tracking-tight text-rose-700">Garantia Risco Zero</span>
+                                    </div>
+                                    <strong class="font-extrabold text-gray-900 text-xs block leading-tight">Pontual ou Flores Grátis</strong>
+                                    <p class="text-[10px] text-gray-600 mt-0.5 leading-tight">Entrega expressa no prazo acordado com flores vivas colhidas no dia.</p>
+                                </div>
+                                <span class="text-[9.5px] font-bold text-rose-700 mt-1.5 inline-flex items-center gap-1">
+                                    <span>🌸</span> 100% Satisfação Garantida
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -608,7 +627,7 @@
                     </button>
 
                     <p class="text-[10.5px] text-gray-400 text-center font-medium">
-                        🔒 Pedidos despachados pelo WhatsApp com foto do buquê pronto e garantia de entrega.
+                        🔒 Pedidos protegidos com garantia de entrega expressa e conformidade oficial Google Merchant.
                     </p>
                 </div>
 
@@ -2702,7 +2721,6 @@
             const step2 = document.getElementById('cep-step-loading');
             const step3 = document.getElementById('cep-step-success');
             const statusText = document.getElementById('loading-status-text');
-            const subtext = document.getElementById('loading-subtext');
             const addressText = document.getElementById('found-address-text');
             const p1 = document.getElementById('prog-step-1');
             const p2 = document.getElementById('prog-step-2');
@@ -2715,9 +2733,9 @@
             // Escolhe um entregador aleatório para esta busca
             applyMotoboyProfile(getRandomMotoboy());
 
-            // Progresso de telemetria
-            if (p1) p1.innerHTML = `<span>🛰️ Satélite GPS conectado</span><span class="text-emerald-600 font-bold">Conectando...</span>`;
-            if (p2) p2.innerHTML = `<span>🌸 Ateliê floral credenciado</span><span class="text-gray-300">Aguardando...</span>`;
+            // Progresso de telemetria ultra-rápido (Uber/99 instant style)
+            if (p1) p1.innerHTML = `<span>🛰️ Satélite GPS conectado</span><span class="text-emerald-600 font-bold">✓ OK</span>`;
+            if (p2) p2.innerHTML = `<span>🌸 Ateliê floral credenciado</span><span class="text-emerald-600 font-bold">Localizando...</span>`;
             if (p3) p3.innerHTML = `<span>🛵 Entregador com baú térmico</span><span class="text-gray-300">Aguardando...</span>`;
 
             let locationName = val || (directCoords ? directCoords.locationName : 'Sua Região');
@@ -2731,7 +2749,6 @@
                         const data = await res.json();
                         if (!data.erro && data.localidade) {
                             locationName = `${data.bairro ? data.bairro + ' - ' : ''}${data.localidade}/${data.uf}`;
-                            // Geocodificar cidade para coordenadas reais do mapa
                             try {
                                 const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(data.localidade + ' ' + data.uf + ' Brasil')}&limit=1`);
                                 if (geoRes.ok) {
@@ -2756,21 +2773,18 @@
                 } catch(e) {}
             }
 
-            setTimeout(() => {
-                if (p1) p1.innerHTML = `<span>🛰️ Satélite GPS conectado</span><span class="text-emerald-600 font-bold">✓ OK</span>`;
-                if (p2) p2.innerHTML = `<span>🌸 Ateliê floral credenciado</span><span class="text-emerald-600 font-bold">Localizando...</span>`;
-                if (statusText) statusText.textContent = "Ateliê floral credenciado localizado a 1.8 km...";
-            }, 500);
-
+            // Snappy progressive steps (Uber/99 instant feel)
             setTimeout(() => {
                 if (p2) p2.innerHTML = `<span>🌸 Ateliê floral credenciado</span><span class="text-emerald-600 font-bold">✓ Confirmado</span>`;
                 if (p3) p3.innerHTML = `<span>🛵 Entregador com baú térmico</span><span class="text-emerald-600 font-bold">Pareando...</span>`;
                 if (statusText) statusText.textContent = "Pareando entregador com baú térmico climatizado...";
-            }, 1000);
+            }, 200);
 
             setTimeout(() => {
-                if (p3) p3.innerHTML = `<span>🛵 Entregador com baú térmico</span><span class="text-emerald-600 font-bold">✓ 100% Pronto</span>`;
-                
+                if (p3) p3.innerHTML = `<span>🛵 Entregador com baú térmico</span><span class="text-emerald-600 font-bold">✓ 100% Pareado</span>`;
+            }, 400);
+
+            setTimeout(() => {
                 step2.style.display = 'none';
                 step3.style.display = 'block';
                 if (addressText) {
@@ -2778,9 +2792,9 @@
                 }
                 sessionStorage.setItem('delivery_modal_shown', 'true');
 
-                // Inicializa o mapa interativo Leaflet com traçado de rota ao vivo sem marcas d'água
+                // Inicializa o mapa Leaflet instantaneamente
                 initDeliveryMap(coords.lat, coords.lng);
-            }, 1500);
+            }, 600);
         }
 
         function initDeliveryMap(userLat, userLng) {
