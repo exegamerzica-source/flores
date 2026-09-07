@@ -218,12 +218,12 @@
 
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://api.whatsapp.com/send?phone=+5547999835305&text=Oii%2C%20estava%20no%20site%2C%20e%20quero%20ajuda%20pra%20escolher%20um%20produto" target="_blank" class="fixed bottom-6 right-6 z-40 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl wpp-pulse transition transform hover:scale-110 flex items-center justify-center">
+    <a href="https://api.whatsapp.com/send?phone=+5547999835305&text=Oii!%20Gostaria%20de%20fazer%20um%20pedido%20para%20entrega%20no%20meu%20endere%C3%A7o.%20Voc%C3%AAs%20t%C3%AAm%20florista%20parceiro%20dispon%C3%ADvel%20na%20minha%20cidade%20hoje%3F" target="_blank" class="fixed bottom-6 right-6 z-40 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl wpp-pulse transition transform hover:scale-110 flex items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
     </a>
 
     <!-- Top Notice Bar -->
-    <a href="https://api.whatsapp.com/send?phone=+5547999835305&text=Oii%2C%20estava%20no%20site%2C%20e%20quero%20ajuda%20pra%20escolher%20um%20produto" target="_blank" class="block w-full bg-rose-50 border-b border-rose-100 py-2 text-center text-rose-700 text-xs md:text-sm font-semibold hover:bg-rose-100 transition">
+    <a href="https://api.whatsapp.com/send?phone=+5547999835305&text=Oii!%20Gostaria%20de%20fazer%20um%20pedido%20para%20entrega%20no%20meu%20endere%C3%A7o.%20Voc%C3%AAs%20t%C3%AAm%20florista%20parceiro%20dispon%C3%ADvel%20na%20minha%20cidade%20hoje%3F" target="_blank" class="block w-full bg-rose-50 border-b border-rose-100 py-2 text-center text-rose-700 text-xs md:text-sm font-semibold hover:bg-rose-100 transition">
         🔒 Empresa Verificada pelo Google · Entrega Expressa em até 45 min · Flores Frescas · Compre Pelo WhatsApp!
     </a>
 
@@ -236,7 +236,7 @@
         </div>
     </header>
 
-    <!-- National Network & Local City Delivery Bar -->
+    <!-- 1. Seletor / Detector de Cidade no Topo do Site -->
     <section class="max-w-7xl mx-auto px-4 mt-2 mb-1">
         <div class="bg-gradient-to-r from-emerald-900 via-teal-950 to-emerald-950 text-white rounded-xl p-3 sm:p-3.5 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs border border-emerald-800/50">
             <div class="flex items-center gap-2.5 w-full sm:w-auto">
@@ -245,22 +245,45 @@
                 </div>
                 <div class="leading-tight">
                     <div class="flex items-center gap-2 flex-wrap">
-                        <span class="font-bold text-white text-xs sm:text-sm">Entregando hoje em <span id="user-city-name" class="underline decoration-emerald-400 font-extrabold text-emerald-300">sua cidade e região</span></span>
-                        <span class="bg-emerald-500 text-emerald-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Ateliê Parceiro Ativo</span>
+                        <span class="font-bold text-white text-xs sm:text-sm">📍 Entregando hoje em <span id="user-city-name" class="underline decoration-emerald-400 font-extrabold text-emerald-300">sua cidade e região</span></span>
+                        <button onclick="changeCityPrompt()" class="text-[10px] bg-emerald-800 hover:bg-emerald-700 text-emerald-100 font-semibold px-2 py-0.5 rounded transition border border-emerald-600/50 cursor-pointer">
+                            Alterar Cidade ✎
+                        </button>
                     </div>
                     <p class="text-emerald-200/80 text-[11px] mt-0.5">
-                        Central Nacional de Despacho: pedidos confeccionados pelo ateliê credenciado mais próximo do seu endereço em até 45 min.
+                        Pedidos despachados pelo ateliê parceiro mais próximo do endereço em até 45 min.
                     </p>
                 </div>
             </div>
             <div class="flex items-center gap-2 flex-shrink-0 text-[11px] self-start sm:self-auto">
                 <span class="bg-white/10 px-2.5 py-1 rounded-lg border border-white/10 text-emerald-200 flex items-center gap-1.5 font-medium">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    <span>Floristas Locais Prontos</span>
+                    <span>Ateliê Parceiro Ativo</span>
                 </span>
             </div>
         </div>
     </section>
+
+    <!-- 2. Selo de Rede Nacional de Floriculturas Credenciadas (Embaixo da Logo) -->
+    <section class="max-w-7xl mx-auto px-4 mb-2">
+        <div class="bg-white rounded-xl p-3 sm:p-3.5 border border-rose-100 shadow-2xs flex items-start sm:items-center gap-3 text-xs">
+            <div class="w-9 h-9 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center flex-shrink-0 text-base border border-rose-100">
+                🌿
+            </div>
+            <div class="leading-snug">
+                <strong class="font-bold text-gray-800 text-xs sm:text-sm flex items-center gap-1.5">
+                    Rede Integrada Praça das Flowers
+                    <span class="bg-rose-100 text-rose-700 text-[10px] font-semibold px-2 py-0.2 rounded-full">Rede Nacional</span>
+                </strong>
+                <p class="text-gray-600 text-[11px] sm:text-xs mt-0.5">
+                    Nosso WhatsApp é a <strong>Central Nacional de Pedidos</strong>. Seu arranjo é montado por <strong>floristas parceiros credenciados na sua cidade</strong> minutos antes da entrega, garantindo flores vivas e frescas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    
 
 
     <!-- Google Official Verification Badge Section -->
@@ -546,6 +569,38 @@
 
                 
 
+                
+                <!-- 1. Barra Inteligente de Cidade no Modal -->
+                <div class="bg-emerald-50/90 border border-emerald-200 rounded-xl p-3 flex items-center justify-between gap-2.5 text-xs text-emerald-950">
+                    <div class="flex items-center gap-2.5">
+                        <span class="text-lg">📍</span>
+                        <div class="leading-tight">
+                            <div class="font-bold text-emerald-900">
+                                📍 Entregando hoje em <span id="modal-city-name" class="underline decoration-emerald-500 font-extrabold text-emerald-800">sua cidade e região</span>:
+                            </div>
+                            <p class="text-emerald-700 text-[11px] mt-0.5">Pedidos despachados pelo ateliê parceiro mais próximo do endereço em até 45 min.</p>
+                        </div>
+                    </div>
+                    <button onclick="changeCityPrompt()" class="text-[10px] bg-white hover:bg-emerald-100 text-emerald-800 font-bold px-2.5 py-1 rounded-lg border border-emerald-300 transition flex-shrink-0 cursor-pointer">
+                        Alterar ✎
+                    </button>
+                </div>
+
+                <!-- 2. Selo de Rede Nacional de Floriculturas no Modal -->
+                <div class="bg-white rounded-xl p-3 border border-rose-100 shadow-2xs flex items-start gap-2.5 text-xs">
+                    <div class="w-8 h-8 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center flex-shrink-0 text-sm border border-rose-100">
+                        🌿
+                    </div>
+                    <div class="leading-snug">
+                        <strong class="font-bold text-gray-800 text-xs flex items-center gap-1.5">
+                            Rede Integrada Praça das Flowers
+                        </strong>
+                        <p class="text-gray-600 text-[11px] mt-0.5">
+                            Nosso WhatsApp é a <strong>Central Nacional de Pedidos</strong>. Seu arranjo é montado por <strong>floristas parceiros credenciados na sua cidade</strong> minutos antes da entrega, garantindo flores vivas e frescas.
+                        </p>
+                    </div>
+                </div>
+
                 <!-- Description -->
                 <div>
                     <h3 class="text-sm font-bold text-gray-900 mb-1.5 flex items-center gap-1.5">
@@ -572,14 +627,20 @@
             </div>
 
                         <!-- Sticky Footer CTA Button -->
-            <div class="p-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between gap-3">
-                <div class="hidden sm:block">
-                    <span class="text-xs text-gray-500 block">Total:</span>
-                    <span id="modal-footer-price" class="text-xl font-bold text-rose-600"></span>
+            <div class="p-3 sm:p-4 bg-gray-50 border-t border-gray-100 flex flex-col gap-2">
+                <div class="flex items-center justify-between gap-3">
+                    <div class="hidden sm:block">
+                        <span class="text-xs text-gray-500 block">Total:</span>
+                        <span id="modal-footer-price" class="text-xl font-bold text-rose-600"></span>
+                    </div>
+                    <a id="modal-wpp-btn" href="#" target="_blank" class="w-full sm:w-auto sm:min-w-[280px] bg-gradient-to-b from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3.5 px-8 rounded-lg text-center text-sm md:text-base shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center uppercase tracking-wider">
+                        Comprar Agora
+                    </a>
                 </div>
-                <a id="modal-wpp-btn" href="#" target="_blank" class="flex-grow sm:flex-grow-0 sm:min-w-[280px] bg-gradient-to-b from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3.5 px-8 rounded-lg text-center text-sm md:text-base shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center uppercase tracking-wider">
-                    Comprar Agora
-                </a>
+                <!-- 4. Micro-Aviso Imediatamente Abaixo do Botão do WhatsApp -->
+                <p class="text-[10px] sm:text-[11px] text-gray-500 text-center leading-tight flex items-center justify-center gap-1">
+                    <span>ℹ️</span> <span>Ao clicar, você falará com nossa <strong>Central de Despacho Nacional</strong>. O pedido é confeccionado pela floricultura mais próxima de você.</span>
+                </p>
             </div>
         </div>
     </div>
@@ -2123,7 +2184,7 @@
             document.getElementById('modal-rating-count').textContent = `(${count} avaliações)`;
 
             // Gerar link do WhatsApp do Modal
-            const msg = `Oii! Estava vendo os detalhes do produto "${product.title}" (R$ ${product.price}) no site e gostaria de fazer o pedido!`;
+            const msg = `Oii! Gostaria de pedir o ${product.title} para entrega no meu endereço. Vocês têm florista parceiro disponível na minha cidade hoje?`;
             const wppUrl = `https://api.whatsapp.com/send?phone=+55${WPP_PHONE}&text=${encodeURIComponent(msg)}`;
             document.getElementById('modal-wpp-btn').href = wppUrl;
 
@@ -2214,23 +2275,44 @@
         }
 
 
-        // ===== DETECÇÃO INTELIGENTE DE CIDADE / REGIÃO =====
+        // ===== 1. SELETOR / DETECTOR DE CIDADE =====
+        let currentCityName = "sua cidade e região";
+
+        function setCity(city) {
+            currentCityName = city;
+            localStorage.setItem('pracadasflowers_user_city', city);
+            const elTop = document.getElementById('user-city-name');
+            const elModal = document.getElementById('modal-city-name');
+            if (elTop) elTop.textContent = city;
+            if (elModal) elModal.textContent = city;
+        }
+
+        function changeCityPrompt() {
+            const userChoice = prompt("Informe sua cidade ou CEP de entrega:", currentCityName === "sua cidade e região" ? "" : currentCityName);
+            if (userChoice && userChoice.trim().length > 0) {
+                setCity(userChoice.trim());
+            }
+        }
+
         async function detectUserCity() {
-            const cityEl = document.getElementById('user-city-name');
-            if (!cityEl) return;
+            const saved = localStorage.getItem('pracadasflowers_user_city');
+            if (saved) {
+                setCity(saved);
+                return;
+            }
             try {
                 const res = await fetch('https://ipapi.co/json/', { timeout: 3000 });
                 if (res.ok) {
                     const data = await res.json();
                     if (data.city) {
-                        cityEl.textContent = `${data.city} (${data.region_code || 'Região'})`;
+                        setCity(`${data.city} (${data.region_code || 'Região'})`);
                         return;
                     }
                 }
             } catch (e) {
                 // Fallback silencioso
             }
-            cityEl.textContent = "sua cidade e região";
+            setCity("sua cidade e região");
         }
 
         // ===== LGPD COOKIE CONSENT =====
