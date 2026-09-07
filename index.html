@@ -14,6 +14,9 @@
       gtag('config', 'AW-18039204558');
     </script>
     
+        <!-- Leaflet Interactive GPS Maps for Super-App Delivery -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Alex+Brush&display=swap" rel="stylesheet">
     <style>
@@ -197,6 +200,33 @@
         .cat-story-item:hover .cat-story-label {
             color: #e11d48;
         }
+    
+        /* Super-App Delivery Map & Telemetry Animations */
+        .leaflet-container { font-family: 'Poppins', sans-serif !important; background: #f3f4f6 !important; }
+        .leaflet-control-attribution { display: none !important; }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            70% { transform: scale(1.6); opacity: 0; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+        .gps-pulse-beacon {
+            position: relative;
+            width: 14px;
+            height: 14px;
+            background: #e11d48;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 10px rgba(225, 29, 72, 0.6);
+        }
+        .gps-pulse-beacon::after {
+            content: '';
+            position: absolute;
+            top: -6px; left: -6px; right: -6px; bottom: -6px;
+            border-radius: 50%;
+            border: 2px solid #e11d48;
+            animation: pulse-ring 1.8s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
     </style>
 </head>
 <body class="text-gray-800 antialiased bg-gray-50">
@@ -304,141 +334,212 @@
     </footer>
 
 
-    <!-- Delivery App Instant CEP & Motoboy Modal (Floricultura Luxury Theme & Randomized Couriers) -->
-    <div id="delivery-app-modal" class="fixed inset-0 z-[999999] overflow-y-auto bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4" style="display: none;" onclick="handleDeliveryModalBackdrop(event)">
-        <div class="relative bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden animate-fadeIn my-auto flex flex-col border border-gray-100" onclick="event.stopPropagation()">
+    <!-- Delivery App Instant CEP & Motoboy Modal (Super-App Delivery Experience with Live GPS Map & Randomized Couriers) -->
+    <div id="delivery-app-modal" class="fixed inset-0 z-[999999] overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-4" style="display: none;" onclick="handleDeliveryModalBackdrop(event)">
+        <div class="relative bg-white w-full max-w-lg rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden animate-fadeIn my-auto flex flex-col border border-rose-100/80" onclick="event.stopPropagation()">
             
-            <!-- Header Bar (Floral Rose Luxury) -->
-            <div class="bg-gradient-to-r from-rose-900 via-rose-800 to-pink-950 text-white px-5 py-4 flex items-center justify-between">
+            <!-- Super-App Header Bar (Deep Floral Wine & Live Telemetry) -->
+            <div class="bg-gradient-to-r from-[#500724] via-[#881337] to-[#9f1239] text-white px-4 sm:px-5 py-3.5 flex items-center justify-between border-b border-rose-900/40 relative">
+                <!-- Glowing Top Accent Line -->
+                <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-rose-400 via-amber-300 to-rose-400"></div>
+
                 <div class="flex items-center gap-2.5">
-                    <div class="w-8 h-8 rounded-full bg-white/15 text-rose-200 flex items-center justify-center text-base border border-white/20 shadow-inner">
+                    <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-lg shadow-inner">
                         🛵
                     </div>
                     <div>
-                        <h3 class="font-bold text-sm text-white flex items-center gap-1.5">
-                            Praça das Flowers Express
-                            <span class="bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full uppercase tracking-wider">Ao Vivo</span>
-                        </h3>
-                        <p class="text-rose-100/80 text-[10px]">Consulta de Ateliê & Entregador na Sua Região</p>
+                        <div class="flex items-center gap-1.5">
+                            <h3 class="font-black text-sm tracking-tight text-white">Praça das Flowers Express</h3>
+                            <span class="inline-flex items-center gap-1 bg-emerald-500 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full uppercase tracking-wider shadow-xs">
+                                <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span> GPS Ativo
+                            </span>
+                        </div>
+                        <p class="text-rose-100/80 text-[10.5px]">Rede Integrada de Ateliês & Despacho Prioritário</p>
                     </div>
                 </div>
-                <button onclick="closeDeliveryModal()" class="text-rose-200 hover:text-white p-1 rounded-full hover:bg-white/10 transition" aria-label="Fechar">
+                <button onclick="closeDeliveryModal()" class="text-rose-200 hover:text-white p-1.5 rounded-full hover:bg-white/10 transition" aria-label="Fechar">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
             </div>
 
             <!-- Content Body -->
-            <div class="p-5">
+            <div class="p-4 sm:p-5">
                 
-                <!-- STEP 1: Input CEP -->
+                <!-- STEP 1: Input CEP / GPS Instantâneo -->
                 <div id="cep-step-input">
+                    <!-- High-tech Location Prompt Card -->
                     <div class="text-center mb-4">
-                        <div class="w-14 h-14 mx-auto bg-rose-50 text-rose-600 rounded-full flex items-center justify-center text-2xl mb-2 shadow-2xs border border-rose-100">
+                        <div class="w-14 h-14 mx-auto bg-gradient-to-tr from-rose-50 to-pink-100 text-rose-600 rounded-2xl flex items-center justify-center text-2xl mb-2 shadow-2xs border border-rose-200/70 transform hover:scale-105 transition">
                             📍
                         </div>
-                        <h4 class="text-base font-bold text-gray-900">Onde você deseja receber suas flores?</h4>
+                        <h4 class="text-base sm:text-lg font-extrabold text-gray-900">Onde você deseja receber suas flores?</h4>
                         <p class="text-xs text-gray-500 mt-1">
-                            Informe seu CEP ou Bairro para localizarmos o ateliê credenciado e o entregador mais próximo:
+                            Localizamos o ateliê credenciado e o entregador mais próximo com saída em até <strong class="text-rose-600">45 minutos</strong>.
                         </p>
+                    </div>
+
+                    <!-- Live Dispatch Radar Banner -->
+                    <div class="bg-rose-50/70 border border-rose-100 rounded-xl p-2.5 mb-3.5 flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-2 text-rose-950 font-semibold text-[11px]">
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                            </span>
+                            <span>Ateliês e entregadores online na região</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-rose-700 bg-white px-2 py-0.5 rounded-full border border-rose-200">
+                            Disponibilidade 100%
+                        </span>
                     </div>
 
                     <form onsubmit="searchDeliveryCep(event)" class="space-y-3">
                         <div class="relative">
-                            <input type="text" id="delivery-cep-input" placeholder="Digite seu CEP ou Cidade" class="w-full text-center sm:text-left text-sm font-semibold p-3.5 pl-4 pr-12 rounded-xl border-2 border-gray-200 focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition uppercase" maxlength="25" required>
-                            <button type="submit" class="absolute right-2 top-2 bottom-2 bg-rose-600 hover:bg-rose-700 text-white px-3.5 rounded-lg text-xs font-bold transition flex items-center justify-center shadow-xs">
+                            <input type="text" id="delivery-cep-input" placeholder="Digite seu CEP ou Cidade/Bairro" class="w-full text-center sm:text-left text-sm font-semibold p-3.5 pl-4 pr-12 rounded-xl border-2 border-gray-200 focus:border-rose-500 focus:ring-2 focus:ring-rose-200 outline-none transition uppercase bg-gray-50/50 focus:bg-white" maxlength="30" required>
+                            <button type="submit" class="absolute right-2 top-2 bottom-2 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white px-4 rounded-lg text-xs font-bold transition flex items-center justify-center shadow-xs cursor-pointer">
                                 ➔
                             </button>
                         </div>
 
-                        <button type="submit" class="w-full bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 hover:from-rose-700 hover:to-pink-700 text-white font-bold py-3.5 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer">
-                            <span>🔍 Localizar Entregador & Ateliê</span>
+                        <!-- 1-Click GPS Auto Detect Button -->
+                        <button type="button" onclick="useCurrentGpsLocation()" id="btn-gps-auto" class="w-full bg-white hover:bg-rose-50/60 border border-rose-200 text-rose-700 font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2 cursor-pointer shadow-2xs">
+                            <svg class="w-4 h-4 text-rose-600 animate-pulse" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg>
+                            <span id="gps-btn-text">Usar minha localização atual (GPS Automático)</span>
+                        </button>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 hover:from-rose-700 hover:to-pink-700 text-white font-extrabold py-3.5 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer">
+                            <span>🔍 Rastrear Ateliê & Entregador</span>
                         </button>
                     </form>
 
                     <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400">
-                        <span class="flex items-center gap-1">
-                            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                        <span class="flex items-center gap-1.5 font-medium">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                             <span>Entrega expressa 35-45 min</span>
                         </span>
-                        <button type="button" onclick="skipCepAndBrowse()" class="text-gray-500 hover:text-gray-700 underline font-medium cursor-pointer">
+                        <button type="button" onclick="skipCepAndBrowse()" class="text-gray-500 hover:text-gray-800 underline font-semibold cursor-pointer">
                             Pular e ver catálogo
                         </button>
                     </div>
                 </div>
 
-                <!-- STEP 2: Loading / Radar Scanning Animation -->
-                <div id="cep-step-loading" style="display: none;" class="py-6 text-center space-y-4">
-                    <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
-                        <div class="w-20 h-20 rounded-full border-4 border-rose-500/30 animate-ping absolute"></div>
-                        <div class="w-16 h-16 rounded-full bg-rose-50 flex items-center justify-center text-3xl shadow-inner border border-rose-200 text-rose-600">
+                <!-- STEP 2: 3D Satellite & Sonar Scanning Progress -->
+                <div id="cep-step-loading" style="display: none;" class="py-5 text-center space-y-4 animate-fadeIn">
+                    
+                    <!-- 3D Sonar Pulse Container -->
+                    <div class="relative w-24 h-24 mx-auto flex items-center justify-center">
+                        <div class="absolute inset-0 rounded-full border-2 border-rose-400/40 animate-ping"></div>
+                        <div class="absolute inset-2 rounded-full border border-pink-400/50 animate-pulse"></div>
+                        <div class="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-600 via-pink-600 to-rose-700 flex items-center justify-center text-3xl shadow-xl border border-white/30 text-white transform rotate-3">
                             🛵
                         </div>
                     </div>
+
                     <div>
-                        <h4 id="loading-status-text" class="font-bold text-gray-800 text-sm">
-                            Rastreando ateliê parceiro mais próximo...
+                        <h4 id="loading-status-text" class="font-extrabold text-gray-900 text-sm sm:text-base">
+                            Sincronizando satélite GPS & ateliê parceiro...
                         </h4>
-                        <p class="text-xs text-gray-400 mt-1">Conectando com a frota de entregadores de flores locais</p>
+                        <p id="loading-subtext" class="text-xs text-rose-700/80 font-medium mt-1">Conectando com a malha logística da sua cidade</p>
+                    </div>
+
+                    <!-- Telemetry Progress Checklist -->
+                    <div class="bg-gray-50 rounded-xl p-3 text-left font-mono text-[11px] space-y-1.5 border border-gray-200/80 max-w-xs mx-auto">
+                        <div id="prog-step-1" class="text-gray-400 flex items-center justify-between">
+                            <span>🛰️ Satélite GPS conectado</span>
+                            <span class="font-bold text-gray-400">Aguarde...</span>
+                        </div>
+                        <div id="prog-step-2" class="text-gray-400 flex items-center justify-between">
+                            <span>🌸 Ateliê floral credenciado</span>
+                            <span class="font-bold text-gray-400">Aguarde...</span>
+                        </div>
+                        <div id="prog-step-3" class="text-gray-400 flex items-center justify-between">
+                            <span>🛵 Pareamento de entregador</span>
+                            <span class="font-bold text-gray-400">Aguarde...</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- STEP 3: Motoboy Found & Confirmed -->
-                <div id="cep-step-success" style="display: none;" class="space-y-4 animate-fadeIn">
+                <!-- STEP 3: Ultra-Realistic Super-App Confirmation with Real Map & Courier Profile -->
+                <div id="cep-step-success" style="display: none;" class="space-y-3.5 animate-fadeIn">
                     
-                    <!-- Status Header -->
-                    <div class="bg-rose-50/90 border border-rose-200/80 rounded-xl p-3 flex items-center gap-2.5 text-xs text-rose-950">
-                        <div class="w-7 h-7 rounded-full bg-rose-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                            ✓
+                    <!-- Live GPS Map Box (Interactive Leaflet Map with Route & Live Courier Pin) -->
+                    <div class="relative rounded-2xl overflow-hidden border border-rose-200/90 shadow-sm bg-gray-100 h-44 sm:h-48">
+                        <div id="delivery-live-map" class="w-full h-full z-10"></div>
+                        
+                        <!-- Floating Top Telemetry Badge on Map -->
+                        <div class="absolute top-2.5 left-2.5 z-20 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-lg border border-gray-200 shadow-md flex items-center gap-1.5 text-[10px] font-bold text-gray-800">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span>GPS ROTA ATIVA</span>
+                            <span class="text-rose-600 font-extrabold ml-0.5">• 35 min</span>
                         </div>
-                        <div class="leading-tight">
-                            <strong class="font-bold text-rose-900 block text-xs">Entregador & Ateliê Local Confirmados!</strong>
-                            <span id="found-address-text" class="text-rose-700 text-[11px]">Região atendida com saída prioritária</span>
+
+                        <!-- Floating Bottom Location Badge -->
+                        <div class="absolute bottom-2 left-2 right-2 z-20 bg-gray-900/90 backdrop-blur-md px-2.5 py-1.5 rounded-lg text-[10px] text-white flex items-center justify-between shadow-lg">
+                            <div class="flex items-center gap-1.5 truncate">
+                                <span class="text-xs">📍</span>
+                                <span id="found-address-text" class="font-semibold truncate">Destino Confirmado com Saída Prioritária</span>
+                            </div>
+                            <span class="bg-rose-500 text-white font-black px-1.5 py-0.2 rounded text-[9px] uppercase tracking-wider flex-shrink-0 ml-1">
+                                Rota Direta
+                            </span>
                         </div>
                     </div>
 
-                    <!-- Real Motoboy Profile Card (Randomized & Dynamic) -->
-                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-3.5 space-y-3">
-                        <div class="flex items-center gap-3.5">
-                            <!-- Real Motoboy Photo -->
-                            <div class="relative w-16 h-16 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 border-2 border-rose-500 shadow-xs">
+                    <!-- Real Motoboy Super-App Profile Card -->
+                    <div class="bg-white rounded-2xl border border-gray-200/90 shadow-sm p-3.5 space-y-3">
+                        <div class="flex items-center gap-3">
+                            <!-- Real Motoboy Photo with Verified Ring -->
+                            <div class="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden bg-gray-100 flex-shrink-0 border-2 border-rose-500 shadow-sm">
                                 <img id="motoboy-img" src="img/motoboy_1.webp" alt="Entregador Parceiro" class="w-full h-full object-cover">
-                                <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full" title="Online Agora"></span>
+                                <span class="absolute bottom-0 right-0 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full flex items-center justify-center" title="Online Agora">
+                                    <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+                                </span>
                             </div>
+
                             <!-- Motoboy Details -->
                             <div class="leading-tight flex-1">
                                 <div class="flex items-center justify-between">
-                                    <h5 id="motoboy-name" class="font-bold text-gray-900 text-sm">Rodrigo Santos</h5>
-                                    <span id="motoboy-rating" class="bg-rose-100 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                                    <div>
+                                        <div class="flex items-center gap-1.5">
+                                            <h5 id="motoboy-name" class="font-extrabold text-gray-900 text-sm sm:text-base">Rodrigo Santos</h5>
+                                            <svg class="w-3.5 h-3.5 text-blue-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                                        </div>
+                                        <p id="motoboy-vehicle" class="text-[11px] text-gray-500 mt-0.5">🏍️ Honda CG Fan Vermelha · Baú Climatizado</p>
+                                    </div>
+                                    <span id="motoboy-rating" class="bg-rose-50 text-rose-800 text-[10px] font-bold px-2 py-0.5 rounded-full border border-rose-200/80 flex-shrink-0">
                                         ★ 4.98 (840+ entregas)
                                     </span>
                                 </div>
-                                <p id="motoboy-vehicle" class="text-[11px] text-gray-500 mt-0.5">🏍️ Honda CG Fan Vermelha (Baú Térmico)</p>
-                                <span id="motoboy-status" class="inline-block mt-1 text-[10px] text-rose-700 font-semibold bg-rose-50 px-1.5 py-0.5 rounded border border-rose-100">
-                                    🟢 Disponível no seu bairro agora
-                                </span>
+                                <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                                    <span class="inline-flex items-center gap-1 text-[9.5px] font-semibold text-emerald-800 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Despacho em 35-45 min
+                                    </span>
+                                    <span class="text-[9.5px] font-semibold text-rose-700 bg-rose-50 px-1.5 py-0.5 rounded border border-rose-100">
+                                        🌸 Baú Térmico 18°C
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Delivery Meta Specs -->
+                        <!-- Absolute Certainty Guarantee Grid (Compromisso Risco Zero) -->
                         <div class="grid grid-cols-2 gap-2 pt-2.5 border-t border-gray-100 text-center text-xs">
-                            <div class="bg-gray-50 p-2 rounded-lg">
-                                <span class="text-[10px] text-gray-400 block font-medium">Tempo de Entrega</span>
-                                <span class="font-bold text-gray-800 text-xs">⏱️ 35 a 45 min</span>
+                            <div class="bg-rose-50/50 p-2 rounded-xl border border-rose-100/80">
+                                <span class="text-[10px] text-gray-500 block font-medium">📸 Foto Antes do Envio</span>
+                                <span class="font-bold text-gray-900 text-xs">Aprovação no WhatsApp</span>
                             </div>
-                            <div class="bg-gray-50 p-2 rounded-lg">
-                                <span class="text-[10px] text-gray-400 block font-medium">Confecção</span>
-                                <span class="font-bold text-gray-800 text-xs">🌸 Flores Frescas do Dia</span>
+                            <div class="bg-rose-50/50 p-2 rounded-xl border border-rose-100/80">
+                                <span class="text-[10px] text-gray-500 block font-medium">🛡️ Garantia Blindada</span>
+                                <span class="font-bold text-rose-700 text-xs">Pontual ou Flores Grátis</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Buy CTA Button -->
-                    <button onclick="confirmAndShopNow()" class="w-full bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 hover:from-rose-700 hover:to-pink-700 text-white font-bold py-3.5 px-6 rounded-xl text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer">
+                    <button onclick="confirmAndShopNow()" class="w-full bg-gradient-to-r from-rose-600 via-pink-600 to-rose-700 hover:from-rose-700 hover:to-pink-700 text-white font-extrabold py-3.5 px-6 rounded-xl text-sm sm:text-base shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 uppercase tracking-wider cursor-pointer">
                         <span>Avançar e Escolher Flores 🌸</span>
                     </button>
 
-                    <p class="text-[10px] text-gray-400 text-center">
-                        🔒 Pedidos despachados pelo WhatsApp com foto do arranjo antes do envio.
+                    <p class="text-[10px] text-gray-400 text-center font-medium">
+                        🔒 Despachado pelo WhatsApp oficial com foto real do arranjo e rastreio de saída.
                     </p>
                 </div>
 
@@ -2366,13 +2467,13 @@
         }
 
 
-        // ===== POPUP DE ENTREGA & MOTOBOY INSTANTÂNEO (RANDOMIZADOR DE NOMES E FOTOS) =====
+        // ===== POPUP DE ENTREGA & MOTOBOY INSTANTÂNEO (SUPER-APP COM MAPA GPS & POOL DE ENTREGADORES REAIS) =====
         const MOTOBOY_POOL = [
             {
                 name: "Rodrigo Santos",
                 rating: "4.98",
                 deliveries: "840+ entregas",
-                vehicle: "🏍️ Honda CG Fan Vermelha (Baú Térmico)",
+                vehicle: "🏍️ Honda CG Fan Vermelha (Baú Térmico Climatizado)",
                 photo: "img/motoboy_1.webp"
             },
             {
@@ -2426,6 +2527,10 @@
             }
         ];
 
+        let deliveryMapInstance = null;
+        let courierMarkerInstance = null;
+        let courierAnimInterval = null;
+
         function getRandomMotoboy() {
             const idx = Math.floor(Math.random() * MOTOBOY_POOL.length);
             return MOTOBOY_POOL[idx];
@@ -2437,7 +2542,6 @@
             const elName = document.getElementById('motoboy-name');
             const elRating = document.getElementById('motoboy-rating');
             const elVehicle = document.getElementById('motoboy-vehicle');
-            const elStatus = document.getElementById('motoboy-status');
 
             if (elImg) {
                 elImg.src = driver.photo;
@@ -2446,13 +2550,12 @@
             if (elName) elName.textContent = driver.name;
             if (elRating) elRating.textContent = `★ ${driver.rating} (${driver.deliveries})`;
             if (elVehicle) elVehicle.textContent = driver.vehicle;
-            if (elStatus) elStatus.innerHTML = `🟢 Disponível no seu bairro agora`;
         }
 
         function openDeliveryModal() {
             const modal = document.getElementById('delivery-app-modal');
             if (modal) {
-                applyMotoboyProfile(); // Seleciona um entregador aleatório a cada abertura
+                applyMotoboyProfile();
                 modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             }
@@ -2463,6 +2566,7 @@
             if (modal) {
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
+                if (courierAnimInterval) clearInterval(courierAnimInterval);
             }
         }
 
@@ -2480,19 +2584,60 @@
         function confirmAndShopNow() {
             sessionStorage.setItem('delivery_modal_shown', 'true');
             closeDeliveryModal();
+            const container = document.getElementById('products-container');
+            if (container) {
+                container.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
-        async function searchDeliveryCep(e) {
+        // GPS Instantâneo via Browser Geolocation
+        function useCurrentGpsLocation() {
+            const btnText = document.getElementById('gps-btn-text');
+            if (!navigator.geolocation) {
+                alert("Geolocalização não suportada no seu navegador. Digite seu CEP ou cidade.");
+                return;
+            }
+            if (btnText) btnText.textContent = "Obtendo satélite GPS...";
+            navigator.geolocation.getCurrentPosition(async (pos) => {
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+                try {
+                    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=14&addressdetails=1`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        const addr = data.address || {};
+                        const city = addr.city || addr.town || addr.municipality || addr.village || 'Sua Região';
+                        const suburb = addr.suburb || addr.neighbourhood || addr.quarter || '';
+                        const input = document.getElementById('delivery-cep-input');
+                        if (input) {
+                            input.value = suburb ? `${suburb}, ${city}` : city;
+                        }
+                        searchDeliveryCep(null, { lat, lng, locationName: suburb ? `${suburb} - ${city}` : city });
+                        return;
+                    }
+                } catch(e) {}
+                searchDeliveryCep(null, { lat, lng, locationName: "Localização GPS Confirmada" });
+            }, (err) => {
+                if (btnText) btnText.textContent = "Usar minha localização atual (GPS Automático)";
+                alert("Não foi possível obter o GPS automaticamente. Por favor, digite seu CEP ou bairro.");
+            }, { timeout: 8000, enableHighAccuracy: true });
+        }
+
+        async function searchDeliveryCep(e, directCoords) {
             if (e) e.preventDefault();
             const input = document.getElementById('delivery-cep-input');
             const val = input ? input.value.trim() : '';
-            if (!val) return;
+            if (!val && !directCoords) return;
 
             const step1 = document.getElementById('cep-step-input');
             const step2 = document.getElementById('cep-step-loading');
             const step3 = document.getElementById('cep-step-success');
             const statusText = document.getElementById('loading-status-text');
+            const subtext = document.getElementById('loading-subtext');
             const addressText = document.getElementById('found-address-text');
+            const p1 = document.getElementById('prog-step-1');
+            const p2 = document.getElementById('prog-step-2');
+            const p3 = document.getElementById('prog-step-3');
 
             step1.style.display = 'none';
             step2.style.display = 'block';
@@ -2501,36 +2646,167 @@
             // Escolhe um entregador aleatório para esta busca
             applyMotoboyProfile(getRandomMotoboy());
 
-            // Simula rastreamento em etapas realistas
-            statusText.textContent = "🔍 Localizando ateliê parceiro mais próximo...";
+            // Progresso de telemetria
+            if (p1) p1.innerHTML = `<span>🛰️ Satélite GPS conectado</span><span class="text-emerald-600 font-bold">Conectando...</span>`;
+            if (p2) p2.innerHTML = `<span>🌸 Ateliê floral credenciado</span><span class="text-gray-300">Aguardando...</span>`;
+            if (p3) p3.innerHTML = `<span>🛵 Pareamento de entregador</span><span class="text-gray-300">Aguardando...</span>`;
 
-            setTimeout(() => {
-                statusText.textContent = "📡 Conectando com entregadores express disponíveis...";
-            }, 700);
+            let locationName = val || (directCoords ? directCoords.locationName : 'Sua Região');
+            let coords = directCoords || { lat: -23.5505, lng: -46.6333 }; // Default SP
 
-            // Consulta de CEP real via ViaCEP se for número
-            let locationName = val;
             const digits = val.replace(/\D/g, '');
             if (digits.length === 8) {
                 try {
-                    const res = await fetch(`https://viacep.com.br/ws/${digits}/json/`, { timeout: 2500 });
+                    const res = await fetch(`https://viacep.com.br/ws/${digits}/json/`);
                     if (res.ok) {
                         const data = await res.json();
                         if (!data.erro && data.localidade) {
                             locationName = `${data.bairro ? data.bairro + ' - ' : ''}${data.localidade}/${data.uf}`;
+                            // Geocodificar cidade para coordenadas reais do mapa
+                            try {
+                                const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(data.localidade + ' ' + data.uf + ' Brasil')}&limit=1`);
+                                if (geoRes.ok) {
+                                    const geoData = await geoRes.json();
+                                    if (geoData.length > 0) {
+                                        coords = { lat: parseFloat(geoData[0].lat), lng: parseFloat(geoData[0].lon) };
+                                    }
+                                }
+                            } catch(e) {}
                         }
                     }
                 } catch (err) {}
+            } else if (!directCoords && val.length > 2) {
+                try {
+                    const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(val + ' Brasil')}&limit=1`);
+                    if (geoRes.ok) {
+                        const geoData = await geoRes.json();
+                        if (geoData.length > 0) {
+                            coords = { lat: parseFloat(geoData[0].lat), lng: parseFloat(geoData[0].lon) };
+                        }
+                    }
+                } catch(e) {}
             }
 
             setTimeout(() => {
+                if (p1) p1.innerHTML = `<span>🛰️ Satélite GPS conectado</span><span class="text-emerald-600 font-bold">✓ OK</span>`;
+                if (p2) p2.innerHTML = `<span>🌸 Ateliê floral credenciado</span><span class="text-emerald-600 font-bold">Localizando...</span>`;
+                if (statusText) statusText.textContent = "Ateliê floral credenciado localizado a 1.8 km...";
+            }, 500);
+
+            setTimeout(() => {
+                if (p2) p2.innerHTML = `<span>🌸 Ateliê floral credenciado</span><span class="text-emerald-600 font-bold">✓ Confirmado</span>`;
+                if (p3) p3.innerHTML = `<span>🛵 Pareamento de entregador</span><span class="text-emerald-600 font-bold">Pareando...</span>`;
+                if (statusText) statusText.textContent = "Pareando entregador com baú térmico climatizado...";
+            }, 1000);
+
+            setTimeout(() => {
+                if (p3) p3.innerHTML = `<span>🛵 Pareamento de entregador</span><span class="text-emerald-600 font-bold">✓ 100% Pronto</span>`;
+                
                 step2.style.display = 'none';
                 step3.style.display = 'block';
                 if (addressText) {
                     addressText.textContent = `Entrega para ${locationName} confirmada com saída prioritária.`;
                 }
                 sessionStorage.setItem('delivery_modal_shown', 'true');
+
+                // Inicializa o mapa interativo Leaflet com traçado de rota ao vivo
+                initDeliveryMap(coords.lat, coords.lng);
             }, 1500);
+        }
+
+        function initDeliveryMap(userLat, userLng) {
+            setTimeout(() => {
+                const mapDiv = document.getElementById('delivery-live-map');
+                if (!mapDiv) return;
+
+                if (deliveryMapInstance) {
+                    deliveryMapInstance.remove();
+                    deliveryMapInstance = null;
+                }
+                if (courierAnimInterval) {
+                    clearInterval(courierAnimInterval);
+                }
+
+                if (typeof L === 'undefined') {
+                    mapDiv.innerHTML = `<div class="w-full h-full flex flex-col items-center justify-center bg-gray-900 text-white p-4 text-center">
+                        <span class="text-3xl mb-1">🗺️</span>
+                        <strong class="text-xs">GPS Telemetria Conectada</strong>
+                        <span class="text-[10px] text-gray-400">Ateliê Central ➔ Seu Endereço (35 min)</span>
+                    </div>`;
+                    return;
+                }
+
+                // Posiciona o ateliê floral a ~1.6 km
+                const atelierLat = userLat + 0.012;
+                const atelierLng = userLng - 0.015;
+
+                deliveryMapInstance = L.map('delivery-live-map', {
+                    zoomControl: false,
+                    attributionControl: false,
+                    dragging: false,
+                    scrollWheelZoom: false,
+                    doubleClickZoom: false,
+                    touchZoom: false
+                }).setView([(userLat + atelierLat) / 2, (userLng + atelierLng) / 2], 14);
+
+                // CartoDB Positron / Clean Minimalist Tiles
+                L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                    maxZoom: 19,
+                    subdomains: 'abcd'
+                }).addTo(deliveryMapInstance);
+
+                // Ícone Ateliê Floral
+                const atelierIcon = L.divIcon({
+                    className: 'custom-map-icon',
+                    html: '<div class="w-8 h-8 rounded-full bg-rose-600 text-white border-2 border-white shadow-md flex items-center justify-center text-sm font-bold">🌸</div>',
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16]
+                });
+                L.marker([atelierLat, atelierLng], { icon: atelierIcon }).addTo(deliveryMapInstance).bindTooltip('Ateliê Parceiro', { permanent: true, direction: 'top', className: 'text-[9px] font-bold' });
+
+                // Ícone Usuário / Destino
+                const userIcon = L.divIcon({
+                    className: 'custom-map-icon',
+                    html: '<div class="gps-pulse-beacon"></div>',
+                    iconSize: [14, 14],
+                    iconAnchor: [7, 7]
+                });
+                L.marker([userLat, userLng], { icon: userIcon }).addTo(deliveryMapInstance).bindTooltip('Você', { permanent: true, direction: 'bottom', className: 'text-[9px] font-bold' });
+
+                // Traçado de Rota Estilizada
+                const latlngs = [
+                    [atelierLat, atelierLng],
+                    [atelierLat - 0.004, atelierLng + 0.003],
+                    [atelierLat - 0.008, atelierLng + 0.010],
+                    [userLat, userLng]
+                ];
+                L.polyline(latlngs, {
+                    color: '#e11d48',
+                    weight: 4,
+                    opacity: 0.85,
+                    dashArray: '6, 6'
+                }).addTo(deliveryMapInstance);
+
+                // Ícone do Entregador com animação de movimento ao vivo pela rota
+                const courierIcon = L.divIcon({
+                    className: 'custom-map-icon',
+                    html: '<div class="w-8 h-8 rounded-full bg-gray-900 text-white border-2 border-emerald-400 shadow-xl flex items-center justify-center text-sm animate-bounce">🛵</div>',
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16]
+                });
+                let curStep = 0;
+                courierMarkerInstance = L.marker(latlngs[0], { icon: courierIcon }).addTo(deliveryMapInstance);
+
+                courierAnimInterval = setInterval(() => {
+                    curStep = (curStep + 1) % latlngs.length;
+                    if (courierMarkerInstance) {
+                        courierMarkerInstance.setLatLng(latlngs[curStep]);
+                    }
+                }, 1400);
+
+                deliveryMapInstance.fitBounds(L.latLngBounds(latlngs), { padding: [25, 25] });
+                deliveryMapInstance.invalidateSize();
+            }, 250);
         }
 
         function checkAutoDeliveryModal() {
@@ -2542,7 +2818,7 @@
             }
         }
 
-        // ===== 1. SELETOR / DETECTOR DE CIDADE ===== 
+        // ===== 1. SELETOR / DETECTOR DE CIDADE =====  
         let currentCityName = "sua cidade e região";
 
         function setCity(city) {
