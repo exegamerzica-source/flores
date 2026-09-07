@@ -2571,7 +2571,7 @@
         }
 
 
-        // ===== POPUP DE ENTREGA & MOTOBOY INSTANTÂNEO (SUPER-APP COM MAPA GPS & POOL DE ENTREGADORES REAIS) =====
+        // ===== POPUP DE ENTREGA & MOTOBOY INSTANTÂNEO (GEOCODIFICAÇÃO REAL DE QUALQUER CEP DO BRASIL) =====
         const MOTOBOY_POOL = [
             {
                 name: "Rodrigo Santos",
@@ -2630,6 +2630,85 @@
                 photo: "img/motoboy_8.webp"
             }
         ];
+
+        // Dicionário de Coordenadas Oficiais de Todas as Capitais e Principais Cidades do Brasil
+        const BRAZIL_CITY_COORDS = {
+            // SP
+            "SAO PAULO": [-23.5505, -46.6333], "CAMPINAS": [-22.9056, -47.0608], "SANTOS": [-23.9618, -46.3322],
+            "SAO BERNARDO DO CAMPO": [-23.6914, -46.5646], "SANTO ANDRE": [-23.6639, -46.5383], "OSASCO": [-23.5329, -46.7920],
+            "SOROCABA": [-23.5015, -47.4526], "RIBEIRAO PRETO": [-21.1704, -47.8103], "SAO JOSE DOS CAMPOS": [-23.2237, -45.9009],
+            "GUARULHOS": [-23.4542, -46.5337], "JUNDIAI": [-23.1857, -46.8978], "PIRACICABA": [-22.7338, -47.6476],
+            "BAURU": [-22.3147, -49.0606], "SAO CARLOS": [-22.0174, -47.8908], "FRANCA": [-20.5386, -47.4008],
+            // RJ
+            "RIO DE JANEIRO": [-22.9068, -43.1729], "NITEROI": [-22.8832, -43.1034], "DUQUE DE CAXIAS": [-22.7856, -43.3117],
+            "SAO GONCALO": [-22.8268, -43.0537], "NOVA IGUACU": [-22.7558, -43.4603], "PETROPOLIS": [-22.5049, -43.1794],
+            "VOLTA REDONDA": [-22.5232, -44.1041], "CABO FRIO": [-22.8894, -42.0298], "CAMPOS DOS GOYTACAZES": [-21.7545, -41.3244],
+            // MG
+            "BELO HORIZONTE": [-19.9167, -43.9345], "UBERLANDIA": [-18.9186, -48.2772], "CONTAGEM": [-19.9386, -44.0539],
+            "JUIZ DE FORA": [-21.7587, -43.3512], "BETIM": [-19.9678, -44.1982], "MONTES CLAROS": [-16.7350, -43.8617],
+            "UBERABA": [-19.7472, -47.9392], "GOVERNADOR VALADARES": [-18.8511, -41.9494], "IPATINGA": [-19.4682, -42.5367],
+            // PR
+            "CURITIBA": [-25.4284, -49.2733], "LONDRINA": [-23.3045, -51.1696], "MARINGA": [-23.4209, -51.9331],
+            "PONTA GROSSA": [-25.0994, -50.1583], "CASCAVEL": [-24.9578, -53.4595], "SAO JOSE DOS PINHAIS": [-25.5347, -49.2064],
+            "FOZ DO IGUACU": [-25.5478, -54.5882], "COLOMBO": [-25.2917, -49.2242], "GUARAPUAVA": [-25.3953, -51.4625],
+            // SC
+            "FLORIANOPOLIS": [-27.5954, -48.5480], "JOINVILLE": [-26.3045, -48.8487], "BLUMENAU": [-26.9194, -49.0661],
+            "BALNEARIO CAMBORIU": [-26.9926, -48.6347], "ITAJAI": [-26.9078, -48.6619], "CRICIUMA": [-28.6775, -49.3703],
+            "CHAPECO": [-27.1004, -52.6152], "LAGES": [-27.8157, -50.3260], "JARAGUA DO SUL": [-26.4851, -49.0801],
+            "PALHOCA": [-27.6450, -48.6694], "SAO JOSE": [-27.6136, -48.6366], "BRUSQUE": [-27.0981, -48.9167],
+            // RS
+            "PORTO ALEGRE": [-30.0346, -51.2177], "CAXIAS DO SUL": [-29.1678, -51.1794], "PELOTAS": [-31.7654, -52.3376],
+            "CANOAS": [-29.9178, -51.1836], "SANTA MARIA": [-29.6842, -53.8069], "GRAVATAI": [-29.9439, -50.9928],
+            "NOVO HAMBURGO": [-29.6781, -51.1308], "SAO LEOPOLDO": [-29.7547, -51.1478], "PASSO FUNDO": [-28.2612, -52.4083],
+            // DF & GO
+            "BRASILIA": [-15.7975, -47.8919], "GOIANIA": [-16.6869, -49.2648], "APARECIDA DE GOIANIA": [-16.8226, -49.2474],
+            "ANAPOLIS": [-16.3267, -48.9534], "RIO VERDE": [-17.7922, -50.9192], "LUZIANIA": [-16.2528, -47.9500],
+            // BA, PE, CE, etc.
+            "SALVADOR": [-12.9777, -38.5016], "FEIRA DE SANTANA": [-12.2667, -38.9667], "VITORIA DA CONQUISTA": [-14.8661, -40.8394],
+            "RECIFE": [-8.0476, -34.8770], "JABOATAO DOS GUARARAPES": [-8.1128, -35.0153], "OLINDA": [-8.0089, -34.8553], "CARUARU": [-8.2837, -35.9761],
+            "FORTALEZA": [-3.7172, -38.5433], "CAUCAIA": [-3.7361, -38.6531], "JUAZEIRO DO NORTE": [-7.2031, -39.3150],
+            "CURITIBA": [-25.4284, -49.2733], "VITORIA": [-20.3155, -40.3128], "VILA VELHA": [-20.3297, -40.2925], "SERRA": [-20.1286, -40.3078],
+            "NATAL": [-5.7945, -35.2110], "MOSSORO": [-5.1878, -37.3442], "JOAO PESSOA": [-7.1153, -34.8610], "CAMPINA GRANDE": [-7.2306, -35.8811],
+            "MACEIO": [-9.6658, -35.7350], "ARACAJU": [-10.9472, -37.0731], "TERESINA": [-5.0920, -42.8038], "SAO LUIS": [-2.5307, -44.3068],
+            "MANAUS": [-3.1190, -60.0217], "BELEM": [-1.4558, -48.5044], "ANANINDEUA": [-1.3656, -48.3722], "MACAPA": [0.0389, -51.0664],
+            "PORTO VELHO": [-8.7619, -63.9039], "BOA VISTA": [2.8235, -60.6758], "PALMAS": [-10.1844, -48.3336], "RIO BRANCO": [-9.9749, -67.8100],
+            "CUIABA": [-15.6010, -56.0974], "VARZEA GRANDE": [-15.6469, -56.1325], "RONDONOPOLIS": [-16.4674, -54.6368],
+            "CAMPO GRANDE": [-20.4697, -54.6201], "DOURADOS": [-22.2231, -54.8064]
+        };
+
+        // Regiões por Faixa de CEP (Prefixo do CEP do Brasil)
+        function getCoordsByCepPrefix(cepStr) {
+            const prefix2 = parseInt(cepStr.substring(0, 2), 10);
+            if (prefix2 >= 1 && prefix2 <= 9) return { lat: -23.5505, lng: -46.6333 }; // SP Capital
+            if (prefix2 >= 11 && prefix2 <= 19) return { lat: -22.9056, lng: -47.0608 }; // Interior SP (Campinas)
+            if (prefix2 >= 20 && prefix2 <= 28) return { lat: -22.9068, lng: -43.1729 }; // Rio de Janeiro
+            if (prefix2 === 29) return { lat: -20.3155, lng: -40.3128 }; // Espírito Santo
+            if (prefix2 >= 30 && prefix2 <= 39) return { lat: -19.9167, lng: -43.9345 }; // Minas Gerais
+            if (prefix2 >= 40 && prefix2 <= 48) return { lat: -12.9777, lng: -38.5016 }; // Bahia
+            if (prefix2 === 49) return { lat: -10.9472, lng: -37.0731 }; // Sergipe
+            if (prefix2 >= 50 && prefix2 <= 56) return { lat: -8.0476, lng: -34.8770 }; // Pernambuco
+            if (prefix2 === 57) return { lat: -9.6658, lng: -35.7350 }; // Alagoas
+            if (prefix2 === 58) return { lat: -7.1153, lng: -34.8610 }; // Paraíba
+            if (prefix2 === 59) return { lat: -5.7945, lng: -35.2110 }; // Rio Grande do Norte
+            if (prefix2 >= 60 && prefix2 <= 63) return { lat: -3.7172, lng: -38.5433 }; // Ceará
+            if (prefix2 === 64) return { lat: -5.0920, lng: -42.8038 }; // Piauí
+            if (prefix2 === 65) return { lat: -2.5307, lng: -44.3068 }; // Maranhão
+            if (prefix2 >= 66 && prefix2 <= 68) return { lat: -1.4558, lng: -48.5044 }; // Pará
+            if (prefix2 === 69) return { lat: -3.1190, lng: -60.0217 }; // Amazonas
+            if (prefix2 >= 70 && prefix2 <= 72) return { lat: -15.7975, lng: -47.8919 }; // Distrito Federal
+            if (prefix2 >= 73 && prefix2 <= 76) return { lat: -16.6869, lng: -49.2648 }; // Goiás
+            if (prefix2 === 77) return { lat: -10.1844, lng: -48.3336 }; // Tocantins
+            if (prefix2 === 78) return { lat: -15.6010, lng: -56.0974 }; // Mato Grosso
+            if (prefix2 === 79) return { lat: -20.4697, lng: -54.6201 }; // Mato Grosso do Sul
+            if (prefix2 >= 80 && prefix2 <= 87) return { lat: -25.4284, lng: -49.2733 }; // Paraná (Curitiba)
+            if (prefix2 >= 88 && prefix2 <= 89) return { lat: -27.5954, lng: -48.5480 }; // Santa Catarina (Floripa/BC)
+            if (prefix2 >= 90 && prefix2 <= 99) return { lat: -30.0346, lng: -51.2177 }; // Rio Grande do Sul
+            return { lat: -23.5505, lng: -46.6333 };
+        }
+
+        function normalizeCityText(str) {
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().trim();
+        }
 
         let deliveryMapInstance = null;
         let courierMarkerInstance = null;
@@ -2716,11 +2795,11 @@
                         if (input) {
                             input.value = suburb ? `${suburb}, ${city}` : city;
                         }
-                        searchDeliveryCep(null, { lat, lng, locationName: suburb ? `${suburb} - ${city}` : city });
+                        searchDeliveryCep(null, { lat, lng, locationName: suburb ? `${suburb} - ${city}` : city, cityName: city });
                         return;
                     }
                 } catch(e) {}
-                searchDeliveryCep(null, { lat, lng, locationName: "Localização GPS Confirmada" });
+                searchDeliveryCep(null, { lat, lng, locationName: "Localização GPS Confirmada", cityName: "Sua Região" });
             }, (err) => {
                 if (btnText) btnText.textContent = "Localizar automaticamente via GPS";
                 alert("Não foi possível obter o GPS automaticamente. Por favor, digite seu CEP ou bairro.");
@@ -2755,38 +2834,72 @@
             if (p3) p3.innerHTML = `<span>🛵 Entregador com baú térmico</span><span class="text-gray-300">Aguardando...</span>`;
 
             let locationName = val || (directCoords ? directCoords.locationName : 'Sua Região');
-            let coords = directCoords || { lat: -23.5505, lng: -46.6333 }; // Default SP
+            let cityName = directCoords ? directCoords.cityName : '';
+            let coords = directCoords || null;
 
             const digits = val.replace(/\D/g, '');
-            if (digits.length === 8) {
+
+            if (!coords && digits.length === 8) {
+                // 1. Tenta AwesomeAPI / BrasilAPI (Retorna Latitude e Longitude exatas do CEP)
                 try {
-                    const res = await fetch(`https://viacep.com.br/ws/${digits}/json/`);
-                    if (res.ok) {
-                        const data = await res.json();
-                        if (!data.erro && data.localidade) {
-                            locationName = `${data.bairro ? data.bairro + ' - ' : ''}${data.localidade}/${data.uf}`;
-                            try {
-                                const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(data.localidade + ' ' + data.uf + ' Brasil')}&limit=1`);
-                                if (geoRes.ok) {
-                                    const geoData = await geoRes.json();
-                                    if (geoData.length > 0) {
-                                        coords = { lat: parseFloat(geoData[0].lat), lng: parseFloat(geoData[0].lon) };
-                                    }
-                                }
-                            } catch(e) {}
-                        }
-                    }
-                } catch (err) {}
-            } else if (!directCoords && val.length > 2) {
-                try {
-                    const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(val + ' Brasil')}&limit=1`);
-                    if (geoRes.ok) {
-                        const geoData = await geoRes.json();
-                        if (geoData.length > 0) {
-                            coords = { lat: parseFloat(geoData[0].lat), lng: parseFloat(geoData[0].lon) };
+                    const awesomeRes = await fetch(`https://cep.awesomeapi.com.br/json/${digits}`);
+                    if (awesomeRes.ok) {
+                        const aData = await awesomeRes.json();
+                        if (aData.city && aData.lat && aData.lng) {
+                            coords = { lat: parseFloat(aData.lat), lng: parseFloat(aData.lng) };
+                            cityName = aData.city;
+                            locationName = `${aData.district ? aData.district + ' - ' : ''}${aData.city}/${aData.state}`;
                         }
                     }
                 } catch(e) {}
+
+                // 2. Se não pegou coordenadas diretas, consulta ViaCEP + Dicionário de Cidades / Prefixo
+                if (!coords) {
+                    try {
+                        const viaRes = await fetch(`https://viacep.com.br/ws/${digits}/json/`);
+                        if (viaRes.ok) {
+                            const vData = await viaRes.json();
+                            if (!vData.erro && vData.localidade) {
+                                cityName = vData.localidade;
+                                locationName = `${vData.bairro ? vData.bairro + ' - ' : ''}${vData.localidade}/${vData.uf}`;
+                                const norm = normalizeCityText(vData.localidade);
+                                if (BRAZIL_CITY_COORDS[norm]) {
+                                    coords = { lat: BRAZIL_CITY_COORDS[norm][0], lng: BRAZIL_CITY_COORDS[norm][1] };
+                                }
+                            }
+                        }
+                    } catch(e) {}
+                }
+
+                // 3. Fallback inteligente por prefixo numérico do CEP do Brasil
+                if (!coords) {
+                    coords = getCoordsByCepPrefix(digits);
+                }
+            } else if (!coords && val.length > 2) {
+                // Usuário digitou nome da cidade ou bairro
+                const normVal = normalizeCityText(val);
+                for (const k in BRAZIL_CITY_COORDS) {
+                    if (normVal.includes(k) || k.includes(normVal)) {
+                        coords = { lat: BRAZIL_CITY_COORDS[k][0], lng: BRAZIL_CITY_COORDS[k][1] };
+                        cityName = k;
+                        break;
+                    }
+                }
+                if (!coords) {
+                    try {
+                        const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(val + ' Brasil')}&limit=1`);
+                        if (geoRes.ok) {
+                            const geoData = await geoRes.json();
+                            if (geoData.length > 0) {
+                                coords = { lat: parseFloat(geoData[0].lat), lng: parseFloat(geoData[0].lon) };
+                            }
+                        }
+                    } catch(e) {}
+                }
+            }
+
+            if (!coords) {
+                coords = { lat: -23.5505, lng: -46.6333 }; // Default
             }
 
             // Snappy progressive steps (Uber/99 instant feel)
@@ -2808,12 +2921,12 @@
                 }
                 sessionStorage.setItem('delivery_modal_shown', 'true');
 
-                // Inicializa o mapa Leaflet instantaneamente
-                initDeliveryMap(coords.lat, coords.lng);
+                // Inicializa o mapa Leaflet diretamente nas coordenadas reais do CEP
+                initDeliveryMap(coords.lat, coords.lng, cityName || locationName);
             }, 600);
         }
 
-        function initDeliveryMap(userLat, userLng) {
+        function initDeliveryMap(userLat, userLng, locationLabel) {
             setTimeout(() => {
                 const mapDiv = document.getElementById('delivery-live-map');
                 if (!mapDiv) return;
@@ -2835,9 +2948,9 @@
                     return;
                 }
 
-                // Posiciona o ateliê floral a ~1.6 km em rota realista
-                const atelierLat = userLat + 0.012;
-                const atelierLng = userLng - 0.015;
+                // Posiciona o ateliê floral a ~1.2 km de distância realista na mesma cidade
+                const atelierLat = userLat + 0.008;
+                const atelierLng = userLng - 0.010;
 
                 deliveryMapInstance = L.map('delivery-live-map', {
                     zoomControl: false,
@@ -2848,7 +2961,7 @@
                     touchZoom: false
                 }).setView([(userLat + atelierLat) / 2, (userLng + atelierLng) / 2], 14);
 
-                // OpenStreetMap / Esri Clean High-Resolution Tiles (100% Watermark-Free)
+                // OpenStreetMap Clean High-Resolution Tiles (100% Watermark-Free)
                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 19
                 }).addTo(deliveryMapInstance);
@@ -2856,9 +2969,9 @@
                 // Ícone Ateliê Floral (Uber / Apple Maps Style)
                 const atelierIcon = L.divIcon({
                     className: 'custom-map-icon',
-                    html: '<div class="atelier-marker-badge"><span>🌸</span> Ateliê Central</div>',
-                    iconSize: [110, 26],
-                    iconAnchor: [55, 13]
+                    html: '<div class="atelier-marker-badge"><span>🌸</span> Ateliê Parceiro</div>',
+                    iconSize: [115, 26],
+                    iconAnchor: [57, 13]
                 });
                 L.marker([atelierLat, atelierLng], { icon: atelierIcon }).addTo(deliveryMapInstance);
 
@@ -2874,8 +2987,8 @@
                 // Traçado de Rota Estilizada (Neon Rose)
                 const latlngs = [
                     [atelierLat, atelierLng],
-                    [atelierLat - 0.003, atelierLng + 0.004],
-                    [atelierLat - 0.007, atelierLng + 0.009],
+                    [atelierLat - 0.002, atelierLng + 0.003],
+                    [atelierLat - 0.005, atelierLng + 0.006],
                     [userLat, userLng]
                 ];
 
@@ -2913,7 +3026,7 @@
 
                 deliveryMapInstance.fitBounds(L.latLngBounds(latlngs), { padding: [30, 30] });
                 deliveryMapInstance.invalidateSize();
-            }, 200);
+            }, 100);
         }
 
         function checkAutoDeliveryModal() {
@@ -2925,7 +3038,7 @@
             }
         }
 
-        // ===== 1. SELETOR / DETECTOR DE CIDADE =====   
+        // ===== 1. SELETOR / DETECTOR DE CIDADE =====    
         let currentCityName = "sua cidade e região";
 
         function setCity(city) {
