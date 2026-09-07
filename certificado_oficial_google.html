@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificado Oficial de Conformidade e Autenticidade Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&family=Roboto+Mono:wght@400;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #ffffff;
+            color: #111111;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 14mm 16mm;
+            position: relative;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Diagonal Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-35deg);
+            font-size: 58px;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.038);
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1;
+            border: 6px dashed rgba(0, 0, 0, 0.035);
+            padding: 20px 40px;
+        }
+
+        /* Certificate Double Border */
+        .doc-border {
+            border: 3px solid #1a1a1a;
+            padding: 4px;
+            height: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        .doc-inner-border {
+            border: 1px solid #4a4a4a;
+            padding: 16px 20px;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+        }
+        .header-top {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 8.5px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #444444;
+            margin-bottom: 4px;
+        }
+        .header-title {
+            font-family: 'Cinzel', serif, 'Times New Roman';
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #000000;
+            line-height: 1.25;
+            margin-bottom: 4px;
+        }
+        .header-subtitle {
+            font-size: 9.5px;
+            color: #333333;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* Table */
+        .meta-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 14px;
+            font-size: 9.5px;
+            font-family: 'Roboto Mono', monospace;
+        }
+        .meta-table th, .meta-table td {
+            border: 1px solid #222222;
+            padding: 5px 8px;
+            text-align: left;
+        }
+        .meta-table th {
+            background-color: #f2f2f2;
+            width: 32%;
+            color: #111111;
+            font-weight: 700;
+        }
+        .meta-table td {
+            background-color: #ffffff;
+            color: #000000;
+            font-weight: 600;
+        }
+        .status-badge {
+            display: inline-block;
+            border: 1px solid #111111;
+            padding: 1px 6px;
+            font-weight: 900;
+            font-size: 9px;
+            background: #e6e6e6;
+        }
+
+        /* Clauses */
+        .section-title {
+            font-family: 'Cinzel', serif, 'Times New Roman';
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #444444;
+            padding-bottom: 2px;
+        }
+        .clauses {
+            font-size: 9.2px;
+            line-height: 1.45;
+            text-align: justify;
+            color: #222222;
+            margin-bottom: 14px;
+        }
+        .clauses p {
+            margin-bottom: 7px;
+        }
+        .clauses strong {
+            color: #000000;
+        }
+
+        /* Signatures and Stamp */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 16px;
+            align-items: center;
+            border-top: 1.5px solid #1a1a1a;
+            padding-top: 12px;
+            margin-top: 8px;
+        }
+
+        /* Notary Stamp */
+        .stamp-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stamp-circle {
+            width: 110px;
+            height: 110px;
+            border: 2.5px dashed #1a1a1a;
+            border-radius: 50%;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transform: rotate(-5deg);
+        }
+        .stamp-inner {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+        .stamp-title {
+            font-size: 7px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .stamp-bold {
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+            width: 100%;
+            padding: 1px 0;
+            margin: 2px 0;
+        }
+        .stamp-sub {
+            font-size: 6.5px;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+        }
+
+        /* Signature Box */
+        .sig-box {
+            font-size: 8.5px;
+            font-family: 'Roboto Mono', monospace;
+            color: #333333;
+        }
+        .handwritten-sig {
+            font-family: 'Great Vibes', cursive;
+            font-size: 32px;
+            color: #0b2545;
+            line-height: 1;
+            margin: 4px 0 2px 0;
+            transform: rotate(-2deg);
+        }
+        .sig-line {
+            width: 90%;
+            height: 1px;
+            background: #1a1a1a;
+            margin: 2px 0 4px 0;
+        }
+
+        /* Bottom Security Bar */
+        .bottom-bar {
+            margin-top: 12px;
+            padding: 6px 8px;
+            border: 1px solid #888888;
+            background: #fafafa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 7.5px;
+            color: #444444;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watermark">
+        AUDITADO · OFICIAL · 2026
+    </div>
+
+    <div class="doc-border">
+        <div class="doc-inner-border">
+            
+            <!-- Document Header -->
+            <div class="header">
+                <div class="header-top">REPÚBLICA FEDERATIVA DO BRASIL · REGISTRO PÚBLICO DIGITAL</div>
+                <h1 class="header-title">Certificado Oficial de Conformidade Comercial & Idoneidade Digital</h1>
+                <div class="header-subtitle">GOOGLE TRUST & SAFETY · MERCHANT COMPLIANCE PROTOCOL · TLS 1.3</div>
+            </div>
+
+            <!-- Metadata Table -->
+            <table class="meta-table">
+                <tr>
+                    <th>RAZÃO SOCIAL / ESTABELECIMENTO</th>
+                    <td><strong>PRAÇA DAS FLOWERS COMÉRCIO DE FLORES E ARRANJOS LTDA</strong></td>
+                </tr>
+                <tr>
+                    <th>CNPJ (CADASTRO NACIONAL)</th>
+                    <td>54.892.301/0001-84 &nbsp;·&nbsp; <strong>SITUAÇÃO CADASTRAL: ATIVA</strong></td>
+                </tr>
+                <tr>
+                    <th>DOMÍNIO OFICIAL AUDITADO</th>
+                    <td>https://pracadasflowers.shop (Certificado SSL / ICP-Brasil)</td>
+                </tr>
+                <tr>
+                    <th>CENTRAL OFICIAL DE ATENDIMENTO</th>
+                    <td>WhatsApp Corporativo: +55 (47) 99983-5305</td>
+                </tr>
+                <tr>
+                    <th>PROTOCOLO DE HOMOLOGAÇÃO</th>
+                    <td>GOOG-BR-2026/894.201-A &nbsp;·&nbsp; LIVRO DIGITAL DE REGISTRO Nº 44</td>
+                </tr>
+                <tr>
+                    <th>STATUS OPERACIONAL</th>
+                    <td><span class="status-badge">COMERCIANTE VERIFICADO · 100% REGULARIZADO</span></td>
+                </tr>
+                <tr>
+                    <th>VIGÊNCIA DO REGISTRO</th>
+                    <td>01/01/2026 A 31/12/2026 (RENOVAÇÃO AUTOMÁTICA)</td>
+                </tr>
+            </table>
+
+            <!-- Clauses / Disposições Legais -->
+            <div class="section-title">Termos Formais de Homologação e Garantia ao Consumidor</div>
+            <div class="clauses">
+                <p>
+                    <strong>CLÁUSULA 1ª (DA REGULARIDADE E IDONEIDADE COMERCIAL):</strong>
+                    Certifica-se e faz-se público que o estabelecimento <strong>PRAÇA DAS FLOWERS</strong> cumpriu integralmente todos os requisitos formais de auditoria, titularidade societária e diretrizes de conformidade do Google Merchant, inexistindo pendências jurídicas, apontamentos cadastrais desabonadores ou violações ao Código de Defesa do Consumidor (Lei Federal nº 8.078/90).
+                </p>
+                <p>
+                    <strong>CLÁUSULA 2ª (DO PADRÃO LOGÍSTICO DE ENTREGA EXPRESSA):</strong>
+                    Atesta-se a operação contínua da malha de atendimento e entrega descentralizada, garantindo a confecção artesanal de buquês, cestas e arranjos minutos antes do envio com expedição prioritária e prazo médio de entrega entre <strong>35 (trinta e cinco) a 45 (quarenta e cinco) minutos</strong> a contar da confirmação do pedido pelo WhatsApp oficial.
+                </p>
+                <p>
+                    <strong>CLÁUSULA 3ª (DA PROTEÇÃO AO COMPRADOR E RESPONSABILIDADE):</strong>
+                    O estabelecimento opera sob chancela oficial de proteção ao comprador com <strong>Garantia Blindada de Satisfação e Pontualidade</strong>, assegurando a reposição imediata e integral contra avarias, qualidade impecável de flores frescas hidratadas e índice de aprovação verificado de <strong>4.9 / 5.0 estrelas</strong> em mais de 800 atendimentos comprovados.
+                </p>
+            </div>
+
+            <!-- Signatures and Notary Stamp -->
+            <div class="footer-grid">
+                <!-- Official Notary Stamp -->
+                <div class="stamp-box">
+                    <div class="stamp-circle">
+                        <div class="stamp-inner">
+                            <div class="stamp-title">★ GOOGLE TRUST ★</div>
+                            <div class="stamp-bold">AUDITADO</div>
+                            <div class="stamp-sub">EM CONFORMIDADE</div>
+                            <div class="stamp-sub">REG. 2026/894-BR</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Signature Box -->
+                <div class="sig-box">
+                    <div>ASSINATURA DIGITAL NOTARIAL HOMOLOGADA:</div>
+                    <div class="handwritten-sig">Dr. Carlos M. Silveira</div>
+                    <div class="sig-line"></div>
+                    <div><strong>Dr. Carlos M. Silveira</strong></div>
+                    <div>Diretoria de Segurança & Conformidade Merchant</div>
+                    <div style="font-size: 7.5px; color: #555555; margin-top: 2px;">Chave ICP-Brasil: 4e9a8f21c809e37d81a90ef5a40b1298c7e</div>
+                </div>
+            </div>
+
+            <!-- Bottom Security Notice -->
+            <div class="bottom-bar">
+                <span>🔒 DOCUMENTO OFICIAL ASSINADO ELETRONICAMENTE</span>
+                <span>AUTENTICIDADE: VÁLIDA (LEI 14.063/2020)</span>
+                <span>PRAÇA DAS FLOWERS SHOP</span>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
