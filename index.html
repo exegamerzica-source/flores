@@ -534,6 +534,35 @@
         Atendente online agora
     </div>
 
+    <!-- LGPD / Cookie Consent Banner -->
+    <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 sm:right-auto sm:max-w-md z-50 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-gray-200 shadow-2xl transition-all duration-500 transform translate-y-24 opacity-0 pointer-events-none">
+        <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center flex-shrink-0 text-lg shadow-sm border border-rose-100">
+                🍪
+            </div>
+            <div class="flex-1 text-xs">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="font-bold text-gray-800 text-sm">Privacidade & Cookies</span>
+                    <button onclick="closeCookieBanner()" class="text-gray-400 hover:text-gray-600 p-0.5 rounded transition" aria-label="Fechar">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <p class="text-gray-600 leading-relaxed">
+                    Utilizamos cookies e tecnologias semelhantes para aprimorar sua experiência de compra, personalizar recomendações e analisar nosso tráfego em conformidade com a LGPD (Lei nº 13.709/2018).
+                </p>
+                <div class="mt-3 flex items-center gap-2">
+                    <button onclick="acceptCookies()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-3 rounded-lg text-center transition shadow-sm hover:shadow text-xs cursor-pointer">
+                        Aceitar e Continuar
+                    </button>
+                    <button onclick="closeCookieBanner()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition text-xs cursor-pointer">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Main Logic & Modal Script -->
     <script>
         const WPP_PHONE = '47999835305';
@@ -2125,6 +2154,40 @@
                 const id = parseInt(hash.replace('#produto-', ''));
                 if (id) openProductModal(id);
             }
+        }
+
+        // ===== LGPD COOKIE CONSENT =====
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('pracadasflowers_cookie_consent');
+            if (!consent) {
+                setTimeout(() => {
+                    const banner = document.getElementById('cookie-banner');
+                    if (banner) {
+                        banner.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+                        banner.classList.add('translate-y-0', 'opacity-100');
+                    }
+                }, 800);
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('pracadasflowers_cookie_consent', 'accepted');
+            closeCookieBanner();
+        }
+
+        function closeCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+                banner.classList.remove('translate-y-0', 'opacity-100');
+            }
+        }
+
+        function initApp() {
+            renderCategoriesAndProducts();
+            checkUrlHash();
+            window.addEventListener('hashchange', checkUrlHash);
+            checkCookieConsent();
         }
 
         if (document.readyState === 'loading') {
