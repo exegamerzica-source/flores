@@ -2555,7 +2555,7 @@
                     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">`;
                 
                 data.items.forEach(item => {
-                    let msg = `Oii! Gostaria de pedir o produto "${item.title}" (R$ ${item.price}). Vocês têm florista parceiro disponível para entrega na minha cidade hoje?`;
+                    let msg = `Oii! Gostaria de pedir o ${item.title} (R$ ${item.price}) para entrega no meu endereço. Vocês têm florista parceiro disponível na minha cidade hoje?`;
                     let wppUrl = `https://api.whatsapp.com/send?phone=+55${WPP_PHONE}&text=${encodeURIComponent(msg)}`;
                     
                     contentHtml += `
@@ -2671,10 +2671,8 @@
             document.getElementById('modal-rating-score').textContent = score;
             document.getElementById('modal-rating-count').textContent = `(${count} avaliações)`;
 
-            // Gerar link do WhatsApp do Modal
-            const msg = `Oii! Gostaria de pedir o ${product.title} para entrega no meu endereço. Vocês têm florista parceiro disponível na minha cidade hoje?`;
-            const wppUrl = `https://api.whatsapp.com/send?phone=+55${WPP_PHONE}&text=${encodeURIComponent(msg)}`;
-            document.getElementById('modal-wpp-btn').href = wppUrl;
+            // Gerar link do WhatsApp do Modal com Valor e Opções
+            updateModalWppLink();
 
             // Injetar Avaliações Aleatórias Únicas
             const reviewsContainer = document.getElementById('modal-reviews');
@@ -2804,16 +2802,16 @@
 
         function updateModalWppLink() {
             if (!modalCurrentProduct) return;
-            
-            let delStr = "entrega Imediata em até 45 min";
-            if (selectedDeliveryMode === 'hoje') delStr = "entrega agendada para Hoje";
+
+            let delStr = "entrega imediata em até 45 min";
+            if (selectedDeliveryMode === 'hoje') delStr = "entrega agendada para hoje";
             if (selectedDeliveryMode === 'outra') delStr = "entrega agendada para outra data";
 
-            let cardStr = selectedIncludeCard ? "com Cartão de Mensagem Grátis" : "sem cartão";
+            let cardStr = selectedIncludeCard ? "com Cartão com Dedicatória Grátis" : "sem cartão";
 
             const msg = `Oii! Gostaria de pedir o ${modalCurrentProduct.title} (R$ ${modalCurrentProduct.price}) para ${delStr}, ${cardStr} no meu endereço. Vocês têm florista parceiro disponível na minha cidade hoje?`;
             const wppUrl = `https://api.whatsapp.com/send?phone=+55${WPP_PHONE}&text=${encodeURIComponent(msg)}`;
-            
+
             const btn = document.getElementById('modal-wpp-btn');
             if (btn) btn.href = wppUrl;
         }
