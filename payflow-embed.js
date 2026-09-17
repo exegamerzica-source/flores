@@ -1,17 +1,17 @@
-﻿/**
- * PayFlow Embed â€” v2.0
- * Integre links de pagamento em qualquer site com 2 linhas de cÃ³digo.
+/**
+ * PayFlow Embed — v2.0
+ * Integre links de pagamento em qualquer site com 2 linhas de código.
  *
- * MODO 1 â€” Slug prÃ©-criado (link jÃ¡ existe no painel):
+ * MODO 1 — Slug pré-criado (link já existe no painel):
  *   <button data-payflow-slug="meu-produto-abc12">Pagar</button>
  *
- * MODO 2 â€” DinÃ¢mico (cria o link na hora, ideal para 200+ produtos):
- *   <button data-payflow-product="BuquÃª de Rosas" data-payflow-price="150.00">Pagar</button>
+ * MODO 2 — Dinâmico (cria o link na hora, ideal para 200+ produtos):
+ *   <button data-payflow-product="Buquê de Rosas" data-payflow-price="150.00">Pagar</button>
  */
 (function () {
   "use strict";
 
-  // â”€â”€â”€ Detecta a origem do script automaticamente â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Detecta a origem do script automaticamente ───────────────────────────
   var scriptTag = document.currentScript || (function () {
     var scripts = document.getElementsByTagName("script");
     return scripts[scripts.length - 1];
@@ -21,7 +21,7 @@
     ? scriptTag.src.replace(/\/payflow-embed\.js.*$/, "")
     : window.PAYFLOW_ORIGIN || "";
 
-  // â”€â”€â”€ Estilos injetados uma Ãºnica vez â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Estilos injetados uma única vez ─────────────────────────────────────
   function injectStyles() {
     if (document.getElementById("payflow-styles")) return;
     var style = document.createElement("style");
@@ -60,10 +60,10 @@
     document.head.appendChild(style);
   }
 
-  // â”€â”€â”€ Ãcone de pagamento â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Ícone de pagamento ───────────────────────────────────────────────────
   var ICON_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>';
 
-  // â”€â”€â”€ Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Modal ────────────────────────────────────────────────────────────────
   function ensureModal() {
     if (document.getElementById("payflow-overlay")) return;
     var overlay = document.createElement("div");
@@ -71,7 +71,7 @@
     overlay.innerHTML = [
       '<div id="payflow-modal">',
       '  <div id="payflow-modal-bar">',
-      '    <span>&#128274; Pagamento seguro Â· PayFlow</span>',
+      '    <span>&#128274; Pagamento seguro · PayFlow</span>',
       '    <button id="payflow-modal-close" aria-label="Fechar">&times;</button>',
       '  </div>',
       '  <iframe id="payflow-iframe" title="Checkout PayFlow"></iframe>',
@@ -102,7 +102,7 @@
     document.body.style.overflow = "";
   }
 
-  // â”€â”€â”€ Cria link dinamicamente via API â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Cria link dinamicamente via API ──────────────────────────────────────
   function createDynamicLink(origin, product, price, description, quantity, callback) {
     var apiUrl = origin + "/api/public/create-link";
     fetch(apiUrl, {
@@ -128,7 +128,7 @@
       });
   }
 
-  // â”€â”€â”€ Inicializa um botÃ£o â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Inicializa um botão ──────────────────────────────────────────────────
   function initButton(el) {
     // Atributos comuns
     var slug        = el.getAttribute("data-payflow-slug");
@@ -148,7 +148,7 @@
       return;
     }
 
-    // Transforma em botÃ£o
+    // Transforma em botão
     var btn;
     if (el.tagName === "BUTTON" || el.tagName === "A") {
       btn = el;
@@ -167,7 +167,7 @@
       e.stopPropagation();
       if (btn.disabled) return;
 
-      // MODO 1 â€” slug jÃ¡ existe
+      // MODO 1 — slug já existe
       if (slug) {
         var url = origin + "/pay/" + slug;
         if (mode === "modal")    openModal(url, label);
@@ -176,28 +176,15 @@
         return;
       }
 
-      // MODO 2 â€” cria o link dinamicamente
-      btn.disabled = true;
-      btn.innerHTML = '<span class="pf-spinner"></span><span>Preparando...</span>';
-
-      createDynamicLink(origin, product, price, description, quantity, function (err, url) {
-        btn.disabled = false;
-        btn.innerHTML = ICON_SVG + "<span>" + label + "</span>";
-
-        if (err) {
-          console.error("[PayFlow] Erro ao criar link:", err);
-          alert("NÃ£o foi possÃ­vel abrir o pagamento. Tente novamente.");
-          return;
-        }
-
-        if (mode === "modal")    openModal(url, label);
-        else if (mode === "blank") window.open(url, "_blank", "noopener");
-        else window.location.href = url;
-      });
+      // MODO 2 — Dinâmico direto (instantâneo, sem necessidade de pré-cadastro)
+      var dynamicUrl = origin + "/pay/dynamic?name=" + encodeURIComponent(product) + "&amount=" + encodeURIComponent(price);
+      if (mode === "modal")    openModal(dynamicUrl, label);
+      else if (mode === "blank") window.open(dynamicUrl, "_blank", "noopener");
+      else window.location.href = dynamicUrl;
     });
   }
 
-  // â”€â”€â”€ Inicializa todos os elementos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ─── Inicializa todos os elementos ────────────────────────────────────────
   function init() {
     injectStyles();
     var els = document.querySelectorAll(
@@ -217,19 +204,17 @@
   var observer = new MutationObserver(function () { init(); });
   observer.observe(document.body || document.documentElement, { childList: true, subtree: true });
 
-  // API pÃºblica
+  // API pública
   window.PayFlow = {
     open: openModal,
     close: closeModal,
     init: init,
     createAndOpen: function (origin, product, price, label, mode) {
-      createDynamicLink(origin, product, price, "", 1, function (err, url) {
-        if (err) { console.error("[PayFlow]", err); return; }
-        if (mode === "blank") window.open(url, "_blank", "noopener");
-        else openModal(url, label || product);
-      });
+      var base = origin || PAYFLOW_ORIGIN;
+      var url = base + "/pay/dynamic?name=" + encodeURIComponent(product) + "&amount=" + encodeURIComponent(price);
+      if (mode === "blank") window.open(url, "_blank", "noopener");
+      else openModal(url, label || product);
     },
     version: "2.0.0",
   };
 })();
-
