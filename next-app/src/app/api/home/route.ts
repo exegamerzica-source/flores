@@ -1,20 +1,13 @@
 import { NextResponse } from 'next/server'
+import { PrismaClient } from '@prisma/client'
 import fs from 'fs'
 import path from 'path'
 
-function getData() {
-  const p = path.join('/tmp', 'data.json')
-  if (fs.existsSync(p)) {
-    return JSON.parse(fs.readFileSync(p, 'utf8'))
-  }
-  return {
-    settings: { whatsapp: '5554981311242', storeName: 'Praça das Flowers' },
-    products: []
-  }
-}
+const prisma = new PrismaClient()
 
 export async function GET() {
-  const data = getData()
+  const settings = await prisma.settings.findUnique({ where: { id: 'global' } })
+  const products = await prisma.product.findMany({ orderBy: { id: 'asc' } })
 
   const htmlPath = path.join(process.cwd(), 'public', 'template.html')
   let html = ''
@@ -24,7 +17,7 @@ export async function GET() {
     return new NextResponse("Template not found", { status: 500 })
   }
 
-  const phone = data.settings.whatsapp
+  const phone = settings?.whatsapp || '5554981311242'
   
   html = html.replace(
     /const WPP_PHONE = '.*?';/,
@@ -36,8 +29,8 @@ export async function GET() {
     `phone=+${phone}`
   )
 
-  if (data.products && data.products.length > 0) {
-    const productsJson = JSON.stringify(data.products)
+  if (products && products.length > 0) {
+    const productsJson = JSON.stringify(products)
     html = html.replace(
       /allProducts\s*=\s*\[[\s\S]*?\];/,
       `allProducts = ${productsJson};`

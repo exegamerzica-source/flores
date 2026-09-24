@@ -5,7 +5,7 @@ const path = require('path')
 const prisma = new PrismaClient()
 
 async function main() {
-  const p = path.join(__dirname, '..', 'products_extract.json')
+  const p = path.join(__dirname, 'products_extract.json')
   const products = JSON.parse(fs.readFileSync(p, 'utf8'))
   
   await prisma.settings.upsert({

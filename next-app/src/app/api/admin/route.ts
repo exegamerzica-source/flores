@@ -1,18 +1,13 @@
 import { NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
+import { PrismaClient } from '@prisma/client'
 
-function getData() {
-  const p = path.join('/tmp', 'data.json')
-  if (fs.existsSync(p)) {
-    return JSON.parse(fs.readFileSync(p, 'utf8'))
-  }
-  return {
-    settings: { whatsapp: '5554981311242', storeName: 'Praça das Flowers' },
-    products: []
-  }
-}
+const prisma = new PrismaClient()
 
 export async function GET() {
-  return NextResponse.json(getData())
+  const settings = await prisma.settings.findUnique({ where: { id: 'global' } })
+  const products = await prisma.product.findMany({ orderBy: { id: 'asc' } })
+  return NextResponse.json({
+    settings: settings || { whatsapp: '5554981311242', storeName: 'Praça das Flowers' },
+    products
+  })
 }
