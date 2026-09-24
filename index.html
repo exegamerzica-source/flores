@@ -3466,7 +3466,7 @@
     <!-- PayFlow Embed v2.0 Runtime -->
     <script src="payflow-embed.js"></script>
     <script>
-        window.PAYFLOW_ORIGIN = "https://linkmy-pay-yww2.vercel.app";
+        window.PAYFLOW_ORIGIN = "https://linkmy-pay-vert.vercel.app";
         window.openPayFlowCheckout = function(e, id) {
             if (e) {
                 if (e.preventDefault) e.preventDefault();
@@ -3476,7 +3476,7 @@
             var title = product ? product.title : 'Pagamento Seguro';
             var rawPrice = product ? product.price : 99.90;
             var price = typeof rawPrice === 'string' ? parseFloat(rawPrice.replace(',', '.')) : rawPrice;
-            var url = 'https://linkmy-pay-yww2.vercel.app/pay/dynamic?name=' + encodeURIComponent(title) + '&amount=' + encodeURIComponent(price);
+            var url = 'https://linkmy-pay-vert.vercel.app/pay/dynamic?name=' + encodeURIComponent(title) + '&amount=' + encodeURIComponent(price);
             if (window.PayFlow && window.PayFlow.open) {
                 window.PayFlow.open(url, title);
             } else {
@@ -3489,7 +3489,7 @@
             var title = modalCurrentProduct.title || 'Pagamento Seguro';
             var rawPrice = modalCurrentProduct.price || 99.90;
             var price = typeof rawPrice === 'string' ? parseFloat(rawPrice.replace(',', '.')) : rawPrice;
-            var url = 'https://linkmy-pay-yww2.vercel.app/pay/dynamic?name=' + encodeURIComponent(title) + '&amount=' + encodeURIComponent(price);
+            var url = 'https://linkmy-pay-vert.vercel.app/pay/dynamic?name=' + encodeURIComponent(title) + '&amount=' + encodeURIComponent(price);
             if (window.PayFlow && window.PayFlow.open) {
                 window.PayFlow.open(url, title);
             } else {
