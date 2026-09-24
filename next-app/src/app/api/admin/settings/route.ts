@@ -4,6 +4,10 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export async function POST(request: Request) {
+  const token = request.headers.get('Authorization')
+  if (token !== 'gabyflores2026') {
+    return new NextResponse('Unauthorized', { status: 401 })
+  }
   const data = await request.json()
   
   const updated = await prisma.settings.upsert({

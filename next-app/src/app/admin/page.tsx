@@ -8,24 +8,71 @@ export default function AdminPanel() {
   const [products, setProducts] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [saved, setSaved] = useState(false)
+  const [token, setToken] = useState("")
+  const [authenticated, setAuthenticated] = useState(false)
 
-  useEffect(() => {
-    fetch('/api/admin')
-      .then(r => r.json())
+  const loadData = (authToken: string) => {
+    fetch('/api/admin', { headers: { 'Authorization': authToken } })
+      .then(r => {
+        if (r.status === 401) throw new Error("Senha incorreta")
+        return r.json()
+      })
       .then(data => {
         setSettings(data.settings)
         setProducts(data.products)
+        setAuthenticated(true)
+        setToken(authToken)
+        localStorage.setItem('adminToken', authToken)
         setLoading(false)
       })
+      .catch(e => {
+        alert(e.message)
+        localStorage.removeItem('adminToken')
+      })
+  }
+
+  useEffect(() => {
+    const savedToken = localStorage.getItem('adminToken')
+    if (savedToken) {
+      loadData(savedToken)
+    } else {
+      setLoading(false)
+    }
   }, [])
 
   const saveSettings = async () => {
     await fetch('/api/admin/settings', {
       method: 'POST',
+      headers: { 'Authorization': token, 'Content-Type': 'application/json' },
       body: JSON.stringify(settings)
     })
     setSaved(true)
     setTimeout(() => setSaved(false), 3000)
+  }
+
+  if (loading) return <div className="p-10">Carregando painel...</div>
+
+  if (!authenticated) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+        <div className="bg-white p-8 rounded-xl shadow-sm border max-w-sm w-full text-center">
+          <h1 className="text-2xl font-bold mb-6">Acesso Restrito</h1>
+          <input 
+            type="password" 
+            id="tokenInput"
+            placeholder="Senha do Admin" 
+            className="w-full p-3 border rounded-lg mb-4 text-center"
+            onKeyDown={e => e.key === 'Enter' && loadData((e.target as HTMLInputElement).value)}
+          />
+          <button 
+            onClick={() => loadData((document.getElementById('tokenInput') as HTMLInputElement).value)}
+            className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg"
+          >
+            Entrar
+          </button>
+        </div>
+      </div>
+    )
   }
 
   if (loading) return <div className="p-10">Carregando painel...</div>
