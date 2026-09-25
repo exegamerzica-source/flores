@@ -6,8 +6,15 @@ import path from 'path'
 const prisma = new PrismaClient()
 
 export async function GET() {
-  const settings = await prisma.settings.findUnique({ where: { id: 'global' } })
-  const products = await prisma.product.findMany({ orderBy: { id: 'asc' } })
+  let settings = null
+  let products: any[] = []
+
+  try {
+    settings = await prisma.settings.findUnique({ where: { id: 'global' } })
+    products = await prisma.product.findMany({ orderBy: { id: 'asc' } })
+  } catch (err) {
+    console.error('Database connection error in /api/home:', err)
+  }
 
   const htmlPath = path.join(process.cwd(), 'public', 'template.html')
   let html = ''

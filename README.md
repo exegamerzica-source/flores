@@ -1,55 +1,36 @@
-# Praça Das Flores
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Copia estática do site público da Praça Das Flores, preservando visual, imagens, fontes, banners, produtos e links públicos do site original.
+## Getting Started
 
-## WhatsApp
+First, run the development server:
 
-Os links de WhatsApp da página foram atualizados para `551635130795`, exibindo `(16) 3513 - 0795`.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-O fluxo de venda também foi direcionado para WhatsApp:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- Botões `Comprar` das vitrines abrem o WhatsApp com nome, preço e link do produto.
-- Páginas de produto exibem o botão `Comprar pelo WhatsApp`.
-- O botão antigo de compra do produto também é interceptado e redireciona para o WhatsApp.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Conteúdo espelhado
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- Home em `index.html`.
-- Categorias e páginas públicas em pastas com `index.html`.
-- Arquivos `.asp` públicos salvos como HTML estático, com `.htaccess` para servi-los como `text/html`.
-- Fotos, banners, scripts e CSS em `assets/bethyflores/`.
+## Learn More
 
-Áreas como login, conta, carrinho e checkout antigo dependem de backend e não foram copiadas como HTML estático.
+To learn more about Next.js, take a look at the following resources:
 
-## Gateway Blackcat
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-O endpoint `api/blackcatpay.php` faz a chamada server-to-server para a Blackcat Pay sem expor a chave privada no HTML público.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-1. Crie um arquivo `.env` na raiz do site usando `.env.example` como modelo.
-2. Preencha `BLACKCATPAY_API_KEY` com a chave privada da Blackcat.
-3. Opcionalmente preencha `BLACKCATPAY_PUBLIC_KEY` para uso futuro em scripts de checkout.
-4. Envie vendas por `POST /api/blackcatpay.php` com o JSON aceito pela Blackcat.
-5. Consulte status em `GET /api/blackcatpay.php?action=status&transactionId=ID_DA_TRANSACAO`.
+## Deploy on Vercel
 
-A documentação usada para o endpoint está em https://docs.blackcatpay.com.br/.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Painel Admin
-
-O painel fica em `/admin` e edita as configuracoes de `site-config.json`.
-
-Ele permite personalizar:
-
-- nome do site, descricao, cor principal, favicon e logo;
-- WhatsApp, texto do botao, texto de pagamento e mensagem de entrega;
-- Meta Pixel, Google Tag Manager, Google Analytics e Google Ads;
-- dados da loja, CNPJ, endereco, email, redes sociais e informacoes de entrega;
-- aviso promocional no topo do site.
-
-Para salvar online no Vercel, configure as variaveis de ambiente:
-
-- `ADMIN_TOKEN`: senha/token usado no painel;
-- `GITHUB_TOKEN`: token do GitHub com permissao de escrita em Contents;
-- `GITHUB_REPO`: repositorio no formato `dono/repositorio`;
-- `GITHUB_BRANCH`: branch que recebe o `site-config.json`.
-
-Sem essas variaveis, o painel ainda carrega e exporta o JSON, mas o salvamento online nao persiste em producao.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

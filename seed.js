@@ -1,13 +1,13 @@
 const { PrismaClient } = require('@prisma/client')
 const fs = require('fs')
+const path = require('path')
 
 const prisma = new PrismaClient()
 
 async function main() {
-  // Read products from json
-  const products = JSON.parse(fs.readFileSync('../products_extract.json', 'utf8'))
+  const p = path.join(__dirname, 'products_extract.json')
+  const products = JSON.parse(fs.readFileSync(p, 'utf8'))
   
-  // Create settings
   await prisma.settings.upsert({
     where: { id: 'global' },
     update: {},
@@ -18,7 +18,7 @@ async function main() {
     }
   })
 
-  // Insert products
+  let count = 0
   for (const p of products) {
     await prisma.product.upsert({
       where: { id: p.id },
@@ -38,9 +38,10 @@ async function main() {
         description: p.description || ''
       }
     })
+    count++
   }
   
-  console.log('Seeded database successfully!')
+  console.log(`Seeded ${count} products successfully!`)
 }
 
 main()

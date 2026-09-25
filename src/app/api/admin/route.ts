@@ -8,10 +8,18 @@ export async function GET(request: Request) {
   if (token !== 'gabyflores2026') {
     return new NextResponse('Unauthorized', { status: 401 })
   }
-  const settings = await prisma.settings.findUnique({ where: { id: 'global' } })
-  const products = await prisma.product.findMany({ orderBy: { id: 'asc' } })
-  return NextResponse.json({
-    settings: settings || { whatsapp: '5554981311242', storeName: 'Praça das Flowers' },
-    products
-  })
+  try {
+    const settings = await prisma.settings.findUnique({ where: { id: 'global' } })
+    const products = await prisma.product.findMany({ orderBy: { id: 'asc' } })
+    return NextResponse.json({
+      settings: settings || { whatsapp: '5554981311242', storeName: 'Praça das Flowers' },
+      products
+    })
+  } catch (err: any) {
+    return NextResponse.json({
+      settings: { whatsapp: '5554981311242', storeName: 'Praça das Flowers' },
+      products: [],
+      error: err.message
+    })
+  }
 }
