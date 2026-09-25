@@ -568,7 +568,7 @@ const templateHtml = `<!DOCTYPE html>
                 <div class="bg-white rounded-2xl border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col group">
                     
                     <!-- Imagem do Produto -->
-                    <div class="aspect-square bg-slate-100 relative overflow-hidden cursor-pointer" onclick="openProductModal(\${p.id})">
+                    <a href="/produto/\${p.id}" class="aspect-square bg-slate-100 relative overflow-hidden block">
                         <img 
                             src="\${p.image}" 
                             alt="\${p.title}" 
@@ -579,7 +579,7 @@ const templateHtml = `<!DOCTYPE html>
                         <div class="absolute top-2 left-2 bg-emerald-600 text-white text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider shadow-xs">
                             ⏱️ 45 min
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Informações do Produto -->
                     <div class="p-3 sm:p-4 flex flex-col flex-1 justify-between">
@@ -587,9 +587,9 @@ const templateHtml = `<!DOCTYPE html>
                             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
                                 \${catLabel}
                             </span>
-                            <h3 class="text-xs sm:text-sm font-bold text-slate-800 line-clamp-2 leading-snug cursor-pointer group-hover:text-rose-600 transition" onclick="openProductModal(\${p.id})">
+                            <a href="/produto/\${p.id}" class="text-xs sm:text-sm font-bold text-slate-800 line-clamp-2 leading-snug hover:text-rose-600 transition block">
                                 \${p.title}
-                            </h3>
+                            </a>
                             <div class="flex items-center gap-1 text-amber-500 text-[10px] mt-1.5 mb-2">
                                 <span>★★★★★</span>
                                 <span class="text-slate-400 font-bold ml-1">4.9</span>
@@ -616,9 +616,9 @@ const templateHtml = `<!DOCTYPE html>
                                     <span>Pedir no WhatsApp</span>
                                 </button>
                                 
-                                <button onclick="openProductModal(\${p.id})" class="w-full bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold text-xs py-1.5 px-2 rounded-xl transition text-center border border-slate-200 cursor-pointer">
-                                    Ver Detalhes
-                                </button>
+                                <a href="/produto/\${p.id}" class="w-full bg-slate-50 hover:bg-rose-50 hover:text-rose-700 hover:border-rose-300 text-slate-700 font-bold text-xs py-1.5 px-2 rounded-xl transition text-center border border-slate-200 block">
+                                    Ver Detalhes do Produto ➔
+                                </a>
                             </div>
                         </div>
 
