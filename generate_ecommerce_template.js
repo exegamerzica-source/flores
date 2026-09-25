@@ -39,7 +39,12 @@ const templateHtml = `<!DOCTYPE html>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        * { -webkit-tap-highlight-color: transparent; }
+        * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+            width: 100%;
+        }
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: #f8fafc;
@@ -65,11 +70,11 @@ const templateHtml = `<!DOCTYPE html>
 <body class="antialiased selection:bg-rose-100 selection:text-rose-900 min-h-screen flex flex-col">
 
     <!-- 1. TOP ANNOUNCEMENT BAR (PADRÃO DE E-COMMERCE CONFIÁVEL) -->
-    <div class="bg-slate-900 text-white text-xs font-semibold py-2 px-4 text-center border-b border-slate-800">
+    <div class="bg-slate-900 text-white text-[11px] sm:text-xs font-semibold py-1.5 sm:py-2 px-3 sm:px-4 text-center border-b border-slate-800">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
             <span class="flex items-center gap-1.5 mx-auto sm:mx-0">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>⚡ <strong>Entrega expressa em até 45 minutos</strong> para todo o Brasil • Flores frescas do dia</span>
+                <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                <span>⚡ <strong>Entrega em até 45 min</strong> para todo o Brasil • Flores Frescas</span>
             </span>
             <div class="hidden sm:flex items-center gap-4 text-slate-300 text-xs">
                 <span>🔒 Compra 100% Segura</span>
@@ -81,17 +86,17 @@ const templateHtml = `<!DOCTYPE html>
 
     <!-- 2. HEADER PRINCIPAL (PADRÃO GIULIANA FLORES / ISABELA FLORES) -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
-        <div class="max-w-7xl mx-auto px-4 py-3 sm:py-4">
-            <div class="flex items-center justify-between gap-3 md:gap-8">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2.5 sm:py-4">
+            <div class="flex items-center justify-between gap-2 md:gap-8">
                 
                 <!-- Logo da Floricultura -->
                 <a href="/" class="flex items-center gap-2 shrink-0 group">
-                    <div class="w-10 h-10 md:w-11 md:h-11 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-xl md:text-2xl border border-rose-100 shadow-2xs group-hover:scale-105 transition">
+                    <div class="w-9 h-9 md:w-11 md:h-11 bg-rose-50 text-rose-600 rounded-xl md:rounded-2xl flex items-center justify-center text-lg md:text-2xl border border-rose-100 shadow-2xs group-hover:scale-105 transition">
                         🌸
                     </div>
                     <div>
-                        <span class="text-lg md:text-2xl font-black tracking-tight text-slate-900 block leading-tight">Praça das Flowers</span>
-                        <span class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider block">Floricultura & Presentes</span>
+                        <span class="text-base sm:text-lg md:text-2xl font-black tracking-tight text-slate-900 block leading-tight">Praça das Flowers</span>
+                        <span class="text-[9px] md:text-xs font-bold text-slate-500 uppercase tracking-wider block">Floricultura & Presentes</span>
                     </div>
                 </a>
 
@@ -111,77 +116,77 @@ const templateHtml = `<!DOCTYPE html>
 
                 <!-- Botão de Atendimento WhatsApp no Topo -->
                 <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-                    <button onclick="handleGeneralWppClick('Olá! Gostaria de tirar uma dúvida sobre entrega de flores na minha cidade.')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm py-2.5 px-3.5 sm:px-4 rounded-xl shadow-xs transition flex items-center gap-2 cursor-pointer">
+                    <button onclick="handleGeneralWppClick('Olá! Gostaria de tirar uma dúvida sobre entrega de flores na minha cidade.')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl shadow-xs transition flex items-center gap-1.5 sm:gap-2 cursor-pointer">
                         <svg class="w-4 h-4 sm:w-5 sm:h-5 fill-current" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
                         <span class="hidden sm:inline">Atendimento</span>
-                        <span class="sm:hidden">WhatsApp</span>
+                        <span class="sm:hidden text-xs">WhatsApp</span>
                     </button>
                 </div>
             </div>
 
             <!-- Busca Mobile (Aparece somente em telas pequenas) -->
-            <div class="mt-3 md:hidden">
+            <div class="mt-2.5 md:hidden">
                 <div class="relative">
                     <input 
                         type="text" 
                         id="search-input-mobile" 
                         oninput="handleSearch(this.value)"
-                        placeholder="Buscar flores, buquês, cestas..." 
-                        class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl pl-9 pr-4 py-2 focus:bg-white focus:border-rose-500 outline-none transition placeholder:text-slate-400 font-medium"
+                        placeholder="Buscar buquês, rosas, cestas..." 
+                        class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-xs sm:text-sm rounded-xl pl-8 pr-3 py-2 focus:bg-white focus:border-rose-500 outline-none transition placeholder:text-slate-400 font-medium"
                     />
-                    <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </div>
             </div>
         </div>
 
         <!-- 3. MENU DE CATEGORIAS HORIZONTAL (ESTILO E-COMMERCE TRADICIONAL) -->
         <nav class="border-t border-slate-100 bg-white">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto no-scrollbar py-2 text-xs sm:text-sm font-semibold text-slate-700 whitespace-nowrap" id="category-tabs">
-                    <button onclick="setCategory('all')" class="cat-tab px-3.5 py-1.5 rounded-lg bg-rose-600 text-white font-bold transition shadow-xs" data-cat="all">
-                        Todos os Produtos
+            <div class="max-w-7xl mx-auto px-3 sm:px-4">
+                <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto no-scrollbar py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-slate-700 whitespace-nowrap" id="category-tabs">
+                    <button onclick="setCategory('all')" class="cat-tab px-3 py-1.5 sm:px-3.5 rounded-lg bg-rose-600 text-white font-bold transition shadow-xs text-xs sm:text-sm" data-cat="all">
+                        Todos
                     </button>
-                    <button onclick="setCategory('buques')" class="cat-tab px-3.5 py-1.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition" data-cat="buques">
-                        🌹 Buquês de Flores
+                    <button onclick="setCategory('buques')" class="cat-tab px-3 py-1.5 sm:px-3.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition text-xs sm:text-sm" data-cat="buques">
+                        🌹 Buquês
                     </button>
-                    <button onclick="setCategory('rosas')" class="cat-tab px-3.5 py-1.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition" data-cat="rosas">
-                        💐 Arranjos & Rosas
+                    <button onclick="setCategory('rosas')" class="cat-tab px-3 py-1.5 sm:px-3.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition text-xs sm:text-sm" data-cat="rosas">
+                        💐 Arranjos
                     </button>
-                    <button onclick="setCategory('cestas')" class="cat-tab px-3.5 py-1.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition" data-cat="cestas">
-                        🧺 Cestas Especiais
+                    <button onclick="setCategory('cestas')" class="cat-tab px-3 py-1.5 sm:px-3.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition text-xs sm:text-sm" data-cat="cestas">
+                        🧺 Cestas
                     </button>
-                    <button onclick="setCategory('orquideas')" class="cat-tab px-3.5 py-1.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition" data-cat="orquideas">
+                    <button onclick="setCategory('orquideas')" class="cat-tab px-3 py-1.5 sm:px-3.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition text-xs sm:text-sm" data-cat="orquideas">
                         🪴 Orquídeas
                     </button>
-                    <button onclick="setCategory('pelucias')" class="cat-tab px-3.5 py-1.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition" data-cat="pelucias">
-                        🧸 Pelúcias & Chocolates
+                    <button onclick="setCategory('pelucias')" class="cat-tab px-3 py-1.5 sm:px-3.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition text-xs sm:text-sm" data-cat="pelucias">
+                        🧸 Pelúcias
                     </button>
-                    <button onclick="setCategory('coroas')" class="cat-tab px-3.5 py-1.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition" data-cat="coroas">
-                        🕊️ Coroas de Flores
+                    <button onclick="setCategory('coroas')" class="cat-tab px-3 py-1.5 sm:px-3.5 rounded-lg hover:bg-slate-100 text-slate-700 font-bold transition text-xs sm:text-sm" data-cat="coroas">
+                        🕊️ Coroas
                     </button>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- 4. BANNER PROMOCIONAL INSTITUCIONAL (LIMPO, TRANQUILO E FAMILIAR) -->
-    <section class="bg-gradient-to-r from-rose-50 via-pink-50/60 to-amber-50/40 border-b border-rose-100/60 py-6 sm:py-10">
-        <div class="max-w-7xl mx-auto px-4">
+    <!-- 4. BANNER PROMOCIONAL INSTITUCIONAL (ENXUTO E DIRETO) -->
+    <section class="bg-gradient-to-r from-rose-50 via-pink-50/60 to-amber-50/40 border-b border-rose-100/60 py-3.5 sm:py-8">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4">
             <div class="max-w-2xl">
-                <div class="inline-flex items-center gap-1.5 bg-rose-100 text-rose-800 text-[11px] sm:text-xs font-bold px-3 py-1 rounded-full mb-3">
-                    <span>⏱️</span> Entrega Expressa em até 45 minutos no Brasil Inteiro
+                <div class="inline-flex items-center gap-1 bg-rose-100 text-rose-800 text-[10px] sm:text-xs font-bold px-2.5 py-0.5 sm:py-1 rounded-full mb-1.5 sm:mb-2">
+                    <span>⏱️</span> Entrega em até 45 min no Brasil Inteiro
                 </div>
-                <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight mb-2 sm:mb-3">
-                    Surpreenda quem você ama com Flores Frescas e Montagem Artesanal.
+                <h1 class="text-xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-snug mb-1 sm:mb-2">
+                    Flores Frescas com Entrega Expressa
                 </h1>
-                <p class="text-slate-600 text-xs sm:text-base font-medium leading-relaxed mb-4">
-                    Flores selecionadas do dia, arranjos impecáveis, cartão personalizado grátis com a sua mensagem e foto do buquê pronto antes da entrega.
+                <p class="text-slate-600 text-xs sm:text-sm md:text-base font-medium leading-relaxed mb-3 sm:mb-4">
+                    Montagem artesanal no dia, cartão com sua mensagem grátis e foto do arranjo enviada antes da saída.
                 </p>
-                <div class="flex items-center gap-3">
-                    <button onclick="scrollToProducts()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm py-2.5 px-5 rounded-xl shadow-sm transition">
-                        Ver Catálogo Completo
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button onclick="scrollToProducts()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm py-2 sm:py-2.5 px-3.5 sm:px-5 rounded-xl shadow-xs transition cursor-pointer">
+                        Ver Catálogo
                     </button>
-                    <button onclick="handleGeneralWppClick('Olá! Gostaria de consultar a disponibilidade de entrega em 45 minutos para o meu endereço.')" class="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl shadow-xs transition flex items-center gap-1.5">
+                    <button onclick="handleGeneralWppClick('Olá! Gostaria de consultar a disponibilidade de entrega em 45 minutos para o meu endereço.')" class="bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-bold text-xs sm:text-sm py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl shadow-2xs transition flex items-center gap-1.5 cursor-pointer">
                         <span>Falar no WhatsApp</span>
                     </button>
                 </div>
@@ -189,36 +194,36 @@ const templateHtml = `<!DOCTYPE html>
         </div>
     </section>
 
-    <!-- 5. BARRA DE BENEFÍCIOS (PADRÃO E-COMMERCE CONFIÁVEL) -->
-    <section class="bg-white border-b border-slate-200 py-4">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
-                <div class="flex items-center gap-3 p-2">
-                    <span class="text-2xl">⚡</span>
-                    <div>
-                        <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight">Entrega em até 45 min</h4>
-                        <p class="text-[11px] text-slate-500 font-medium">Despacho para todo o Brasil</p>
+    <!-- 5. BARRA DE BENEFÍCIOS (COMPACTA E RESPONSIVA) -->
+    <section class="bg-white border-b border-slate-200 py-2.5 sm:py-4">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 text-left">
+                <div class="flex items-center gap-2 p-1.5 sm:p-2 bg-slate-50/60 sm:bg-transparent rounded-xl border border-slate-100 sm:border-0">
+                    <span class="text-xl sm:text-2xl shrink-0">⚡</span>
+                    <div class="min-w-0">
+                        <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight truncate">Até 45 min</h4>
+                        <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium truncate">Brasil Inteiro</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 p-2">
-                    <span class="text-2xl">📸</span>
-                    <div>
-                        <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight">Foto Antes do Envio</h4>
-                        <p class="text-[11px] text-slate-500 font-medium">Veja o arranjo pronto no WhatsApp</p>
+                <div class="flex items-center gap-2 p-1.5 sm:p-2 bg-slate-50/60 sm:bg-transparent rounded-xl border border-slate-100 sm:border-0">
+                    <span class="text-xl sm:text-2xl shrink-0">📸</span>
+                    <div class="min-w-0">
+                        <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight truncate">Foto do Arranjo</h4>
+                        <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium truncate">Antes do envio</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 p-2">
-                    <span class="text-2xl">💌</span>
-                    <div>
-                        <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight">Cartão Grátis Incluso</h4>
-                        <p class="text-[11px] text-slate-500 font-medium">Sua dedicatória personalizada</p>
+                <div class="flex items-center gap-2 p-1.5 sm:p-2 bg-slate-50/60 sm:bg-transparent rounded-xl border border-slate-100 sm:border-0">
+                    <span class="text-xl sm:text-2xl shrink-0">💌</span>
+                    <div class="min-w-0">
+                        <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight truncate">Cartão Incluso</h4>
+                        <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium truncate">Sua dedicatória</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 p-2">
-                    <span class="text-2xl">💳</span>
-                    <div>
-                        <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight">Pagamento Seguro</h4>
-                        <p class="text-[11px] text-slate-500 font-medium">Pix ou Cartão de Crédito</p>
+                <div class="flex items-center gap-2 p-1.5 sm:p-2 bg-slate-50/60 sm:bg-transparent rounded-xl border border-slate-100 sm:border-0">
+                    <span class="text-xl sm:text-2xl shrink-0">💳</span>
+                    <div class="min-w-0">
+                        <h4 class="text-xs sm:text-sm font-black text-slate-900 leading-tight truncate">Pix ou Cartão</h4>
+                        <p class="text-[10px] sm:text-[11px] text-slate-500 font-medium truncate">Em até 3x</p>
                     </div>
                 </div>
             </div>
@@ -226,20 +231,20 @@ const templateHtml = `<!DOCTYPE html>
     </section>
 
     <!-- 6. ÁREA PRINCIPAL DE PRODUTOS -->
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full" id="catalogo">
+    <main class="max-w-7xl mx-auto px-2.5 sm:px-4 py-5 sm:py-8 flex-1 w-full" id="catalogo">
         
         <!-- Cabeçalho da Lista de Produtos -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-200">
+        <div class="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-200">
             <div>
-                <h2 id="section-title" class="text-xl sm:text-2xl font-black text-slate-900">Todos os Produtos</h2>
-                <p id="products-count" class="text-xs sm:text-sm font-medium text-slate-500 mt-0.5">Carregando produtos...</p>
+                <h2 id="section-title" class="text-base sm:text-2xl font-black text-slate-900">Todos os Produtos</h2>
+                <p id="products-count" class="text-[10px] sm:text-sm font-medium text-slate-500">Carregando produtos...</p>
             </div>
 
             <!-- Ordenação -->
-            <div class="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-600 self-end sm:self-auto">
-                <label for="sort-select">Ordenar por:</label>
-                <select id="sort-select" onchange="handleSort(this.value)" class="bg-white border border-slate-300 text-slate-800 rounded-lg px-2.5 py-1.5 font-semibold text-xs sm:text-sm outline-none focus:border-rose-500">
-                    <option value="popular">Mais Populares</option>
+            <div class="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-slate-600">
+                <label for="sort-select" class="hidden sm:inline">Ordenar:</label>
+                <select id="sort-select" onchange="handleSort(this.value)" class="bg-white border border-slate-300 text-slate-800 rounded-lg px-2 py-1 sm:px-2.5 sm:py-1.5 font-semibold text-xs sm:text-sm outline-none focus:border-rose-500">
+                    <option value="popular">Populares</option>
                     <option value="price-asc">Menor Preço</option>
                     <option value="price-desc">Maior Preço</option>
                     <option value="name-asc">Nome (A - Z)</option>
@@ -248,7 +253,7 @@ const templateHtml = `<!DOCTYPE html>
         </div>
 
         <!-- Grid de Cards de Produtos -->
-        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6" id="products-grid">
+        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-5" id="products-grid">
             <!-- Injetado dinamicamente via JavaScript -->
         </div>
 
@@ -583,48 +588,48 @@ const templateHtml = `<!DOCTYPE html>
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             onerror="this.onerror=null; this.src='/img/isabelly/p1.webp'"
                         >
-                        <div class="absolute top-2 left-2 bg-emerald-600 text-white text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider shadow-xs">
+                        <div class="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 bg-emerald-600 text-white text-[8px] sm:text-[9px] font-black px-1.5 py-0.5 sm:px-2 rounded-md uppercase tracking-wider shadow-xs">
                             ⏱️ 45 min
                         </div>
                     </a>
 
                     <!-- Informações do Produto -->
-                    <div class="p-3 sm:p-4 flex flex-col flex-1 justify-between">
+                    <div class="p-2.5 sm:p-4 flex flex-col flex-1 justify-between">
                         <div>
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                            <span class="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5 sm:mb-1">
                                 \${catLabel}
                             </span>
                             <a href="/produto/\${p.id}" class="text-xs sm:text-sm font-bold text-slate-800 line-clamp-2 leading-snug hover:text-rose-600 transition block">
                                 \${p.title}
                             </a>
-                            <div class="flex items-center gap-1 text-amber-500 text-[10px] mt-1.5 mb-2">
+                            <div class="flex items-center gap-1 text-amber-500 text-[9px] sm:text-[10px] mt-1 mb-1.5">
                                 <span>★★★★★</span>
-                                <span class="text-slate-400 font-bold ml-1">4.9</span>
+                                <span class="text-slate-400 font-bold ml-0.5">4.9</span>
                             </div>
                         </div>
 
-                        <div class="mt-2 pt-2 border-t border-slate-100">
-                            <span class="text-[10px] text-slate-400 line-through font-semibold block">
+                        <div class="mt-1.5 pt-1.5 sm:mt-2 sm:pt-2 border-t border-slate-100">
+                            <span class="text-[9px] sm:text-[10px] text-slate-400 line-through font-semibold block">
                                 R$ \${formatPrice(oldPriceNum)}
                             </span>
                             <div class="flex items-baseline gap-1">
-                                <span class="text-base sm:text-lg font-black text-slate-900">
+                                <span class="text-sm sm:text-lg font-black text-slate-900">
                                     R$ \${p.price}
                                 </span>
                             </div>
-                            <span class="text-[10px] text-slate-500 font-medium block mt-0.5">
+                            <span class="text-[9px] sm:text-[10px] text-slate-500 font-medium block">
                                 ou 3x de R$ \${formatPrice(parcelNum)}
                             </span>
 
                             <!-- Botões de Ação -->
-                            <div class="mt-3 flex flex-col gap-1.5">
-                                <button onclick="buyOnWhatsApp(\${p.id})" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2 px-2.5 rounded-xl shadow-xs transition flex items-center justify-center gap-1.5 cursor-pointer">
+                            <div class="mt-2 sm:mt-3 flex flex-col gap-1 sm:gap-1.5">
+                                <button onclick="buyOnWhatsApp(\${p.id})" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] sm:text-xs py-1.5 sm:py-2 px-2 rounded-xl shadow-xs transition flex items-center justify-center gap-1 cursor-pointer">
                                     <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
                                     <span>Pedir no WhatsApp</span>
                                 </button>
                                 
-                                <a href="/produto/\${p.id}" class="w-full bg-slate-50 hover:bg-rose-50 hover:text-rose-700 hover:border-rose-300 text-slate-700 font-bold text-xs py-1.5 px-2 rounded-xl transition text-center border border-slate-200 block">
-                                    Ver Detalhes do Produto ➔
+                                <a href="/produto/\${p.id}" class="w-full bg-slate-50 hover:bg-rose-50 hover:text-rose-700 hover:border-rose-300 text-slate-700 font-bold text-[10px] sm:text-xs py-1.5 px-2 rounded-xl transition text-center border border-slate-200 block">
+                                    Ver Detalhes ➔
                                 </a>
                             </div>
                         </div>
