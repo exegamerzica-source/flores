@@ -273,7 +273,7 @@ export default function AdminPanel() {
                           src={p.raw_image || p.image} 
                           alt="" 
                           className="w-12 h-12 object-cover rounded-lg border border-slate-200 shadow-xs" 
-                          onError={(e) => { (e.target as HTMLImageElement).src = '/img/p1.jpg' }}
+                          onError={(e) => { (e.target as HTMLImageElement).src = '/img/isabelly/p1.webp' }}
                         />
                       </td>
                       <td className="p-3.5 text-sm font-bold text-slate-900 max-w-xs truncate">{p.title}</td>

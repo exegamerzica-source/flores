@@ -395,7 +395,7 @@ const templateHtml = `<!DOCTYPE html>
             <div class="grid grid-cols-1 sm:grid-cols-2">
                 <!-- Foto do Produto -->
                 <div class="aspect-square bg-slate-100 relative overflow-hidden">
-                    <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+                    <img id="modal-img" src="" alt="" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='/img/isabelly/p1.webp'">
                     <span class="absolute bottom-2 left-2 bg-slate-900/80 text-white text-[10px] font-bold px-2 py-0.5 rounded-md backdrop-blur-xs">
                         🌸 Flores Frescas do Dia
                     </span>
@@ -520,6 +520,13 @@ const templateHtml = `<!DOCTYPE html>
             return val.toFixed(2).replace('.', ',');
         }
 
+        function getProductImg(p) {
+            if (p.raw_image && p.raw_image.startsWith('http')) return p.raw_image;
+            if (!p.image) return '/img/isabelly/p1.webp';
+            if (p.image.startsWith('http')) return p.image;
+            return p.image.startsWith('/') ? p.image : '/' + p.image;
+        }
+
         // Renderização dos Produtos
         function renderProducts() {
             const grid = document.getElementById('products-grid');
@@ -570,11 +577,11 @@ const templateHtml = `<!DOCTYPE html>
                     <!-- Imagem do Produto -->
                     <a href="/produto/\${p.id}" class="aspect-square bg-slate-100 relative overflow-hidden block">
                         <img 
-                            src="\${p.image}" 
+                            src="\${getProductImg(p)}" 
                             alt="\${p.title}" 
                             loading="lazy" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            onerror="this.src='/img/p1.jpg'"
+                            onerror="this.onerror=null; this.src='/img/isabelly/p1.webp'"
                         >
                         <div class="absolute top-2 left-2 bg-emerald-600 text-white text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider shadow-xs">
                             ⏱️ 45 min
@@ -680,7 +687,7 @@ const templateHtml = `<!DOCTYPE html>
             const priceNum = parsePrice(product.price);
             const oldPriceNum = priceNum * 1.25;
 
-            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-img').src = getProductImg(product);
             document.getElementById('modal-cat').textContent = getCategoryLabel(classifyCategory(product));
             document.getElementById('modal-title').textContent = product.title;
             document.getElementById('modal-price').textContent = 'R$ ' + product.price;

@@ -28,6 +28,15 @@ function classifyCategory(item: any): string {
   return 'outros'
 }
 
+function getProductImg(p: any): string {
+  if (p.raw_image && p.raw_image.startsWith('http')) {
+    return p.raw_image
+  }
+  if (!p.image) return '/img/isabelly/p1.webp'
+  if (p.image.startsWith('http')) return p.image
+  return p.image.startsWith('/') ? p.image : '/' + p.image
+}
+
 function getCategoryName(catKey: string): string {
   switch(catKey) {
     case 'buques': return 'Buquês de Flores'
@@ -123,6 +132,7 @@ export async function GET(
   const parcelNum = priceNum / 3
   const catKey = classifyCategory(product)
   const catName = getCategoryName(catKey)
+  const productImg = getProductImg(product)
 
   // Find 4 related products
   const sameCat = allProducts.filter(p => p.id !== product.id && classifyCategory(p) === catKey)
@@ -135,10 +145,11 @@ export async function GET(
 
   const relatedHtml = related.map(rel => {
     const rPrice = parsePrice(rel.price)
+    const relImg = getProductImg(rel)
     return `
       <div class="bg-white rounded-2xl border border-slate-200/90 shadow-2xs hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col group">
         <a href="/produto/${rel.id}" class="aspect-square bg-slate-100 relative overflow-hidden block">
-          <img src="${rel.image}" alt="${rel.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='/img/p1.jpg'">
+          <img src="${relImg}" alt="${rel.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='/img/isabelly/p1.webp'">
           <span class="absolute top-2 left-2 bg-emerald-600 text-white text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider">
             ⏱️ 45 min
           </span>
@@ -183,7 +194,7 @@ export async function GET(
     <!-- OpenGraph / WhatsApp Preview -->
     <meta property="og:title" content="${product.title} - Praça das Flowers">
     <meta property="og:description" content="Flores frescas com entrega expressa em até 45 minutos no Brasil Inteiro. R$ ${product.price} - Compre online!">
-    <meta property="og:image" content="${product.image}">
+    <meta property="og:image" content="${productImg}">
     <meta property="og:type" content="product">
 
     <!-- Google tag (gtag.js) -->
@@ -315,10 +326,10 @@ export async function GET(
                 <div class="flex flex-col gap-4">
                     <div class="aspect-square bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 relative group">
                         <img 
-                            src="${product.image}" 
+                            src="${productImg}" 
                             alt="${product.title}" 
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            onerror="this.src='/img/p1.jpg'"
+                            onerror="this.onerror=null; this.src='/img/isabelly/p1.webp'"
                         >
                         <div class="absolute top-3 left-3 bg-emerald-600 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm flex items-center gap-1">
                             <span>⏱️</span> Entrega em até 45 min
