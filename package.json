@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npx prisma generate && npx prisma db push --accept-data-loss && node seed.js && next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
     "build:catalog": "node bot/src/build-catalog.js",
